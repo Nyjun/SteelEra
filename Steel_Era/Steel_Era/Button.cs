@@ -15,6 +15,13 @@ namespace Steel_Era
     class Button : Sprite
     {
 
+        public Button(Texture2D tex1, Texture2D tex2, Vector2 pos, bool animated, bool visible)
+            : base(tex1, animated)
+        {
+            Texture = tex1;
+            texture2 = tex2;
+            Position = pos;
+        }
 
         /// <summary>
         /// Highlighted button texture.
@@ -27,7 +34,7 @@ namespace Steel_Era
         private Texture2D texture2;
 
         /// <summary>
-        /// Highlighted button texture.
+        /// Text visible on the button.
         /// </summary>
         public string Text
         {

@@ -14,6 +14,11 @@ namespace Steel_Era
 {
     class Cursor : Sprite
     {
+        public Cursor(Texture2D tex, bool animated)
+            : base(tex, animated)
+        {
+            Texture = tex;
+        }
 
         public override void HandleInput(KeyboardState keyState, MouseState mouseState)
         {

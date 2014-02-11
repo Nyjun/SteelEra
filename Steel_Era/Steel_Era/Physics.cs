@@ -60,9 +60,46 @@ namespace Steel_Era
             return Vector2.Zero; 
         }
 
-        public void SpriteIntersection(Sprite Obstacle, Sprite spriteMov)
+        public Vector2 SpriteIntersection(Sprite Obstacle, Sprite spriteMov)
         {
+            float interX = 0, interY = 0;
 
+            /*if (spriteMov.Direction.X >= 0)//Deplacement vers la droite.
+            {
+                if (spriteMov.HitBox.SideRight > Obstacle.HitBox.SideLeft)//Collision droite.
+                {
+                    if (spriteMov.Direction.Y >= 0)//Deplacement vers le haut.
+                    {
+                        if (spriteMov.HitBox.SideUp >= Obstacle.HitBox.SideDown)//Collision haute.
+                        {
+                            interY = spriteMov.HitBox.SideUp - Obstacle.HitBox.SideDown;
+                        }
+                        else//Pas de collision haute.
+                        {
+                            return new Vector2(spriteMov.HitBox.SideRight - Obstacle.HitBox.SideLeft, 0);
+                        }
+                    }
+                    else//Deplacement vers le bas
+                    {
+                        if (spriteMov.HitBox.SideDown >= Obstacle.HitBox.SideUp)//Collision Basse.
+                        {
+                            interY = spriteMov.HitBox.SideDown - Obstacle.HitBox.SideUp;
+                        }
+                        else//Pas de collision basse.
+                        {
+                            return new Vector2(spriteMov.HitBox.SideRight - Obstacle.HitBox.SideLeft, 0);
+                        }
+                    }
+
+                }
+            }
+            else if (spriteMov.Direction.X < 0)
+            {
+
+            }*/
+
+            return new Vector2(interX, interY);
         }
+
     }
 }

@@ -16,7 +16,12 @@ namespace Steel_Era
 
     class Sprite
     {
-
+        public Sprite(Texture2D tex, bool animated)
+        {
+            texture = tex;
+            isAnimated = animated;
+        }
+        private Vector2 oldPos;
         
                            ///////////////////////////////
                            //Caracteristiques de l'image//
@@ -89,6 +94,17 @@ namespace Steel_Era
         }
         private Vector2 center;
 
+        /// <summary>
+        /// Direction de l'objet.
+        /// </summary>
+        public Vector2 Direction
+        {
+            get { return direction; }
+            set { direction = value; }
+        }
+        private Vector2 direction;
+
+        private bool isAnimated;
 
 
                             //////////////////////////////////////////
@@ -171,6 +187,19 @@ namespace Steel_Era
         /// <param name="gameTime">Le GameTime associé à la frame</param>
         public virtual void Update(GameTime gameTime)
         {
+            if (isAnimated)
+            {
+                height = texture.Bounds.Height;
+                width = texture.Bounds.Width;
+                hitBox.Height = texture.Bounds.Height;
+                hitBox.Width = texture.Bounds.Width;
+                center = new Vector2(pos.X + (width / 2), pos.Y + (height / 2));
+            }
+
+            //Modification de la position.
+
+            direction = new Vector2(pos.X - oldPos.X, pos.Y - oldPos.Y);
+            oldPos = pos;
             //pos_s += dir * speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }
 

@@ -14,6 +14,8 @@ namespace Steel_Era
 {
     class Menu
     {
+        KeyboardState keyOState;
+        int lastState;
 
         /// <summary>
         /// 1 : main menu.
@@ -47,10 +49,10 @@ namespace Steel_Era
         private bool isVisible;
 
 
-        private Button button1 = new Button();
-        private Button button2 = new Button();
-        private Button button3 = new Button();
-        private Button button4 = new Button();
+        private Button button1 = new Button(ATexture.buttonOff, ATexture.buttonOn, Vector2.Zero, false, true);
+        private Button button2 = new Button(ATexture.buttonOff, ATexture.buttonOn, Vector2.Zero, false, true);
+        private Button button3 = new Button(ATexture.buttonOff, ATexture.buttonOn, Vector2.Zero, false, false);
+        private Button button4 = new Button(ATexture.buttonOff, ATexture.buttonOn, Vector2.Zero, false, false);
 
 
 
@@ -59,13 +61,13 @@ namespace Steel_Era
         /// </summary>
         public virtual void Initialize()
         {
-
+            lastState = 1;
             button1.Height = 128;
             button1.Width = 256;
             button2.Height = 128;
             button2.Width = 256;
 
-            background = new Sprite();
+            background = new Sprite(ATexture.forestTemple, false);
 
             state = 0;
         }
@@ -90,13 +92,20 @@ namespace Steel_Era
         /// <param name="joueurNum">Le numéro du joueur qui doit être surveillé</param>
         public virtual void HandleInput(KeyboardState keyState, MouseState mouseState)
         {
-            if(keyState.IsKeyDown(Keys.Escape))
+            if(keyState.IsKeyDown(Keys.Escape) && keyOState.IsKeyUp(Keys.Escape))
             {
-                state = 1;
+                if (state == 0)
+                {
+                    state = lastState;
+                    lastState = state;
+                }
+                else
+                    state = 0;
             }
             button1.HandleInput(keyState, mouseState);
             button2.HandleInput(keyState, mouseState);
 
+            keyOState = keyState;
         }
         
 
@@ -130,6 +139,8 @@ namespace Steel_Era
                     state = 1;
                 }
             }
+            if (state != 0)
+                lastState = state;
         }
 
         public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle screenRectangle)

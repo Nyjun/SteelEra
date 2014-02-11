@@ -39,6 +39,7 @@ namespace Steel_Era
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            //ATexture.Load(Content);
         }
 
         /// <summary>
@@ -50,8 +51,13 @@ namespace Steel_Era
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            //// Create a new SpriteBatch, which can be used to draw textures.
+            spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            cursor = new Cursor();
+            // TODO: use this.Content to load your game content here
+            ATexture.Load(Content);
+            Fonts.Font1 = Content.Load<SpriteFont>("SpriteFont1");//
+            cursor = new Cursor(ATexture.cursor8x8, false);
             menu = new Menu();
             menu.Initialize();
 
@@ -59,6 +65,7 @@ namespace Steel_Era
             screenHeight = Window.ClientBounds.Height;
             screenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
             base.Initialize();
+            
 
         }
 
@@ -72,8 +79,7 @@ namespace Steel_Era
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            menu.LoadContent(Content);
-            cursor.LoadContent(Content, "curseur_8x8");
+            ATexture.Load(Content);
             Fonts.Font1 = Content.Load<SpriteFont>("SpriteFont1");
         }
 
