@@ -73,10 +73,10 @@ namespace Steel_Era
         }
 
         /// <summary>
-        /// Charge le background voulue grâce au ContentManager donné
+        /// Charge le background voulu grâce au ContentManager donné
         /// </summary>
         /// <param name="content">Le ContentManager qui chargera l'image</param>
-        /// <param name="assetName">L'asset name de l'image à charger pour ce background</param>
+        /// <param name="assetName">Assetname, le nom de l'image à charger pour ce background</param>
         public void LoadContent(ContentManager content)
         {
             background.LoadContent(content, "forest_temple");
@@ -92,7 +92,7 @@ namespace Steel_Era
         /// <param name="joueurNum">Le numéro du joueur qui doit être surveillé</param>
         public virtual void HandleInput(KeyboardState keyState, MouseState mouseState)
         {
-            if(keyState.IsKeyDown(Keys.Escape) && keyOState.IsKeyUp(Keys.Escape))
+            if (keyState.IsKeyDown(Keys.Escape) && keyOState.IsKeyUp(Keys.Escape))
             {
                 if (state == 0)
                 {
@@ -100,10 +100,18 @@ namespace Steel_Era
                     lastState = state;
                 }
                 else
+                {
                     state = 0;
+                    button1.HandleInput(keyState, mouseState);
+                    button2.HandleInput(keyState, mouseState);
+                }
             }
-            button1.HandleInput(keyState, mouseState);
-            button2.HandleInput(keyState, mouseState);
+            if (state != 0)
+            {
+                button1.HandleInput(keyState, mouseState);
+                button2.HandleInput(keyState, mouseState);
+            }
+
 
             keyOState = keyState;
         }
