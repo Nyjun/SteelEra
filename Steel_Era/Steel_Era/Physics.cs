@@ -64,6 +64,14 @@ namespace Steel_Era
         {
             float interX = 0, interY = 0;
 
+            if ((spriteMov.HitBox.SideRight < Obstacle.HitBox.SideRight && spriteMov.HitBox.SideRight > Obstacle.HitBox.SideLeft) || (spriteMov.HitBox.SideLeft < Obstacle.HitBox.SideRight && spriteMov.HitBox.SideLeft > spriteMov.HitBox.SideLeft) || (spriteMov.HitBox.SideRight > spriteMov.HitBox.SideRight && spriteMov.HitBox.SideLeft < Obstacle.HitBox.SideLeft))
+            {
+                if (spriteMov.HitBox.SideDown < Obstacle.HitBox.SideUp && spriteMov.HitBox.SideDown > Obstacle.HitBox.SideDown)
+                {
+                    interY = Obstacle.HitBox.SideUp - spriteMov.HitBox.SideDown;
+                }
+            }
+
             /*if (spriteMov.Direction.X >= 0)//Deplacement vers la droite.
             {
                 if (spriteMov.HitBox.SideRight > Obstacle.HitBox.SideLeft)//Collision droite.
