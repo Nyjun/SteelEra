@@ -64,11 +64,31 @@ namespace Steel_Era
         {
             float interX = 0, interY = 0;
 
-            if ((spriteMov.HitBox.SideRight < Obstacle.HitBox.SideRight && spriteMov.HitBox.SideRight > Obstacle.HitBox.SideLeft) || (spriteMov.HitBox.SideLeft < Obstacle.HitBox.SideRight && spriteMov.HitBox.SideLeft > spriteMov.HitBox.SideLeft) || (spriteMov.HitBox.SideRight > spriteMov.HitBox.SideRight && spriteMov.HitBox.SideLeft < Obstacle.HitBox.SideLeft))
+            if ((spriteMov.HitBox.SideRight < Obstacle.HitBox.SideRight && spriteMov.HitBox.SideLeft > Obstacle.HitBox.SideLeft) || (spriteMov.HitBox.SideRight > spriteMov.HitBox.SideRight && spriteMov.HitBox.SideLeft < Obstacle.HitBox.SideLeft))
             {
-                if (spriteMov.HitBox.SideDown < Obstacle.HitBox.SideUp && spriteMov.HitBox.SideDown > Obstacle.HitBox.SideDown)
+                if (spriteMov.HitBox.SideDown < Obstacle.HitBox.SideUp && spriteMov.HitBox.SideDown > Obstacle.HitBox.SideDown)//
+                {
+                    interY = spriteMov.HitBox.SideDown - Obstacle.HitBox.SideUp;
+                }
+                if (spriteMov.HitBox.SideUp > Obstacle.HitBox.SideDown && spriteMov.HitBox.SideUp < Obstacle.HitBox.SideUp)
                 {
                     interY = Obstacle.HitBox.SideUp - spriteMov.HitBox.SideDown;
+                }
+            }
+            else
+            if (spriteMov.HitBox.SideRight < Obstacle.HitBox.SideRight && spriteMov.HitBox.SideRight > Obstacle.HitBox.SideLeft)//
+            {
+                if ((spriteMov.HitBox.SideDown < Obstacle.HitBox.SideUp && spriteMov.HitBox.SideDown > Obstacle.HitBox.SideDown)||(spriteMov.HitBox.SideUp > Obstacle.HitBox.SideDown && spriteMov.HitBox.SideUp < Obstacle.HitBox.SideUp))
+                {
+                    interX = Obstacle.HitBox.SideLeft - spriteMov.HitBox.SideRight;//
+                }
+            }
+            else
+            if (spriteMov.HitBox.SideLeft < Obstacle.HitBox.SideRight && spriteMov.HitBox.SideLeft > spriteMov.HitBox.SideLeft)//
+            {
+                if ((spriteMov.HitBox.SideDown < Obstacle.HitBox.SideUp && spriteMov.HitBox.SideDown > Obstacle.HitBox.SideDown)||(spriteMov.HitBox.SideUp > Obstacle.HitBox.SideDown && spriteMov.HitBox.SideUp < Obstacle.HitBox.SideUp))
+                {
+                    interX = Obstacle.HitBox.SideRight - spriteMov.HitBox.SideLeft;//
                 }
             }
 

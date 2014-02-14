@@ -14,6 +14,49 @@ namespace Steel_Era
 {
     class Box
     {
+        public Box(Vector2 position, float Hei, float Wid, float up, float down, float left, float right)
+        {
+            height = Hei;
+            width = Wid;
+            pos_box = new Vector2(position.X + (width / 2), position.Y + (height / 2));
+            if (up == 0)
+            {
+                sideUp = pos_box.Y - (height / 2);
+            }
+            else
+            {
+                sideUp = pos_box.Y - up;
+            }
+
+            if (down == 0)
+            {
+                sideDown = pos_box.Y + (height / 2);
+            }
+            else
+            {
+                sideDown = pos_box.Y + down;
+            }
+
+            if (left == 0)
+            {
+                sideLeft = pos_box.X - (width / 2);
+            }
+            else
+            {
+                sideLeft = pos_box.X - left;
+            }
+
+            if (right == 0)
+            {
+                sideRight = pos_box.X + (width / 2);
+            }
+            else
+            {
+                sideRight = pos_box.X + right;
+            }
+        }
+
+
         public float Height { get; set; }
         private float height;
 
@@ -23,7 +66,6 @@ namespace Steel_Era
         public Vector2 Position
         {
             get { return pos_box; }
-            set { pos_box = new Vector2(value.X + (width / 2), value.Y + (height / 2)); }
         }
         private Vector2 pos_box;
 
