@@ -35,6 +35,9 @@ namespace Steel_Era
         private Rectangle screenRectangle;
         private Menu menu;
 
+        Sprite covert;
+        Sprite ground;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -64,6 +67,13 @@ namespace Steel_Era
             screenWidth = Window.ClientBounds.Width;
             screenHeight = Window.ClientBounds.Height;
             screenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
+
+            ground = new Sprite(ATexture.ground, false);
+            ground.Initialize();
+            ground.Position = new Vector2(200, 200);
+
+            covert = new Sprite(ATexture.covert, true);
+            covert.Initialize();
             base.Initialize();
             
 
@@ -130,6 +140,8 @@ namespace Steel_Era
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
+            ground.Draw(spriteBatch, gameTime);
+            covert.Draw(spriteBatch, gameTime);
             menu.Draw(spriteBatch, gameTime, screenRectangle);
             cursor.Draw(spriteBatch, gameTime);
             spriteBatch.End();

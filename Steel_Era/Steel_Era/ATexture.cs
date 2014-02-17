@@ -12,13 +12,14 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Steel_Era
 {
-    class ATexture
+    static class ATexture
     {
         public static Texture2D buttonOff;
         public static Texture2D buttonOn;
         public static Texture2D covert;
         public static Texture2D cursor8x8;
         public static Texture2D forestTemple;
+        public static Texture2D ground;
 
 
 
@@ -29,6 +30,16 @@ namespace Steel_Era
             covert = cm.Load<Texture2D>("Covert");
             cursor8x8 = cm.Load<Texture2D>("curseur_8x8");
             forestTemple = cm.Load<Texture2D>("forest_temple");
+            ground = cm.Load<Texture2D>("sol_test");
         }
+
+        /*public virtual void Initialize(GraphicsDevice gDevice)
+        {
+            buttonOff = new Texture2D(gDevice, (int)width, (int)height);
+            buttonOn = new Texture2D(gDevice, (int)width, (int)height);
+            covert = new Texture2D(gDevice, (int)width, (int)height);
+            cursor8x8 = new Texture2D(gDevice, (int)width, (int)height);
+            forestTemple = new Texture2D(gDevice, (int)width, (int)height);
+        }*/
     }
 }

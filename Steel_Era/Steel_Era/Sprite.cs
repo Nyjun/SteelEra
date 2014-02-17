@@ -166,8 +166,8 @@ namespace Steel_Era
             //Game1.ListSprite.Add
             height = texture.Bounds.Height;
             width = texture.Bounds.Width;
-            hitBox.Height = texture.Bounds.Height;
-            hitBox.Width = texture.Bounds.Width;
+            hitBox = new Box(pos, height, width, 0, 0, 0, 0);
+            pos = Vector2.Zero;
             center = new Vector2(pos.X + (width / 2), pos.Y + (height / 2));
         }
 
@@ -178,7 +178,8 @@ namespace Steel_Era
         /// <param name="assetName">L'asset name de l'image à charger pour ce Sprite</param>
         public virtual void LoadContent(ContentManager content, string assetName)
         {
-            texture = content.Load<Texture2D>(assetName);
+            
+            //texture = content.Load<Texture2D>(assetName);
         }
 
         /// <summary>
