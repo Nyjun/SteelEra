@@ -35,7 +35,7 @@ namespace Steel_Era
         private Rectangle screenRectangle;
         private Menu menu;
 
-        Sprite covert;
+        Character covert;
         Sprite ground;
 
         public Game1()
@@ -72,8 +72,9 @@ namespace Steel_Era
             ground.Initialize();
             ground.Position = new Vector2(200, 200);
 
-            covert = new Sprite(ATexture.covert, true);
+            covert = new Character(ATexture.covert, "Covert", true, 80);
             covert.Initialize();
+            covert.Acc = new Vector2(0.3f, 0.3f);
             base.Initialize();
             
 
@@ -121,7 +122,8 @@ namespace Steel_Era
             menu.HandleInput(keyState, mouseState);
             menu.Update(gameTime);
 
-
+            covert.HandleInput(keyState, mouseState);
+            covert.Update(gameTime);
 
 
 

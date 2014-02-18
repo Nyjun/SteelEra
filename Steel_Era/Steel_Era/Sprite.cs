@@ -21,7 +21,7 @@ namespace Steel_Era
             texture = tex;
             isAnimated = animated;
         }
-        private Vector2 oldPos;
+        protected Vector2 oldPos;
         
                            ///////////////////////////////
                            //Caracteristiques de l'image//
@@ -88,9 +88,10 @@ namespace Steel_Era
         }
         private Box hitBox;
 
-        public Vector2 Center
+        protected Vector2 Center
         {
             get { return center; }
+            set { center = value; }
         }
         private Vector2 center;
 
@@ -126,7 +127,7 @@ namespace Steel_Era
         public Vector2 Weight
         {
             get { return weight; }
-            set { weight = new Vector2(0f, 9.81f * mass); }
+            set { weight = value;}
         }
         private Vector2 weight;
 
