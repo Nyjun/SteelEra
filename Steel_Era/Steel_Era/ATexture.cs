@@ -41,5 +41,5 @@ namespace Steel_Era
             cursor8x8 = new Texture2D(gDevice, (int)width, (int)height);
             forestTemple = new Texture2D(gDevice, (int)width, (int)height);
         }*///
-    }
+    }//
 }
