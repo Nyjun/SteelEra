@@ -40,6 +40,6 @@ namespace Steel_Era
             covert = new Texture2D(gDevice, (int)width, (int)height);
             cursor8x8 = new Texture2D(gDevice, (int)width, (int)height);
             forestTemple = new Texture2D(gDevice, (int)width, (int)height);
-        }*/
+        }*///
     }
 }
