@@ -12,7 +12,7 @@ body{
 }
 
 .cs-text {
-	width: 760px;
+	width: 450px;
 	margin: 120px auto 30px; /*120,30*/
 	cursor: default;
 }
@@ -45,12 +45,12 @@ body{
 	display: block;
 	line-height: 180px;
 	color: rgba(255,255,255,1);
-	font-size: 180px;
-	font-weight: 400;
+	font-size: 120px;
+	font-weight: 400px;
 	text-transform: uppercase;
 	text-align: center;
 	margin-top: 6px;
-	font-family: 'Sancreek', cursive;
+	font-family: 'Germania One', cursive;
 	text-shadow: 7px 2px 0 rgba(255,255,255,0.3);
 }
 
@@ -64,10 +64,10 @@ body{
 	text-align: center;
 	font-weight: 100;
 	text-transform: uppercase;
-	font-size: 50px;
-	letter-spacing: 35px;
+	font-size: 35px;
+	letter-spacing: 18px;
 	line-height: 50px;
-	text-indent: 20px;
+	text-indent: 10px;
 	position: absolute;
 	top: 50%;
 	margin-top: -25px;
