@@ -57,6 +57,9 @@ namespace Steel_Era
             //// Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            Physics.ListObstacle = new List<Sprite>();
+            Physics.ListSprite = new List<Sprite>();
+
             // TODO: use this.Content to load your game content here
             ATexture.Load(Content);
             Fonts.Font1 = Content.Load<SpriteFont>("SpriteFont1");//
@@ -75,6 +78,10 @@ namespace Steel_Era
             covert = new Character(ATexture.covert, "Covert", true, 80);
             covert.Initialize();
             covert.Acc = new Vector2(0.3f, 0.3f);
+
+            Physics.ListObstacle.Add(ground);
+            Physics.ListSprite.Add(covert);
+
             base.Initialize();
             
 
@@ -125,7 +132,7 @@ namespace Steel_Era
             covert.HandleInput(keyState, mouseState);
             covert.Update(gameTime);
 
-
+            Physics.ApplyPhys();
 
             keyOState = keyState;
             base.Update(gameTime);

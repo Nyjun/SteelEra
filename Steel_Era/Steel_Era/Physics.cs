@@ -12,21 +12,21 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Steel_Era
 {
-    class Physics
+    abstract class Physics
     {
-        public List<Sprite> ListSprite
+        static public List<Sprite> ListSprite
         {
             get { return listSprite; }
             set { listSprite = value; }
         }
-        private List<Sprite> listSprite;
+         static private List<Sprite> listSprite;
 
-        public List<Sprite> ListObstacle
+        static public List<Sprite> ListObstacle
         {
             get { return listObstacle; }
             set { listObstacle = value; }
         }
-        private List<Sprite> listObstacle;
+        static private List<Sprite> listObstacle;
 
         /// <summary>
         /// Force de support.
@@ -55,12 +55,38 @@ namespace Steel_Era
 
 
 
-        public Vector2 CalculateForces()
+        static public Vector2 CalculateForces(Sprite s)
         { 
             return Vector2.Zero; 
         }
 
-        public Vector2 SpriteIntersection(Sprite Obstacle, Sprite spriteMov)
+        
+
+        static public void ApplyPhys()
+        {
+            Sprite Obstacle;
+            Sprite sMov;
+            for (int i = 0; i < listSprite.Count; i++)
+            {
+                for (int j = 0; j < listObstacle.Count; j++)
+                {
+                    sMov = listSprite[i];
+                    Obstacle = listObstacle[j];
+                    sMov.Position = new Vector2(sMov.Position.X + CalculateForces(sMov).X + SpriteInt(Obstacle, sMov).X, sMov.Position.Y + CalculateForces(sMov).Y + SpriteInt(Obstacle, sMov).Y);
+                }
+            }
+
+        }
+
+
+        static public Vector2 SpriteInt(Sprite Obstacle, Sprite sMov)
+        {
+            if(true)
+            {}
+            return Vector2.Zero;
+        }
+
+        /*static public Vector2 SpriteIntersection(Sprite Obstacle, Sprite spriteMov)
         {
             float interX = 0, interY = 0;
 
@@ -124,10 +150,10 @@ namespace Steel_Era
             else if (spriteMov.Direction.X < 0)
             {
 
-            }*/
+            }*//*
 
             return new Vector2(interX, interY);
-        }
+        }*/
 
     }
 }

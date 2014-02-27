@@ -30,11 +30,7 @@ namespace Steel_Era
         public override void Update(GameTime gameTime)
         {
             
-            Height = Texture.Bounds.Height;
-            Width = Texture.Bounds.Width;
-            HitBox.Height = Texture.Bounds.Height;
-            HitBox.Width = Texture.Bounds.Width;
-            Center = new Vector2(Position.X + (Width / 2), Position.Y + (Height / 2));
+            
 
             //Modification de la position.
             if (Speed.X != 0)

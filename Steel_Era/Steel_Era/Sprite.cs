@@ -81,12 +81,12 @@ namespace Steel_Era
         /// <summary>
         /// HitBox du sprite.
         /// </summary>
-        public Box HitBox
+        public Rectangle HitBox
         {
             get { return hitBox; }
             set { hitBox = value; }
         }
-        private Box hitBox;
+        private Rectangle hitBox;
 
         protected Vector2 Center
         {
@@ -167,9 +167,9 @@ namespace Steel_Era
             //Game1.ListSprite.Add
             height = texture.Bounds.Height;
             width = texture.Bounds.Width;
-            hitBox = new Box(pos, height, width, 0, 0, 0, 0);
+            hitBox = new Rectangle((int)pos.X, (int)pos.Y, (int)height, (int)width);
             pos = Vector2.Zero;
-            center = new Vector2(pos.X + (width / 2), pos.Y + (height / 2));
+            center = new Vector2(hitBox.Center.X, hitBox.Center.Y);//new Vector2(pos.X + (width / 2), pos.Y + (height / 2));
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Steel_Era
                 width = texture.Bounds.Width;
                 hitBox.Height = texture.Bounds.Height;
                 hitBox.Width = texture.Bounds.Width;
-                center = new Vector2(pos.X + (width / 2), pos.Y + (height / 2));
+                center = new Vector2(hitBox.Center.X, hitBox.Center.Y);
             }
 
             //Modification de la position.
