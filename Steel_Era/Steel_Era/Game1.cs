@@ -63,7 +63,7 @@ namespace Steel_Era
             // TODO: use this.Content to load your game content here
             ATexture.Load(Content);
             Fonts.Font1 = Content.Load<SpriteFont>("SpriteFont1");//
-            cursor = new Cursor(ATexture.cursor8x8, false);
+            cursor = new Cursor(ATexture.cursor8x8, false, 0, 0);
             menu = new Menu();
             menu.Initialize();
 
@@ -71,11 +71,10 @@ namespace Steel_Era
             screenHeight = Window.ClientBounds.Height;
             screenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
 
-            ground = new Sprite(ATexture.ground, false);
+            ground = new Sprite(ATexture.ground, false, 200, 200);
             ground.Initialize();
-            ground.Position = new Vector2(200, 200);
 
-            covert = new Character(ATexture.covert, "Covert", true, 80);
+            covert = new Character(ATexture.covert, 0, 0, "Covert", true, 80);
             covert.Initialize();
             covert.Acc = new Vector2(0.3f, 0.3f);
 
@@ -132,7 +131,6 @@ namespace Steel_Era
             covert.HandleInput(keyState, mouseState);
             covert.Update(gameTime);
 
-            Physics.ApplyPhys();
 
             keyOState = keyState;
             base.Update(gameTime);

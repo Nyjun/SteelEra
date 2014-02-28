@@ -14,8 +14,8 @@ namespace Steel_Era
 {
     class Cursor : Sprite
     {
-        public Cursor(Texture2D tex, bool animated)
-            : base(tex, animated)
+        public Cursor(Texture2D tex, bool animated, float x, float y)
+            : base(tex, animated, x, y)
         {
             Texture = tex;
         }

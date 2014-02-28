@@ -15,12 +15,12 @@ namespace Steel_Era
     class Button : Sprite
     {
 
-        public Button(Texture2D tex1, Texture2D tex2, Vector2 pos, bool animated, bool visible)
-            : base(tex1, animated)
+        public Button(Texture2D tex1, Texture2D tex2, float x, float y, bool animated, bool visible)
+            : base(tex1, animated, x, y)
         {
             Texture = tex1;
             texture2 = tex2;
-            Position = pos;
+            Position = new Vector2(x, y);
         }
 
         /// <summary>

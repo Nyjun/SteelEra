@@ -49,10 +49,10 @@ namespace Steel_Era
         private bool isVisible;
 
 
-        private Button button1 = new Button(ATexture.buttonOff, ATexture.buttonOn, Vector2.Zero, false, true);
-        private Button button2 = new Button(ATexture.buttonOff, ATexture.buttonOn, Vector2.Zero, false, true);
-        private Button button3 = new Button(ATexture.buttonOff, ATexture.buttonOn, Vector2.Zero, false, false);
-        private Button button4 = new Button(ATexture.buttonOff, ATexture.buttonOn, Vector2.Zero, false, false);
+        private Button button1 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, true);
+        private Button button2 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, true);
+        private Button button3 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, false);
+        private Button button4 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, false);
 
 
 
@@ -67,7 +67,7 @@ namespace Steel_Era
             button2.Height = 128;
             button2.Width = 256;
 
-            background = new Sprite(ATexture.forestTemple, false);
+            background = new Sprite(ATexture.forestTemple, false, 0, 0);
 
             state = 0;
         }

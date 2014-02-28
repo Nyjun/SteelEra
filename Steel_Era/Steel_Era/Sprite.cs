@@ -16,13 +16,16 @@ namespace Steel_Era
 
     class Sprite
     {
-        public Sprite(Texture2D tex, bool animated)
+        public Sprite(Texture2D tex, bool animated, float _x, float _y)
         {
             texture = tex;
             isAnimated = animated;
+            x = _x;
+            y = _y;
         }
         protected Vector2 oldPos;
-        
+        float x;
+        float y;
                            ///////////////////////////////
                            //Caracteristiques de l'image//
                            ///////////////////////////////
@@ -81,12 +84,12 @@ namespace Steel_Era
         /// <summary>
         /// HitBox du sprite.
         /// </summary>
-        public Rectangle HitBox
+        public Rectangle hitBox;/*
         {
             get { return hitBox; }
             set { hitBox = value; }
         }
-        private Rectangle hitBox;
+        private Rectangle hitBox;*/
 
         protected Vector2 Center
         {
@@ -95,15 +98,6 @@ namespace Steel_Era
         }
         private Vector2 center;
 
-        /// <summary>
-        /// Direction de l'objet.
-        /// </summary>
-        public Vector2 Direction
-        {
-            get { return direction; }
-            set { direction = value; }
-        }
-        private Vector2 direction;
 
         private bool isAnimated;
 
@@ -167,8 +161,8 @@ namespace Steel_Era
             //Game1.ListSprite.Add
             height = texture.Bounds.Height;
             width = texture.Bounds.Width;
-            hitBox = new Rectangle((int)pos.X, (int)pos.Y, (int)height, (int)width);
-            pos = Vector2.Zero;
+            pos = new Vector2(x, y);
+            hitBox = new Rectangle((int)pos.X, (int)pos.Y, (int)width, (int)height);
             center = new Vector2(hitBox.Center.X, hitBox.Center.Y);//new Vector2(pos.X + (width / 2), pos.Y + (height / 2));
         }
 
@@ -189,18 +183,20 @@ namespace Steel_Era
         /// <param name="gameTime">Le GameTime associé à la frame</param>
         public virtual void Update(GameTime gameTime)
         {
-            if (isAnimated)
-            {
+            /*//if (isAnimated == true)
+            //{
                 height = texture.Bounds.Height;
                 width = texture.Bounds.Width;
-                hitBox.Height = texture.Bounds.Height;
-                hitBox.Width = texture.Bounds.Width;
+                //hitBox.Height = texture.Bounds.Height;
+                //hitBox.Width = texture.Bounds.Width;
+                hitBox.Inflate((int)width - hitBox.Width, (int)height - hitBox.Height);
                 center = new Vector2(hitBox.Center.X, hitBox.Center.Y);
-            }
+                texture = ATexture.buttonOff;
+            //}*/
 
             //Modification de la position.
 
-            direction = new Vector2(pos.X - oldPos.X, pos.Y - oldPos.Y);
+            
             oldPos = pos;
             //pos_s += dir * speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }
@@ -222,7 +218,62 @@ namespace Steel_Era
         /// <param name="gameTime">Le GameTime de la frame</param>
         public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
+            spriteBatch.Draw(ATexture.cursor8x8,hitBox, Color.Red);
             spriteBatch.Draw(texture, pos, Color.White);
+
+        }
+
+        protected void Collisions()
+        {
+            Rectangle h;
+            for (int i = 0; i < Physics.ListObstacle.Count; i++)
+            {
+                if (hitBox.Intersects(Physics.ListObstacle.ElementAt(i).hitBox))
+                {
+                    h = Physics.ListObstacle.ElementAt(i).hitBox;
+                    if (hitBox.Bottom > h.Bottom && hitBox.Top < h.Top)
+                    {
+                        if (hitBox.Right > h.Left && hitBox.Left < h.Left)
+                        {
+                            pos = new Vector2(pos.X - (hitBox.Right - h.Left), pos.Y);
+                        }
+                        else
+                        {
+                            if (hitBox.Left < h.Right && hitBox.Right > h.Right)
+                            {
+                                pos = new Vector2(pos.X + (h.Right - hitBox.Left), pos.Y);
+                            }
+                            else
+                            {
+                                if (hitBox.Left > h.Left && hitBox.Right < h.Right)
+                                {
+                                    pos = new Vector2(pos.X, h.Top - hitBox.Height);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (hitBox.Right > h.Left && hitBox.Left < h.Left && (hitBox.Bottom < h.Top || hitBox.Top > h.Bottom))
+                        {
+                            pos = new Vector2(pos.X - (hitBox.Right - h.Left), pos.Y);
+                        }
+                        if (hitBox.Left < h.Right && hitBox.Right > h.Right && (hitBox.Bottom < h.Top || hitBox.Top > h.Bottom))
+                        {
+                            pos = new Vector2(pos.X + (h.Right - hitBox.Left), pos.Y);
+                        }
+                        if (hitBox.Bottom > h.Top && hitBox.Top < h.Top)
+                        {
+                            pos = new Vector2(pos.X, pos.Y - (hitBox.Bottom - h.Top));
+                        }
+                        if (hitBox.Top < h.Bottom && hitBox.Bottom > h.Bottom)
+                        {
+                            pos = new Vector2(pos.X, pos.Y + (h.Bottom - hitBox.Top));
+                        }
+                    }
+
+                }
+            }
         }
     }
 }

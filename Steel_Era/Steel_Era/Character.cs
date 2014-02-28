@@ -14,8 +14,8 @@ namespace Steel_Era
 {
     class Character : Sprite
     {
-        public Character(Texture2D _tex, string _ID, bool _player, float _mass)
-            : base(_tex, true)
+        public Character(Texture2D _tex, float x, float y, string _ID, bool _player, float _mass)
+            : base(_tex, true, x, y)
         {
             ID = _ID;
             Mass = _mass;
@@ -64,9 +64,9 @@ namespace Steel_Era
 
 
             Position = new Vector2(Position.X + Speed.X, Position.Y + Speed.Y);
-
- 
-            Direction = new Vector2(Position.X - oldPos.X, Position.Y - oldPos.Y);
+            hitBox.Location = new Point((int)Position.X, (int)Position.Y);
+            Collisions();
+            
             oldPos = Position;
             //pos_s += dir * speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }

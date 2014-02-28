@@ -107,7 +107,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Box.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Cursor.cs" />
