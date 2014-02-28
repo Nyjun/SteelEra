@@ -12,6 +12,7 @@
 
 html 
 {
+	
 	overflow: hidden;
 }
 body{
@@ -19,7 +20,8 @@ body{
 	background: #ddd;
 	font-weight: 400;
 	font-size: 15px;
-	color: #333;
+	color: #fff;
+	margin-left: 50px;
 	
 	-webkit-font-smoothing: antialiased;
 }
