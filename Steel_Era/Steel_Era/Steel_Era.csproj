@@ -111,8 +111,10 @@
     <Compile Include="Character.cs" />
     <Compile Include="Cursor.cs" />
     <Compile Include="Fonts.cs" />
+    <Compile Include="GameMain.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Physics.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

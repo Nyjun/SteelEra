@@ -27,9 +27,10 @@ namespace Steel_Era
         KeyboardState keyState;
         KeyboardState keyOState;
         MouseState mouseState;
+        GameMain Main;
 
-        public int screenWidth;
-        public int screenHeight;
+        public static int screenWidth;
+        public static int screenHeight;
 
         private Cursor cursor;
         private Rectangle screenRectangle;
@@ -42,6 +43,8 @@ namespace Steel_Era
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            this.IsMouseVisible = true;
+            graphics.IsFullScreen = true;
             //ATexture.Load(Content);
         }
 
@@ -53,6 +56,7 @@ namespace Steel_Era
         /// </summary>
         protected override void Initialize()
         {
+            
             // TODO: Add your initialization logic here
             //// Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -98,6 +102,7 @@ namespace Steel_Era
             // TODO: use this.Content to load your game content here
             ATexture.Load(Content);
             Fonts.Font1 = Content.Load<SpriteFont>("SpriteFont1");
+            Main = new GameMain();
         }
 
         /// <summary>
@@ -107,6 +112,7 @@ namespace Steel_Era
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+            Content.Unload();
         }
 
         /// <summary>
@@ -116,6 +122,7 @@ namespace Steel_Era
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            Main.Update(Mouse.GetState(), Keyboard.GetState());
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
@@ -147,6 +154,7 @@ namespace Steel_Era
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
+            Main.Draw(spriteBatch);
             ground.Draw(spriteBatch, gameTime);
             covert.Draw(spriteBatch, gameTime);
             menu.Draw(spriteBatch, gameTime, screenRectangle);

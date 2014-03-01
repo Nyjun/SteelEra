@@ -20,6 +20,7 @@ namespace Steel_Era
         public static Texture2D cursor8x8;
         public static Texture2D forestTemple;
         public static Texture2D ground;
+        public static Texture2D Crow;
 
 
 
@@ -31,6 +32,7 @@ namespace Steel_Era
             cursor8x8 = cm.Load<Texture2D>("curseur_8x8");
             forestTemple = cm.Load<Texture2D>("forest_temple");
             ground = cm.Load<Texture2D>("sol_test");
+            Crow = cm.Load<Texture2D>("Animation");
         }
 
         /*public virtual void Initialize(GraphicsDevice gDevice)
