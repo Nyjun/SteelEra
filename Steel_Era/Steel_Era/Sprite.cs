@@ -135,16 +135,6 @@ namespace Steel_Era
         }
         private Vector2 speed;
 
-        /// <summary>
-        /// Vitesse de l'objet.
-        /// </summary>
-        public Vector2 Acc
-        {
-            get { return acc; }
-            set { acc = value; }
-        }
-        private Vector2 acc;
-
 
 
         

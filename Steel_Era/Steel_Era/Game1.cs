@@ -78,9 +78,8 @@ namespace Steel_Era
             ground = new Sprite(ATexture.ground, false, 200, 200);
             ground.Initialize();
 
-            covert = new Character(ATexture.covert, 0, 0, "Covert", true, 80);
+            covert = new Character(ATexture.covert, 0, 0, "Covert", true);
             covert.Initialize();
-            covert.Acc = new Vector2(0.3f, 0.3f);
 
             Physics.ListObstacle.Add(ground);
             Physics.ListSprite.Add(covert);
