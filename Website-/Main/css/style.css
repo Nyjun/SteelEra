@@ -4,7 +4,7 @@
 	height: 100%;
 	top: 0;
 	left: 0;
-	font-family: 'Josefin Slab', 'Myriad Pro', Arial, sans-serif;
+	font-family: 'Josefin Sans', sans-serif;
 }
 #st-panel-1
 {
@@ -210,7 +210,7 @@ bottom: 100%;
 
 [data-icon]:after {
     content: attr(data-icon);
-    font-family: 'RaphaelIcons';
+    font-family: 'untitled-font-1';
     color: #fff;
 	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
 	position: absolute;
@@ -471,7 +471,9 @@ bottom: 100%;
 	left: 20%;
 	top: -50%;
 	/*border:1px solid #ccc; */
-	font:16px/26px Georgia, Garamond, Serif;
+	font-family: 'Carrois Gothic SC', sans-serif;
+	font-size: 14px;
+	text-align : justify;
 	overflow:auto;
 	color: #fff;
 }
@@ -491,12 +493,13 @@ bottom: 100%;
 	height:65%;
 	width:20%;
 	position: relative;
-	left: 71%;
+	left: 72%;
 	top: -40%;
 	/*border:1px solid #ccc; */
-	font:16px/26px Georgia, Garamond, Serif;
+	font-family: 'Carrois Gothic SC', sans-serif;
 	overflow:auto;
 	color: black;
+
 }
 .media-scrollbox-2
 {
@@ -517,7 +520,7 @@ bottom: 100%;
 	left: 22%;
 	top: -101%;
 	/*border:1px solid #ccc; */
-	font:16px/26px Georgia, Garamond, Serif;
+	font-family: 'Carrois Gothic SC', sans-serif;
 	overflow:auto;
 	color: black;
 }
