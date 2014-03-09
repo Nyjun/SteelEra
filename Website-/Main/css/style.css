@@ -465,11 +465,12 @@ bottom: 100%;
 
 .news /* Dans la scrollbox */
 {
+	padding-right: 70px;
 	height:65%;
-	width:70%;
+	width:74%;
 	position: relative;
 	left: 20%;
-	top: -50%;
+	top: -47.5%;
 	/*border:1px solid #ccc; */
 	font-family: 'Carrois Gothic SC', sans-serif;
 	font-size: 14px;
@@ -479,14 +480,16 @@ bottom: 100%;
 }
 
 .media-scrollbox-1
-{
+{ 
+	
 	background-color: black;
 	opacity: 0.2;
 	height:60%;
 	width:20%;
 	position: relative;
 	left: 70%;
-	top: 32%;
+	top: 20%;
+
 }
 .media-1
 {
@@ -524,3 +527,38 @@ bottom: 100%;
 	overflow:auto;
 	color: black;
 }
+
+/* DESIGN SCROOL BARRE */
+
+::-webkit-scrollbar { /*Scrollbar entière height c'est pour la hateur de la scrollbar horizontale et width pour la largeur de la scrollbar verticale*/
+    width: 12px;
+    background-color: #2b2d30;
+
+  -moz-border-radius:30px 30px 30px 30px;
+  -webkit-border-radius:30px 30px 30px 30px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track { /*Le fond de la scrollbar*/
+    background-color: #2b2d30;
+    width: 3px;
+
+  }
+
+  ::-webkit-scrollbar-thumb { /*Le petit ascenceur de la scrollbar, le truc qui descend*/
+    background-color: #dfdfdf;
+    -moz-border-radius:30px 30px 30px 30px;
+  -webkit-border-radius:30px 30px 30px 30px;
+  }
+
+  ::-webkit-scrollbar-button { /*La hauteur des boutons de la scrollbar verticaux*/
+    background-color: #2b2d30;
+    
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-button:horizontal { /*La largeur des boutons horizontaux*/
+    background-color: #2b2d30;
+    width: 3px;}
+
+
