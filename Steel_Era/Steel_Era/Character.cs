@@ -340,11 +340,11 @@ namespace Steel_Era
                     this.RegardDirection();
                     break;
             }
-        }//
+        }
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             spriteBatch.Draw(ATexture.cursor8x8, hitBox, Color.Red);
-            spriteBatch.Draw(ATexture.Crow, this.hitBox, new Rectangle((this.FrameCol - 1) * 236, (this.FrameLine - 1) * 225, 236, 225),
+            spriteBatch.Draw(ATexture.Crow, this.hitBox, new Rectangle((this.FrameCol - 1) * 189, (this.FrameLine - 1) * 180, 189, 180),
                 Color.White, 0f, new Vector2(0, -200), this.Effect, 0f);
         }
     }

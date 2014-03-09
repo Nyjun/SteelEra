@@ -14,7 +14,7 @@ namespace Steel_Era
 
         public enum Direction
         {
-            Up, Down, Left, Right, Non, A
+            Up, Down, Left, Right, Non, A, Z
         };
         //FIELDS
 
@@ -29,13 +29,15 @@ namespace Steel_Era
         int FrameCol;
         int regard;
         int gravity;
+        int JumpCeiling;
+        
 
 
         //CONSTRUCTORS
 
         public Player()
         {
-            this.Hitbox = new Rectangle(0, 0, 236, 225);
+            this.Hitbox = new Rectangle(0, 0, 189, 180);
             this.FrameLine = 1;
             this.FrameCol = 1;
             this.IsGrounded = false;
@@ -44,18 +46,26 @@ namespace Steel_Era
             this.Timer = 0; // Intervalle entre 2 boucles d'animations
             this.AnimationSpeed = 7; // Vitesse d'animation
             this.direction = Direction.Non; //Position si aucun input
+            this.JumpCeiling = Hitbox.Y;
         }
 
         //METHODS
         public bool IsOnGround()
         {
-            if (Hitbox.Bottom <= Game1.screenHeight - 225)
+            if (Hitbox.Bottom <= Game1.screenHeight - 250)
             {
                 return IsGrounded == true;
             }
             else
             {
                 return IsGrounded == false;
+            }
+        }
+        public void IsHorsLimiteLeft()
+        {
+            if (Hitbox.Left <= 0)
+            {
+                this.Hitbox.X = 0;
             }
         }
         public void RegardDirection()
@@ -128,7 +138,7 @@ namespace Steel_Era
             }
             this.AnimationSpeed = 7;
         }
-        public void AnimateAttack()
+        public void AnimateAttackA()
         {
             this.AnimationSpeed = 7;
             this.Timer++;
@@ -137,9 +147,9 @@ namespace Steel_Era
             {
                 this.Timer = 0;
                 this.FrameCol++;
-                if (this.FrameCol > 8)
+                if (this.FrameCol > 4)
                 {
-                    this.FrameCol = 2;
+                    this.FrameCol = 1;
                 }
             }
             this.AnimationSpeed = 7;
@@ -158,7 +168,7 @@ namespace Steel_Era
             {
 
                 this.direction = Direction.A;
-                this.AnimateAttack();
+                this.AnimateAttackA();
             }
             else
             {
@@ -168,12 +178,14 @@ namespace Steel_Era
             // MOUVEMENT SPEED/DIRECTION
             if (keyboard.IsKeyDown(Keys.Up))
             {
+                if (this.Hitbox.Y > JumpCeiling)
                 this.Hitbox.Y -= 20;
                 this.direction = Direction.Up;
                 this.AnimateJump();
                 if (keyboard.IsKeyDown(Keys.Left))
                 {
                     this.Hitbox.X = this.Hitbox.X - 10;
+                    this.IsHorsLimiteLeft();
                 }
                 if (keyboard.IsKeyDown(Keys.Right))
                 {
@@ -200,6 +212,13 @@ namespace Steel_Era
                 this.direction = Direction.Left;
                 this.AnimateRunLeft();
                 this.regard = 0;
+                this.IsHorsLimiteLeft();
+                if (keyboard.IsKeyDown(Keys.Right)&&keyboard.IsKeyDown(Keys.Left))
+                {
+                    this.FrameLine = 1;
+                    this.FrameCol = 1;
+                    this.Timer = 0;     
+                }
             }
             if (keyboard.IsKeyDown(Keys.Right) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))
             {
@@ -207,14 +226,21 @@ namespace Steel_Era
                 this.direction = Direction.Right;
                 this.AnimateRunRight();
                 this.regard = 1;
-
+                if (keyboard.IsKeyDown(Keys.Left) && keyboard.IsKeyDown(Keys.Right))
+                {
+                    this.FrameLine = 1;
+                    this.FrameCol = 1;
+                    this.Timer = 0;
+                }
             }
-
             if (keyboard.IsKeyUp(Keys.Up) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Right) && keyboard.IsKeyUp(Keys.Left) && keyboard.IsKeyUp(Keys.A))
             {
+                if (IsOnGround().Equals(true))
+                {
                 this.FrameLine = 1;
                 this.FrameCol = 1;
                 this.Timer = 0;
+                }
             }
 
 
@@ -246,7 +272,7 @@ namespace Steel_Era
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(ATexture.Crow, this.Hitbox, new Rectangle((this.FrameCol - 1) * 236, (this.FrameLine - 1) * 225, 236, 225),
+            spriteBatch.Draw(ATexture.Crow, this.Hitbox, new Rectangle((this.FrameCol - 1) * 189, (this.FrameLine - 1) * 180, 189, 180),
                 Color.White, 0f, new Vector2(0, -200), this.Effect, 0f);
         }
 

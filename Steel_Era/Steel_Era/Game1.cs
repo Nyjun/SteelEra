@@ -21,7 +21,6 @@ namespace Steel_Era
 
 
 
-
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         KeyboardState keyState;
@@ -37,7 +36,7 @@ namespace Steel_Era
         private Menu menu;
 
         Character covert;
-        Sprite ground;
+        Sprite Sol;
 
         public Game1()
         {
@@ -75,13 +74,15 @@ namespace Steel_Era
             screenHeight = Window.ClientBounds.Height;
             screenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
 
-            ground = new Sprite(ATexture.ground, false, 200, 200);
-            ground.Initialize();
+            Sol = new Sprite(ATexture.Sol, false, 0, screenHeight-90);
+            Sol.Initialize();
+
+            //Sol = new Sprite(ATexture.Sol, false, 0, 
 
             covert = new Character(ATexture.covert, 0, 0, "Covert", true);
             covert.Initialize();
 
-            Physics.ListObstacle.Add(ground);
+            Physics.ListObstacle.Add(Sol);
             Physics.ListSprite.Add(covert);
 
             base.Initialize();
@@ -102,6 +103,7 @@ namespace Steel_Era
             ATexture.Load(Content);
             Fonts.Font1 = Content.Load<SpriteFont>("SpriteFont1");
             Main = new GameMain();
+            
         }
 
         /// <summary>
@@ -151,15 +153,17 @@ namespace Steel_Era
             GraphicsDevice.Clear(Color.Gray);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
-
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            Sol.Draw(spriteBatch, gameTime);
             Main.Draw(spriteBatch);
-            ground.Draw(spriteBatch, gameTime);
+            //ground.Draw(spriteBatch, gameTime);
             covert.Draw(spriteBatch, gameTime);
             menu.Draw(spriteBatch, gameTime, screenRectangle);
             cursor.Draw(spriteBatch, gameTime);
-            spriteBatch.End();
+            
+            spriteBatch.End();          
             base.Draw(gameTime);
+            
         }
     }
 }

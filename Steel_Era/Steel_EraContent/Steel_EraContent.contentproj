@@ -91,6 +91,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SolTrue.png">
+      <Name>SolTrue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Animation.png">
       <Name>Animation</Name>
       <Importer>TextureImporter</Importer>
