@@ -37,6 +37,7 @@ namespace Steel_Era
 
         Character covert;
         Sprite Sol;
+        Sprite test;
 
         public Game1()
         {
@@ -77,12 +78,16 @@ namespace Steel_Era
             Sol = new Sprite(ATexture.Sol, false, 0, screenHeight-90);
             Sol.Initialize();
 
+            test = new Sprite(ATexture.covert, false, 300, 100);
+            test.Initialize();
+
             //Sol = new Sprite(ATexture.Sol, false, 0, 
 
             covert = new Character(ATexture.covert, 0, 0, "Covert", true);
             covert.Initialize();
 
             Physics.ListObstacle.Add(Sol);
+            Physics.ListObstacle.Add(test);
             Physics.ListSprite.Add(covert);
 
             base.Initialize();
@@ -156,7 +161,7 @@ namespace Steel_Era
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
             Sol.Draw(spriteBatch, gameTime);
             Main.Draw(spriteBatch);
-            //ground.Draw(spriteBatch, gameTime);
+            test.Draw(spriteBatch, gameTime);
             covert.Draw(spriteBatch, gameTime);
             menu.Draw(spriteBatch, gameTime, screenRectangle);
             cursor.Draw(spriteBatch, gameTime);

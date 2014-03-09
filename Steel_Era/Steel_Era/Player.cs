@@ -50,9 +50,9 @@ namespace Steel_Era
         }
 
         //METHODS
-        public bool IsOnGround()
+        /*public bool IsOnGround()
         {
-            if (Hitbox.Bottom <= Game1.screenHeight - 250)
+            if (Hitbox.Bottom <= Game1.screenHeight - 25)
             {
                 return IsGrounded == true;
             }
@@ -60,7 +60,7 @@ namespace Steel_Era
             {
                 return IsGrounded == false;
             }
-        }
+        }*/
         public void IsHorsLimiteLeft()
         {
             if (Hitbox.Left <= 0)
@@ -114,7 +114,7 @@ namespace Steel_Era
                 if (this.FrameCol > 2)
                 {
                     this.FrameCol = 2;
-                    if (IsOnGround().Equals(true))
+                    if (IsGrounded == true)//IsOnGround().Equals(true))
                     {
                         this.direction = Direction.Non;
                     }
@@ -195,7 +195,7 @@ namespace Steel_Era
             }
             else
             {
-                if (IsOnGround().Equals(false))
+                if (IsGrounded == false)//IsOnGround().Equals(false))
                 {
                     Hitbox.Y += gravity;
                 }
@@ -235,7 +235,7 @@ namespace Steel_Era
             }
             if (keyboard.IsKeyUp(Keys.Up) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Right) && keyboard.IsKeyUp(Keys.Left) && keyboard.IsKeyUp(Keys.A))
             {
-                if (IsOnGround().Equals(true))
+                if (IsGrounded == true)//IsOnGround().Equals(true))
                 {
                 this.FrameLine = 1;
                 this.FrameCol = 1;
@@ -269,12 +269,81 @@ namespace Steel_Era
                     this.RegardDirection();
                     break;
             }
+            Collisions();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(ATexture.cursor8x8, Hitbox, Color.Red);
+            //spriteBatch.Draw(ATexture.Crow, this.Hitbox, new Rectangle((this.FrameCol - 1) * 189, (this.FrameLine - 1) * 180, 189, 180),
+            //    Color.White, 0f, new Vector2(0, -200), this.Effect, 0f);
             spriteBatch.Draw(ATexture.Crow, this.Hitbox, new Rectangle((this.FrameCol - 1) * 189, (this.FrameLine - 1) * 180, 189, 180),
-                Color.White, 0f, new Vector2(0, -200), this.Effect, 0f);
+                Color.White, 0f, new Vector2(0, 0), this.Effect, 0f);
         }
 
+
+
+        protected void Collisions()
+        {
+            Rectangle h;
+            Vector2 pos = new Vector2(Hitbox.Location.X, Hitbox.Location.Y);
+            for (int i = 0; i < Physics.ListObstacle.Count; i++)
+            {
+                if (Hitbox.Intersects(Physics.ListObstacle.ElementAt(i).hitBox))
+                {
+                    h = Physics.ListObstacle.ElementAt(i).hitBox;
+                    if (Hitbox.Bottom > h.Bottom && Hitbox.Top < h.Top)
+                    {
+                        if (Hitbox.Right > h.Left && Hitbox.Left < h.Left)
+                        {
+                            pos = new Vector2(pos.X - (Hitbox.Right - h.Left), pos.Y);
+                        }
+                        else
+                        {
+                            if (Hitbox.Left < h.Right && Hitbox.Right > h.Right)
+                            {
+                                pos = new Vector2(pos.X + (h.Right - Hitbox.Left), pos.Y);
+                            }
+                            else
+                            {
+                                if (Hitbox.Left > h.Left && Hitbox.Right < h.Right)
+                                {
+                                    pos = new Vector2(pos.X, h.Top - Hitbox.Height);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (Hitbox.Right > h.Left && Hitbox.Left < h.Left && (Hitbox.Bottom < h.Top || Hitbox.Top > h.Bottom))
+                        {
+                            pos = new Vector2(pos.X - (Hitbox.Right - h.Left), pos.Y);
+                        }
+                        if (Hitbox.Left < h.Right && Hitbox.Right > h.Right && (Hitbox.Bottom < h.Top || Hitbox.Top > h.Bottom))
+                        {
+                            pos = new Vector2(pos.X + (h.Right - Hitbox.Left), pos.Y);
+                        }
+                        if (Hitbox.Bottom > h.Top && Hitbox.Top < h.Top)
+                        {
+                            pos = new Vector2(pos.X, pos.Y - (Hitbox.Bottom - h.Top));
+                            IsGrounded = true;
+                        }
+                        else if (Hitbox.Bottom < h.Top && Hitbox.Top < h.Top)
+                        {
+                            IsGrounded = false;
+                        }
+                        if (Hitbox.Top < h.Bottom && Hitbox.Bottom > h.Bottom)
+                        {
+                            pos = new Vector2(pos.X, pos.Y + (h.Bottom - Hitbox.Top));
+                        }
+                    }
+
+                }
+                if ((int)pos.X == Hitbox.Location.X && (int)pos.Y == Hitbox.Location.Y)
+                {
+                    IsGrounded = false;
+                }
+            }
+            Hitbox.Location = new Point((int)pos.X, (int)pos.Y);
+        }
     }
 }
