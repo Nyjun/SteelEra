@@ -22,6 +22,7 @@ namespace Steel_Era
         public static Texture2D ground;
         public static Texture2D Crow;
         public static Texture2D Sol;
+        public static Texture2D BG_Main_Menu;
         
 
 
@@ -35,6 +36,7 @@ namespace Steel_Era
             ground = cm.Load<Texture2D>("sol_test");
             Crow = cm.Load<Texture2D>("Animation");
             Sol = cm.Load<Texture2D>("SolTrue");
+            BG_Main_Menu = cm.Load<Texture2D>("BG_Main_Menu");
         }
 
         /*public virtual void Initialize(GraphicsDevice gDevice)

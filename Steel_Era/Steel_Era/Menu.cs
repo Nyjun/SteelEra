@@ -67,7 +67,7 @@ namespace Steel_Era
             button2.Height = 128;
             button2.Width = 256;
 
-            background = new Sprite(ATexture.forestTemple, false, 0, 0);
+            background = new Sprite(ATexture.BG_Main_Menu, false, 0, 0);
 
             state = 0;
         }
@@ -79,7 +79,7 @@ namespace Steel_Era
         /// <param name="assetName">Assetname, le nom de l'image à charger pour ce background</param>
         public void LoadContent(ContentManager content)
         {
-            background.LoadContent(content, "forest_temple");
+            background.LoadContent(content, "BG_Main_Menu");
             button1.LoadContent(content, "Button_test_1_off", "Button_test_1_on");
             button2.LoadContent(content, "Button_test_1_off", "Button_test_1_on");
         }
