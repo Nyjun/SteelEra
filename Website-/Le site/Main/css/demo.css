@@ -1,0 +1,64 @@
+@import url('normalize.css');
+@font-face {
+  font-family: "untitled-font-1";
+  src:url("fonts/untitled-font-1.eot");
+  src:url("fonts/untitled-font-1.eot?#iefix") format("embedded-opentype"),
+    url("fonts/untitled-font-1.ttf") format("truetype"),
+    url("fonts/untitled-font-1.svg#untitled-font-1") format("svg"),
+    url("fonts/untitled-font-1.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+}
+
+html 
+{
+	
+	overflow: hidden;
+}
+body{
+	font-family: Georgia, serif;
+	background: #ddd;
+	font-weight: 400;
+	font-size: 15px;
+	color: #fff;
+	margin-left: 50px;
+	
+	-webkit-font-smoothing: antialiased;
+}
+a{
+	color: #555;
+	text-decoration: none;
+}
+.clr{
+	clear: both;
+	padding: 0;
+	height: 0;
+	margin: 0;
+}
+/* Header Style */
+.codrops-top{
+	line-height: 24px;
+	font-size: 9px;
+	text-transform: uppercase;
+	z-index: 9999;
+	position: relative;
+	font-family: Cambria, Georgia, serif;
+}
+.codrops-top a{
+	padding: 0px 10px;
+	letter-spacing: 1px;
+	color: #888;
+	display: inline-block;
+	text-shadow: 0 1px 1px rgba(255,255,255,0.4);
+}
+.codrops-top span.right{
+	float: right;
+}
+.codrops-top span.right a{
+	float: left;
+	display: block;
+}
+@media screen and (max-width: 520px) {
+	.codrops-top { display: none; }
+}

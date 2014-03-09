@@ -35,8 +35,9 @@ namespace Steel_Era
         private Rectangle screenRectangle;
         private Menu menu;
 
-        Character covert;
-        Sprite Sol;
+        
+        Sprite Solbas;
+        Sprite Solhaut;
         Sprite test;
 
         public Game1()
@@ -75,20 +76,21 @@ namespace Steel_Era
             screenHeight = Window.ClientBounds.Height;
             screenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
 
-            Sol = new Sprite(ATexture.Sol, false, 0, screenHeight-90);
-            Sol.Initialize();
+            Solbas = new Sprite(ATexture.Solbas, false, 0, screenHeight-60);
+            Solbas.Initialize();
+            Solhaut = new Sprite(ATexture.Solhaut, false, 0, screenHeight-97);
+            Solhaut.Initialize();
 
             test = new Sprite(ATexture.covert, false, 300, 100);
             test.Initialize();
 
             //Sol = new Sprite(ATexture.Sol, false, 0, 
 
-            covert = new Character(ATexture.covert, 0, 0, "Covert", true);
-            covert.Initialize();
+            
 
-            Physics.ListObstacle.Add(Sol);
+            Physics.ListObstacle.Add(Solbas);
             Physics.ListObstacle.Add(test);
-            Physics.ListSprite.Add(covert);
+            
 
             base.Initialize();
             
@@ -141,8 +143,7 @@ namespace Steel_Era
             menu.HandleInput(keyState, mouseState);
             menu.Update(gameTime);
 
-            covert.HandleInput(keyState, mouseState);
-            covert.Update(gameTime);
+            
 
 
             keyOState = keyState;
@@ -159,10 +160,11 @@ namespace Steel_Era
 
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
-            Sol.Draw(spriteBatch, gameTime);
+            Solbas.Draw(spriteBatch, gameTime);
+            Solhaut.Draw(spriteBatch, gameTime);
             Main.Draw(spriteBatch);
             test.Draw(spriteBatch, gameTime);
-            covert.Draw(spriteBatch, gameTime);
+            
             menu.Draw(spriteBatch, gameTime, screenRectangle);
             cursor.Draw(spriteBatch, gameTime);
             
