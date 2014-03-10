@@ -53,6 +53,7 @@ namespace Steel_Era
             //ATexture.Load(Content);
         }
 
+
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -146,6 +147,8 @@ namespace Steel_Era
         {
             Main.Update(Mouse.GetState(), Keyboard.GetState());
             // Allows the game to exit
+            if (menu.quit == true)
+                this.Exit();
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 

@@ -16,6 +16,7 @@ namespace Steel_Era
     {
         KeyboardState keyOState;
         int lastState;
+        public bool quit;
 
         SoundEffect musicMenu;
         SoundEffectInstance musicMenuInst;
@@ -53,10 +54,10 @@ namespace Steel_Era
         private bool isVisible;
 
 
-        private Button button1 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, true);
-        private Button button2 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, true);
-        private Button button3 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, false);
-        private Button button4 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, false);
+        private Button button1 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, true, "Play");
+        private Button button2 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, true, "Quit");
+        private Button button3 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, false, "o");
+        private Button button4 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, false, "o");
 
 
 
@@ -65,6 +66,7 @@ namespace Steel_Era
         /// </summary>
         public virtual void Initialize()
         {
+            quit = false;
             lastState = 1;
             button1.Height = 128;
             button1.Width = 256;
@@ -139,13 +141,21 @@ namespace Steel_Era
             
             if (state == 1)
             {
-                button1.Position = new Vector2(0*background.Width + button1.Width, 0*background.Height - 0*button1.Height);
+                button1.Position = new Vector2(Game1.screenWidth - button1.Width,button1.Height);//(background.Width - button1.Width, background.Height - button1.Height);
+                button1.Text = "Play";
                 button1.IsVisible = true;
-                button2.IsVisible = false;
+                button2.Position = new Vector2(Game1.screenWidth - button1.Width, 2*button1.Height);
+                button2.Text = "Quit";
+                button2.IsVisible = true;
                 button2.Status = false;
                 if (button1.Status == true)
                 {
-                    state = 2;
+                    state = 0;
+                    button1.Status = false;
+                }
+                if (button1.Status == true)
+                {
+                    quit = true;
                 }
             }
             if (state == 2)

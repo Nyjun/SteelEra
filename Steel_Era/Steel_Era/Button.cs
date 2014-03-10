@@ -15,12 +15,13 @@ namespace Steel_Era
     class Button : Sprite
     {
 
-        public Button(Texture2D tex1, Texture2D tex2, float x, float y, bool animated, bool visible)
+        public Button(Texture2D tex1, Texture2D tex2, float x, float y, bool animated, bool visible, string _text)
             : base(tex1, animated, x, y)
         {
             Texture = tex1;
             texture2 = tex2;
             Position = new Vector2(x, y);
+            text = _text;
         }
 
         /// <summary>
@@ -143,12 +144,12 @@ namespace Steel_Era
                 if (isHighLighted == false)
                 {
                     spriteBatch.Draw(Texture, Position, Color.White);
-                    spriteBatch.DrawString(Fonts.Font1, "text", new Vector2(Position.X + (Texture.Bounds.Width/2), Position.Y + (Texture.Bounds.Height/2)), Color.White);
+                    spriteBatch.DrawString(Fonts.Font1, text, new Vector2(Position.X + (Texture.Bounds.Width/2), Position.Y + (Texture.Bounds.Height/2)), Color.White);
                 }
                 else
                 {
                     spriteBatch.Draw(Texture2, Position, Color.White);
-                    spriteBatch.DrawString(Fonts.Font1, "text", new Vector2(Position.X + (Texture.Bounds.Width / 2), Position.Y + (Texture.Bounds.Height / 2)), Color.White);//new Vector2(Center.X - ((4 * Width) / 5), Center.Y - ((4 * Height) / 5)), Color.White);
+                    spriteBatch.DrawString(Fonts.Font1, text, new Vector2(Position.X + (Texture.Bounds.Width / 2), Position.Y + (Texture.Bounds.Height / 2)), Color.White);//new Vector2(Center.X - ((4 * Width) / 5), Center.Y - ((4 * Height) / 5)), Color.White);
                 }
             }
         }

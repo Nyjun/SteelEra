@@ -30,6 +30,7 @@ namespace Steel_Era
         int regard;
         int gravity;
         int JumpCeiling;
+        int airSpeed;//, jumpTimer;
         
 
 
@@ -47,6 +48,8 @@ namespace Steel_Era
             this.AnimationSpeed = 7; // Vitesse d'animation
             this.direction = Direction.Non; //Position si aucun input
             this.JumpCeiling = Hitbox.Y;
+            airSpeed = 20;
+            //jumpTimer = 0;
         }
 
         //METHODS
@@ -179,7 +182,16 @@ namespace Steel_Era
             if (keyboard.IsKeyDown(Keys.Up))
             {
                 if (this.Hitbox.Y > JumpCeiling)
-                this.Hitbox.Y -= 20;
+                    this.Hitbox.Y -= airSpeed;
+                if (IsGrounded == true)
+                {
+                    airSpeed = 20;
+                }
+                else
+                {
+                    //if (airSpeed > 0)
+                        airSpeed -= 1;
+                }
                 this.direction = Direction.Up;
                 this.AnimateJump();
                 if (keyboard.IsKeyDown(Keys.Left))
