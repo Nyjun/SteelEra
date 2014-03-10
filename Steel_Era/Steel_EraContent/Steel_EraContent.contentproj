@@ -84,8 +84,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sol_test.png">
-      <Name>sol_test</Name>
+    <Compile Include="sol_testn.png">
+      <Name>sol_testn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -103,8 +103,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlateFormehaut.png">
-      <Name>PlateFormehaut</Name>
+    <Compile Include="sol_test.png">
+      <Name>sol_test</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -152,7 +152,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BG_Main_Menu.PNG">
+    <Compile Include="BG_Main_Menu-V.PNG">
+      <Name>BG_Main_Menu-V</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PlateFormehaut.png">
+      <Name>PlateFormehaut</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BG_Main_Menu.png">
       <Name>BG_Main_Menu</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
