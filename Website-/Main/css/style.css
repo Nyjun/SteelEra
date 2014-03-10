@@ -1,3 +1,6 @@
+@import url('style9.css');
+
+
 .st-container {
 	position: absolute;
 	width: 100%;
@@ -479,6 +482,11 @@ bottom: 100%;
 	color: #fff;
 }
 
+.news h2 
+{
+	font-size: 25px;
+}
+
 .media-scrollbox-1
 { 
 	
@@ -504,6 +512,11 @@ bottom: 100%;
 	color: black;
 
 }
+
+.media-1 h2 
+{
+	font-size: 25px;
+}
 .media-scrollbox-2
 {
 	float: left;
@@ -526,6 +539,11 @@ bottom: 100%;
 	font-family: 'Carrois Gothic SC', sans-serif;
 	overflow:auto;
 	color: black;
+}
+
+.media-2 h2 
+{
+	font-size: 25px;
 }
 
 /* DESIGN SCROOL BARRE */
@@ -560,5 +578,4 @@ bottom: 100%;
   ::-webkit-scrollbar-button:horizontal { /*La largeur des boutons horizontaux*/
     background-color: #2b2d30;
     width: 3px;}
-
 
