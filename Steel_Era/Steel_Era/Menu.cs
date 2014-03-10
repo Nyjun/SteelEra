@@ -54,10 +54,10 @@ namespace Steel_Era
         private bool isVisible;
 
 
-        private Button button1 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, true, "Play");
-        private Button button2 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, true, "Quit");
-        private Button button3 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, false, "o");
-        private Button button4 = new Button(ATexture.buttonOff, ATexture.buttonOn, 0, 0, false, false, "o");
+        private Button button1 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, false, true, "Play");
+        private Button button2 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, false, true, "Quit");
+        private Button button3 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, false, false, "o");
+        private Button button4 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, false, false, "o");
 
 
 
@@ -68,10 +68,7 @@ namespace Steel_Era
         {
             quit = false;
             lastState = 1;
-            button1.Height = 128;
-            button1.Width = 256;
-            button2.Height = 128;
-            button2.Width = 256;
+
 
             //background = new Sprite(ATexture.forestTemple, false, 0, 0);
             musicMenu = ATexture.musicMenu;
@@ -141,19 +138,27 @@ namespace Steel_Era
             
             if (state == 1)
             {
-                button1.Position = new Vector2(Game1.screenWidth - button1.Width,button1.Height);//(background.Width - button1.Width, background.Height - button1.Height);
+                //button1.Position = new Vector2(Game1.screenWidth - button1.Width + 20,(Game1.screenHeight/2));//(background.Width - button1.Width, background.Height - button1.Height);
                 button1.Text = "Play";
                 button1.IsVisible = true;
-                button2.Position = new Vector2(Game1.screenWidth - button1.Width, 2*button1.Height);
+                //button2.Position = new Vector2(Game1.screenWidth - button1.Width + 30, (Game1.screenHeight/2) + button1.Height + 5);
                 button2.Text = "Quit";
                 button2.IsVisible = true;
                 button2.Status = false;
+                if (button1.IsHighLighted)
+                    button1.Position = new Vector2(Game1.screenWidth - button1.Width, (Game1.screenHeight / 2));
+                else
+                    button1.Position = new Vector2(Game1.screenWidth - button1.Width + 20, (Game1.screenHeight / 2));
+                if (button2.IsHighLighted)
+                    button2.Position = new Vector2(Game1.screenWidth - button1.Width + 5, (Game1.screenHeight / 2) + button1.Height + 5);
+                else
+                    button2.Position = new Vector2(Game1.screenWidth - button1.Width + 25, (Game1.screenHeight / 2) + button1.Height + 5);
                 if (button1.Status == true)
                 {
                     state = 0;
                     button1.Status = false;
                 }
-                if (button1.Status == true)
+                if (button2.Status == true)
                 {
                     quit = true;
                 }

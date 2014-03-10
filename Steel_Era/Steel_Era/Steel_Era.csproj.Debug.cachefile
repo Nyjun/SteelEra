@@ -3,18 +3,20 @@ Content\curseur_8x8.xnb
 Content\forest_temple.xnb
 Content\Button_test_1_on.xnb
 Content\Button_test_1_off.xnb
-Content\sol_testn.xnb
+Content\sol_test.xnb
+Content\SpriteFont1.xnb
+Content\Animation.xnb
 Content\Solbas.xnb
 Content\Solhaut.xnb
-Content\sol_test.xnb
+Content\PlateFormehaut.xnb
 Content\Mont.xnb
-Content\Ciel jour.xnb
+Content\Ciel.xnb
 Content\PlateFormeMid.xnb
 Content\PlateFormebas.xnb
-Content\Animation.xnb
-Content\PlateFormehaut.xnb
-Content\Ciel.xnb
-Content\SpriteFont1.xnb
 Content\KodoDrum1.xnb
+Content\sol_testn.xnb
+Content\Ciel jour.xnb
 Content\BG_Main_Menua.xnb
 Content\BG_Main_Menu.xnb
+Content\ButtonOff.xnb
+Content\buttonOn.xnb

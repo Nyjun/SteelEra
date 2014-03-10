@@ -22,6 +22,8 @@ namespace Steel_Era
             isAnimated = animated;
             x = _x;
             y = _y;
+            width = tex.Bounds.Width;
+            height = tex.Bounds.Height;
         }
         protected Vector2 oldPos;
         float x;

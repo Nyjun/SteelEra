@@ -16,6 +16,8 @@ namespace Steel_Era
     {
         public static Texture2D buttonOff;
         public static Texture2D buttonOn;
+        public static Texture2D button2Off;
+        public static Texture2D button2On;
         public static Texture2D covert;
         public static Texture2D cursor8x8;
         public static Texture2D forestTemple;
@@ -37,7 +39,9 @@ namespace Steel_Era
         public static void Load(ContentManager cm)
         {
             buttonOff = cm.Load<Texture2D>("Button_test_1_off");
+            button2Off = cm.Load<Texture2D>("ButtonOff");
             buttonOn = cm.Load<Texture2D>("Button_test_1_on");
+            button2On = cm.Load<Texture2D>("ButtonOn");
             covert = cm.Load<Texture2D>("Covert");
             cursor8x8 = cm.Load<Texture2D>("curseur_8x8");
             forestTemple = cm.Load<Texture2D>("forest_temple");
@@ -48,6 +52,7 @@ namespace Steel_Era
             Solhaut = cm.Load<Texture2D>("Solhaut");
             BG_Main_Menu = cm.Load<Texture2D>("BG_Main_Menu");
             BG_Mont = cm.Load<Texture2D>("Mont");
+
 
             PlateFormebas = cm.Load<Texture2D>("PlateFormebas");
             PlateFormehaut = cm.Load<Texture2D>("PlateFormehaut");

@@ -144,12 +144,12 @@ namespace Steel_Era
                 if (isHighLighted == false)
                 {
                     spriteBatch.Draw(Texture, Position, Color.White);
-                    spriteBatch.DrawString(Fonts.Font1, text, new Vector2(Position.X + (Texture.Bounds.Width/2), Position.Y + (Texture.Bounds.Height/2)), Color.White);
+                    spriteBatch.DrawString(Fonts.Font1, text, new Vector2(Position.X + (Texture.Bounds.Width/5), Position.Y + (Texture.Bounds.Height/10)), Color.White);
                 }
                 else
                 {
                     spriteBatch.Draw(Texture2, Position, Color.White);
-                    spriteBatch.DrawString(Fonts.Font1, text, new Vector2(Position.X + (Texture.Bounds.Width / 2), Position.Y + (Texture.Bounds.Height / 2)), Color.White);//new Vector2(Center.X - ((4 * Width) / 5), Center.Y - ((4 * Height) / 5)), Color.White);
+                    spriteBatch.DrawString(Fonts.Font1, text, new Vector2(Position.X + (Texture.Bounds.Width / 5), Position.Y + (Texture.Bounds.Height / 10)), Color.White);//new Vector2(Center.X - ((4 * Width) / 5), Center.Y - ((4 * Height) / 5)), Color.White);
                 }
             }
         }
