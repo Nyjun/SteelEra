@@ -117,8 +117,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ciel.png">
-      <Name>Ciel</Name>
+    <Compile Include="Ciel jour.png">
+      <Name>Ciel jour</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -161,6 +161,13 @@
   <ItemGroup>
     <Compile Include="PlateFormehaut.png">
       <Name>PlateFormehaut</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ciel.png">
+      <Name>Ciel</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -38,7 +38,7 @@ namespace Steel_Era
         Sprite Solbas;
         Sprite Solhaut;
         Sprite BG_Ciel;
-        Sprite BG_Mont;
+       /* Sprite BG_Mont;*/
         Sprite PlateFormebas;
         Sprite PlateFormeMid;
         Sprite PlateFormehaut;
@@ -49,7 +49,7 @@ namespace Steel_Era
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             //ATexture.Load(Content);
         }
 
@@ -81,14 +81,14 @@ namespace Steel_Era
             screenHeight = Window.ClientBounds.Height;
             screenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
 
-            BG_Ciel = new Sprite(ATexture.BG_Ciel, false, 0, screenHeight - 800);
+            BG_Ciel = new Sprite(ATexture.BG_Ciel, false, 0, screenHeight - 950);
             BG_Ciel.Initialize();
             Solbas = new Sprite(ATexture.Solbas, false, 0, screenHeight - 60);
             Solbas.Initialize();
             Solhaut = new Sprite(ATexture.Solhaut, false, 0, screenHeight - 97);
             Solhaut.Initialize();
-            BG_Mont = new Sprite(ATexture.BG_Mont, false, 0, screenHeight - 500);
-            BG_Mont.Initialize();
+            //BG_Mont = new Sprite(ATexture.BG_Mont, false, 0, screenHeight - 500);
+           // BG_Mont.Initialize();
             PlateFormebas = new Sprite(ATexture.PlateFormebas, false, 800, screenHeight - 180);
             PlateFormebas.Initialize();
             PlateFormeMid = new Sprite(ATexture.PlateFormeMid, false, 810, screenHeight - 377);
@@ -177,7 +177,7 @@ namespace Steel_Era
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
             BG_Ciel.Draw(spriteBatch, gameTime);
-            BG_Mont.Draw(spriteBatch, gameTime);
+           // BG_Mont.Draw(spriteBatch, gameTime);
             PlateFormehaut.Draw(spriteBatch, gameTime);
             PlateFormeMid.Draw(spriteBatch, gameTime);
             Solhaut.Draw(spriteBatch, gameTime);
