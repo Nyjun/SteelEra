@@ -481,26 +481,87 @@ bottom: 100%;
 
 .Projet-scrollbox
 {
-
+	
 	height:70%;
-	width:80%;
+	width:40%;
 	position: relative;
-	left: 15%;
-	top: 20%;
+	left: 5%;
+	top: 23%;
 	font:16px/26px Georgia, Garamond, Serif;
 	overflow:auto;
 	background-color: black;
-	opacity:  0.5;
+	opacity:  0.6;
 
 }
 .Projet /* Dans la scrollbox */
 {
+	
 	padding-right: 70px;
 	height:65%;
-	width:74%;
+	width:37%;
 	position: relative;
-	left: 20%;
+	left: 9%;
 	top: -47.5%;
+	/*border:1px solid #ccc; */
+	font-family: 'Carrois Gothic SC', sans-serif;
+	font-size: 14px;
+	text-align : justify;
+	overflow:auto;
+	color: #fff;
+}
+.Projet-scrollbox-2
+{
+	float:  right;
+	height:35%;
+	width:40%;
+	position: relative;
+	left: -5%;
+	top: -115%;
+	font:16px/26px Georgia, Garamond, Serif;
+	overflow:auto;
+	background-color: black;
+	opacity:  0.6;
+
+}
+.Projet-2 /* Dans la scrollbox */
+{
+	float:  right;
+	padding-right: 70px;
+	height:38%;
+	width:44%;
+	position: relative;
+	left: 41%;
+	top: -113.5%;
+	/*border:1px solid #ccc; */
+	font-family: 'Carrois Gothic SC', sans-serif;
+	font-size: 14px;
+	text-align : justify;
+	overflow:auto;
+	color: #fff;
+}
+.Projet-scrollbox-3
+{
+	float:  right;
+	height:35%;
+	width:40%;
+	position: relative;
+	left: -5%;
+	top: -112%;
+	font:16px/26px Georgia, Garamond, Serif;
+	overflow:auto;
+	background-color: black;
+	opacity:  0.6;
+
+}
+.Projet-3 /* Dans la scrollbox */
+{
+	float:  right;
+	padding-right: 70px;
+	height:35%;
+	width:44%;
+	position: relative;
+	left: 41%;
+	top: -111.5%;
 	/*border:1px solid #ccc; */
 	font-family: 'Carrois Gothic SC', sans-serif;
 	font-size: 14px;
@@ -557,7 +618,7 @@ bottom: 100%;
 	color: black;
 }
 
-/* DESIGN SCROOL BARRE */
+/* DESIGN SCROLL BARRE */
 
 ::-webkit-scrollbar { /*Scrollbar entière height c'est pour la hateur de la scrollbar horizontale et width pour la largeur de la scrollbar verticale*/
     width: 12px;
@@ -590,4 +651,20 @@ bottom: 100%;
     background-color: #2b2d30;
     width: 3px;}
 
+/*.social
+{
 
+	height: 100%;
+	width:  50px;
+	position: relative;
+	left: 0%;
+
+}
+.fb
+{
+	height: 1000px;
+	width: 1000px;
+	position: relative;
+	left: 0;
+	top: -100%;
+}*/
