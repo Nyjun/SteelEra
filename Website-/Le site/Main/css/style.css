@@ -528,6 +528,7 @@ bottom: 100%;
 	overflow:auto;
 	background-color: black;
 	opacity:  0.6;
+	text-align: justify;
 
 }
 .Projet-2 /* Dans la scrollbox */
@@ -560,6 +561,8 @@ bottom: 100%;
 	overflow:auto;
 	background-color: black;
 	opacity:  0.6;
+	text-align: justify;
+
 
 }
 .Projet-3 /* Dans la scrollbox */

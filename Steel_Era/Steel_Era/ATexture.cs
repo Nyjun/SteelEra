@@ -43,7 +43,7 @@ namespace Steel_Era
             forestTemple = cm.Load<Texture2D>("forest_temple");
             ground = cm.Load<Texture2D>("sol_test");
             Crow = cm.Load<Texture2D>("Animation");
-            BG_Ciel = cm.Load<Texture2D>("Ciel");
+            BG_Ciel = cm.Load<Texture2D>("Ciel jour");
             Solbas = cm.Load<Texture2D>("Solbas");
             Solhaut = cm.Load<Texture2D>("Solhaut");
             BG_Main_Menu = cm.Load<Texture2D>("BG_Main_Menu");

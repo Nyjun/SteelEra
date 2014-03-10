@@ -152,8 +152,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BG_Main_Menu.PNG">
-      <Name>BG_Main_Menu</Name>
+    <Compile Include="BG_Main_Menua.PNG">
+      <Name>BG_Main_Menua</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -168,6 +168,13 @@
   <ItemGroup>
     <Compile Include="Ciel.png">
       <Name>Ciel</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BG_Main_Menu.JPG">
+      <Name>BG_Main_Menu</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
