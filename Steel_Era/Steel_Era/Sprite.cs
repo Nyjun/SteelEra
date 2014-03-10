@@ -208,7 +208,7 @@ namespace Steel_Era
         /// <param name="gameTime">Le GameTime de la frame</param>
         public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            spriteBatch.Draw(ATexture.cursor8x8,hitBox, Color.Red);
+            
             spriteBatch.Draw(texture, pos, Color.White);
 
         }

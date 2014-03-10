@@ -11,8 +11,8 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Steel_Era
 {
-    
-    
+
+
     /// <summary>
     /// This is the main type for your game
     /// </summary>
@@ -35,9 +35,14 @@ namespace Steel_Era
         private Rectangle screenRectangle;
         private Menu menu;
 
-        
+
         Sprite Solbas;
         Sprite Solhaut;
+        Sprite BG_Ciel;
+        Sprite BG_Mont;
+        Sprite PlateFormebas;
+        Sprite PlateFormeMid;
+        Sprite PlateFormehaut;
         Sprite test;
 
         public Game1()
@@ -57,7 +62,7 @@ namespace Steel_Era
         /// </summary>
         protected override void Initialize()
         {
-            
+
             // TODO: Add your initialization logic here
             //// Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -72,28 +77,39 @@ namespace Steel_Era
             menu = new Menu();
             menu.Initialize();
 
+
             screenWidth = Window.ClientBounds.Width;
             screenHeight = Window.ClientBounds.Height;
             screenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
 
-            Solbas = new Sprite(ATexture.Solbas, false, 0, screenHeight-60);
+            BG_Ciel = new Sprite(ATexture.BG_Ciel, false, 0, screenHeight - 800);
+            BG_Ciel.Initialize();
+            Solbas = new Sprite(ATexture.Solbas, false, 0, screenHeight - 60);
             Solbas.Initialize();
-            Solhaut = new Sprite(ATexture.Solhaut, false, 0, screenHeight-97);
+            Solhaut = new Sprite(ATexture.Solhaut, false, 0, screenHeight - 97);
             Solhaut.Initialize();
+            BG_Mont = new Sprite(ATexture.BG_Mont, false, 0, screenHeight - 500);
+            BG_Mont.Initialize();
+            PlateFormebas = new Sprite(ATexture.PlateFormebas, false, 800, screenHeight - 180);
+            PlateFormebas.Initialize();
+            PlateFormeMid = new Sprite(ATexture.PlateFormeMid, false, 810, screenHeight - 377);
+            PlateFormeMid.Initialize();
+            PlateFormehaut = new Sprite(ATexture.PlateFormehaut, false, 800, screenHeight - 400);
+            PlateFormehaut.Initialize();
 
             test = new Sprite(ATexture.covert, false, 300, 100);
             test.Initialize();
 
             //Sol = new Sprite(ATexture.Sol, false, 0, 
 
-            
-
+            Physics.ListObstacle.Add(PlateFormehaut);
+            Physics.ListObstacle.Add(PlateFormebas);
             Physics.ListObstacle.Add(Solbas);
             Physics.ListObstacle.Add(test);
-            
+
 
             base.Initialize();
-            
+
 
         }
 
@@ -110,7 +126,7 @@ namespace Steel_Era
             ATexture.Load(Content);
             Fonts.Font1 = Content.Load<SpriteFont>("SpriteFont1");
             Main = new GameMain();
-            
+
         }
 
         /// <summary>
@@ -143,7 +159,7 @@ namespace Steel_Era
             menu.HandleInput(keyState, mouseState);
             menu.Update(gameTime);
 
-            
+
 
 
             keyOState = keyState;
@@ -160,17 +176,22 @@ namespace Steel_Era
 
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
-            Solbas.Draw(spriteBatch, gameTime);
+            BG_Ciel.Draw(spriteBatch, gameTime);
+            BG_Mont.Draw(spriteBatch, gameTime);
+            PlateFormehaut.Draw(spriteBatch, gameTime);
+            PlateFormeMid.Draw(spriteBatch, gameTime);
             Solhaut.Draw(spriteBatch, gameTime);
+            PlateFormebas.Draw(spriteBatch, gameTime);
+            Solbas.Draw(spriteBatch, gameTime);
             Main.Draw(spriteBatch);
             test.Draw(spriteBatch, gameTime);
-            
+
             menu.Draw(spriteBatch, gameTime, screenRectangle);
             cursor.Draw(spriteBatch, gameTime);
-            
-            spriteBatch.End();          
+
+            spriteBatch.End();
             base.Draw(gameTime);
-            
+
         }
     }
 }

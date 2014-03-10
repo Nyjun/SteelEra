@@ -24,7 +24,12 @@ namespace Steel_Era
         public static Texture2D Solbas;
         public static Texture2D Solhaut;
         public static Texture2D BG_Main_Menu;
-        
+        public static Texture2D BG_Mont;
+        public static Texture2D BG_Ciel;
+        public static Texture2D PlateFormebas;
+        public static Texture2D PlateFormeMid;
+        public static Texture2D PlateFormehaut;
+
 
 
         public static void Load(ContentManager cm)
@@ -36,10 +41,15 @@ namespace Steel_Era
             forestTemple = cm.Load<Texture2D>("forest_temple");
             ground = cm.Load<Texture2D>("sol_test");
             Crow = cm.Load<Texture2D>("Animation");
+            BG_Ciel = cm.Load<Texture2D>("Ciel");
             Solbas = cm.Load<Texture2D>("Solbas");
             Solhaut = cm.Load<Texture2D>("Solhaut");
             BG_Main_Menu = cm.Load<Texture2D>("BG_Main_Menu");
-            
+            BG_Mont = cm.Load<Texture2D>("Mont");
+
+            PlateFormebas = cm.Load<Texture2D>("PlateFormebas");
+            PlateFormehaut = cm.Load<Texture2D>("PlateFormehaut");
+            PlateFormeMid = cm.Load<Texture2D>("PlateFormeMid");
         }
 
         /*public virtual void Initialize(GraphicsDevice gDevice)
@@ -49,6 +59,7 @@ namespace Steel_Era
             covert = new Texture2D(gDevice, (int)width, (int)height);
             cursor8x8 = new Texture2D(gDevice, (int)width, (int)height);
             forestTemple = new Texture2D(gDevice, (int)width, (int)height);
-        }*///
+        }*/
+        //
     }//
 }
