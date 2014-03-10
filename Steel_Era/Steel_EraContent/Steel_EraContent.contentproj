@@ -91,13 +91,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animation.png">
-      <Name>Animation</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="BG_Main_Menu.PNG">
       <Name>BG_Main_Menu</Name>
       <Importer>TextureImporter</Importer>
@@ -147,6 +140,13 @@
   <ItemGroup>
     <Compile Include="PlateFormebas.png">
       <Name>PlateFormebas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Animation.png">
+      <Name>Animation</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

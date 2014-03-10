@@ -26,9 +26,9 @@ namespace Steel_Era
         protected Vector2 oldPos;
         float x;
         float y;
-                           ///////////////////////////////
-                           //Caracteristiques de l'image//
-                           ///////////////////////////////
+        ///////////////////////////////
+        //Caracteristiques de l'image//
+        ///////////////////////////////
         /// <summary>
         /// Récupère ou définit l'image du sprite.
         /// </summary>
@@ -68,9 +68,9 @@ namespace Steel_Era
 
 
 
-                          ///////////////////////////////////////
-                          //Caracteristiques de l'objet in-game//
-                          ///////////////////////////////////////
+        ///////////////////////////////////////
+        //Caracteristiques de l'objet in-game//
+        ///////////////////////////////////////
 
         /// <summary>
         /// ID du sprite.
@@ -102,9 +102,9 @@ namespace Steel_Era
         private bool isAnimated;
 
 
-                            //////////////////////////////////////////
-                            //Caracteristiques physiques de l'objet.//
-                            //////////////////////////////////////////
+        //////////////////////////////////////////
+        //Caracteristiques physiques de l'objet.//
+        //////////////////////////////////////////
 
         /// <summary>
         /// Masse de l'objet.
@@ -121,7 +121,7 @@ namespace Steel_Era
         public Vector2 Weight
         {
             get { return weight; }
-            set { weight = value;}
+            set { weight = value; }
         }
         private Vector2 weight;
 
@@ -137,7 +137,7 @@ namespace Steel_Era
 
 
 
-        
+
 
 
 
@@ -147,7 +147,7 @@ namespace Steel_Era
         /// </summary>
         public virtual void Initialize()
         {
-            
+
             //Game1.ListSprite.Add
             height = texture.Bounds.Height;
             width = texture.Bounds.Width;
@@ -163,7 +163,7 @@ namespace Steel_Era
         /// <param name="assetName">L'asset name de l'image à charger pour ce Sprite</param>
         public virtual void LoadContent(ContentManager content, string assetName)
         {
-            
+
             //texture = content.Load<Texture2D>(assetName);
         }
 
@@ -186,7 +186,7 @@ namespace Steel_Era
 
             //Modification de la position.
 
-            
+
             oldPos = pos;
             //pos_s += dir * speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }
@@ -208,7 +208,7 @@ namespace Steel_Era
         /// <param name="gameTime">Le GameTime de la frame</param>
         public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            
+
             spriteBatch.Draw(texture, pos, Color.White);
 
         }
