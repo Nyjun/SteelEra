@@ -30,6 +30,8 @@ namespace Steel_Era
         public static Texture2D PlateFormeMid;
         public static Texture2D PlateFormehaut;
 
+        public static SoundEffect musicMenu;
+
 
 
         public static void Load(ContentManager cm)
@@ -50,6 +52,8 @@ namespace Steel_Era
             PlateFormebas = cm.Load<Texture2D>("PlateFormebas");
             PlateFormehaut = cm.Load<Texture2D>("PlateFormehaut");
             PlateFormeMid = cm.Load<Texture2D>("PlateFormeMid");
+
+            musicMenu = cm.Load<SoundEffect>("KodoDrum1");
         }
 
         /*public virtual void Initialize(GraphicsDevice gDevice)

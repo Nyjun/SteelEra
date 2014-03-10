@@ -17,6 +17,10 @@ namespace Steel_Era
         KeyboardState keyOState;
         int lastState;
 
+        SoundEffect musicMenu;
+        SoundEffectInstance musicMenuInst;
+        private Cursor cursor;
+
         /// <summary>
         /// 1 : main menu.
         /// 2 : solo.
@@ -67,9 +71,15 @@ namespace Steel_Era
             button2.Height = 128;
             button2.Width = 256;
 
+            //background = new Sprite(ATexture.forestTemple, false, 0, 0);
+            musicMenu = ATexture.musicMenu;
+            musicMenuInst = musicMenu.CreateInstance();
+            musicMenuInst.IsLooped = true;
+
+            cursor = new Cursor(ATexture.cursor8x8, false, 0, 0);
             background = new Sprite(ATexture.BG_Main_Menu, false, 0, 0);
 
-            state = 0;
+            state = 1;
         }
 
         /// <summary>
@@ -92,6 +102,7 @@ namespace Steel_Era
         /// <param name="joueurNum">Le numéro du joueur qui doit être surveillé</param>
         public virtual void HandleInput(KeyboardState keyState, MouseState mouseState)
         {
+            cursor.HandleInput(keyState, mouseState);
             if (keyState.IsKeyDown(Keys.Escape) && keyOState.IsKeyUp(Keys.Escape))
             {
                 if (state == 0)
@@ -124,7 +135,8 @@ namespace Steel_Era
         /// <param name="gameTime">Le GameTime associé à la frame</param>
         public virtual void Update(GameTime gameTime)
         {
-
+            
+            
             if (state == 1)
             {
                 button1.Position = new Vector2(0*background.Width + button1.Width, 0*background.Height - 0*button1.Height);
@@ -148,7 +160,14 @@ namespace Steel_Era
                 }
             }
             if (state != 0)
+            {
                 lastState = state;
+                musicMenuInst.Play();
+            }
+            else
+            {
+                musicMenuInst.Stop();
+            }
         }
 
         public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle screenRectangle)
@@ -158,6 +177,8 @@ namespace Steel_Era
                 spriteBatch.Draw(background.Texture, screenRectangle, Color.White);
                 button1.Draw(spriteBatch, gameTime);
                 button2.Draw(spriteBatch, gameTime);
+
+                cursor.Draw(spriteBatch, gameTime);
             }
         }
 

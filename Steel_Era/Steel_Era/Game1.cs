@@ -31,7 +31,6 @@ namespace Steel_Era
         public static int screenWidth;
         public static int screenHeight;
 
-        private Cursor cursor;
         private Rectangle screenRectangle;
         private Menu menu;
 
@@ -73,7 +72,6 @@ namespace Steel_Era
             // TODO: use this.Content to load your game content here
             ATexture.Load(Content);
             Fonts.Font1 = Content.Load<SpriteFont>("SpriteFont1");//
-            cursor = new Cursor(ATexture.cursor8x8, false, 0, 0);
             menu = new Menu();
             menu.Initialize();
 
@@ -97,7 +95,7 @@ namespace Steel_Era
             PlateFormehaut = new Sprite(ATexture.PlateFormehaut, false, 800, screenHeight - 400);
             PlateFormehaut.Initialize();
 
-            test = new Sprite(ATexture.covert, false, 300, 100);
+            test = new Sprite(ATexture.ground, false, 300, 180);
             test.Initialize();
 
             //Sol = new Sprite(ATexture.Sol, false, 0, 
@@ -155,7 +153,6 @@ namespace Steel_Era
             keyState = Keyboard.GetState();
             mouseState = Mouse.GetState();
 
-            cursor.HandleInput(keyState, mouseState);
             menu.HandleInput(keyState, mouseState);
             menu.Update(gameTime);
 
@@ -187,7 +184,6 @@ namespace Steel_Era
             test.Draw(spriteBatch, gameTime);
 
             menu.Draw(spriteBatch, gameTime, screenRectangle);
-            cursor.Draw(spriteBatch, gameTime);
 
             spriteBatch.End();
             base.Draw(gameTime);
