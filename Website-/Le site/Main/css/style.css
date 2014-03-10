@@ -1,3 +1,6 @@
+@import url('style9.css');
+
+
 .st-container {
 	position: absolute;
 	width: 100%;
@@ -479,6 +482,10 @@ bottom: 100%;
 	color: #fff;
 }
 
+.news h2 
+{
+	font-size: 25px;
+}
 .Projet-scrollbox
 {
 	
@@ -501,7 +508,7 @@ bottom: 100%;
 	width:37%;
 	position: relative;
 	left: 9%;
-	top: -47.5%;
+	top: -40.5%;
 	/*border:1px solid #ccc; */
 	font-family: 'Carrois Gothic SC', sans-serif;
 	font-size: 14px;
@@ -525,13 +532,14 @@ bottom: 100%;
 }
 .Projet-2 /* Dans la scrollbox */
 {
-	float:  right;
-	padding-right: 70px;
-	height:38%;
-	width:44%;
+	/*float: left;
+	padding-right: 70px;*/
+	height:35%;
+	width:60%;
+	text-align: left;
 	position: relative;
-	left: 41%;
-	top: -113.5%;
+	left: 34.5%;
+	top: -115%;
 	/*border:1px solid #ccc; */
 	font-family: 'Carrois Gothic SC', sans-serif;
 	font-size: 14px;
@@ -539,6 +547,7 @@ bottom: 100%;
 	overflow:auto;
 	color: #fff;
 }
+
 .Projet-scrollbox-3
 {
 	float:  right;
@@ -555,12 +564,12 @@ bottom: 100%;
 }
 .Projet-3 /* Dans la scrollbox */
 {
-	float:  right;
-	padding-right: 70px;
-	height:35%;
-	width:44%;
+	/*float:  right;
+	padding-right: 70px;*/
+	height:33%;
+	/*width:44%;*/
 	position: relative;
-	left: 41%;
+	left: 34.5%;
 	top: -111.5%;
 	/*border:1px solid #ccc; */
 	font-family: 'Carrois Gothic SC', sans-serif;
@@ -572,7 +581,7 @@ bottom: 100%;
 .media-scrollbox-1
 { 
 	
-	background-color: black;
+background-color: black;
 	opacity: 0.2;
 	height:60%;
 	width:20%;
@@ -587,12 +596,17 @@ bottom: 100%;
 	width:20%;
 	position: relative;
 	left: 72%;
-	top: -40%;
+	top: -38%;
 	/*border:1px solid #ccc; */
 	font-family: 'Carrois Gothic SC', sans-serif;
 	overflow:auto;
 	color: black;
 
+}
+
+.media-1 h2 
+{
+	font-size: 25px;
 }
 .media-scrollbox-2
 {
@@ -611,14 +625,34 @@ bottom: 100%;
 	width:20%;
 	position: relative;
 	left: 22%;
-	top: -101%;
+	top: -99%;
 	/*border:1px solid #ccc; */
 	font-family: 'Carrois Gothic SC', sans-serif;
 	overflow:auto;
 	color: black;
 }
 
-/* DESIGN SCROLL BARRE */
+.media-2 h2 
+{
+	font-size: 25px;
+}
+.fb
+{
+	position: relative;
+    height:  30px;
+	width:  15px;
+	left: 21%;
+	top: -182%;
+}
+.tw
+{
+    position: relative;
+    height:  30px;
+	width:  15px;
+	left : 15%;
+	top: -186%;
+}
+/* DESIGN SCROOL BARRE */
 
 ::-webkit-scrollbar { /*Scrollbar entière height c'est pour la hateur de la scrollbar horizontale et width pour la largeur de la scrollbar verticale*/
     width: 12px;
@@ -651,20 +685,3 @@ bottom: 100%;
     background-color: #2b2d30;
     width: 3px;}
 
-/*.social
-{
-
-	height: 100%;
-	width:  50px;
-	position: relative;
-	left: 0%;
-
-}
-.fb
-{
-	height: 1000px;
-	width: 1000px;
-	position: relative;
-	left: 0;
-	top: -100%;
-}*/
