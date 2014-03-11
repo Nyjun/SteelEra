@@ -147,8 +147,7 @@ namespace Steel_Era
         {
             Main.Update(Mouse.GetState(), Keyboard.GetState());
             // Allows the game to exit
-            if (menu.quit == true)
-                this.Exit();
+            
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
@@ -157,7 +156,7 @@ namespace Steel_Era
             mouseState = Mouse.GetState();
 
             menu.HandleInput(keyState, mouseState);
-            menu.Update(gameTime);
+            menu.Update(gameTime, this);
 
 
 
@@ -192,5 +191,6 @@ namespace Steel_Era
             base.Draw(gameTime);
 
         }
+
     }
 }

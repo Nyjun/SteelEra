@@ -60,6 +60,7 @@ namespace Steel_Era
         private Button button4 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, false, false, "o");
 
 
+        
 
         /// <summary>
         /// Initialise les variables du Sprite
@@ -132,7 +133,7 @@ namespace Steel_Era
         /// Met à jour les variables du sprite
         /// </summary>
         /// <param name="gameTime">Le GameTime associé à la frame</param>
-        public virtual void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime, Game1 game)
         {
             
             
@@ -144,7 +145,6 @@ namespace Steel_Era
                 //button2.Position = new Vector2(Game1.screenWidth - button1.Width + 30, (Game1.screenHeight/2) + button1.Height + 5);
                 button2.Text = "Quit";
                 button2.IsVisible = true;
-                button2.Status = false;
                 if (button1.IsHighLighted)
                     button1.Position = new Vector2(Game1.screenWidth - button1.Width, (Game1.screenHeight / 2));
                 else
@@ -160,7 +160,9 @@ namespace Steel_Era
                 }
                 if (button2.Status == true)
                 {
-                    quit = true;
+                    //quit = true;
+                    game.Exit();
+                    button2.Status = false;
                 }
             }
             if (state == 2)
@@ -196,6 +198,8 @@ namespace Steel_Era
                 cursor.Draw(spriteBatch, gameTime);
             }
         }
+
+        //public void Quit (GameTime
 
     }
 }
