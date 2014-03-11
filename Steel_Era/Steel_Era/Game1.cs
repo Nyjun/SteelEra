@@ -50,7 +50,10 @@ namespace Steel_Era
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
             graphics.IsFullScreen = true;
-            //ATexture.Load(Content);
+            //graphics.PreferredBackBufferHeight = 700;
+            //graphics.PreferredBackBufferWidth = 900;
+            //Changes the settings that you just applied
+            //graphics.ApplyChanges();
         }
 
 
