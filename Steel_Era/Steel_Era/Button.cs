@@ -24,6 +24,7 @@ namespace Steel_Era
             text = _text;
         }
 
+        MouseState oldMouse;
         /// <summary>
         /// Highlighted button texture.
         /// </summary>
@@ -53,6 +54,7 @@ namespace Steel_Era
             set { status = value; }
         }
         private bool status;
+        public bool oldStatus;
 
         /// <summary>
         /// Boutton Highlighted or not.
@@ -70,31 +72,9 @@ namespace Steel_Era
         }
         private bool isVisible;
 
-        /*/// <summary>
-        /// Initialise les variables du Sprite
-        /// </summary>
-        public override void Initialize()
-        {
+        
 
-            //Game1.ListSprite.Add
-            isVisible = true;
-            status = false;
-        }*/
-
-
-
-
-
-        /// <summary>
-        /// Charge l'image voulue grâce au ContentManager donné
-        /// </summary>
-        /// <param name="content">Le ContentManager qui chargera l'image</param>
-        /// <param name="assetName">L'asset name de l'image à charger pour ce Sprite</param>
-        public virtual void LoadContent(ContentManager content, string assetName, string assetName2)
-        {
-            Texture = content.Load<Texture2D>(assetName);
-            texture2 = content.Load<Texture2D>(assetName2);
-        }
+        
 
         /// <summary>
         /// Permet de gérer les entrées du joueur
@@ -104,9 +84,13 @@ namespace Steel_Era
         /// <param name="joueurNum">Le numéro du joueur qui doit être surveillé</param>
         public override void HandleInput(KeyboardState keyState, MouseState mouseState)
         {
-            if (mouseState.LeftButton == ButtonState.Pressed && mouseState.X > Position.X && mouseState.X < (Position.X + Width) && mouseState.Y > Position.Y && mouseState.Y < (Position.Y + Height) && isVisible == true)
+            if (mouseState.LeftButton == ButtonState.Pressed && mouseState.X > Position.X && mouseState.X < (Position.X + Width) && mouseState.Y > Position.Y && mouseState.Y < (Position.Y + Height) && isVisible == true && oldMouse.LeftButton == ButtonState.Released)
             {
                 status = true;
+            }
+            else
+            {
+                status = false;
             }
 
 
@@ -118,8 +102,7 @@ namespace Steel_Era
             {
                 isHighLighted = false;
             }
-
-
+            oldMouse = mouseState;
         }
 
         /// <summary>
@@ -128,7 +111,6 @@ namespace Steel_Era
         /// <param name="gameTime">Le GameTime associé à la frame</param>
         public override void Update(GameTime gameTime)
         {
-            
             
         }
 

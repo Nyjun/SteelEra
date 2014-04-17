@@ -157,11 +157,7 @@ namespace Steel_Era
             // TODO: Add your update logic here
             keyState = Keyboard.GetState();
             mouseState = Mouse.GetState();
-
-            menu.HandleInput(keyState, mouseState);
-            menu.Update(gameTime, this);
-
-
+            menu.Update(gameTime, this, keyState, mouseState);
 
 
             keyOState = keyState;
