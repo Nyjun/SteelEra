@@ -172,6 +172,7 @@ namespace Steel_Era
                 button1.IsVisible = true;
                 button3.Text = "Return";
                 button3.IsVisible = true;
+                button2.IsVisible = false;
                 //B1
                 if (button1.IsHighLighted)
                     button1.Position = new Vector2(Game1.screenWidth - button1.Width, (Game1.screenHeight / 2));
