@@ -49,7 +49,7 @@ namespace Steel_Era
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             //graphics.PreferredBackBufferHeight = 700;
             //graphics.PreferredBackBufferWidth = 900;
             //Changes the settings that you just applied

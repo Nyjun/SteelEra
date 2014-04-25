@@ -22,6 +22,7 @@ namespace Steel_Era
         int Timer;
         int AnimationSpeed;
         Rectangle Hitbox;
+        Rectangle Spritebox;
         Direction direction;
         bool IsGrounded;
         SpriteEffects Effect;
@@ -38,7 +39,8 @@ namespace Steel_Era
 
         public Player()
         {
-            this.Hitbox = new Rectangle(0, 0, 189, 180);
+            this.Hitbox = new Rectangle(0, 0, 90, 180);
+            this.Spritebox = new Rectangle(0, 0, 189, 180);
             this.FrameLine = 1;
             this.FrameCol = 1;
             this.IsGrounded = false;
@@ -282,13 +284,14 @@ namespace Steel_Era
                     break;
             }
             Collisions();
+            Spritebox.Location = new Point(Hitbox.Center.X - (Spritebox.Width / 2), Hitbox.Center.Y - (Spritebox.Height / 2));
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             
             //spriteBatch.Draw(ATexture.Crow, this.Hitbox, new Rectangle((this.FrameCol - 1) * 189, (this.FrameLine - 1) * 180, 189, 180),
             //    Color.White, 0f, new Vector2(0, -200), this.Effect, 0f);
-            spriteBatch.Draw(ATexture.Crow, this.Hitbox, new Rectangle((this.FrameCol - 1) * 189, (this.FrameLine - 1) * 180, 189, 180),
+            spriteBatch.Draw(ATexture.Crow, this.Spritebox, new Rectangle((this.FrameCol - 1) * 189, (this.FrameLine - 1) * 180, 189, 180),
                 Color.White, 0f, new Vector2(0, 0), this.Effect, 0f);
         }
 
