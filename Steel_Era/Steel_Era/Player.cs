@@ -32,6 +32,8 @@ namespace Steel_Era
         int gravity;
         int JumpCeiling;
         int airSpeed;//, jumpTimer;
+        int crouchHeight;
+        int height;
         
 
 
@@ -51,6 +53,8 @@ namespace Steel_Era
             this.direction = Direction.Non; //Position si aucun input
             this.JumpCeiling = Hitbox.Y;
             airSpeed = 20;
+            height = Spritebox.Height;
+            crouchHeight = (2*Spritebox.Height) / 3;
             //jumpTimer = 0;
         }
 
@@ -214,11 +218,16 @@ namespace Steel_Era
                     Hitbox.Y += gravity;
                 }
             }
-            if (keyboard.IsKeyDown(Keys.Down))
+            if ((keyboard.IsKeyDown(Keys.Down)))
             {
                 //this.Hitbox.Y += 5;
+                Hitbox = new Rectangle(Hitbox.Location.X, Hitbox.Location.Y, Hitbox.Width, crouchHeight);
                 this.direction = Direction.Down;
                 this.AnimateCrouch();
+            }
+            if (keyboard.IsKeyUp(Keys.Down))
+            {
+                Hitbox = new Rectangle(Hitbox.Location.X, Hitbox.Location.Y, Hitbox.Width, height);
             }
             if (keyboard.IsKeyDown(Keys.Left) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))
             {
