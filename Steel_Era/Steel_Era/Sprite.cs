@@ -16,10 +16,9 @@ namespace Steel_Era
 
     class Sprite
     {
-        public Sprite(Texture2D tex, bool animated, float _x, float _y)
+        public Sprite(Texture2D tex, float _x, float _y)
         {
             texture = tex;
-            isAnimated = animated;
             x = _x;
             y = _y;
             width = tex.Bounds.Width;
@@ -101,7 +100,6 @@ namespace Steel_Era
         private Vector2 center;
 
 
-        private bool isAnimated;
 
 
         //////////////////////////////////////////
@@ -175,16 +173,7 @@ namespace Steel_Era
         /// <param name="gameTime">Le GameTime associé à la frame</param>
         public virtual void Update(GameTime gameTime)
         {
-            /*//if (isAnimated == true)
-            //{
-                height = texture.Bounds.Height;
-                width = texture.Bounds.Width;
-                //hitBox.Height = texture.Bounds.Height;
-                //hitBox.Width = texture.Bounds.Width;
-                hitBox.Inflate((int)width - hitBox.Width, (int)height - hitBox.Height);
-                center = new Vector2(hitBox.Center.X, hitBox.Center.Y);
-                texture = ATexture.buttonOff;
-            //}*/
+            
 
             //Modification de la position.
 

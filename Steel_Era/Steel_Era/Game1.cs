@@ -84,22 +84,22 @@ namespace Steel_Era
             screenHeight = Window.ClientBounds.Height;
             screenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
 
-            BG_Ciel = new Sprite(ATexture.BG_Ciel, false, 0, screenHeight - 800);
+            BG_Ciel = new Sprite(ATexture.BG_Ciel, 0, screenHeight - 800);
             BG_Ciel.Initialize();
-            Solbas = new Sprite(ATexture.Solbas, false, 0, screenHeight - 60);
+            Solbas = new Sprite(ATexture.Solbas, 0, screenHeight - 60);
             Solbas.Initialize();
-            Solhaut = new Sprite(ATexture.Solhaut, false, 0, screenHeight - 97);
+            Solhaut = new Sprite(ATexture.Solhaut, 0, screenHeight - 97);
             Solhaut.Initialize();
-            BG_Mont = new Sprite(ATexture.BG_Mont, false, 0, screenHeight - 500);
+            BG_Mont = new Sprite(ATexture.BG_Mont, 0, screenHeight - 500);
             BG_Mont.Initialize();
-            PlateFormebas = new Sprite(ATexture.PlateFormebas, false, 800, screenHeight - 180);
+            PlateFormebas = new Sprite(ATexture.PlateFormebas, 800, screenHeight - 180);
             PlateFormebas.Initialize();
-            PlateFormeMid = new Sprite(ATexture.PlateFormeMid, false, 810, screenHeight - 377);
+            PlateFormeMid = new Sprite(ATexture.PlateFormeMid, 810, screenHeight - 377);
             PlateFormeMid.Initialize();
-            PlateFormehaut = new Sprite(ATexture.PlateFormehaut, false, 800, screenHeight - 400);
+            PlateFormehaut = new Sprite(ATexture.PlateFormehaut, 800, screenHeight - 400);
             PlateFormehaut.Initialize();
 
-            test = new Sprite(ATexture.ground, false, 300, 180);
+            test = new Sprite(ATexture.ground, 300, 180);
             test.Initialize();
 
             //Sol = new Sprite(ATexture.Sol, false, 0, 

@@ -218,7 +218,7 @@ namespace Steel_Era
                     Hitbox.Y += gravity;
                 }
             }
-            if ((keyboard.IsKeyDown(Keys.Down)))
+            if (keyboard.IsKeyDown(Keys.Down))
             {
                 //this.Hitbox.Y += 5;
                 Hitbox = new Rectangle(Hitbox.Location.X, Hitbox.Location.Y, Hitbox.Width, crouchHeight);

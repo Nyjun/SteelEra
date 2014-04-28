@@ -54,10 +54,10 @@ namespace Steel_Era
         private bool isVisible;
 
 
-        private Button button1 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, false, true, "Play");
-        private Button button2 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, false, true, "Quit");
-        private Button button3 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, false, false, "o");
-        private Button button4 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, false, false, "o");
+        private Button button1 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, true, "Play");
+        private Button button2 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, true, "Quit");
+        private Button button3 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, false, "o");
+        private Button button4 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0,  false, "o");
 
 
         
@@ -73,8 +73,8 @@ namespace Steel_Era
             musicMenuInst.IsLooped = true;
             menuSoundState = "on";
 
-            cursor = new Cursor(ATexture.cursor8x8, false, 0, 0);
-            background = new Sprite(ATexture.BG_Main_Menu, false, 0, 0);
+            cursor = new Cursor(ATexture.cursor8x8, 0, 0);
+            background = new Sprite(ATexture.BG_Main_Menu, 0, 0);
 
             state = 1;
         }

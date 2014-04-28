@@ -9,22 +9,17 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.IO;
 
 namespace Steel_Era
 {
-    class Cursor : Sprite
+    class Enemy : Sprite
     {
-        public Cursor(Texture2D tex, float x, float y)
+        public Enemy(Texture2D tex, float x, float y)
             : base(tex, x, y)
         {
-            Texture = tex;
+
         }
 
-        public override void HandleInput(KeyboardState keyState, MouseState mouseState)
-        {
-            Position = new Vector2(mouseState.X - (Height/2), mouseState.Y - (Width/2));
-        }
-
-        
     }
 }

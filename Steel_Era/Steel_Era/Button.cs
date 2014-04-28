@@ -15,8 +15,8 @@ namespace Steel_Era
     class Button : Sprite
     {
 
-        public Button(Texture2D tex1, Texture2D tex2, float x, float y, bool animated, bool visible, string _text)
-            : base(tex1, animated, x, y)
+        public Button(Texture2D tex1, Texture2D tex2, float x, float y, bool visible, string _text)
+            : base(tex1, x, y)
         {
             Texture = tex1;
             texture2 = tex2;
