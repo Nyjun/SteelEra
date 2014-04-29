@@ -128,12 +128,12 @@ namespace Steel_Era
         /// <summary>
         /// Vitesse de l'objet.
         /// </summary>
-        public Vector2 Speed
+        public float Speed
         {
             get { return speed; }
             set { speed = value; }
         }
-        private Vector2 speed;
+        private float speed;
 
 
 

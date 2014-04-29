@@ -75,7 +75,7 @@ namespace Steel_Era
 
             // TODO: use this.Content to load your game content here
             ATexture.Load(Content);
-            Fonts.Font1 = Content.Load<SpriteFont>("SpriteFont1");//
+            Fonts.Font1 = Content.Load<SpriteFont>("Menu/Fonts/SpriteFont1");//
             menu = new Menu();
             menu.Initialize();
 
@@ -126,7 +126,7 @@ namespace Steel_Era
 
             // TODO: use this.Content to load your game content here
             ATexture.Load(Content);
-            Fonts.Font1 = Content.Load<SpriteFont>("SpriteFont1");
+            //Fonts.Font1 = Content.Load<SpriteFont>("Menu/Fonts/SpriteFont1");
             Main = new GameMain();
 
         }

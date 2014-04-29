@@ -49,145 +49,145 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="curseur_8x8.png">
+    <Compile Include="Menu\curseur_8x8.png">
       <Name>curseur_8x8</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="forest_temple.png">
+    <Compile Include="Menu\forest_temple.png">
       <Name>forest_temple</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Button_test_1_on.png">
+    <Compile Include="Menu\Buttons\Button_test_1_on.png">
       <Name>Button_test_1_on</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Button_test_1_off.png">
+    <Compile Include="Menu\Buttons\Button_test_1_off.png">
       <Name>Button_test_1_off</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SpriteFont1.spritefont">
+    <Compile Include="Menu\Fonts\SpriteFont1.spritefont">
       <Name>SpriteFont1</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sol_testn.png">
+    <Compile Include="Game\Elements\sol_testn.png">
       <Name>sol_testn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Solbas.png">
+    <Compile Include="Game\Elements\Solbas.png">
       <Name>Solbas</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Solhaut.png">
+    <Compile Include="Game\Elements\Solhaut.png">
       <Name>Solhaut</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sol_test.png">
+    <Compile Include="Game\Elements\sol_test.png">
       <Name>sol_test</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mont.png">
+    <Compile Include="Game\Background\Mont.png">
       <Name>Mont</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ciel jour.png">
+    <Compile Include="Game\Background\Ciel jour.png">
       <Name>Ciel jour</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlateFormeMid.png">
+    <Compile Include="Game\Elements\PlateFormeMid.png">
       <Name>PlateFormeMid</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlateFormebas.png">
+    <Compile Include="Game\Elements\PlateFormebas.png">
       <Name>PlateFormebas</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animation.png">
+    <Compile Include="Game\Animations\Animation.png">
       <Name>Animation</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KodoDrum1.wav">
+    <Compile Include="Menu\Music\KodoDrum1.wav">
       <Name>KodoDrum1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BG_Main_Menua.PNG">
+    <Compile Include="Menu\BG_Main_Menua.PNG">
       <Name>BG_Main_Menua</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlateFormehaut.png">
+    <Compile Include="Game\Elements\PlateFormehaut.png">
       <Name>PlateFormehaut</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ciel.png">
+    <Compile Include="Game\Background\Ciel.png">
       <Name>Ciel</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BG_Main_Menu.JPG">
+    <Compile Include="Menu\BG_Main_Menu.JPG">
       <Name>BG_Main_Menu</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ButtonOff.png">
+    <Compile Include="Menu\Buttons\ButtonOff.png">
       <Name>ButtonOff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="buttonOn.png">
+    <Compile Include="Menu\Buttons\buttonOn.png">
       <Name>buttonOn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
