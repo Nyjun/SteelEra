@@ -21,6 +21,7 @@ namespace Steel_Era
         SoundEffectInstance musicMenuInst;
         private Cursor cursor;
         string menuSoundState;
+        string menuDisplayState;
 
         /// <summary>
         /// 1 : main menu.
@@ -65,15 +66,16 @@ namespace Steel_Era
         /// <summary>
         /// Initialise les variables du Sprite
         /// </summary>
-        public virtual void Initialize()
+        public virtual void Initialize(Game1 game)
         {
             lastState = 1;
             musicMenu = ATexture.musicMenu;
             musicMenuInst = musicMenu.CreateInstance();
             musicMenuInst.IsLooped = true;
             menuSoundState = "on";
+            menuDisplayState = "Windowed";
 
-            cursor = new Cursor(ATexture.cursor8x8, 0, 0);
+            cursor = new Cursor(ATexture.cursor8x8, game);
             background = new Sprite(ATexture.BG_Main_Menu, 0, 0);
 
             state = 1;
@@ -86,9 +88,9 @@ namespace Steel_Era
         /// <param name="keyboardState">L'état du clavier à tester</param>
         /// <param name="mouseState">L'état de la souris à tester</param>
         /// <param name="joueurNum">Le numéro du joueur qui doit être surveillé</param>
-        public virtual void HandleInput(KeyboardState keyState, MouseState mouseState)
+        public virtual void HandleInput(KeyboardState keyState, MouseState mouseState, Game1 game)
         {
-            cursor.HandleInput(keyState, mouseState);
+            cursor.HandleInput(keyState, mouseState, game);
             if (keyState.IsKeyDown(Keys.Escape) && keyOState.IsKeyUp(Keys.Escape))
             {
                 if (state == 0)
@@ -102,6 +104,7 @@ namespace Steel_Era
                     button1.HandleInput(keyState, mouseState);
                     button2.HandleInput(keyState, mouseState);
                     button3.HandleInput(keyState, mouseState);
+                    button4.HandleInput(keyState, mouseState);
                 }
             }
             if (state != 0)
@@ -109,6 +112,7 @@ namespace Steel_Era
                 button1.HandleInput(keyState, mouseState);
                 button2.HandleInput(keyState, mouseState);
                 button3.HandleInput(keyState, mouseState);
+                button4.HandleInput(keyState, mouseState);
             }
 
 
@@ -124,7 +128,7 @@ namespace Steel_Era
         public virtual void Update(GameTime gameTime, Game1 game, KeyboardState keyState, MouseState mouseState)
         {
 
-            this.HandleInput(keyState, mouseState);
+            this.HandleInput(keyState, mouseState, game);
             if (state == 1)
             {
                 button1.Text = "Play";
@@ -158,26 +162,33 @@ namespace Steel_Era
                 if (button2.Status == true)
                 {
                     state = 2;
-                    button1.Status = false;
+                    button2.Status = false;
                 }
                 if (button3.Status == true)
                 {
                     game.Exit();
-                    button2.Status = false;
+                    button3.Status = false;
                 }
             }
             if (state == 2)
             {
                 button1.Text = "Sound : " + menuSoundState;
                 button1.IsVisible = true;
+                button2.Text = "Display : " + menuDisplayState;
+                button2.IsVisible = true;
                 button3.Text = "Return";
                 button3.IsVisible = true;
-                button2.IsVisible = false;
+                
                 //B1
                 if (button1.IsHighLighted)
                     button1.Position = new Vector2(Game1.screenWidth - button1.Width, (Game1.screenHeight / 2));
                 else
                     button1.Position = new Vector2(Game1.screenWidth - button1.Width + 20, (Game1.screenHeight / 2));
+                //B2
+                if (button2.IsHighLighted)
+                    button2.Position = new Vector2(Game1.screenWidth - button1.Width + 5, (Game1.screenHeight / 2) + button1.Height + 5);
+                else
+                    button2.Position = new Vector2(Game1.screenWidth - button1.Width + 25, (Game1.screenHeight / 2) + button1.Height + 5);
                 //B3
                 if (button3.IsHighLighted)
                     button3.Position = new Vector2(Game1.screenWidth - button1.Width + 10, (Game1.screenHeight / 2) + 2 * button1.Height + 10);
@@ -199,6 +210,23 @@ namespace Steel_Era
                         button1.oldStatus = button1.Status;
                     }
                     
+                }
+                if (button2.Status == true)
+                {
+                    button2.Status = false;
+                    if (menuDisplayState == "Windowed")
+                    {
+                        menuDisplayState = "Full Screen";
+                        game.graphics.ToggleFullScreen();
+                        button2.oldStatus = button2.Status;
+                    }
+                    else
+                    {
+                        menuDisplayState = "Windowed";
+                        game.graphics.ToggleFullScreen();
+                        button2.oldStatus = button2.Status;
+                    }
+
                 }
                 if (button3.Status == true)
                 {

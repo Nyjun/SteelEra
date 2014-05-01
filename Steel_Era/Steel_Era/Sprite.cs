@@ -25,8 +25,8 @@ namespace Steel_Era
             height = tex.Bounds.Height;
         }
         protected Vector2 oldPos;
-        float x;
-        float y;
+        protected float x;
+        protected float y;
         ///////////////////////////////
         //Caracteristiques de l'image//
         ///////////////////////////////

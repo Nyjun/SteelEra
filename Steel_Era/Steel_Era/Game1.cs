@@ -21,11 +21,11 @@ namespace Steel_Era
 
 
 
-        GraphicsDeviceManager graphics;
+        public GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         KeyboardState keyState;
         KeyboardState keyOState;
-        MouseState mouseState;
+        public MouseState mouseState;
         GameMain Main;
 
         public static int screenWidth;
@@ -50,6 +50,7 @@ namespace Steel_Era
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
             graphics.IsFullScreen = false;
+            
             //graphics.PreferredBackBufferHeight = 700;
             //graphics.PreferredBackBufferWidth = 900;
             //Changes the settings that you just applied
@@ -77,7 +78,7 @@ namespace Steel_Era
             ATexture.Load(Content);
             Fonts.Font1 = Content.Load<SpriteFont>("Menu/Fonts/SpriteFont1");//
             menu = new Menu();
-            menu.Initialize();
+            menu.Initialize(this);
 
 
             screenWidth = Window.ClientBounds.Width;

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
+using System.Windows.Forms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -14,15 +16,20 @@ namespace Steel_Era
 {
     class Cursor : Sprite
     {
-        public Cursor(Texture2D tex, float x, float y)
-            : base(tex, x, y)
+        MouseState mOSt;
+        public Cursor(Texture2D tex, Game1 game)
+            : base(tex, game.mouseState.X, game.mouseState.Y)
         {
+            Position = new Vector2(x, y);
             Texture = tex;
         }
 
-        public override void HandleInput(KeyboardState keyState, MouseState mouseState)
+        public void HandleInput(KeyboardState keyState, MouseState mouseState, Game1 game)
         {
-            Position = new Vector2(mouseState.X - (Height/2), mouseState.Y - (Width/2));
+            Position = Position + (new Vector2(mouseState.X, mouseState.Y) - new Vector2(mOSt.X, mOSt.Y));
+
+            //Position = new Vector2(mouseState.X - (Height/2), mouseState.Y - (Width/2));
+            mOSt = mouseState;
         }
 
         

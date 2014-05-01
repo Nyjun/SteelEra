@@ -26,5 +26,12 @@ namespace Steel_Era
         protected int hitPoints;
         protected int damages;
         protected Rectangle hitbox;
+
+        public override void Update(GameTime gameTime)
+        {
+
+
+            base.Update(gameTime);
+        }
     }
 }
