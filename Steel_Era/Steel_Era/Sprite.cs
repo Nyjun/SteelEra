@@ -23,6 +23,7 @@ namespace Steel_Era
             y = _y;
             width = tex.Bounds.Width;
             height = tex.Bounds.Height;
+            hitBox = new Rectangle((int)pos.X, (int)pos.Y, (int)width, (int)height);
         }
         protected Vector2 oldPos;
         protected float x;
@@ -152,7 +153,7 @@ namespace Steel_Era
             height = texture.Bounds.Height;
             width = texture.Bounds.Width;
             pos = new Vector2(x, y);
-            hitBox = new Rectangle((int)pos.X, (int)pos.Y, (int)width, (int)height);
+            
             center = new Vector2(hitBox.Center.X, hitBox.Center.Y);//new Vector2(pos.X + (width / 2), pos.Y + (height / 2));
         }
 

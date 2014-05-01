@@ -101,18 +101,18 @@ namespace Steel_Era
                 else
                 {
                     state = 0;
-                    button1.HandleInput(keyState, mouseState);
-                    button2.HandleInput(keyState, mouseState);
-                    button3.HandleInput(keyState, mouseState);
-                    button4.HandleInput(keyState, mouseState);
+                    button1.HandleInput(keyState, mouseState, cursor);
+                    button2.HandleInput(keyState, mouseState, cursor);
+                    button3.HandleInput(keyState, mouseState, cursor);
+                    button4.HandleInput(keyState, mouseState, cursor);
                 }
             }
             if (state != 0)
             {
-                button1.HandleInput(keyState, mouseState);
-                button2.HandleInput(keyState, mouseState);
-                button3.HandleInput(keyState, mouseState);
-                button4.HandleInput(keyState, mouseState);
+                button1.HandleInput(keyState, mouseState, cursor);
+                button2.HandleInput(keyState, mouseState, cursor);
+                button3.HandleInput(keyState, mouseState, cursor);
+                button4.HandleInput(keyState, mouseState, cursor);
             }
 
 

@@ -82,9 +82,9 @@ namespace Steel_Era
         /// <param name="keyState">L'état du clavier à tester</param>
         /// <param name="mouseState">L'état de la souris à tester</param>
         /// <param name="joueurNum">Le numéro du joueur qui doit être surveillé</param>
-        public override void HandleInput(KeyboardState keyState, MouseState mouseState)
+        public void HandleInput(KeyboardState keyState, MouseState mouseState, Cursor cursor)
         {
-            if (mouseState.LeftButton == ButtonState.Pressed && mouseState.X > Position.X && mouseState.X < (Position.X + Width) && mouseState.Y > Position.Y && mouseState.Y < (Position.Y + Height) && isVisible == true && oldMouse.LeftButton == ButtonState.Released)
+            if (mouseState.LeftButton == ButtonState.Pressed && cursor.Position.X > Position.X && cursor.Position.X < (Position.X + Width) && cursor.Position.Y > Position.Y && cursor.Position.Y < (Position.Y + Height) && isVisible == true && oldMouse.LeftButton == ButtonState.Released)
             {
                 status = true;
             }
@@ -94,7 +94,7 @@ namespace Steel_Era
             }
 
 
-            if (mouseState.X > Position.X && mouseState.X < (Position.X + Width) && mouseState.Y > Position.Y && mouseState.Y < (Position.Y + Height) )
+            if (cursor.Position.X > Position.X && cursor.Position.X < (Position.X + Width) && cursor.Position.Y > Position.Y && cursor.Position.Y < (Position.Y + Height))
             {
                 isHighLighted = true;
             }

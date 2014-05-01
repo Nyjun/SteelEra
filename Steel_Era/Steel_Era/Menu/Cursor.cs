@@ -26,7 +26,7 @@ namespace Steel_Era
 
         public void HandleInput(KeyboardState keyState, MouseState mouseState, Game1 game)
         {
-            Position = Position + (new Vector2(mouseState.X, mouseState.Y) - new Vector2(mOSt.X, mOSt.Y));
+            Position = Position + 1.5f*(new Vector2(mouseState.X, mouseState.Y) - new Vector2(mOSt.X, mOSt.Y));
 
             //Position = new Vector2(mouseState.X - (Height/2), mouseState.Y - (Width/2));
             mOSt = mouseState;
