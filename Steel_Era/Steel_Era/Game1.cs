@@ -44,17 +44,39 @@ namespace Steel_Era
         Sprite PlateFormehaut;
         Sprite test;
 
+        // MUSIQUE + BRUITAGES Xact method
+        /*public AudioEngine audioEngine;
+        public WaveBank waveBank;
+        public SoundBank soundBank;
+        public Cue currentSong;
+
+        // Music volume.
+       // float musicVolume = 1.0f;*/
+
+
+        /*SoundEffect jump;
+        SoundEffectInstance jumpInst;
+        SoundEffect landing;
+        SoundEffectInstance landingInst;
+        SoundEffect attack1;
+        SoundEffectInstance attack1Inst;*/
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            this.IsMouseVisible = true;
-            graphics.IsFullScreen = false;
-            
-            //graphics.PreferredBackBufferHeight = 700;
+            this.IsMouseVisible = false;
+            graphics.IsFullScreen = true;
+
+            // graphics.PreferredBackBufferHeight = 700;
             //graphics.PreferredBackBufferWidth = 900;
             //Changes the settings that you just applied
-            //graphics.ApplyChanges();
+            // graphics.ApplyChanges();
+
+
+
+
+
         }
 
 
@@ -111,6 +133,7 @@ namespace Steel_Era
             Physics.ListObstacle.Add(test);
 
 
+
             base.Initialize();
 
 
@@ -151,9 +174,10 @@ namespace Steel_Era
         {
             Main.Update(Mouse.GetState(), Keyboard.GetState());
             // Allows the game to exit
-            
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+
 
             // TODO: Add your update logic here
             keyState = Keyboard.GetState();
@@ -162,6 +186,8 @@ namespace Steel_Era
 
 
             keyOState = keyState;
+
+
             base.Update(gameTime);
         }
 

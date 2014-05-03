@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.IO;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace Steel_Era
 {
@@ -34,7 +36,7 @@ namespace Steel_Era
         int airSpeed;//, jumpTimer;
         int crouchHeight;
         int height;
-        
+
 
 
         //CONSTRUCTORS
@@ -54,7 +56,7 @@ namespace Steel_Era
             this.JumpCeiling = Hitbox.Y;
             airSpeed = 20;
             height = Spritebox.Height;
-            crouchHeight = (2*Spritebox.Height) / 3;
+            crouchHeight = (2 * Spritebox.Height) / 3;
             //jumpTimer = 0;
         }
 
@@ -123,13 +125,17 @@ namespace Steel_Era
                 if (this.FrameCol > 2)
                 {
                     this.FrameCol = 2;
+                    Menu.jumpInst.Play();
                     if (IsGrounded == true)//IsOnGround().Equals(true))
                     {
                         this.direction = Direction.Non;
+                        Menu.landingInst.Play();
                     }
                 }
             }
             this.AnimationSpeed = 7;
+
+
         }
         public void AnimateCrouch()
         {
@@ -159,6 +165,7 @@ namespace Steel_Era
                 if (this.FrameCol > 4)
                 {
                     this.FrameCol = 1;
+                    Menu.attack1Inst.Play();
                 }
             }
             this.AnimationSpeed = 7;
@@ -170,6 +177,7 @@ namespace Steel_Era
 
         public void Update(MouseState mouse, KeyboardState keyboard)
         {
+
 
             //Attaques
 
@@ -196,7 +204,7 @@ namespace Steel_Era
                 else
                 {
                     //if (airSpeed > 0)
-                        airSpeed -= 1;
+                    airSpeed -= 1;
                 }
                 this.direction = Direction.Up;
                 this.AnimateJump();
@@ -236,11 +244,11 @@ namespace Steel_Era
                 this.AnimateRunLeft();
                 this.regard = 0;
                 this.IsHorsLimiteLeft();
-                if (keyboard.IsKeyDown(Keys.Right)&&keyboard.IsKeyDown(Keys.Left))
+                if (keyboard.IsKeyDown(Keys.Right) && keyboard.IsKeyDown(Keys.Left))
                 {
                     this.FrameLine = 1;
                     this.FrameCol = 1;
-                    this.Timer = 0;     
+                    this.Timer = 0;
                 }
             }
             if (keyboard.IsKeyDown(Keys.Right) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))
@@ -260,9 +268,9 @@ namespace Steel_Era
             {
                 if (IsGrounded == true)//IsOnGround().Equals(true))
                 {
-                this.FrameLine = 1;
-                this.FrameCol = 1;
-                this.Timer = 0;
+                    this.FrameLine = 1;
+                    this.FrameCol = 1;
+                    this.Timer = 0;
                 }
             }
 

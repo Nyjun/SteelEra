@@ -14,6 +14,8 @@ namespace Steel_Era
 {
     static class ATexture
     {
+        public static Texture2D BoutonSound1;
+        public static Texture2D BoutonSound2;
         public static Texture2D buttonOff;
         public static Texture2D buttonOn;
         public static Texture2D button2Off;
@@ -33,12 +35,17 @@ namespace Steel_Era
         public static Texture2D PlateFormehaut;
 
         public static SoundEffect musicMenu;
+        public static SoundEffect jump;
+        public static SoundEffect landing;
+        public static SoundEffect attack1;
 
 
 
         public static void Load(ContentManager cm)
         {
             //Menu
+            BoutonSound1 = cm.Load<Texture2D>("Menu/Buttons/BoutonSound1");
+            BoutonSound2 = cm.Load<Texture2D>("Menu/Buttons/BoutonSound2");
             buttonOff = cm.Load<Texture2D>("Menu/Buttons/Button_test_1_off");
             button2Off = cm.Load<Texture2D>("Menu/Buttons/ButtonOff");
             buttonOn = cm.Load<Texture2D>("Menu/Buttons/Button_test_1_on");
@@ -63,6 +70,9 @@ namespace Steel_Era
             covert = cm.Load<Texture2D>("Covert");
             //Musique
             musicMenu = cm.Load<SoundEffect>("Menu/Music/KodoDrum1");
+            jump = cm.Load<SoundEffect>("Menu/Music/jump_up");
+            landing = cm.Load<SoundEffect>("Menu/Music/land_ground");
+            attack1 = cm.Load<SoundEffect>("Menu/Music/voice_girl_attack_4");
         }
 
         /*public virtual void Initialize(GraphicsDevice gDevice)

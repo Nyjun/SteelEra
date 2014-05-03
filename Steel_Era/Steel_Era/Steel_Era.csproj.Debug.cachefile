@@ -3,20 +3,25 @@ Content\Menu\curseur_8x8.xnb
 Content\Menu\forest_temple.xnb
 Content\Menu\Buttons\Button_test_1_on.xnb
 Content\Menu\Buttons\Button_test_1_off.xnb
+Content\Game\Elements\sol_testn.xnb
+Content\Game\Elements\Solbas.xnb
+Content\Game\Elements\Solhaut.xnb
+Content\Game\Elements\sol_test.xnb
+Content\Game\Background\Mont.xnb
+Content\Game\Background\Ciel jour.xnb
+Content\Game\Elements\PlateFormeMid.xnb
+Content\Game\Elements\PlateFormebas.xnb
 Content\Game\Animations\Animation.xnb
 Content\Menu\BG_Main_Menua.xnb
+Content\Game\Elements\PlateFormehaut.xnb
+Content\Game\Background\Ciel.xnb
 Content\Menu\BG_Main_Menu.xnb
 Content\Menu\Buttons\ButtonOff.xnb
 Content\Menu\Buttons\buttonOn.xnb
 Content\Menu\Fonts\SpriteFont1.xnb
 Content\Menu\Music\KodoDrum1.xnb
-Content\Game\Elements\sol_testn.xnb
-Content\Game\Elements\Solbas.xnb
-Content\Game\Elements\Solhaut.xnb
-Content\Game\Elements\sol_test.xnb
-Content\Game\Background\Ciel jour.xnb
-Content\Game\Elements\PlateFormeMid.xnb
-Content\Game\Elements\PlateFormebas.xnb
-Content\Game\Elements\PlateFormehaut.xnb
-Content\Game\Background\Ciel.xnb
-Content\Game\Background\Mont.xnb
+Content\Menu\Music\jump_up.xnb
+Content\Menu\Music\land_ground.xnb
+Content\Menu\Music\voice_girl_attack_4.xnb
+Content\Menu\Buttons\BoutonSound1.xnb
+Content\Menu\Buttons\BoutonSound2.xnb
