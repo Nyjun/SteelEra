@@ -43,6 +43,10 @@ namespace Steel_Era
         Sprite PlateFormeMid;
         Sprite PlateFormehaut;
         Sprite test;
+        Vector2 BG_Mont_Pos;
+
+        Camera Camerascroll;
+        HUD hud;
 
         // MUSIQUE + BRUITAGES Xact method
         /*public AudioEngine audioEngine;
@@ -125,6 +129,9 @@ namespace Steel_Era
             test = new Sprite(ATexture.ground, 300, 180);
             test.Initialize();
 
+            hud = new HUD();
+            Camerascroll = new Camera(GraphicsDevice.Viewport);
+
             //Sol = new Sprite(ATexture.Sol, false, 0, 
 
             Physics.ListObstacle.Add(PlateFormehaut);
@@ -150,6 +157,7 @@ namespace Steel_Era
 
             // TODO: use this.Content to load your game content here
             ATexture.Load(Content);
+            BG_Mont_Pos = new Vector2(0, screenHeight - 500);
             //Fonts.Font1 = Content.Load<SpriteFont>("Menu/Fonts/SpriteFont1");
             Main = new GameMain();
 
@@ -186,7 +194,7 @@ namespace Steel_Era
 
 
             keyOState = keyState;
-
+            Camerascroll.Update(gameTime, Player.Hitbox);
 
             base.Update(gameTime);
         }
@@ -200,7 +208,8 @@ namespace Steel_Era
             GraphicsDevice.Clear(Color.Gray);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camerascroll.transform);
+            spriteBatch.Draw(ATexture.BG_Mont, BG_Mont_Pos, Color.White);
             BG_Ciel.Draw(spriteBatch, gameTime);
             BG_Mont.Draw(spriteBatch, gameTime);
             PlateFormehaut.Draw(spriteBatch, gameTime);
@@ -211,10 +220,17 @@ namespace Steel_Era
             Main.Draw(spriteBatch);
             test.Draw(spriteBatch, gameTime);
 
-            menu.Draw(spriteBatch, gameTime, screenRectangle);
+
+            base.Draw(gameTime);
 
             spriteBatch.End();
-            base.Draw(gameTime);
+
+            spriteBatch.Begin();
+
+            menu.Draw(spriteBatch, gameTime, screenRectangle);
+            hud.Draw(spriteBatch);
+
+            spriteBatch.End();
 
         }
 

@@ -23,8 +23,8 @@ namespace Steel_Era
 
         int Timer;
         int AnimationSpeed;
-        Rectangle Hitbox;
-        Rectangle Spritebox;
+        public static Rectangle Hitbox;
+        public static Rectangle Spritebox;
         Direction direction;
         bool IsGrounded;
         SpriteEffects Effect;
@@ -43,8 +43,8 @@ namespace Steel_Era
 
         public Player()
         {
-            this.Hitbox = new Rectangle(0, 0, 90, 180);
-            this.Spritebox = new Rectangle(0, 0, 189, 180);
+            Hitbox = new Rectangle(0, 0, 90, 180);
+            Spritebox = new Rectangle(0, 0, 189, 180);
             this.FrameLine = 1;
             this.FrameCol = 1;
             this.IsGrounded = false;
@@ -76,7 +76,7 @@ namespace Steel_Era
         {
             if (Hitbox.Left <= 0)
             {
-                this.Hitbox.X = 0;
+                Hitbox.X = 0;
             }
         }
         public void RegardDirection()
@@ -195,8 +195,8 @@ namespace Steel_Era
             // MOUVEMENT SPEED/DIRECTION
             if (keyboard.IsKeyDown(Keys.Up))
             {
-                if (this.Hitbox.Y > JumpCeiling)
-                    this.Hitbox.Y -= airSpeed;
+                if (Hitbox.Y > JumpCeiling)
+                    Hitbox.Y -= airSpeed;
                 if (IsGrounded == true)
                 {
                     airSpeed = 20;
@@ -210,13 +210,13 @@ namespace Steel_Era
                 this.AnimateJump();
                 if (keyboard.IsKeyDown(Keys.Left))
                 {
-                    this.Hitbox.X = this.Hitbox.X - 10;
+                    Hitbox.X = Hitbox.X - 10;
                     this.IsHorsLimiteLeft();
                 }
                 if (keyboard.IsKeyDown(Keys.Right))
                 {
                     this.Effect = SpriteEffects.FlipHorizontally;
-                    this.Hitbox.X = this.Hitbox.X + 10;
+                    Hitbox.X = Hitbox.X + 10;
                 }
             }
             else
@@ -239,7 +239,7 @@ namespace Steel_Era
             }
             if (keyboard.IsKeyDown(Keys.Left) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))
             {
-                this.Hitbox.X -= 10;
+                Hitbox.X -= 10;
                 this.direction = Direction.Left;
                 this.AnimateRunLeft();
                 this.regard = 0;
@@ -253,7 +253,7 @@ namespace Steel_Era
             }
             if (keyboard.IsKeyDown(Keys.Right) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))
             {
-                this.Hitbox.X = this.Hitbox.X + 10;
+                Hitbox.X = Hitbox.X + 10;
                 this.direction = Direction.Right;
                 this.AnimateRunRight();
                 this.regard = 1;
@@ -307,7 +307,7 @@ namespace Steel_Era
         {
 
             //spriteBatch.Draw(ATexture.cursor8x8, Hitbox, Color.White);
-            spriteBatch.Draw(ATexture.Crow, this.Spritebox, new Rectangle((this.FrameCol - 1) * 189, (this.FrameLine - 1) * 180, 189, 180),
+            spriteBatch.Draw(ATexture.Crow, Spritebox, new Rectangle((this.FrameCol - 1) * 189, (this.FrameLine - 1) * 180, 189, 180),
                 Color.White, 0f, new Vector2(0, 0), this.Effect, 0f);
         }
 

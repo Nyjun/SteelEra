@@ -151,10 +151,12 @@ namespace Steel_Era
                 {
                     state = lastState;
                     lastState = state;
+                    HUD.showhud = false;
                 }
                 else
                 {
                     state = 0;
+                    HUD.showhud = true;
                     button1.HandleInput(keyState, mouseState, cursor);
                     button2.HandleInput(keyState, mouseState, cursor);
                     button3.HandleInput(keyState, mouseState, cursor);
@@ -230,6 +232,7 @@ namespace Steel_Era
                 if (button1.Status == true)
                 {
                     state = 0;
+                    HUD.showhud = true;
                     button1.Status = false;
                 }
                 if (button2.Status == true)

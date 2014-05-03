@@ -39,6 +39,8 @@ namespace Steel_Era
         public static SoundEffect landing;
         public static SoundEffect attack1;
 
+        //HUD
+        public static Texture2D Hp1, Hp2, Hp3, Hp4, Mana1, Mana2, Mana3, Portrait, Nav;
 
 
         public static void Load(ContentManager cm)
@@ -65,6 +67,19 @@ namespace Steel_Era
             PlateFormebas = cm.Load<Texture2D>("Game/Elements/PlateFormebas");
             PlateFormehaut = cm.Load<Texture2D>("Game/Elements/PlateFormehaut");
             PlateFormeMid = cm.Load<Texture2D>("Game/Elements/PlateFormeMid");
+
+            //HUD
+
+            Nav = cm.Load<Texture2D>("Game/HUD/Nav");
+            Hp1 = cm.Load<Texture2D>("Game/HUD/HP");
+            Hp2 = cm.Load<Texture2D>("Game/HUD/HP");
+            Hp3 = cm.Load<Texture2D>("Game/HUD/HP");
+            Hp4 = cm.Load<Texture2D>("Game/HUD/HP");
+
+            Mana1 = cm.Load<Texture2D>("Game/HUD/MANA");
+            Mana2 = cm.Load<Texture2D>("Game/HUD/MANA");
+            Mana3 = cm.Load<Texture2D>("Game/HUD/MANA");
+            Portrait = cm.Load<Texture2D>("Game/HUD/Portrait");
 
             //Divers
             covert = cm.Load<Texture2D>("Covert");
