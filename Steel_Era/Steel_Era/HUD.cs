@@ -29,6 +29,8 @@ namespace Steel_Era
 
         public HUD()
         {
+            HP = 4;
+            Mana = 3;
             Nslot = new Rectangle(110, 0, 260, 60);
             Hslot1 = new Rectangle(113, 5, 61, 29);
             Hslot2 = new Rectangle(177, 5, 61, 29);
@@ -64,14 +66,35 @@ namespace Steel_Era
                 spriteBatch.Draw(ATexture.Portrait, Pslot, Color.White);
                 spriteBatch.Draw(ATexture.Nav, Nslot, Color.White);
 
-                spriteBatch.Draw(ATexture.Hp1, Hslot1, Color.White);
-                spriteBatch.Draw(ATexture.Hp2, Hslot2, Color.White);
-                spriteBatch.Draw(ATexture.Hp3, Hslot3, Color.White);
-                spriteBatch.Draw(ATexture.Hp4, Hslot4, Color.White);
+                if (HP >= 1)
+                {
+                    spriteBatch.Draw(ATexture.Hp1, Hslot1, Color.White);
+                }
+                if (HP >= 2)
+                {
+                    spriteBatch.Draw(ATexture.Hp2, Hslot2, Color.White);
+                }
+                if (HP >= 3)
+                {
+                    spriteBatch.Draw(ATexture.Hp3, Hslot3, Color.White);
+                }
+                if (HP >= 4)
+                {
+                    spriteBatch.Draw(ATexture.Hp4, Hslot4, Color.White);
+                }
 
-                spriteBatch.Draw(ATexture.Mana1, Mslot1, Color.White);
-                spriteBatch.Draw(ATexture.Mana2, Mslot2, Color.White);
-                spriteBatch.Draw(ATexture.Mana3, Mslot3, Color.White);
+                if (Mana >= 3)
+                {
+                    spriteBatch.Draw(ATexture.Mana1, Mslot1, Color.White);
+                }
+                if (Mana >= 3)
+                {
+                    spriteBatch.Draw(ATexture.Mana2, Mslot2, Color.White);
+                }
+                if (Mana >= 1)
+                {
+                    spriteBatch.Draw(ATexture.Mana3, Mslot3, Color.White);
+                }
                 spriteBatch.DrawString(spriteFont, "Score:" + playerscore, position, Color.Black);
             }
         }
