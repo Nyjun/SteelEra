@@ -43,6 +43,7 @@ namespace Steel_Era
         Sprite PlateFormeMid;
         Sprite PlateFormehaut;
         Sprite test;
+        Sprite covert;
 
         // MUSIQUE + BRUITAGES Xact method
         /*public AudioEngine audioEngine;
@@ -125,6 +126,8 @@ namespace Steel_Era
             test = new Sprite(ATexture.ground, 300, 180);
             test.Initialize();
 
+            covert = new Sprite(ATexture.covert, 500, 575);
+            covert.Initialize();
             //Sol = new Sprite(ATexture.Sol, false, 0, 
 
             Physics.ListObstacle.Add(PlateFormehaut);
@@ -187,6 +190,8 @@ namespace Steel_Era
 
             keyOState = keyState;
 
+            
+            covert.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -210,6 +215,7 @@ namespace Steel_Era
             Solbas.Draw(spriteBatch, gameTime);
             Main.Draw(spriteBatch);
             test.Draw(spriteBatch, gameTime);
+            covert.Draw(spriteBatch, gameTime);
 
             menu.Draw(spriteBatch, gameTime, screenRectangle);
 
