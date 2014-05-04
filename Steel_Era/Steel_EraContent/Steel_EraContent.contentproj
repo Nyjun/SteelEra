@@ -84,18 +84,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game\Elements\Solbas.png">
-      <Name>Solbas</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Game\Elements\Solhaut.png">
-      <Name>Solhaut</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Game\Elements\sol_test.png">
       <Name>sol_test</Name>
       <Importer>TextureImporter</Importer>
@@ -131,8 +119,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game\Animations\Animation.png">
-      <Name>Animation</Name>
+    <Compile Include="Game\Animations\NotUsedAnimation.png">
+      <Name>NotUsedAnimation</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -225,6 +213,54 @@
   <ItemGroup>
     <Compile Include="Game\Animations\RollerSheet.png">
       <Name>RollerSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Game\HUD\HP.png">
+      <Name>HP</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Game\HUD\MANA.png">
+      <Name>MANA</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Game\HUD\Nav.png">
+      <Name>Nav</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Game\HUD\Portrait.png">
+      <Name>Portrait</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Game\Elements\Solbas.png">
+      <Name>Solbas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Game\Elements\Solhaut.png">
+      <Name>Solhaut</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Menu\Music\run_ground_4.wav">
+      <Name>run_ground_4</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Game\Animations\Animation.png">
+      <Name>Animation</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

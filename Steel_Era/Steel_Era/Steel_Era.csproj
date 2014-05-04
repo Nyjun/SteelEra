@@ -109,7 +109,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camera.cs" />
     <Compile Include="Enemies\Roller.cs" />
+    <Compile Include="HUD.cs" />
     <Compile Include="Menu\Button.cs" />
     <Compile Include="Menu\Cursor.cs" />
     <Compile Include="Enemies\Enemy.cs" />

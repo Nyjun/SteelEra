@@ -42,6 +42,8 @@ namespace Steel_Era
         public static SoundEffectInstance landingInst;
         public static SoundEffect attack1;
         public static SoundEffectInstance attack1Inst;
+        public static SoundEffect run_ground;
+        public static SoundEffectInstance run_groundInst; 
         int menuVolumeChangeSFX;
         float VolumeSFX;
 
@@ -116,6 +118,9 @@ namespace Steel_Era
             attack1 = ATexture.attack1;
             attack1Inst = attack1.CreateInstance();
             attack1Inst.Volume = VolumeSFX;
+            run_ground = ATexture.run_ground;
+            run_groundInst = run_ground.CreateInstance();
+            run_groundInst.Volume = VolumeSFX;
             VolumeSFX = 0.5F;
 
 
@@ -151,10 +156,12 @@ namespace Steel_Era
                 {
                     state = lastState;
                     lastState = state;
+                    HUD.showhud = false;
                 }
                 else
                 {
                     state = 0;
+                    HUD.showhud = true;
                     button1.HandleInput(keyState, mouseState, cursor);
                     button2.HandleInput(keyState, mouseState, cursor);
                     button3.HandleInput(keyState, mouseState, cursor);
@@ -230,6 +237,7 @@ namespace Steel_Era
                 if (button1.Status == true)
                 {
                     state = 0;
+                    HUD.showhud = true;
                     button1.Status = false;
                 }
                 if (button2.Status == true)
@@ -475,6 +483,7 @@ namespace Steel_Era
                 jumpInst.Volume = VolumeSFX;
                 landingInst.Volume = VolumeSFX;
                 attack1Inst.Volume = VolumeSFX;
+                run_groundInst.Volume = VolumeSFX;
             }
         }
 

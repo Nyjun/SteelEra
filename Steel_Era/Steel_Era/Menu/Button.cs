@@ -72,9 +72,9 @@ namespace Steel_Era
         }
         private bool isVisible;
 
-        
 
-        
+
+
 
         /// <summary>
         /// Permet de gérer les entrées du joueur
@@ -111,7 +111,7 @@ namespace Steel_Era
         /// <param name="gameTime">Le GameTime associé à la frame</param>
         public override void Update(GameTime gameTime)
         {
-            
+
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Steel_Era
                 if (isHighLighted == false)
                 {
                     spriteBatch.Draw(Texture, Position, Color.White);
-                    spriteBatch.DrawString(Fonts.Font1, text, new Vector2(Position.X + (Texture.Bounds.Width/5), Position.Y + (Texture.Bounds.Height/10)), Color.White);
+                    spriteBatch.DrawString(Fonts.Font1, text, new Vector2(Position.X + (Texture.Bounds.Width / 5), Position.Y + (Texture.Bounds.Height / 10)), Color.White);
                 }
                 else
                 {

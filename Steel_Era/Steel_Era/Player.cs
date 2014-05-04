@@ -16,15 +16,15 @@ namespace Steel_Era
 
         public enum Direction
         {
-            Up, Down, Left, Right, Non, A, Z
+            Up, Down, Left, Right, Non, A, Z, lA,
         };
         //FIELDS
 
 
         int Timer;
         int AnimationSpeed;
-        Rectangle Hitbox;
-        Rectangle Spritebox;
+        public static Rectangle Hitbox;
+        public static Rectangle Spritebox;
         Direction direction;
         bool IsGrounded;
         SpriteEffects Effect;
@@ -43,8 +43,8 @@ namespace Steel_Era
 
         public Player()
         {
-            this.Hitbox = new Rectangle(0, 0, 90, 180);
-            this.Spritebox = new Rectangle(0, 0, 189, 180);
+            Hitbox = new Rectangle(0, 0, 87, 170);
+            Spritebox = new Rectangle(0, 0, 175, 175);
             this.FrameLine = 1;
             this.FrameCol = 1;
             this.IsGrounded = false;
@@ -76,7 +76,7 @@ namespace Steel_Era
         {
             if (Hitbox.Left <= 0)
             {
-                this.Hitbox.X = 0;
+                Hitbox.X = 0;
             }
         }
         public void RegardDirection()
@@ -103,13 +103,15 @@ namespace Steel_Era
         public void AnimateRunRight()
         {
             this.Timer++;
+
             if (this.Timer == this.AnimationSpeed)
             {
                 this.Timer = 0;
+                
                 this.FrameCol++;
                 if (this.FrameCol > 8)
                 {
-                    this.FrameCol = 1;
+                   this.FrameCol = 1;
                     this.Timer = 0;
                 }
             }
@@ -125,6 +127,7 @@ namespace Steel_Era
                 if (this.FrameCol > 2)
                 {
                     this.FrameCol = 2;
+                    
                     Menu.jumpInst.Play();
                     if (IsGrounded == true)//IsOnGround().Equals(true))
                     {
@@ -162,7 +165,47 @@ namespace Steel_Era
             {
                 this.Timer = 0;
                 this.FrameCol++;
+                if (this.FrameCol == 2)
+                {
+                    Menu.attack1Inst.Play();
+                    
+                }
                 if (this.FrameCol > 4)
+                {
+                    this.FrameCol = 1;
+                }
+            }
+            this.AnimationSpeed = 7;
+        }
+        public void AnimateAttackZ()
+        {
+            this.AnimationSpeed = 7;
+            this.Timer++;
+            if (this.Timer == this.AnimationSpeed)
+            {
+                this.Timer = 0;
+                this.FrameCol++;
+                if (this.FrameCol == 4)
+                {
+                    Menu.attack1Inst.Play();
+                }
+                if (this.FrameCol > 8)
+                {
+                    this.FrameCol = 1;
+                }
+            }
+            this.AnimationSpeed = 7;
+        }
+
+        public void AnimateAttacklA()
+        {
+            this.AnimationSpeed = 10;
+            this.Timer++;
+            if (this.Timer == this.AnimationSpeed)
+            {
+                this.Timer = 0;
+                this.FrameCol++;
+                if (this.FrameCol > 3)
                 {
                     this.FrameCol = 1;
                     Menu.attack1Inst.Play();
@@ -191,12 +234,28 @@ namespace Steel_Era
             {
                 this.direction = Direction.Non;
             }
+            //Attaque Z
+            if (keyboard.IsKeyDown(Keys.Z))
+            {
+
+                this.direction = Direction.Z;
+                this.AnimateAttackZ();
+            }
+
+
+            //Attaque E
+            if (keyboard.IsKeyDown(Keys.E))
+            {
+
+                this.direction = Direction.lA;
+                this.AnimateAttacklA();
+            }
 
             // MOUVEMENT SPEED/DIRECTION
             if (keyboard.IsKeyDown(Keys.Up))
             {
-                if (this.Hitbox.Y > JumpCeiling)
-                    this.Hitbox.Y -= airSpeed;
+                if (Hitbox.Y > JumpCeiling)
+                    Hitbox.Y -= airSpeed;
                 if (IsGrounded == true)
                 {
                     airSpeed = 20;
@@ -210,13 +269,14 @@ namespace Steel_Era
                 this.AnimateJump();
                 if (keyboard.IsKeyDown(Keys.Left))
                 {
-                    this.Hitbox.X = this.Hitbox.X - 10;
+                    Hitbox.X = Hitbox.X - 10;
                     this.IsHorsLimiteLeft();
+                    
                 }
                 if (keyboard.IsKeyDown(Keys.Right))
                 {
                     this.Effect = SpriteEffects.FlipHorizontally;
-                    this.Hitbox.X = this.Hitbox.X + 10;
+                    Hitbox.X = Hitbox.X + 10;
                 }
             }
             else
@@ -239,7 +299,7 @@ namespace Steel_Era
             }
             if (keyboard.IsKeyDown(Keys.Left) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))
             {
-                this.Hitbox.X -= 10;
+                Hitbox.X -= 10;
                 this.direction = Direction.Left;
                 this.AnimateRunLeft();
                 this.regard = 0;
@@ -253,7 +313,7 @@ namespace Steel_Era
             }
             if (keyboard.IsKeyDown(Keys.Right) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))
             {
-                this.Hitbox.X = this.Hitbox.X + 10;
+                Hitbox.X = Hitbox.X + 10;
                 this.direction = Direction.Right;
                 this.AnimateRunRight();
                 this.regard = 1;
@@ -264,18 +324,18 @@ namespace Steel_Era
                     this.Timer = 0;
                 }
             }
-            if (keyboard.IsKeyUp(Keys.Up) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Right) && keyboard.IsKeyUp(Keys.Left) && keyboard.IsKeyUp(Keys.A))
+            if (keyboard.IsKeyUp(Keys.Up) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Right) && keyboard.IsKeyUp(Keys.Left) && keyboard.IsKeyUp(Keys.A) && keyboard.IsKeyUp(Keys.Z) && (keyboard.IsKeyUp(Keys.E)))
             {
-                if (IsGrounded == true)//IsOnGround().Equals(true))
-                {
+                //if (IsGrounded == true)//IsOnGround().Equals(true))
+                //{
                     this.FrameLine = 1;
                     this.FrameCol = 1;
                     this.Timer = 0;
-                }
+                //}
             }
 
 
-            // MOUVEMENT ANIMATIONS
+            // MOUVEMENT ANIMATIONS + SON
 
 
             switch (this.direction)
@@ -288,18 +348,29 @@ namespace Steel_Era
                     break;
                 case Direction.Left: this.FrameLine = 2;
                     this.Effect = SpriteEffects.None;
-
+                    Menu.run_groundInst.Play();
                     break;
                 case Direction.Right: this.FrameLine = 2;
                     this.Effect = SpriteEffects.FlipHorizontally;
+                    Menu.run_groundInst.Play();
                     break;
                 case Direction.A: this.FrameLine = 4;
                     this.RegardDirection();
                     break;
-                case Direction.Non: this.FrameLine = 1;
+                case Direction.Z: this.FrameLine = 7;
                     this.RegardDirection();
                     break;
+                case Direction.lA: this.FrameLine = 6;
+                    this.RegardDirection();
+                    break;
+                case Direction.Non: this.FrameLine = 1;
+                    this.RegardDirection();
+                    Menu.run_groundInst.Stop();
+                    break;
             }
+
+      
+            
             Collisions();
             Spritebox.Location = new Point(Hitbox.Center.X - (Spritebox.Width / 2), Hitbox.Center.Y - (Spritebox.Height / 2));
         }
@@ -307,7 +378,7 @@ namespace Steel_Era
         {
 
             //spriteBatch.Draw(ATexture.cursor8x8, Hitbox, Color.White);
-            spriteBatch.Draw(ATexture.Crow, this.Spritebox, new Rectangle((this.FrameCol - 1) * 189, (this.FrameLine - 1) * 180, 189, 180),
+            spriteBatch.Draw(ATexture.Crow, Spritebox, new Rectangle((this.FrameCol - 1) * 175, (this.FrameLine - 1) * 175, 175, 175),
                 Color.White, 0f, new Vector2(0, 0), this.Effect, 0f);
         }
 
