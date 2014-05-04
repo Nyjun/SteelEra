@@ -103,13 +103,15 @@ namespace Steel_Era
         public void AnimateRunRight()
         {
             this.Timer++;
+
             if (this.Timer == this.AnimationSpeed)
             {
                 this.Timer = 0;
+                
                 this.FrameCol++;
                 if (this.FrameCol > 8)
                 {
-                    this.FrameCol = 1;
+                   this.FrameCol = 1;
                     this.Timer = 0;
                 }
             }
@@ -125,6 +127,7 @@ namespace Steel_Era
                 if (this.FrameCol > 2)
                 {
                     this.FrameCol = 2;
+                    
                     Menu.jumpInst.Play();
                     if (IsGrounded == true)//IsOnGround().Equals(true))
                     {
@@ -212,6 +215,7 @@ namespace Steel_Era
                 {
                     Hitbox.X = Hitbox.X - 10;
                     this.IsHorsLimiteLeft();
+                    
                 }
                 if (keyboard.IsKeyDown(Keys.Right))
                 {
@@ -275,7 +279,7 @@ namespace Steel_Era
             }
 
 
-            // MOUVEMENT ANIMATIONS
+            // MOUVEMENT ANIMATIONS + SON
 
 
             switch (this.direction)
@@ -288,18 +292,23 @@ namespace Steel_Era
                     break;
                 case Direction.Left: this.FrameLine = 2;
                     this.Effect = SpriteEffects.None;
-
+                    Menu.run_groundInst.Play();
                     break;
                 case Direction.Right: this.FrameLine = 2;
                     this.Effect = SpriteEffects.FlipHorizontally;
+                    Menu.run_groundInst.Play();
                     break;
                 case Direction.A: this.FrameLine = 4;
                     this.RegardDirection();
                     break;
                 case Direction.Non: this.FrameLine = 1;
                     this.RegardDirection();
+                    Menu.run_groundInst.Stop();
                     break;
             }
+
+      
+            
             Collisions();
             Spritebox.Location = new Point(Hitbox.Center.X - (Spritebox.Width / 2), Hitbox.Center.Y - (Spritebox.Height / 2));
         }

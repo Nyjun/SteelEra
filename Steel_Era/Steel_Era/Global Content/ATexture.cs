@@ -38,6 +38,7 @@ namespace Steel_Era
         public static SoundEffect jump;
         public static SoundEffect landing;
         public static SoundEffect attack1;
+        public static SoundEffect run_ground;
 
         //HUD
         public static Texture2D Hp1, Hp2, Hp3, Hp4, Mana1, Mana2, Mana3, Portrait, Nav;
@@ -88,6 +89,7 @@ namespace Steel_Era
             jump = cm.Load<SoundEffect>("Menu/Music/jump_up");
             landing = cm.Load<SoundEffect>("Menu/Music/land_ground");
             attack1 = cm.Load<SoundEffect>("Menu/Music/voice_girl_attack_4");
+            run_ground = cm.Load<SoundEffect>("Menu/Music/run_ground_4");
         }
 
         /*public virtual void Initialize(GraphicsDevice gDevice)
