@@ -8,7 +8,7 @@ Content\Game\Background\Mont.xnb
 Content\Game\Background\Ciel jour.xnb
 Content\Game\Elements\PlateFormeMid.xnb
 Content\Game\Elements\PlateFormebas.xnb
-Content\Game\Animations\Animation.xnb
+Content\Game\Animations\NotUsedAnimation.xnb
 Content\Menu\BG_Main_Menua.xnb
 Content\Game\Elements\PlateFormehaut.xnb
 Content\Game\Background\Ciel.xnb
@@ -25,6 +25,7 @@ Content\Game\HUD\Nav.xnb
 Content\Game\HUD\Portrait.xnb
 Content\Game\Elements\Solbas.xnb
 Content\Game\Elements\Solhaut.xnb
+Content\Game\Animations\Animation.xnb
 Content\Menu\Fonts\SpriteFont1.xnb
 Content\Menu\Music\KodoDrum1.xnb
 Content\Menu\Music\jump_up.xnb

@@ -16,7 +16,7 @@ namespace Steel_Era
 
         public enum Direction
         {
-            Up, Down, Left, Right, Non, A, Z
+            Up, Down, Left, Right, Non, A, Z, lA,
         };
         //FIELDS
 
@@ -43,8 +43,8 @@ namespace Steel_Era
 
         public Player()
         {
-            Hitbox = new Rectangle(0, 0, 90, 180);
-            Spritebox = new Rectangle(0, 0, 189, 180);
+            Hitbox = new Rectangle(0, 0, 87, 170);
+            Spritebox = new Rectangle(0, 0, 175, 175);
             this.FrameLine = 1;
             this.FrameCol = 1;
             this.IsGrounded = false;
@@ -165,7 +165,47 @@ namespace Steel_Era
             {
                 this.Timer = 0;
                 this.FrameCol++;
+                if (this.FrameCol == 2)
+                {
+                    Menu.attack1Inst.Play();
+                    
+                }
                 if (this.FrameCol > 4)
+                {
+                    this.FrameCol = 1;
+                }
+            }
+            this.AnimationSpeed = 7;
+        }
+        public void AnimateAttackZ()
+        {
+            this.AnimationSpeed = 7;
+            this.Timer++;
+            if (this.Timer == this.AnimationSpeed)
+            {
+                this.Timer = 0;
+                this.FrameCol++;
+                if (this.FrameCol == 4)
+                {
+                    Menu.attack1Inst.Play();
+                }
+                if (this.FrameCol > 8)
+                {
+                    this.FrameCol = 1;
+                }
+            }
+            this.AnimationSpeed = 7;
+        }
+
+        public void AnimateAttacklA()
+        {
+            this.AnimationSpeed = 10;
+            this.Timer++;
+            if (this.Timer == this.AnimationSpeed)
+            {
+                this.Timer = 0;
+                this.FrameCol++;
+                if (this.FrameCol > 3)
                 {
                     this.FrameCol = 1;
                     Menu.attack1Inst.Play();
@@ -193,6 +233,22 @@ namespace Steel_Era
             else
             {
                 this.direction = Direction.Non;
+            }
+            //Attaque Z
+            if (keyboard.IsKeyDown(Keys.Z))
+            {
+
+                this.direction = Direction.Z;
+                this.AnimateAttackZ();
+            }
+
+
+            //Attaque E
+            if (keyboard.IsKeyDown(Keys.E))
+            {
+
+                this.direction = Direction.lA;
+                this.AnimateAttacklA();
             }
 
             // MOUVEMENT SPEED/DIRECTION
@@ -268,14 +324,14 @@ namespace Steel_Era
                     this.Timer = 0;
                 }
             }
-            if (keyboard.IsKeyUp(Keys.Up) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Right) && keyboard.IsKeyUp(Keys.Left) && keyboard.IsKeyUp(Keys.A))
+            if (keyboard.IsKeyUp(Keys.Up) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Right) && keyboard.IsKeyUp(Keys.Left) && keyboard.IsKeyUp(Keys.A) && keyboard.IsKeyUp(Keys.Z) && (keyboard.IsKeyUp(Keys.E)))
             {
-                if (IsGrounded == true)//IsOnGround().Equals(true))
-                {
+                //if (IsGrounded == true)//IsOnGround().Equals(true))
+                //{
                     this.FrameLine = 1;
                     this.FrameCol = 1;
                     this.Timer = 0;
-                }
+                //}
             }
 
 
@@ -301,6 +357,12 @@ namespace Steel_Era
                 case Direction.A: this.FrameLine = 4;
                     this.RegardDirection();
                     break;
+                case Direction.Z: this.FrameLine = 7;
+                    this.RegardDirection();
+                    break;
+                case Direction.lA: this.FrameLine = 6;
+                    this.RegardDirection();
+                    break;
                 case Direction.Non: this.FrameLine = 1;
                     this.RegardDirection();
                     Menu.run_groundInst.Stop();
@@ -316,7 +378,7 @@ namespace Steel_Era
         {
 
             //spriteBatch.Draw(ATexture.cursor8x8, Hitbox, Color.White);
-            spriteBatch.Draw(ATexture.Crow, Spritebox, new Rectangle((this.FrameCol - 1) * 189, (this.FrameLine - 1) * 180, 189, 180),
+            spriteBatch.Draw(ATexture.Crow, Spritebox, new Rectangle((this.FrameCol - 1) * 175, (this.FrameLine - 1) * 175, 175, 175),
                 Color.White, 0f, new Vector2(0, 0), this.Effect, 0f);
         }
 
