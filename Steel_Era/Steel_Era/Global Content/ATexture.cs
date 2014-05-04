@@ -43,7 +43,7 @@ namespace Steel_Era
 
         //HUD
         public static Texture2D Hp1, Hp2, Hp3, Hp4, Mana1, Mana2, Mana3, Portrait, Nav;
-
+        public static Texture2D bullet, bulletR;
 
         public static void Load(ContentManager cm)
         {
@@ -86,6 +86,9 @@ namespace Steel_Era
 
             //Divers
             covert = cm.Load<Texture2D>("Covert");
+            bullet = cm.Load<Texture2D>("Game/Animations/Bullet");
+            bulletR = cm.Load<Texture2D>("Game/Animations/BulletReverse");
+
             //Musique
             musicMenu = cm.Load<SoundEffect>("Menu/Music/KodoDrum1");
             jump = cm.Load<SoundEffect>("Menu/Music/jump_up");

@@ -26,10 +26,12 @@ Content\Game\HUD\Portrait.xnb
 Content\Game\Elements\Solbas.xnb
 Content\Game\Elements\Solhaut.xnb
 Content\Game\Animations\Animation.xnb
+Content\Menu\Semi_trans.xnb
 Content\Menu\Fonts\SpriteFont1.xnb
 Content\Menu\Music\KodoDrum1.xnb
 Content\Menu\Music\jump_up.xnb
-Content\Menu\Music\land_ground.xnb
 Content\Menu\Music\voice_girl_attack_4.xnb
 Content\Menu\Music\run_ground_4.xnb
-Content\Menu\Semi_trans.xnb
+Content\Menu\Music\land_ground.xnb
+Content\Game\Animations\Bullet.xnb
+Content\Game\Animations\BulletReverse.xnb

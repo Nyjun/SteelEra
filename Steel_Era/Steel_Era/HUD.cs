@@ -13,7 +13,7 @@ namespace Steel_Era
     {
 
         //FIELDS 
-        public int playerscore, HP, Mana;
+        public static int playerscore, HP, Mana;
         private Vector2 position;
         private SpriteFont spriteFont;
         // private SpriteBatch spriteBatch;       
@@ -87,7 +87,7 @@ namespace Steel_Era
                 {
                     spriteBatch.Draw(ATexture.Mana1, Mslot1, Color.White);
                 }
-                if (Mana >= 3)
+                if (Mana >= 2)
                 {
                     spriteBatch.Draw(ATexture.Mana2, Mslot2, Color.White);
                 }

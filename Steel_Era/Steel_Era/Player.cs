@@ -13,6 +13,8 @@ namespace Steel_Era
 {
     class Player : Microsoft.Xna.Framework.Game
     {
+        public float bulletDelay;
+        public List<Bullet> bulletList;
 
         public enum Direction
         {
@@ -58,6 +60,9 @@ namespace Steel_Era
             height = Spritebox.Height;
             crouchHeight = (2 * Spritebox.Height) / 3;
             //jumpTimer = 0;
+
+            bulletList = new List<Bullet>();
+            bulletDelay = 30;
         }
 
         //METHODS
@@ -107,11 +112,11 @@ namespace Steel_Era
             if (this.Timer == this.AnimationSpeed)
             {
                 this.Timer = 0;
-                
+
                 this.FrameCol++;
                 if (this.FrameCol > 8)
                 {
-                   this.FrameCol = 1;
+                    this.FrameCol = 1;
                     this.Timer = 0;
                 }
             }
@@ -127,7 +132,7 @@ namespace Steel_Era
                 if (this.FrameCol > 2)
                 {
                     this.FrameCol = 2;
-                    
+
                     Menu.jumpInst.Play();
                     if (IsGrounded == true)//IsOnGround().Equals(true))
                     {
@@ -168,11 +173,11 @@ namespace Steel_Era
                 if (this.FrameCol == 2)
                 {
                     Menu.attack1Inst.Play();
-                    
                 }
                 if (this.FrameCol > 4)
                 {
                     this.FrameCol = 1;
+                    HUD.Mana = HUD.Mana - 1;
                 }
             }
             this.AnimationSpeed = 7;
@@ -226,14 +231,19 @@ namespace Steel_Era
 
             if (keyboard.IsKeyDown(Keys.A))
             {
-
                 this.direction = Direction.A;
                 this.AnimateAttackA();
+                if (HUD.Mana != 0)
+                {
+                    Shoot();
+                }
+
             }
             else
             {
                 this.direction = Direction.Non;
             }
+            UpdateBullets();
             //Attaque Z
             if (keyboard.IsKeyDown(Keys.Z))
             {
@@ -271,7 +281,7 @@ namespace Steel_Era
                 {
                     Hitbox.X = Hitbox.X - 10;
                     this.IsHorsLimiteLeft();
-                    
+
                 }
                 if (keyboard.IsKeyDown(Keys.Right))
                 {
@@ -328,9 +338,9 @@ namespace Steel_Era
             {
                 //if (IsGrounded == true)//IsOnGround().Equals(true))
                 //{
-                    this.FrameLine = 1;
-                    this.FrameCol = 1;
-                    this.Timer = 0;
+                this.FrameLine = 1;
+                this.FrameCol = 1;
+                this.Timer = 0;
                 //}
             }
 
@@ -345,7 +355,6 @@ namespace Steel_Era
                     break;
                 case Direction.Down: this.FrameLine = 3;
                     this.RegardDirection();
-                    Menu.landingInst.Play();
                     break;
                 case Direction.Left: this.FrameLine = 2;
                     this.Effect = SpriteEffects.None;
@@ -370,8 +379,8 @@ namespace Steel_Era
                     break;
             }
 
-      
-            
+
+
             Collisions();
             Spritebox.Location = new Point(Hitbox.Center.X - (Spritebox.Width / 2), Hitbox.Center.Y - (Spritebox.Height / 2));
         }
@@ -381,10 +390,88 @@ namespace Steel_Era
             //spriteBatch.Draw(ATexture.cursor8x8, Hitbox, Color.White);
             spriteBatch.Draw(ATexture.Crow, Spritebox, new Rectangle((this.FrameCol - 1) * 175, (this.FrameLine - 1) * 175, 175, 175),
                 Color.White, 0f, new Vector2(0, 0), this.Effect, 0f);
+            foreach (Bullet b in bulletList)
+            {
+                b.Draw(spriteBatch);
+            }
         }
 
+        //Shoot Method
+        public void Shoot()
+        {
 
+            //Shoot only if delay reset
+            if (bulletDelay >= 0)
+            {
+                bulletDelay--;
+            }
+            //If bulletDelay = 0, create new bullet, make it visible
+            if (bulletDelay <= 0)
+            {
+                if (regard == 1)
+                {
+                    Bullet newBullet = new Bullet(ATexture.bullet);
+                    newBullet.position = new Vector2(Spritebox.X + 32 / 2, Spritebox.Y);
+                    newBullet.IsVisible = true;
+                    if (bulletList.Count() < 2)
+                    {
+                        bulletList.Add(newBullet);
+                    }
+                }
+                if (regard == 0)
+                {
+                    Bullet newBullet = new Bullet(ATexture.bulletR);
+                    newBullet.position = new Vector2(Spritebox.X + 32 / 2, Spritebox.Y);
+                    newBullet.IsVisible = true;
+                    if (bulletList.Count() < 1)
+                    {
+                        bulletList.Add(newBullet);
+                    }
+                }
 
+            }
+            //Reset bulletDelay
+            if (bulletDelay == 0)
+            {
+                bulletDelay = 30;
+            }
+        }
+        //Update bullets
+        public void UpdateBullets()
+        {
+            foreach (Bullet b in bulletList)
+            {
+                if (regard == 0)
+                {
+                    b.position.X = b.position.X - b.speed;
+
+                    if (b.position.X <= Spritebox.X - 900)
+                    {
+                        b.IsVisible = false;
+                    }
+                }
+                if (regard == 1)
+                {
+                    b.position.X = b.position.X + b.speed;
+
+                    if (b.position.X >= Spritebox.X + 900)
+                    {
+                        b.IsVisible = false;
+                    }
+                }
+            }
+
+            for (int i = 0; i < bulletList.Count; i++)
+            {
+                if (!bulletList[i].IsVisible)
+                {
+                    bulletList.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+
+        //Collision
         protected void Collisions()
         {
             Rectangle h;
