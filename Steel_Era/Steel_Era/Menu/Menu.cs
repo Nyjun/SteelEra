@@ -14,14 +14,7 @@ namespace Steel_Era
 {
     class Menu
     {
-        // MUSIQUE + BRUITAGES Xact method
-        /*public AudioEngine audioEngine;
-        public WaveBank waveBank;
-        public SoundBank soundBank;
-        public Cue currentSong;
 
-        // Music volume.
-        public static float musicVolume;*/
 
 
         KeyboardState keyOState;
@@ -43,7 +36,7 @@ namespace Steel_Era
         public static SoundEffect attack1;
         public static SoundEffectInstance attack1Inst;
         public static SoundEffect run_ground;
-        public static SoundEffectInstance run_groundInst; 
+        public static SoundEffectInstance run_groundInst;
         int menuVolumeChangeSFX;
         float VolumeSFX;
 
@@ -70,6 +63,7 @@ namespace Steel_Era
             set { background = value; }
         }
         private Sprite background;
+        private Sprite backgroundPause;
 
         public bool IsVisible
         {
@@ -85,6 +79,7 @@ namespace Steel_Era
         private Button button4 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, false, "o");
         private Button button5 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, false, "o");
         private Button button6 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, false, "o");
+        private Button button7 = new Button(ATexture.button2Off, ATexture.button2On, 0, 0, false, "o");
         private Button buttonVolume1 = new Button(ATexture.BoutonSound1, ATexture.BoutonSound1, 0, 0, false, " ");
         private Button buttonVolume2 = new Button(ATexture.BoutonSound2, ATexture.BoutonSound2, 0, 0, false, " ");
         private Button buttonVolume3 = new Button(ATexture.BoutonSound1, ATexture.BoutonSound1, 0, 0, false, " ");
@@ -124,18 +119,9 @@ namespace Steel_Era
             VolumeSFX = 0.5F;
 
 
-
-
-            // MUSIQUE + BRUITAGES Xact method
-            /* audioEngine = new AudioEngine("Content/Menu/Music/MusicBG.xgs");
-             waveBank = new WaveBank(audioEngine, "Content/Menu/Music/Wave Bank.xwb");
-             soundBank = new SoundBank(audioEngine, "Content/Menu/Music/Sound Bank.xsb");
-             currentSong = soundBank.GetCue("Menu");
-             currentSong.Play();
-             musicVolume = 1.0f;*/
-
             cursor = new Cursor(ATexture.cursor8x8, game);
             background = new Sprite(ATexture.BG_Main_Menu, 0, 0);
+            backgroundPause = new Sprite(ATexture.BG_Pause, 0, 0);
 
             state = 1;
         }
@@ -154,8 +140,7 @@ namespace Steel_Era
             {
                 if (state == 0)
                 {
-                    state = lastState;
-                    lastState = state;
+                    state = 1;
                     HUD.showhud = false;
                 }
                 else
@@ -171,6 +156,24 @@ namespace Steel_Era
                 }
 
             }
+
+
+            if (keyState.IsKeyDown(Keys.Tab) && keyOState.IsKeyUp(Keys.Tab))
+            {
+                if (state == 0)
+                {
+                    state = 3;
+                    HUD.showhud = false;
+                }
+                else
+                {
+                    state = 0;
+                    HUD.showhud = true;
+
+                }
+
+            }
+
             if (state != 0)
             {
                 button1.HandleInput(keyState, mouseState, cursor);
@@ -179,6 +182,7 @@ namespace Steel_Era
                 button4.HandleInput(keyState, mouseState, cursor);
                 button5.HandleInput(keyState, mouseState, cursor);
                 button6.HandleInput(keyState, mouseState, cursor);
+                button7.HandleInput(keyState, mouseState, cursor);
                 buttonVolume1.HandleInput(keyState, mouseState, cursor);
                 buttonVolume2.HandleInput(keyState, mouseState, cursor);
                 buttonVolume3.HandleInput(keyState, mouseState, cursor);
@@ -212,6 +216,7 @@ namespace Steel_Era
                 button4.IsVisible = false;
                 button5.IsVisible = false;
                 button6.IsVisible = false;
+                button7.IsVisible = false;
                 buttonVolume1.IsVisible = false;
                 buttonVolume2.IsVisible = false;
                 buttonVolume3.IsVisible = false;
@@ -252,7 +257,7 @@ namespace Steel_Era
                 }
             }
 
-            if (state == 2)
+            if (state == 2)  // Menu Options
             {
                 button1.Text = "Sound  :  " + menuSoundState;
                 button1.IsVisible = true;
@@ -266,6 +271,7 @@ namespace Steel_Era
                 button5.IsVisible = true;
                 button6.Text = "Restore Defaults ";
                 button6.IsVisible = true;
+                button7.IsVisible = false;
                 buttonVolume1.IsVisible = true;
                 buttonVolume2.IsVisible = true;
                 buttonVolume3.IsVisible = true;
@@ -464,8 +470,236 @@ namespace Steel_Era
                     attack1Inst.Volume = VolumeSFX;
 
                 }
-            }
 
+            }
+            if (state == 3)  // Menu Pause
+            {
+                button1.Text = "Sound  :  " + menuSoundState;
+                button1.IsVisible = true;
+                button2.Text = "Display  :  " + menuDisplayState;
+                button2.IsVisible = true;
+                button3.Text = "Return";
+                button3.IsVisible = true;
+                button4.Text = "BGM  Volume  :        " + menuVolumeChangeBGM;
+                button4.IsVisible = true;
+                button5.Text = "SFX  Volume  :        " + menuVolumeChangeSFX;
+                button5.IsVisible = true;
+                button6.Text = "Restore Defaults ";
+                button6.IsVisible = true;
+                button7.IsVisible = true;
+                button7.Text = "Quit";
+                buttonVolume1.IsVisible = true;
+                buttonVolume2.IsVisible = true;
+                buttonVolume3.IsVisible = true;
+                buttonVolume4.IsVisible = true;
+
+                //B1
+                if (button1.IsHighLighted)
+                    button1.Position = new Vector2(Game1.screenWidth - button1.Width, (Game1.screenHeight / 2));
+                else
+                    button1.Position = new Vector2(Game1.screenWidth - button1.Width + 20, (Game1.screenHeight / 2));
+                //B2
+                if (button2.IsHighLighted)
+                    button2.Position = new Vector2(Game1.screenWidth - button1.Width + 15, (Game1.screenHeight / 2) + 3 * button1.Height + 15);
+                else
+                    button2.Position = new Vector2(Game1.screenWidth - button1.Width + 35, (Game1.screenHeight / 2) + 3 * button1.Height + 15);
+                //B3
+                if (button3.IsHighLighted)
+                    button3.Position = new Vector2(Game1.screenWidth - button1.Width + 25, (Game1.screenHeight / 2) + 5 * button1.Height + 25);
+                else
+                    button3.Position = new Vector2(Game1.screenWidth - button1.Width + 45, (Game1.screenHeight / 2) + 5 * button1.Height + 25);
+                //B4
+                if (button4.IsHighLighted)
+                {
+                    button4.Position = new Vector2(Game1.screenWidth - button1.Width + 5, (Game1.screenHeight / 2) + button1.Height + 5);
+                    buttonVolume1.Position = new Vector2(Game1.screenWidth - button1.Width + 170, (Game1.screenHeight / 2) + button1.Height + 9);
+                    buttonVolume2.Position = new Vector2(Game1.screenWidth - button1.Width + 220, (Game1.screenHeight / 2) + button1.Height + 9);
+                }
+                else
+                {
+                    button4.Position = new Vector2(Game1.screenWidth - button1.Width + 25, (Game1.screenHeight / 2) + button1.Height + 5);
+                    buttonVolume1.Position = new Vector2(Game1.screenWidth - button1.Width + 190, (Game1.screenHeight / 2) + button1.Height + 9);
+                    buttonVolume2.Position = new Vector2(Game1.screenWidth - button1.Width + 240, (Game1.screenHeight / 2) + button1.Height + 9);
+                }
+                //B5
+                if (button5.IsHighLighted)
+                {
+                    button5.Position = new Vector2(Game1.screenWidth - button1.Width + 10, (Game1.screenHeight / 2) + 2 * button1.Height + 10);
+                    buttonVolume3.Position = new Vector2(Game1.screenWidth - button1.Width + 170, (Game1.screenHeight / 2) + 2 * button1.Height + 14);
+                    buttonVolume4.Position = new Vector2(Game1.screenWidth - button1.Width + 220, (Game1.screenHeight / 2) + 2 * button1.Height + 14);
+                }
+                else
+                {
+                    button5.Position = new Vector2(Game1.screenWidth - button1.Width + 30, (Game1.screenHeight / 2) + 2 * button1.Height + 10);
+                    buttonVolume3.Position = new Vector2(Game1.screenWidth - button1.Width + 190, (Game1.screenHeight / 2) + 2 * button1.Height + 14);
+                    buttonVolume4.Position = new Vector2(Game1.screenWidth - button1.Width + 240, (Game1.screenHeight / 2) + 2 * button1.Height + 14);
+                }
+                //B6
+                if (button6.IsHighLighted)
+                    button6.Position = new Vector2(Game1.screenWidth - button1.Width + 20, (Game1.screenHeight / 2) + 4 * button1.Height + 20);
+                else
+                    button6.Position = new Vector2(Game1.screenWidth - button1.Width + 40, (Game1.screenHeight / 2) + 4 * button1.Height + 20);
+                //B7
+                if (button7.IsHighLighted)
+                    button7.Position = new Vector2(Game1.screenWidth - button1.Width + 30, (Game1.screenHeight / 2) + 6 * button1.Height + 30);
+                else
+                    button7.Position = new Vector2(Game1.screenWidth - button1.Width + 50, (Game1.screenHeight / 2) + 6 * button1.Height + 30);
+
+
+
+
+                if (button1.Status == true)
+                {
+                    button1.Status = false;
+                    if (menuSoundState == "on")
+                    {
+                        menuSoundState = "off";
+                        musicMenuInst.Stop();
+                        button1.oldStatus = button1.Status;
+                    }
+                    else
+                    {
+                        menuSoundState = "on";
+                        musicMenuInst.Play();
+                        musicMenuInst.Volume = VolumeBGM;
+                        button1.oldStatus = button1.Status;
+                    }
+
+                }
+                if (button2.Status == true)
+                {
+                    button2.Status = false;
+                    if (menuDisplayState == "Windowed")
+                    {
+                        menuDisplayState = "Full Screen";
+                        game.graphics.ToggleFullScreen();
+                        button2.oldStatus = button2.Status;
+                    }
+                    else
+                    {
+                        menuDisplayState = "Windowed";
+                        game.graphics.ToggleFullScreen();
+                        button2.oldStatus = button2.Status;
+                    }
+
+                }
+                if (button3.Status == true)
+                {
+                    button3.Status = false;
+                    state = 0;
+
+                }
+
+                if (buttonVolume1.Status == true)
+                {
+
+                    menuVolumeChangeBGM -= 10;
+                    if (menuVolumeChangeBGM < 0 || menuVolumeChangeBGM == 0)
+                    {
+                        menuVolumeChangeBGM = 0;
+                    }
+                }
+                if (buttonVolume2.Status == true)
+                {
+                    menuVolumeChangeBGM += 10;
+                    if (menuVolumeChangeBGM > 100)
+                    {
+                        menuVolumeChangeBGM = 100;
+                    }
+
+                }
+                switch (menuVolumeChangeBGM)
+                {
+                    case 0: VolumeBGM = 0F;
+                        break;
+                    case 10: VolumeBGM = 0.1F;
+                        break;
+                    case 20: VolumeBGM = 0.2F;
+                        break;
+                    case 30: VolumeBGM = 0.3F;
+                        break;
+                    case 40: VolumeBGM = 0.4F;
+                        break;
+                    case 50: VolumeBGM = 0.5F;
+                        break;
+                    case 60: VolumeBGM = 0.6F;
+                        break;
+                    case 70: VolumeBGM = 0.7F;
+                        break;
+                    case 80: VolumeBGM = 0.8F;
+                        break;
+                    case 90: VolumeBGM = 0.9F;
+                        break;
+                    case 100: VolumeBGM = 1F;
+                        break;
+                }
+
+                if (buttonVolume3.Status == true)
+                {
+                    menuVolumeChangeSFX -= 10;
+                    if (menuVolumeChangeSFX < 0 || menuVolumeChangeSFX == 0)
+                    {
+                        menuVolumeChangeSFX = 0;
+                    }
+                }
+                if (buttonVolume4.Status == true)
+                {
+                    menuVolumeChangeSFX += 10;
+                    if (menuVolumeChangeSFX > 100)
+                    {
+                        menuVolumeChangeSFX = 100;
+                    }
+                }
+                switch (menuVolumeChangeSFX)
+                {
+                    case 0: VolumeSFX = 0F;
+                        break;
+                    case 10: VolumeSFX = 0.1F;
+                        break;
+                    case 20: VolumeSFX = 0.2F;
+                        break;
+                    case 30: VolumeSFX = 0.3F;
+                        break;
+                    case 40: VolumeSFX = 0.4F;
+                        break;
+                    case 50: VolumeSFX = 0.5F;
+                        break;
+                    case 60: VolumeSFX = 0.6F;
+                        break;
+                    case 70: VolumeSFX = 0.7F;
+                        break;
+                    case 80: VolumeSFX = 0.8F;
+                        break;
+                    case 90: VolumeSFX = 0.9F;
+                        break;
+                    case 100: VolumeSFX = 1F;
+                        break;
+
+                }
+                if (button6.Status == true)
+                {
+                    button6.Status = false;
+                    menuSoundState = "on";
+                    musicMenuInst.Play();
+                    menuVolumeChangeBGM = 50;
+                    VolumeBGM = 0.5f;
+                    musicMenuInst.Volume = VolumeBGM;
+                    menuVolumeChangeSFX = 50;
+                    VolumeSFX = 0.5f;
+                    jumpInst.Volume = VolumeSFX;
+                    landingInst.Volume = VolumeSFX;
+                    attack1Inst.Volume = VolumeSFX;
+
+                }
+
+                if (button7.Status == true)
+                {
+                    game.Exit();
+                    button7.Status = false;
+                }
+
+            }
+            // ######################
             if (state != 0)
             {
                 lastState = state;
@@ -487,11 +721,29 @@ namespace Steel_Era
             }
         }
 
+
         public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle screenRectangle)
         {
-            if (state != 0)
+            if (state == 3)
+            {
+                spriteBatch.Draw(backgroundPause.Texture, screenRectangle, Color.White);
+                button1.Draw(spriteBatch, gameTime);
+                button2.Draw(spriteBatch, gameTime);
+                button3.Draw(spriteBatch, gameTime);
+                button4.Draw(spriteBatch, gameTime);
+                button5.Draw(spriteBatch, gameTime);
+                button6.Draw(spriteBatch, gameTime);
+                button7.Draw(spriteBatch, gameTime);
+                buttonVolume1.Draw(spriteBatch, gameTime);
+                buttonVolume2.Draw(spriteBatch, gameTime);
+                buttonVolume3.Draw(spriteBatch, gameTime);
+                buttonVolume4.Draw(spriteBatch, gameTime);
+                cursor.Draw(spriteBatch, gameTime);
+            }
+            if (state == 1 || state == 2)
             {
                 spriteBatch.Draw(background.Texture, screenRectangle, Color.White);
+
                 button1.Draw(spriteBatch, gameTime);
                 button2.Draw(spriteBatch, gameTime);
                 button3.Draw(spriteBatch, gameTime);
@@ -505,9 +757,11 @@ namespace Steel_Era
 
                 cursor.Draw(spriteBatch, gameTime);
             }
+
         }
 
         //public void Quit (GameTime
 
     }
 }
+

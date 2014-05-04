@@ -33,6 +33,7 @@ namespace Steel_Era
         public static Texture2D PlateFormebas;
         public static Texture2D PlateFormeMid;
         public static Texture2D PlateFormehaut;
+        public static Texture2D BG_Pause;
 
         public static SoundEffect musicMenu;
         public static SoundEffect jump;
@@ -56,6 +57,7 @@ namespace Steel_Era
             BG_Main_Menu = cm.Load<Texture2D>("Menu/BG_Main_Menu");
             cursor8x8 = cm.Load<Texture2D>("Menu/curseur_8x8");
             forestTemple = cm.Load<Texture2D>("Menu/forest_temple");
+            BG_Pause = cm.Load<Texture2D>("Menu/Semi_trans");
 
             //Game
             Crow = cm.Load<Texture2D>("Game/Animations/Animation");

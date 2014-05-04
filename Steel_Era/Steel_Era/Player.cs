@@ -345,6 +345,7 @@ namespace Steel_Era
                     break;
                 case Direction.Down: this.FrameLine = 3;
                     this.RegardDirection();
+                    Menu.landingInst.Play();
                     break;
                 case Direction.Left: this.FrameLine = 2;
                     this.Effect = SpriteEffects.None;
