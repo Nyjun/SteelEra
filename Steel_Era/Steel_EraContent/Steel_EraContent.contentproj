@@ -247,13 +247,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menu\Semi_trans.png">
-      <Name>Semi_trans</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Menu\Music\land_ground.wav">
       <Name>land_ground</Name>
       <Importer>WavImporter</Importer>
@@ -268,6 +261,13 @@
     </Compile>
     <Compile Include="Game\Animations\BulletReverse.png">
       <Name>BulletReverse</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Menu\Semi_trans.PNG">
+      <Name>Semi_trans</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

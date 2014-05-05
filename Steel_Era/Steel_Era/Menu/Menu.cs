@@ -478,7 +478,7 @@ namespace Steel_Era
                 button1.IsVisible = true;
                 button2.Text = "Display  :  " + menuDisplayState;
                 button2.IsVisible = true;
-                button3.Text = "Return";
+                button3.Text = "Resume";
                 button3.IsVisible = true;
                 button4.Text = "BGM  Volume  :        " + menuVolumeChangeBGM;
                 button4.IsVisible = true;
@@ -505,9 +505,9 @@ namespace Steel_Era
                     button2.Position = new Vector2(Game1.screenWidth - button1.Width + 35, (Game1.screenHeight / 2) + 3 * button1.Height + 15);
                 //B3
                 if (button3.IsHighLighted)
-                    button3.Position = new Vector2(Game1.screenWidth - button1.Width + 25, (Game1.screenHeight / 2) + 5 * button1.Height + 25);
+                    button3.Position = new Vector2(Game1.screenWidth - button1.Width - 5, (Game1.screenHeight / 2) -  button1.Height -5 );
                 else
-                    button3.Position = new Vector2(Game1.screenWidth - button1.Width + 45, (Game1.screenHeight / 2) + 5 * button1.Height + 25);
+                    button3.Position = new Vector2(Game1.screenWidth - button1.Width + 15, (Game1.screenHeight / 2) - button1.Height -5);
                 //B4
                 if (button4.IsHighLighted)
                 {
@@ -541,9 +541,9 @@ namespace Steel_Era
                     button6.Position = new Vector2(Game1.screenWidth - button1.Width + 40, (Game1.screenHeight / 2) + 4 * button1.Height + 20);
                 //B7
                 if (button7.IsHighLighted)
-                    button7.Position = new Vector2(Game1.screenWidth - button1.Width + 30, (Game1.screenHeight / 2) + 6 * button1.Height + 30);
+                    button7.Position = new Vector2(Game1.screenWidth - button1.Width + 30, (Game1.screenHeight / 2) + 5 * button1.Height + 25);
                 else
-                    button7.Position = new Vector2(Game1.screenWidth - button1.Width + 50, (Game1.screenHeight / 2) + 6 * button1.Height + 30);
+                    button7.Position = new Vector2(Game1.screenWidth - button1.Width + 50, (Game1.screenHeight / 2) + 5 * button1.Height + 25);
 
 
 
@@ -555,7 +555,7 @@ namespace Steel_Era
                     {
                         menuSoundState = "off";
                         musicMenuInst.Stop();
-                        button1.oldStatus = button1.Status;
+                        button3.oldStatus = button1.Status;
                     }
                     else
                     {
