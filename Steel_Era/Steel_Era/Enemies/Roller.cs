@@ -124,7 +124,7 @@ namespace Steel_Era.Enemies
         }
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            spriteBatch.Draw(ATexture.Portrait, damagebox, Color.White);
+            //spriteBatch.Draw(ATexture.Portrait, damagebox, Color.White);
             spriteBatch.Draw(ATexture.RollerSprite, Hitbox, new Rectangle((this.FrameCol - 1) * 110, 0, 110, 110),
                 Color.White, 0f, new Vector2(0, 0), this.Effect, 0f);
         }
