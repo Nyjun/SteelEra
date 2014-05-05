@@ -65,10 +65,17 @@ namespace Steel_Era
             {
                 Mana = 0;
             }
+            if (Mana > 3)
+            {
+                Mana = 3;
+            }
             if (HP < 0)
             {
                 HP = 0;
-                
+            }
+            if (HP > 4)
+            {
+                HP = 4;
             }
             if (showhud)
             {

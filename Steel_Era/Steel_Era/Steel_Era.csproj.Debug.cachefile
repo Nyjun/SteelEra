@@ -42,3 +42,6 @@ Content\Menu\Music\gameMusic.xnb
 Content\Menu\Music\mouse_click.xnb
 Content\Menu\Music\mouse_enter.xnb
 Content\Menu\Music\voice_dead.xnb
+Content\Game\Elements\HPB.xnb
+Content\Game\Elements\ManaB.xnb
+Content\Game\Elements\Point.xnb

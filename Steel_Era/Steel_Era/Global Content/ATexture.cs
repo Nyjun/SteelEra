@@ -37,7 +37,7 @@ namespace Steel_Era
         public static Texture2D BG_Pause;
         public static Texture2D BG_GO;
         public static Texture2D Solbas2, Solbas3, Solhaut2, Solhaut3, PlatMid, PlatMid2, Plat2, Ciel2, Ciel3, Mont2, Mont3, DoublePlat, DoublePlat2, DoublePlat3, Plat4,
-            HolePlat, HolePlat2, Edge, Plat3, End;
+            HolePlat, HolePlat2, Edge, Plat3, End, HPB, HPB2, ManaB, ManaB2, ManaB3, ManaB4, Pts, Pts2, Pts3, Pts4, Pts5;
 
         public static SoundEffect musicMenu;
         public static SoundEffect jump;
@@ -98,6 +98,17 @@ namespace Steel_Era
             DoublePlat2 = cm.Load<Texture2D>("Game/Elements/DoublePlat");
             DoublePlat3 = cm.Load<Texture2D>("Game/Elements/DoublePlat");
             End = cm.Load<Texture2D>("Game/Elements/End");
+            HPB = cm.Load<Texture2D>("Game/Elements/HPB");
+            HPB2 = cm.Load<Texture2D>("Game/Elements/HPB");
+            ManaB = cm.Load<Texture2D>("Game/Elements/ManaB");
+            ManaB2 = cm.Load<Texture2D>("Game/Elements/ManaB");
+            ManaB3 = cm.Load<Texture2D>("Game/Elements/ManaB");
+            ManaB4 = cm.Load<Texture2D>("Game/Elements/ManaB");
+            Pts = cm.Load<Texture2D>("Game/Elements/Point");
+            Pts2 = cm.Load<Texture2D>("Game/Elements/Point");
+            Pts3 = cm.Load<Texture2D>("Game/Elements/Point");
+            Pts4 = cm.Load<Texture2D>("Game/Elements/Point");
+            Pts5 = cm.Load<Texture2D>("Game/Elements/Point");
 
             //HUD
 

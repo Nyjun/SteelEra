@@ -35,21 +35,18 @@ namespace Steel_Era
         private Menu menu;
 
 
-        Sprite Solbas;
-        Sprite Solhaut;
-        Sprite BG_Ciel;
-        Sprite BG_Mont;
+        Sprite Solbas;       
         Sprite PlateFormebas;
-        Sprite PlateFormeMid;
         Sprite PlateFormehaut;
         Sprite Plat, HolePlat, HolePlat2, DoublePlat, DoublePlat2, DoublePlat3, Solbas2, Solbas3, Plat2, Plat3, Plat4;
 
         Sprite covert;
 
         //Vector2 BG_Mont_Pos;
-
+        Bonus bonus;
         Camera Camerascroll;
         HUD hud;
+        
 
 
         // MUSIQUE + BRUITAGES Xact method
@@ -159,9 +156,8 @@ namespace Steel_Era
 
             hud = new HUD();
             Camerascroll = new Camera(GraphicsDevice.Viewport);
-
-
-             
+            bonus = new Bonus();
+     
 
             Physics.ListObstacle.Add(PlateFormehaut);
             Physics.ListObstacle.Add(PlateFormebas);
@@ -282,6 +278,7 @@ namespace Steel_Era
             Plat3.Draw(spriteBatch, gameTime);
             Plat4.Draw(spriteBatch, gameTime);
             spriteBatch.Draw(ATexture.End, new Vector2(6850, screenHeight - 150), Color.White);
+            bonus.Draw(spriteBatch);
 
             /*BG_Mont.Draw(spriteBatch, gameTime);
             PlateFormehaut.Draw(spriteBatch, gameTime);

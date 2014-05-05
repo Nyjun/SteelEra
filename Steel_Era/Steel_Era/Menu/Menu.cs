@@ -777,6 +777,8 @@ namespace Steel_Era
                     HUD.showhud = true;
                     HUD.HP = 4;
                     button1.Status = false;
+                    Player.Hitbox = new Rectangle(0, 0, 87, 170);
+                    Player.Spritebox = new Rectangle(0, 0, 175, 175);
                 }
                
                 if (button2.Status == true)
