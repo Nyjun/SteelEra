@@ -19,7 +19,7 @@ namespace Steel_Era
     public class Game1 : Microsoft.Xna.Framework.Game
     {
 
-
+        Enemies.Roller roller;
 
         public GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -100,6 +100,8 @@ namespace Steel_Era
 
             Physics.ListObstacle = new List<Sprite>();
             Physics.ListSprite = new List<Sprite>();
+            Physics.ListEnemies = new List<Enemy>();
+            Physics.ListPlayers = new List<Player>();
 
             // TODO: use this.Content to load your game content here
             ATexture.Load(Content);
@@ -150,6 +152,7 @@ namespace Steel_Era
             DoublePlat3 = new Sprite(ATexture.DoublePlat3, 2100, screenHeight - 180);
             DoublePlat3.Initialize();
 
+            roller = new Enemies.Roller(2200, 100);
 
             covert = new Sprite(ATexture.covert, 500, 575);
             covert.Initialize();
@@ -158,7 +161,7 @@ namespace Steel_Era
             Camerascroll = new Camera(GraphicsDevice.Viewport);
 
 
-            //Sol = new Sprite(ATexture.Sol, false, 0, 
+             
 
             Physics.ListObstacle.Add(PlateFormehaut);
             Physics.ListObstacle.Add(PlateFormebas);
@@ -174,6 +177,8 @@ namespace Steel_Era
             Physics.ListObstacle.Add(DoublePlat);
             Physics.ListObstacle.Add(DoublePlat2);
             Physics.ListObstacle.Add(DoublePlat3);
+
+            Physics.ListEnemies.Add(roller);
 
             base.Initialize();
 
@@ -220,11 +225,11 @@ namespace Steel_Era
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-
             // TODO: Add your update logic here
             keyState = Keyboard.GetState();
             mouseState = Mouse.GetState();
             menu.Update(gameTime, this, keyState, mouseState);
+            roller.Update(gameTime);
 
             keyOState = keyState;
             Camerascroll.Update(gameTime, Player.Hitbox);
@@ -266,7 +271,12 @@ namespace Steel_Era
             Solbas.Draw(spriteBatch, gameTime);
             Solbas2.Draw(spriteBatch, gameTime);
             Solbas3.Draw(spriteBatch, gameTime);
+
+
+            roller.Draw(spriteBatch, gameTime);
             Main.Draw(spriteBatch);
+            
+            
             Plat.Draw(spriteBatch, gameTime);
             Plat2.Draw(spriteBatch, gameTime);
             Plat3.Draw(spriteBatch, gameTime);

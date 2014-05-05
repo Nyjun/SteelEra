@@ -85,7 +85,7 @@ namespace Steel_Era
         /// <summary>
         /// HitBox du sprite.
         /// </summary>
-        public Rectangle hitBox;/*
+        public Rectangle Hitbox;/*
         {
             get { return hitBox; }
             set { hitBox = value; }
@@ -152,8 +152,8 @@ namespace Steel_Era
             height = texture.Bounds.Height;
             width = texture.Bounds.Width;
             pos = new Vector2(x, y);
-            hitBox = new Rectangle((int)pos.X, (int)pos.Y, (int)width, (int)height);
-            center = new Vector2(hitBox.Center.X, hitBox.Center.Y);//new Vector2(pos.X + (width / 2), pos.Y + (height / 2));
+            Hitbox = new Rectangle((int)pos.X, (int)pos.Y, (int)width, (int)height);
+            center = new Vector2(Hitbox.Center.X, Hitbox.Center.Y);//new Vector2(pos.X + (width / 2), pos.Y + (height / 2));
         }
 
         /// <summary>
@@ -204,57 +204,6 @@ namespace Steel_Era
 
         }
 
-        protected void Collisions()
-        {
-            Rectangle h;
-            for (int i = 0; i < Physics.ListObstacle.Count; i++)
-            {
-                if (hitBox.Intersects(Physics.ListObstacle.ElementAt(i).hitBox))
-                {
-                    h = Physics.ListObstacle.ElementAt(i).hitBox;
-                    if (hitBox.Bottom > h.Bottom && hitBox.Top < h.Top)
-                    {
-                        if (hitBox.Right > h.Left && hitBox.Left < h.Left)
-                        {
-                            pos = new Vector2(pos.X - (hitBox.Right - h.Left), pos.Y);
-                        }
-                        else
-                        {
-                            if (hitBox.Left < h.Right && hitBox.Right > h.Right)
-                            {
-                                pos = new Vector2(pos.X + (h.Right - hitBox.Left), pos.Y);
-                            }
-                            else
-                            {
-                                if (hitBox.Left > h.Left && hitBox.Right < h.Right)
-                                {
-                                    pos = new Vector2(pos.X, h.Top - hitBox.Height);
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (hitBox.Right > h.Left && hitBox.Left < h.Left && (hitBox.Bottom < h.Top || hitBox.Top > h.Bottom))
-                        {
-                            pos = new Vector2(pos.X - (hitBox.Right - h.Left), pos.Y);
-                        }
-                        if (hitBox.Left < h.Right && hitBox.Right > h.Right && (hitBox.Bottom < h.Top || hitBox.Top > h.Bottom))
-                        {
-                            pos = new Vector2(pos.X + (h.Right - hitBox.Left), pos.Y);
-                        }
-                        if (hitBox.Bottom > h.Top && hitBox.Top < h.Top)
-                        {
-                            pos = new Vector2(pos.X, pos.Y - (hitBox.Bottom - h.Top));
-                        }
-                        if (hitBox.Top < h.Bottom && hitBox.Bottom > h.Bottom)
-                        {
-                            pos = new Vector2(pos.X, pos.Y + (h.Bottom - hitBox.Top));
-                        }
-                    }
-
-                }
-            }
-        }
+        
     }
 }

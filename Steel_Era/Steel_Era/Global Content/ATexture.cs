@@ -14,6 +14,7 @@ namespace Steel_Era
 {
     static class ATexture
     {
+        public static Texture2D RollerSprite;
         public static Texture2D BoutonSound1;
         public static Texture2D BoutonSound2;
         public static Texture2D buttonOff;
@@ -67,6 +68,7 @@ namespace Steel_Era
 
             //Game
             Crow = cm.Load<Texture2D>("Game/Animations/Animation");
+            RollerSprite = cm.Load<Texture2D>("Game/Animations/RollerSheet");
 
             BG_Mont = cm.Load<Texture2D>("Game/Background/Mont");
             Mont2 = cm.Load<Texture2D>("Game/Background/Mont");

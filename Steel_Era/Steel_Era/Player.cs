@@ -13,6 +13,7 @@ namespace Steel_Era
 {
     class Player : Microsoft.Xna.Framework.Game
     {
+        KeyboardState keyOState;
         public float bulletDelay;
         public List<Bullet> bulletList;
 
@@ -35,7 +36,7 @@ namespace Steel_Era
         int FrameCol;
         int regard;
         int gravity;
-        int JumpCeiling;
+        //int JumpCeiling;
         int airSpeed;//, jumpTimer;
         int crouchHeight;
         int height;
@@ -56,10 +57,10 @@ namespace Steel_Era
             this.Timer = 0; // Intervalle entre 2 boucles d'animations
             this.AnimationSpeed = 7; // Vitesse d'animation
             this.direction = Direction.Non; //Position si aucun input
-            this.JumpCeiling = Hitbox.Y;
+            //this.JumpCeiling = Hitbox.Y;
             airSpeed = 20;
             height = Spritebox.Height;
-            crouchHeight = (2 * Spritebox.Height) / 3;
+            crouchHeight =Spritebox.Height / 2;
             //jumpTimer = 0;
 
             bulletList = new List<Bullet>();
@@ -67,17 +68,7 @@ namespace Steel_Era
         }
 
         //METHODS
-        /*public bool IsOnGround()
-        {
-            if (Hitbox.Bottom <= Game1.screenHeight - 25)
-            {
-                return IsGrounded == true;
-            }
-            else
-            {
-                return IsGrounded == false;
-            }
-        }*/
+        
         public void IsHorsLimiteLeft()
         {
             if (Hitbox.Left <= 0)
@@ -274,7 +265,7 @@ namespace Steel_Era
             // MOUVEMENT SPEED/DIRECTION
             if (keyboard.IsKeyDown(Keys.Up))
             {
-                if (Hitbox.Y > JumpCeiling)
+                //if (Hitbox.Y > JumpCeiling)
                     Hitbox.Y -= airSpeed;
                 if (IsGrounded == true)
                 {
@@ -313,9 +304,9 @@ namespace Steel_Era
                 this.direction = Direction.Down;
                 this.AnimateCrouch();
             }
-            if (keyboard.IsKeyUp(Keys.Down))
+            if (keyboard.IsKeyUp(Keys.Down) && keyOState.IsKeyDown(Keys.Down))
             {
-                Hitbox = new Rectangle(Hitbox.Location.X, Hitbox.Location.Y, Hitbox.Width, height);
+                Hitbox = new Rectangle(Hitbox.Location.X, Hitbox.Location.Y - (height - crouchHeight), Hitbox.Width, height);
             }
             if (keyboard.IsKeyDown(Keys.Left) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))
             {
@@ -392,12 +383,21 @@ namespace Steel_Era
 
 
             Collisions();
-            Spritebox.Location = new Point(Hitbox.Center.X - (Spritebox.Width / 2), Hitbox.Center.Y - (Spritebox.Height / 2));
+            DamageToHero();
+            if (Hitbox.Height == crouchHeight)
+            {
+                Spritebox.Location = new Point(Hitbox.Center.X - (Spritebox.Width / 2), Hitbox.Center.Y - (Spritebox.Height / 2) - (int)(crouchHeight / 2));
+            }
+            else
+            {
+                Spritebox.Location = new Point(Hitbox.Center.X - (Spritebox.Width / 2), Hitbox.Center.Y - (Spritebox.Height / 2));
+            }
+            keyOState = keyboard;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
 
-            //spriteBatch.Draw(ATexture.cursor8x8, Hitbox, Color.White);
+            //spriteBatch.Draw(ATexture.Portrait, Hitbox, Color.White);
             spriteBatch.Draw(ATexture.Crow, Spritebox, new Rectangle((this.FrameCol - 1) * 175, (this.FrameLine - 1) * 175, 175, 175),
                 Color.White, 0f, new Vector2(0, 0), this.Effect, 0f);
             foreach (Bullet b in bulletList)
@@ -488,9 +488,9 @@ namespace Steel_Era
             Vector2 pos = new Vector2(Hitbox.Location.X, Hitbox.Location.Y);
             for (int i = 0; i < Physics.ListObstacle.Count; i++)
             {
-                if (Hitbox.Intersects(Physics.ListObstacle.ElementAt(i).hitBox))
+                if (Hitbox.Intersects(Physics.ListObstacle.ElementAt(i).Hitbox))
                 {
-                    h = Physics.ListObstacle.ElementAt(i).hitBox;
+                    h = Physics.ListObstacle.ElementAt(i).Hitbox;
                     if (Hitbox.Bottom > h.Bottom && Hitbox.Top < h.Top)
                     {
                         if (Hitbox.Right > h.Left && Hitbox.Left < h.Left)
@@ -544,6 +544,20 @@ namespace Steel_Era
                 }
             }
             Hitbox.Location = new Point((int)pos.X, (int)pos.Y);
+        }
+
+        public void DamageToHero()
+        {
+            for (int i = 0; i < Physics.ListEnemies.Count; i++)
+            {
+                if (Hitbox.Intersects(Physics.ListEnemies.ElementAt(i).damagebox))
+                {
+                    if (HUD.HP > Physics.ListEnemies.ElementAt(i).damages)
+                        HUD.HP -= Physics.ListEnemies.ElementAt(i).damages;
+                    else
+                        HUD.HP = 0;
+                }
+            }
         }
     }
 }
