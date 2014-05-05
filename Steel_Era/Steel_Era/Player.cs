@@ -174,14 +174,17 @@ namespace Steel_Era
                 if (this.FrameCol == 2)
                 {
                     Menu.attack1Inst.Play();
+
                 }
                 if (this.FrameCol > 4)
                 {
                     this.FrameCol = 1;
+
                     HUD.Mana = HUD.Mana - 1;
+
                 }
             }
-            this.AnimationSpeed = 7;  
+            this.AnimationSpeed = 7;
         }
         public void AnimateAttackZ()
         {
@@ -226,7 +229,13 @@ namespace Steel_Era
 
         public void Update(MouseState mouse, KeyboardState keyboard)
         {
+            if (Hitbox.Y > Game1.screenHeight)
+            {
 
+                Hitbox = new Rectangle(0, 0, 87, 170);
+                Spritebox = new Rectangle(0, 0, 175, 175);
+                HUD.HP = HUD.HP - 1;
+            }
 
             //Attaques
 
@@ -234,8 +243,10 @@ namespace Steel_Era
             {
                 this.direction = Direction.A;
                 this.AnimateAttackA();
-                Shoot();                
-
+                if (HUD.Mana > 0)
+                {
+                    Shoot();
+                }
             }
             else
             {
@@ -405,11 +416,11 @@ namespace Steel_Era
             }
             //If bulletDelay = 0, create new bullet, make it visible
             if (bulletDelay <= 0)
-            {                
+            {
                 if (regard == 1)
                 {
                     Bullet newBullet = new Bullet(ATexture.bullet);
-                    newBullet.position = new Vector2(Spritebox.X + 32 / 2, Spritebox.Y);
+                    newBullet.position = new Vector2(Spritebox.X + 170 / 2, Spritebox.Y);
                     newBullet.IsVisible = true;
                     if (bulletList.Count() < 2)
                     {
@@ -419,9 +430,9 @@ namespace Steel_Era
                 if (regard == 0)
                 {
                     Bullet newBullet = new Bullet(ATexture.bulletR);
-                    newBullet.position = new Vector2(Spritebox.X + 32 / 2, Spritebox.Y);
+                    newBullet.position = new Vector2(Spritebox.X + 170 / 2, Spritebox.Y);
                     newBullet.IsVisible = true;
-                    if (bulletList.Count() < 1)
+                    if (bulletList.Count() < 2)
                     {
                         bulletList.Add(newBullet);
                     }

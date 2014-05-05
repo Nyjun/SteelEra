@@ -34,6 +34,8 @@ namespace Steel_Era
         public static Texture2D PlateFormeMid;
         public static Texture2D PlateFormehaut;
         public static Texture2D BG_Pause;
+        public static Texture2D Solbas2, Solbas3, Solhaut2, Solhaut3, PlatMid, PlatMid2, Plat2, Ciel2, Ciel3, Mont2, Mont3, DoublePlat, DoublePlat2, DoublePlat3, Plat4,
+            HolePlat, HolePlat2, Edge, Plat3, End;
 
         public static SoundEffect musicMenu;
         public static SoundEffect jump;
@@ -63,13 +65,33 @@ namespace Steel_Era
             Crow = cm.Load<Texture2D>("Game/Animations/Animation");
 
             BG_Mont = cm.Load<Texture2D>("Game/Background/Mont");
+            Mont2 = cm.Load<Texture2D>("Game/Background/Mont");
+            Mont3 = cm.Load<Texture2D>("Game/Background/Mont");
             BG_Ciel = cm.Load<Texture2D>("Game/Background/Ciel jour");
+            Ciel2 = cm.Load<Texture2D>("Game/Background/Ciel jour");
+            Ciel3 = cm.Load<Texture2D>("Game/Background/Ciel jour");
             Platform = cm.Load<Texture2D>("Game/Elements/sol_test");
             Solbas = cm.Load<Texture2D>("Game/Elements/Solbas");
+            Solbas2 = cm.Load<Texture2D>("Game/Elements/Solbas");
+            Solbas3 = cm.Load<Texture2D>("Game/Elements/Solbas");
             Solhaut = cm.Load<Texture2D>("Game/Elements/Solhaut");
+            Solhaut2 = cm.Load<Texture2D>("Game/Elements/Solhaut");
+            Solhaut3 = cm.Load<Texture2D>("Game/Elements/Solhaut");
             PlateFormebas = cm.Load<Texture2D>("Game/Elements/PlateFormebas");
             PlateFormehaut = cm.Load<Texture2D>("Game/Elements/PlateFormehaut");
             PlateFormeMid = cm.Load<Texture2D>("Game/Elements/PlateFormeMid");
+            Edge = cm.Load<Texture2D>("Game/Elements/Edge");
+            HolePlat = cm.Load<Texture2D>("Game/Elements/sol_test");
+            HolePlat2 = cm.Load<Texture2D>("Game/Elements/sol_test");
+            DoublePlat = cm.Load<Texture2D>("Game/Elements/DoublePlat");
+            Plat2 = cm.Load<Texture2D>("Game/Elements/Plat2");
+            Plat3 = cm.Load<Texture2D>("Game/Elements/Plat2");
+            Plat4 = cm.Load<Texture2D>("Game/Elements/sol_test");
+            PlatMid = cm.Load<Texture2D>("Game/Elements/MidPlat");
+            PlatMid2 = cm.Load<Texture2D>("Game/Elements/MidPlat");
+            DoublePlat2 = cm.Load<Texture2D>("Game/Elements/DoublePlat");
+            DoublePlat3 = cm.Load<Texture2D>("Game/Elements/DoublePlat");
+            End = cm.Load<Texture2D>("Game/Elements/End");
 
             //HUD
 

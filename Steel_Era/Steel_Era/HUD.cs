@@ -61,6 +61,14 @@ namespace Steel_Era
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            if (Mana < 0)
+            {
+                Mana = 0;
+            }
+            if (HP < 0)
+            {
+                HP = 0;
+            }
             if (showhud)
             {
                 spriteBatch.Draw(ATexture.Portrait, Pslot, Color.White);

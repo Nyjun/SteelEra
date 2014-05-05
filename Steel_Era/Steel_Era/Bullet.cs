@@ -12,9 +12,9 @@ namespace Steel_Era
 {
     class Bullet
     {
-        public Rectangle boundingBox;
+        //public Rectangle boundingBox;
         public Texture2D texture;
-        public Vector2 origin;
+        //public Vector2 origin;
         public Vector2 position;
         public bool IsVisible;
         public float speed;
@@ -31,7 +31,7 @@ namespace Steel_Era
         //Draw
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (HUD.Mana > 0)
+            if (HUD.Mana >= 0)
             {
                 spriteBatch.Draw(texture, position, Color.White);
             }

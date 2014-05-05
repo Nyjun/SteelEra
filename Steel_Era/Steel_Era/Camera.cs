@@ -20,7 +20,7 @@ namespace Steel_Era
 
         public void Update(GameTime gameTime, Rectangle LocPlayer)
         {
-            if (LocPlayer.X * 2 >= Game1.screenWidth)
+            if (LocPlayer.X * 2 >= Game1.screenWidth) /*&& (LocPlayer.X <= 7000))*/
             {
                 centre = new Vector2(LocPlayer.X, LocPlayer.Y);
                 transform = Matrix.CreateScale(new Vector3(1, 1, 0)) *
@@ -32,6 +32,7 @@ namespace Steel_Era
                 transform = Matrix.CreateScale(new Vector3(1, 1, 0)) *
                     Matrix.CreateTranslation(new Vector3(0, 0, 0));
             }
+
         }
 
 
