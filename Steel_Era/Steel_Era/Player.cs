@@ -231,12 +231,13 @@ namespace Steel_Era
         {
             if (Hitbox.Y > Game1.screenHeight)
             {
-
+                Menu.voice_deadInst.Play();
                 Hitbox = new Rectangle(0, 0, 87, 170);
                 Spritebox = new Rectangle(0, 0, 175, 175);
                 HUD.HP = HUD.HP - 1;
             }
-
+            
+            
             //Attaques
 
             if (keyboard.IsKeyDown(Keys.A))

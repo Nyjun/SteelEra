@@ -27,6 +27,8 @@ namespace Steel_Era
         //Son
         SoundEffect musicMenu;
         SoundEffectInstance musicMenuInst;
+        SoundEffect gameMusic;
+        SoundEffectInstance gameMusicInst;
         int menuVolumeChangeBGM;
         float VolumeBGM; // Valeur en f 
         public static SoundEffect jump;
@@ -37,6 +39,10 @@ namespace Steel_Era
         public static SoundEffectInstance attack1Inst;
         public static SoundEffect run_ground;
         public static SoundEffectInstance run_groundInst;
+        public static SoundEffect mouse_enter;
+        public static SoundEffectInstance mouse_enterInst;
+        public static SoundEffect voice_dead;
+        public static SoundEffectInstance voice_deadInst;
         int menuVolumeChangeSFX;
         float VolumeSFX;
 
@@ -64,6 +70,7 @@ namespace Steel_Era
         }
         private Sprite background;
         private Sprite backgroundPause;
+        private Sprite backgroundGO;
 
         public bool IsVisible
         {
@@ -96,14 +103,17 @@ namespace Steel_Era
 
             menuSoundState = "on";
             menuDisplayState = "Windowed";
-            menuVolumeChangeBGM = 50;
-            menuVolumeChangeSFX = 50;
+            menuVolumeChangeBGM = 70;
+            menuVolumeChangeSFX = 30;
             //Son
             musicMenu = ATexture.musicMenu;
             musicMenuInst = musicMenu.CreateInstance();
             musicMenuInst.IsLooped = true;
-            musicMenuInst.Volume = VolumeBGM;
-            VolumeBGM = 0.5F;
+            gameMusic = ATexture.gameMusic;
+            gameMusicInst = gameMusic.CreateInstance();
+            gameMusicInst.IsLooped = true;
+            gameMusicInst.Volume = VolumeBGM;
+            VolumeBGM = 0.7F;
             jump = ATexture.jump;
             jumpInst = jump.CreateInstance();
             jumpInst.Volume = VolumeSFX;
@@ -116,12 +126,19 @@ namespace Steel_Era
             run_ground = ATexture.run_ground;
             run_groundInst = run_ground.CreateInstance();
             run_groundInst.Volume = VolumeSFX;
-            VolumeSFX = 0.5F;
+            voice_dead = ATexture.voice_dead;
+            voice_deadInst = voice_dead.CreateInstance();
+            voice_deadInst.Volume = VolumeSFX;
+            mouse_enter = ATexture.mouse_enter;
+            mouse_enterInst = mouse_enter.CreateInstance();
+            mouse_enterInst.Volume = 1F;
+            VolumeSFX = 0.3F;
 
 
             cursor = new Cursor(ATexture.cursor8x8, game);
             background = new Sprite(ATexture.BG_Main_Menu, 0, 0);
             backgroundPause = new Sprite(ATexture.BG_Pause, 0, 0);
+            backgroundGO = new Sprite(ATexture.BG_GO, 0, 0);
 
             state = 1;
         }
@@ -156,7 +173,11 @@ namespace Steel_Era
                 }
 
             }
+            if (HUD.HP == 0) // PERSO MORT GAME OVER
 
+            {
+                State = 4;
+            }
 
             if (keyState.IsKeyDown(Keys.Tab) && keyOState.IsKeyUp(Keys.Tab))
             {
@@ -203,9 +224,14 @@ namespace Steel_Era
         /// <param name="gameTime">Le GameTime associé à la frame</param>
         public virtual void Update(GameTime gameTime, Game1 game, KeyboardState keyState, MouseState mouseState)
         {
+            if (button1.Status == true || button2.Status == true || button3.Status == true || button4.Status == true || button5.Status == true || button6.Status == true || button7.Status == true || buttonVolume1.Status == true || buttonVolume2.Status == true || buttonVolume3.Status == true || buttonVolume4.Status == true)
+            {
+                mouse_enterInst.Play();
+                
+            }
 
             this.HandleInput(keyState, mouseState, game);
-            if (state == 1)
+            if (state == 1) // Main Menu
             {
                 button1.Text = "Play";
                 button1.IsVisible = true;
@@ -334,6 +360,11 @@ namespace Steel_Era
                     {
                         menuSoundState = "off";
                         musicMenuInst.Stop();
+                        gameMusicInst.Stop();
+                        attack1Inst.Stop();
+                        jumpInst.Stop();
+                        landingInst.Stop();
+                        voice_deadInst.Stop();
                         button1.oldStatus = button1.Status;
                     }
                     else
@@ -460,6 +491,7 @@ namespace Steel_Era
                     button6.Status = false;
                     menuSoundState = "on";
                     musicMenuInst.Play();
+                    gameMusicInst.Play();
                     menuVolumeChangeBGM = 50;
                     VolumeBGM = 0.5f;
                     musicMenuInst.Volume = VolumeBGM;
@@ -468,12 +500,14 @@ namespace Steel_Era
                     jumpInst.Volume = VolumeSFX;
                     landingInst.Volume = VolumeSFX;
                     attack1Inst.Volume = VolumeSFX;
+                    voice_deadInst.Volume = VolumeSFX;
 
                 }
 
             }
             if (state == 3)  // Menu Pause
             {
+                gameMusicInst.Pause();
                 button1.Text = "Sound  :  " + menuSoundState;
                 button1.IsVisible = true;
                 button2.Text = "Display  :  " + menuDisplayState;
@@ -548,6 +582,7 @@ namespace Steel_Era
 
 
 
+
                 if (button1.Status == true)
                 {
                     button1.Status = false;
@@ -555,7 +590,12 @@ namespace Steel_Era
                     {
                         menuSoundState = "off";
                         musicMenuInst.Stop();
-                        button3.oldStatus = button1.Status;
+                        gameMusicInst.Stop();
+                        attack1Inst.Stop();
+                        jumpInst.Stop();
+                        landingInst.Stop();
+                        voice_deadInst.Stop();
+                        button1.oldStatus = button1.Status;
                     }
                     else
                     {
@@ -681,6 +721,7 @@ namespace Steel_Era
                     button6.Status = false;
                     menuSoundState = "on";
                     musicMenuInst.Play();
+                    gameMusicInst.Play();
                     menuVolumeChangeBGM = 50;
                     VolumeBGM = 0.5f;
                     musicMenuInst.Volume = VolumeBGM;
@@ -689,6 +730,7 @@ namespace Steel_Era
                     jumpInst.Volume = VolumeSFX;
                     landingInst.Volume = VolumeSFX;
                     attack1Inst.Volume = VolumeSFX;
+                    voice_deadInst.Volume = VolumeSFX;
 
                 }
 
@@ -699,12 +741,57 @@ namespace Steel_Era
                 }
 
             }
+
+            if (state == 4)
+            {
+                button1.Text = "Restart";
+                button1.IsVisible = true;
+                button2.Text = "Quit";
+                button2.IsVisible = true;             
+                button3.IsVisible = false;
+                button4.IsVisible = false;
+                button5.IsVisible = false;
+                button6.IsVisible = false;
+                button7.IsVisible = false;
+                buttonVolume1.IsVisible = false;
+                buttonVolume2.IsVisible = false;
+                buttonVolume3.IsVisible = false;
+                buttonVolume4.IsVisible = false;
+
+
+                //B1
+                if (button1.IsHighLighted)
+                    button1.Position = new Vector2(Game1.screenWidth - button1.Width, (Game1.screenHeight / 2));
+                else
+                    button1.Position = new Vector2(Game1.screenWidth - button1.Width + 20, (Game1.screenHeight / 2));
+                //B2
+                if (button2.IsHighLighted)
+                    button2.Position = new Vector2(Game1.screenWidth - button1.Width + 5, (Game1.screenHeight / 2) + button1.Height + 5);
+                else
+                    button2.Position = new Vector2(Game1.screenWidth - button1.Width + 25, (Game1.screenHeight / 2) + button1.Height + 5);
+                
+
+                if (button1.Status == true)
+                {
+                    state = 0;
+                    HUD.showhud = true;
+                    HUD.HP = 4;
+                    button1.Status = false;
+                }
+               
+                if (button2.Status == true)
+                {
+                    game.Exit();
+                    button3.Status = false;
+                }
+            }
             // ######################
             if (state != 0)
             {
                 lastState = state;
                 if (menuSoundState == "on")
                     musicMenuInst.Play();
+                gameMusicInst.Stop();
                 musicMenuInst.Volume = VolumeBGM;
             }
             else
@@ -712,18 +799,39 @@ namespace Steel_Era
                 musicMenuInst.Stop();
             }
 
-            if (state == 0)
-            {
+            if (state == 0 && menuSoundState == "on" )
+            { 
+                gameMusicInst.Play();
+                gameMusicInst.Volume = VolumeBGM;
                 jumpInst.Volume = VolumeSFX;
                 landingInst.Volume = VolumeSFX;
                 attack1Inst.Volume = VolumeSFX;
                 run_groundInst.Volume = VolumeSFX;
+                voice_deadInst.Volume = VolumeSFX;
             }
         }
 
 
         public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle screenRectangle)
         {
+            if (state ==4)
+            {
+                spriteBatch.Draw(backgroundGO.Texture, screenRectangle, Color.White);
+                button1.Draw(spriteBatch, gameTime);
+                button2.Draw(spriteBatch, gameTime);
+                button3.Draw(spriteBatch, gameTime);
+                button4.Draw(spriteBatch, gameTime);
+                button5.Draw(spriteBatch, gameTime);
+                button6.Draw(spriteBatch, gameTime);
+                button7.Draw(spriteBatch, gameTime);
+                buttonVolume1.Draw(spriteBatch, gameTime);
+                buttonVolume2.Draw(spriteBatch, gameTime);
+                buttonVolume3.Draw(spriteBatch, gameTime);
+                buttonVolume4.Draw(spriteBatch, gameTime);
+                cursor.Draw(spriteBatch, gameTime);
+            }
+
+
             if (state == 3)
             {
                 spriteBatch.Draw(backgroundPause.Texture, screenRectangle, Color.White);
@@ -740,7 +848,7 @@ namespace Steel_Era
                 buttonVolume4.Draw(spriteBatch, gameTime);
                 cursor.Draw(spriteBatch, gameTime);
             }
-            if (state == 1 || state == 2)
+            if (state == 1 || state == 2 )
             {
                 spriteBatch.Draw(background.Texture, screenRectangle, Color.White);
 

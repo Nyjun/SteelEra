@@ -68,6 +68,7 @@ namespace Steel_Era
             if (HP < 0)
             {
                 HP = 0;
+                
             }
             if (showhud)
             {

@@ -34,6 +34,7 @@ namespace Steel_Era
         public static Texture2D PlateFormeMid;
         public static Texture2D PlateFormehaut;
         public static Texture2D BG_Pause;
+        public static Texture2D BG_GO;
         public static Texture2D Solbas2, Solbas3, Solhaut2, Solhaut3, PlatMid, PlatMid2, Plat2, Ciel2, Ciel3, Mont2, Mont3, DoublePlat, DoublePlat2, DoublePlat3, Plat4,
             HolePlat, HolePlat2, Edge, Plat3, End;
 
@@ -42,7 +43,9 @@ namespace Steel_Era
         public static SoundEffect landing;
         public static SoundEffect attack1;
         public static SoundEffect run_ground;
-
+        public static SoundEffect gameMusic;
+        public static SoundEffect mouse_enter;
+        public static SoundEffect voice_dead;
         //HUD
         public static Texture2D Hp1, Hp2, Hp3, Hp4, Mana1, Mana2, Mana3, Portrait, Nav;
         public static Texture2D bullet, bulletR;
@@ -60,6 +63,7 @@ namespace Steel_Era
             cursor8x8 = cm.Load<Texture2D>("Menu/curseur_8x8");
             forestTemple = cm.Load<Texture2D>("Menu/forest_temple");
             BG_Pause = cm.Load<Texture2D>("Menu/Semi_trans");
+            BG_GO = cm.Load<Texture2D>("Menu/GAMEOVER");
 
             //Game
             Crow = cm.Load<Texture2D>("Game/Animations/Animation");
@@ -117,6 +121,9 @@ namespace Steel_Era
             landing = cm.Load<SoundEffect>("Menu/Music/land_ground");
             attack1 = cm.Load<SoundEffect>("Menu/Music/voice_girl_attack_4");
             run_ground = cm.Load<SoundEffect>("Menu/Music/run_ground_4");
+            gameMusic = cm.Load<SoundEffect>("Menu/Music/gameMusic");
+            mouse_enter = cm.Load<SoundEffect>("Menu/Music/mouse_enter");
+            voice_dead = cm.Load<SoundEffect>("Menu/Music/voice_dead");
         }
 
         /*public virtual void Initialize(GraphicsDevice gDevice)
