@@ -24,6 +24,7 @@ namespace Steel_Era
 
 
         int Timer;
+        int Temp;
         int AnimationSpeed;
         public static Rectangle Hitbox;
         public static Rectangle Spritebox;
@@ -180,7 +181,7 @@ namespace Steel_Era
                     HUD.Mana = HUD.Mana - 1;
                 }
             }
-            this.AnimationSpeed = 7;
+            this.AnimationSpeed = 7;  
         }
         public void AnimateAttackZ()
         {
@@ -233,10 +234,7 @@ namespace Steel_Era
             {
                 this.direction = Direction.A;
                 this.AnimateAttackA();
-                if (HUD.Mana != 0)
-                {
-                    Shoot();
-                }
+                Shoot();                
 
             }
             else
@@ -399,7 +397,7 @@ namespace Steel_Era
         //Shoot Method
         public void Shoot()
         {
-
+            Temp = regard;
             //Shoot only if delay reset
             if (bulletDelay >= 0)
             {
@@ -407,7 +405,7 @@ namespace Steel_Era
             }
             //If bulletDelay = 0, create new bullet, make it visible
             if (bulletDelay <= 0)
-            {
+            {                
                 if (regard == 1)
                 {
                     Bullet newBullet = new Bullet(ATexture.bullet);
@@ -441,7 +439,7 @@ namespace Steel_Era
         {
             foreach (Bullet b in bulletList)
             {
-                if (regard == 0)
+                if (Temp == 0)
                 {
                     b.position.X = b.position.X - b.speed;
 
@@ -450,7 +448,7 @@ namespace Steel_Era
                         b.IsVisible = false;
                     }
                 }
-                if (regard == 1)
+                if (Temp == 1)
                 {
                     b.position.X = b.position.X + b.speed;
 

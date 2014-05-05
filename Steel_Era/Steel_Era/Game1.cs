@@ -42,11 +42,11 @@ namespace Steel_Era
         Sprite PlateFormebas;
         Sprite PlateFormeMid;
         Sprite PlateFormehaut;
-        Sprite test;
+        Sprite Plat;
 
         Sprite covert;
 
-        Vector2 BG_Mont_Pos;
+        //Vector2 BG_Mont_Pos;
 
         Camera Camerascroll;
         HUD hud;
@@ -74,15 +74,12 @@ namespace Steel_Era
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             this.IsMouseVisible = false;
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = false;
 
-            // graphics.PreferredBackBufferHeight = 700;
-            //graphics.PreferredBackBufferWidth = 900;
+            graphics.PreferredBackBufferHeight = 750;
+            graphics.PreferredBackBufferWidth = 1360;
             //Changes the settings that you just applied
-            // graphics.ApplyChanges();
-
-
-
+            graphics.ApplyChanges();
 
 
         }
@@ -115,23 +112,23 @@ namespace Steel_Era
             screenHeight = Window.ClientBounds.Height;
             screenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
 
-            BG_Ciel = new Sprite(ATexture.BG_Ciel, 0, screenHeight - 800);
-            BG_Ciel.Initialize();
+            //BG_Ciel = new Sprite(ATexture.BG_Ciel, 0, screenHeight - 800);
+            //BG_Ciel.Initialize();
             Solbas = new Sprite(ATexture.Solbas, 0, screenHeight - 60);
             Solbas.Initialize();
-            Solhaut = new Sprite(ATexture.Solhaut, 0, screenHeight - 97);
-            Solhaut.Initialize();
-            BG_Mont = new Sprite(ATexture.BG_Mont, 0, screenHeight - 500);
-            BG_Mont.Initialize();
+            //Solhaut = new Sprite(ATexture.Solhaut, 0, screenHeight - 97);
+            //Solhaut.Initialize();
+            //BG_Mont = new Sprite(ATexture.BG_Mont, 0, screenHeight - 500);
+            //BG_Mont.Initialize();
             PlateFormebas = new Sprite(ATexture.PlateFormebas, 800, screenHeight - 180);
             PlateFormebas.Initialize();
-            PlateFormeMid = new Sprite(ATexture.PlateFormeMid, 810, screenHeight - 377);
-            PlateFormeMid.Initialize();
+            //PlateFormeMid = new Sprite(ATexture.PlateFormeMid, 810, screenHeight - 377);
+            //PlateFormeMid.Initialize();
             PlateFormehaut = new Sprite(ATexture.PlateFormehaut, 800, screenHeight - 400);
             PlateFormehaut.Initialize();
 
-            test = new Sprite(ATexture.ground, 300, 180);
-            test.Initialize();
+            Plat = new Sprite(ATexture.Platform, 300, 180);
+            Plat.Initialize();
 
 
             covert = new Sprite(ATexture.covert, 500, 575);
@@ -146,8 +143,7 @@ namespace Steel_Era
             Physics.ListObstacle.Add(PlateFormehaut);
             Physics.ListObstacle.Add(PlateFormebas);
             Physics.ListObstacle.Add(Solbas);
-            Physics.ListObstacle.Add(test);
-
+            Physics.ListObstacle.Add(Plat);
 
 
             base.Initialize();
@@ -166,7 +162,7 @@ namespace Steel_Era
 
             // TODO: use this.Content to load your game content here
             ATexture.Load(Content);
-            BG_Mont_Pos = new Vector2(0, screenHeight - 500);
+            
             //Fonts.Font1 = Content.Load<SpriteFont>("Menu/Fonts/SpriteFont1");
             Main = new GameMain();
 
@@ -201,15 +197,9 @@ namespace Steel_Era
             mouseState = Mouse.GetState();
             menu.Update(gameTime, this, keyState, mouseState);
 
-
             keyOState = keyState;
-
-
-            
-            covert.Update(gameTime);
-
             Camerascroll.Update(gameTime, Player.Hitbox);
-
+            covert.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -223,29 +213,32 @@ namespace Steel_Era
             GraphicsDevice.Clear(Color.Gray);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camerascroll.transform);
-            spriteBatch.Draw(ATexture.BG_Mont, BG_Mont_Pos, Color.White);
-            BG_Ciel.Draw(spriteBatch, gameTime);
-            BG_Mont.Draw(spriteBatch, gameTime);
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearWrap, null, null, null, Camerascroll.transform);
+            spriteBatch.Draw(ATexture.BG_Ciel, new Vector2(0, screenHeight - 800), Color.White);
+            spriteBatch.Draw(ATexture.BG_Mont, new Vector2(0, screenHeight - 500), Color.White);
+            PlateFormehaut.Draw(spriteBatch, gameTime);
+            spriteBatch.Draw(ATexture.PlateFormeMid, new Vector2(810, screenHeight - 377), Color.White);
+            spriteBatch.Draw(ATexture.Solhaut, new Vector2(0, screenHeight - 97), Color.White);
+            PlateFormebas.Draw(spriteBatch, gameTime);
+            Solbas.Draw(spriteBatch, gameTime);
+            Main.Draw(spriteBatch);
+            Plat.Draw(spriteBatch, gameTime);
+            
+            /*BG_Mont.Draw(spriteBatch, gameTime);
             PlateFormehaut.Draw(spriteBatch, gameTime);
             PlateFormeMid.Draw(spriteBatch, gameTime);
             Solhaut.Draw(spriteBatch, gameTime);
             PlateFormebas.Draw(spriteBatch, gameTime);
             Solbas.Draw(spriteBatch, gameTime);
             Main.Draw(spriteBatch);
-            test.Draw(spriteBatch, gameTime);
-            covert.Draw(spriteBatch, gameTime);
-
-
+            Plat.Draw(spriteBatch, gameTime);
+            covert.Draw(spriteBatch, gameTime);*/
             base.Draw(gameTime);
-
             spriteBatch.End();
 
             spriteBatch.Begin();
-
             menu.Draw(spriteBatch, gameTime, screenRectangle);
             hud.Draw(spriteBatch);
-
             spriteBatch.End();
 
         }

@@ -31,7 +31,10 @@ namespace Steel_Era
         //Draw
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            if (HUD.Mana > 0)
+            {
+                spriteBatch.Draw(texture, position, Color.White);
+            }
         }
     }
 }

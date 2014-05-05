@@ -77,13 +77,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game\Elements\sol_testn.png">
-      <Name>sol_testn</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Game\Elements\sol_test.png">
       <Name>sol_test</Name>
       <Importer>TextureImporter</Importer>
@@ -114,13 +107,6 @@
   <ItemGroup>
     <Compile Include="Game\Elements\PlateFormebas.png">
       <Name>PlateFormebas</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Game\Animations\NotUsedAnimation.png">
-      <Name>NotUsedAnimation</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

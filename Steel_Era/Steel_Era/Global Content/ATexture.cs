@@ -23,7 +23,7 @@ namespace Steel_Era
         public static Texture2D covert;
         public static Texture2D cursor8x8;
         public static Texture2D forestTemple;
-        public static Texture2D ground;
+        public static Texture2D Platform;
         public static Texture2D Crow;
         public static Texture2D Solbas;
         public static Texture2D Solhaut;
@@ -64,7 +64,7 @@ namespace Steel_Era
 
             BG_Mont = cm.Load<Texture2D>("Game/Background/Mont");
             BG_Ciel = cm.Load<Texture2D>("Game/Background/Ciel jour");
-            ground = cm.Load<Texture2D>("Game/Elements/sol_test");
+            Platform = cm.Load<Texture2D>("Game/Elements/sol_test");
             Solbas = cm.Load<Texture2D>("Game/Elements/Solbas");
             Solhaut = cm.Load<Texture2D>("Game/Elements/Solhaut");
             PlateFormebas = cm.Load<Texture2D>("Game/Elements/PlateFormebas");

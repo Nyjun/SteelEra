@@ -83,7 +83,7 @@ namespace Steel_Era
                     spriteBatch.Draw(ATexture.Hp4, Hslot4, Color.White);
                 }
 
-                if (Mana >= 3)
+                if (Mana >= 1)
                 {
                     spriteBatch.Draw(ATexture.Mana1, Mslot1, Color.White);
                 }
@@ -91,7 +91,7 @@ namespace Steel_Era
                 {
                     spriteBatch.Draw(ATexture.Mana2, Mslot2, Color.White);
                 }
-                if (Mana >= 1)
+                if (Mana >= 3)
                 {
                     spriteBatch.Draw(ATexture.Mana3, Mslot3, Color.White);
                 }
