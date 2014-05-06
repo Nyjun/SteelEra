@@ -20,6 +20,8 @@ namespace Steel_Era
     {
 
         Enemies.Roller roller;
+        Enemies.Roller roller1;
+        Enemies.Roller roller2;
 
         public GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -150,6 +152,8 @@ namespace Steel_Era
             DoublePlat3.Initialize();
 
             roller = new Enemies.Roller(2200, 100);
+            roller1 = new Enemies.Roller(1300, 100);
+            roller2 = new Enemies.Roller(5000, 100);
 
             covert = new Sprite(ATexture.covert, 500, 575);
             covert.Initialize();
@@ -175,6 +179,8 @@ namespace Steel_Era
             Physics.ListObstacle.Add(DoublePlat3);
 
             Physics.ListEnemies.Add(roller);
+            Physics.ListEnemies.Add(roller1);
+            Physics.ListEnemies.Add(roller2);
 
             base.Initialize();
 
@@ -226,6 +232,8 @@ namespace Steel_Era
             mouseState = Mouse.GetState();
             menu.Update(gameTime, this, keyState, mouseState);
             roller.Update(gameTime);
+            roller1.Update(gameTime);
+            roller2.Update(gameTime);
 
             keyOState = keyState;
             Camerascroll.Update(gameTime, Player.Hitbox);
@@ -270,6 +278,8 @@ namespace Steel_Era
 
 
             roller.Draw(spriteBatch, gameTime);
+            roller1.Draw(spriteBatch, gameTime);
+            roller2.Draw(spriteBatch, gameTime);
             Main.Draw(spriteBatch);
             
             
