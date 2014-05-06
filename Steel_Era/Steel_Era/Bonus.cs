@@ -12,7 +12,7 @@ namespace Steel_Era
     class Bonus
     {
         public Rectangle Bslot1, Bslot2, Bslot3, Bslot4, Bslot5, Bslot6, Bslot7, Bslot8, Bslot9, Bslot10, Bslot11;
-        public int Checkhp, Checkhp2, Checkmana, Checkmana2, Checkmana3, Checkmana4, Checkpts, Checkpts2, Checkpts3, Checkpts4, Checkpts5;
+        public static int Checkhp, Checkhp2, Checkmana, Checkmana2, Checkmana3, Checkmana4, Checkpts, Checkpts2, Checkpts3, Checkpts4, Checkpts5;
 
         public Bonus()
         {
@@ -44,6 +44,7 @@ namespace Steel_Era
             if ((Player.Hitbox.X + 44 > bonus.X) && (Player.Hitbox.X + 44 < bonus.X + 30) && (Player.Hitbox.Y + 85 < bonus.Y) && (Player.Hitbox.Y + 85 > bonus.Y - 30))
             {
                 Checkhp++;
+                Menu.get_itemInst.Play();
                 HUD.HP++;
             }
         }
@@ -52,6 +53,7 @@ namespace Steel_Era
             if ((Player.Hitbox.X + 44 > bonus.X) && (Player.Hitbox.X + 44 < bonus.X + 30) && (Player.Hitbox.Y + 85 < bonus.Y) && (Player.Hitbox.Y + 85 > bonus.Y - 30))
             {
                 Checkhp2++;
+                Menu.get_itemInst.Play();
                 HUD.HP++;
             }
 
@@ -61,6 +63,7 @@ namespace Steel_Era
             if ((Player.Hitbox.X + 44 > bonus.X) && (Player.Hitbox.X + 44 < bonus.X + 30) && (Player.Hitbox.Y + 85 < bonus.Y) && (Player.Hitbox.Y + 85 > bonus.Y - 30))
             {
                 Checkmana++;
+                Menu.get_itemInst.Play();
                 HUD.Mana++;
             }
 
@@ -70,6 +73,7 @@ namespace Steel_Era
             if ((Player.Hitbox.X + 44 > bonus.X) && (Player.Hitbox.X + 44 < bonus.X + 30) && (Player.Hitbox.Y + 85 < bonus.Y) && (Player.Hitbox.Y + 85 > bonus.Y - 30))
             {
                 Checkmana2++;
+                Menu.get_itemInst.Play();
                 HUD.Mana++;
             }
 
@@ -79,6 +83,7 @@ namespace Steel_Era
             if ((Player.Hitbox.X + 44 > bonus.X) && (Player.Hitbox.X + 44 < bonus.X + 30) && (Player.Hitbox.Y + 85 < bonus.Y) && (Player.Hitbox.Y + 85 > bonus.Y - 30))
             {
                 Checkmana3++;
+                Menu.get_itemInst.Play();
                 HUD.Mana++;
             }
 
@@ -88,6 +93,7 @@ namespace Steel_Era
             if ((Player.Hitbox.X + 44 > bonus.X) && (Player.Hitbox.X + 44 < bonus.X + 30) && (Player.Hitbox.Y + 85 < bonus.Y) && (Player.Hitbox.Y + 85 > bonus.Y - 30))
             {
                 Checkmana4++;
+                Menu.get_itemInst.Play();
                 HUD.Mana++;
             }
 
@@ -97,6 +103,7 @@ namespace Steel_Era
             if ((Player.Hitbox.X + 44 > bonus.X) && (Player.Hitbox.X + 44 < bonus.X + 30) && (Player.Hitbox.Y + 85 < bonus.Y) && (Player.Hitbox.Y + 85 > bonus.Y - 30))
             {
                 Checkpts++;
+                Menu.get_itemInst.Play();
                 HUD.playerscore = HUD.playerscore + 500;
             }
 
@@ -106,6 +113,7 @@ namespace Steel_Era
             if ((Player.Hitbox.X + 44 > bonus.X) && (Player.Hitbox.X + 44 < bonus.X + 30) && (Player.Hitbox.Y + 85 < bonus.Y) && (Player.Hitbox.Y + 85 > bonus.Y - 30))
             {
                 Checkpts2++;
+                Menu.get_itemInst.Play();
                 HUD.playerscore = HUD.playerscore + 500;
             }
 
@@ -115,6 +123,7 @@ namespace Steel_Era
             if ((Player.Hitbox.X + 44 > bonus.X) && (Player.Hitbox.X + 44 < bonus.X + 30) && (Player.Hitbox.Y + 85 < bonus.Y) && (Player.Hitbox.Y + 85 > bonus.Y - 30))
             {
                 Checkpts3++;
+                Menu.get_itemInst.Play();
                 HUD.playerscore = HUD.playerscore + 500;
             }
 
@@ -124,6 +133,7 @@ namespace Steel_Era
             if ((Player.Hitbox.X + 44 > bonus.X) && (Player.Hitbox.X + 44 < bonus.X + 30) && (Player.Hitbox.Y + 85 < bonus.Y) && (Player.Hitbox.Y + 85 > bonus.Y - 30))
             {
                 Checkpts4++;
+                Menu.get_itemInst.Play();
                 HUD.playerscore = HUD.playerscore + 500;
             }
 
@@ -133,6 +143,7 @@ namespace Steel_Era
             if ((Player.Hitbox.X + 44 > bonus.X) && (Player.Hitbox.X + 44 < bonus.X + 30) && (Player.Hitbox.Y + 85 < bonus.Y) && (Player.Hitbox.Y + 85 > bonus.Y - 30))
             {
                 Checkpts5++;
+                Menu.get_itemInst.Play();
                 HUD.playerscore = HUD.playerscore + 500;
             }
 

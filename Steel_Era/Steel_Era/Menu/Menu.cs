@@ -43,6 +43,8 @@ namespace Steel_Era
         public static SoundEffectInstance mouse_enterInst;
         public static SoundEffect voice_dead;
         public static SoundEffectInstance voice_deadInst;
+        public static SoundEffect get_item;
+        public static SoundEffectInstance get_itemInst;
         int menuVolumeChangeSFX;
         float VolumeSFX;
 
@@ -129,6 +131,9 @@ namespace Steel_Era
             voice_dead = ATexture.voice_dead;
             voice_deadInst = voice_dead.CreateInstance();
             voice_deadInst.Volume = VolumeSFX;
+            get_item = ATexture.get_item;
+            get_itemInst = get_item.CreateInstance();
+            get_itemInst.Volume = VolumeSFX;
             mouse_enter = ATexture.mouse_enter;
             mouse_enterInst = mouse_enter.CreateInstance();
             mouse_enterInst.Volume = 1F;
@@ -365,6 +370,7 @@ namespace Steel_Era
                         jumpInst.Stop();
                         landingInst.Stop();
                         voice_deadInst.Stop();
+                        get_itemInst.Stop();
                         button1.oldStatus = button1.Status;
                     }
                     else
@@ -501,6 +507,7 @@ namespace Steel_Era
                     landingInst.Volume = VolumeSFX;
                     attack1Inst.Volume = VolumeSFX;
                     voice_deadInst.Volume = VolumeSFX;
+                    get_itemInst.Volume = VolumeSFX;
 
                 }
 
@@ -595,6 +602,7 @@ namespace Steel_Era
                         jumpInst.Stop();
                         landingInst.Stop();
                         voice_deadInst.Stop();
+                        get_itemInst.Stop();
                         button1.oldStatus = button1.Status;
                     }
                     else
@@ -727,6 +735,7 @@ namespace Steel_Era
                     musicMenuInst.Volume = VolumeBGM;
                     menuVolumeChangeSFX = 50;
                     VolumeSFX = 0.5f;
+                    get_itemInst.Volume = VolumeSFX; ;
                     jumpInst.Volume = VolumeSFX;
                     landingInst.Volume = VolumeSFX;
                     attack1Inst.Volume = VolumeSFX;
@@ -779,6 +788,18 @@ namespace Steel_Era
                     button1.Status = false;
                     Player.Hitbox = new Rectangle(0, 0, 87, 170);
                     Player.Spritebox = new Rectangle(0, 0, 175, 175);
+                    HUD.playerscore = 0;
+                    Bonus.Checkhp = 0;
+                    Bonus.Checkhp2 = 0;
+                    Bonus.Checkmana = 0;
+                    Bonus.Checkmana2 = 0;
+                    Bonus.Checkmana3 = 0;
+                    Bonus.Checkmana4 = 0;
+                    Bonus.Checkpts = 0;
+                    Bonus.Checkpts2 = 0;
+                    Bonus.Checkpts3 = 0;
+                    Bonus.Checkpts4 = 0;
+                    Bonus.Checkpts5 = 0;
                 }
                
                 if (button2.Status == true)
@@ -794,6 +815,12 @@ namespace Steel_Era
                 if (menuSoundState == "on")
                     musicMenuInst.Play();
                 gameMusicInst.Stop();
+                attack1Inst.Stop();
+                jumpInst.Stop();
+                landingInst.Stop();
+                voice_deadInst.Stop();
+                get_itemInst.Stop();
+                
                 musicMenuInst.Volume = VolumeBGM;
             }
             else
@@ -810,6 +837,7 @@ namespace Steel_Era
                 attack1Inst.Volume = VolumeSFX;
                 run_groundInst.Volume = VolumeSFX;
                 voice_deadInst.Volume = VolumeSFX;
+                get_itemInst.Volume = VolumeSFX;
             }
         }
 
