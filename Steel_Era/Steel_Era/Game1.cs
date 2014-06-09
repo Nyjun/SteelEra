@@ -19,6 +19,9 @@ namespace Steel_Era
     public class Game1 : Microsoft.Xna.Framework.Game
     {
 
+        static Stages.Stage1 stage1;
+        static Stages.Stage2 stage2;
+
         Enemies.Roller roller;
         Enemies.Roller roller1;
         Enemies.Roller roller2;
@@ -42,13 +45,12 @@ namespace Steel_Era
         Sprite PlateFormehaut;
         Sprite Plat, HolePlat, HolePlat2, DoublePlat, DoublePlat2, DoublePlat3, Solbas2, Solbas3, Plat2, Plat3, Plat4;
 
-        Sprite covert;
 
         //Vector2 BG_Mont_Pos;
-        Bonus bonus;
+        //Bonus bonus;
         Camera Camerascroll;
         HUD hud;
-        
+
 
 
         // MUSIQUE + BRUITAGES Xact method
@@ -80,6 +82,7 @@ namespace Steel_Era
             //Changes the settings that you just applied
             graphics.ApplyChanges();
 
+            
 
         }
 
@@ -97,10 +100,7 @@ namespace Steel_Era
             //// Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Physics.ListObstacle = new List<Sprite>();
-            Physics.ListSprite = new List<Sprite>();
-            Physics.ListEnemies = new List<Enemy>();
-            Physics.ListPlayers = new List<Player>();
+            
 
             // TODO: use this.Content to load your game content here
             ATexture.Load(Content);
@@ -108,79 +108,63 @@ namespace Steel_Era
             menu = new Menu();
             menu.Initialize(this);
 
+            stage1 = new Stages.Stage1();
+            stage2 = new Stages.Stage2();
+
 
             screenWidth = Window.ClientBounds.Width;
             screenHeight = Window.ClientBounds.Height;
             screenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
 
             //BG_Ciel = new Sprite(ATexture.BG_Ciel, 0, screenHeight - 800);
-            //BG_Ciel.Initialize();
             Solbas = new Sprite(ATexture.Solbas, 0, screenHeight - 60);
-            Solbas.Initialize();
             Solbas2 = new Sprite(ATexture.Solbas2, 4000, screenHeight - 60);
-            Solbas2.Initialize();
             Solbas3 = new Sprite(ATexture.Solbas3, 7000, screenHeight - 60);
-            Solbas3.Initialize();
             //Solhaut = new Sprite(ATexture.Solhaut, 0, screenHeight - 97);
-            //Solhaut.Initialize();
             //BG_Mont = new Sprite(ATexture.BG_Mont, 0, screenHeight - 500);
-            //BG_Mont.Initialize();
             PlateFormebas = new Sprite(ATexture.PlateFormebas, 800, screenHeight - 180);
-            PlateFormebas.Initialize();
             //PlateFormeMid = new Sprite(ATexture.PlateFormeMid, 810, screenHeight - 377);
-            //PlateFormeMid.Initialize();
             PlateFormehaut = new Sprite(ATexture.PlateFormehaut, 800, screenHeight - 400);
-            PlateFormehaut.Initialize();
 
             Plat = new Sprite(ATexture.Platform, 300, 180);
-            Plat.Initialize();
             Plat2 = new Sprite(ATexture.Plat2, 1300, screenHeight - 342);
-            Plat2.Initialize();
             Plat3 = new Sprite(ATexture.Plat3, 1800, screenHeight - 342);
-            Plat3.Initialize();
             Plat4 = new Sprite(ATexture.Plat4, 4700, screenHeight - 440);
-            Plat4.Initialize();
             HolePlat = new Sprite(ATexture.HolePlat, 3100, screenHeight - 197);
-            HolePlat.Initialize();
             HolePlat2 = new Sprite(ATexture.HolePlat2, 3600, screenHeight - 297);
-            HolePlat2.Initialize();
             DoublePlat = new Sprite(ATexture.DoublePlat, 4500, screenHeight - 215);
-            DoublePlat.Initialize();
             DoublePlat2 = new Sprite(ATexture.DoublePlat2, 5199, screenHeight - 180);
-            DoublePlat2.Initialize();
             DoublePlat3 = new Sprite(ATexture.DoublePlat3, 2100, screenHeight - 180);
-            DoublePlat3.Initialize();
 
-            roller = new Enemies.Roller(2200, 100);
-            roller1 = new Enemies.Roller(1300, 100);
-            roller2 = new Enemies.Roller(5000, 100);
+            roller = new Enemies.Roller(2200, 100, stage1);
+            roller1 = new Enemies.Roller(1300, 100, stage1);
+            roller2 = new Enemies.Roller(5000, 100, stage1);
 
-            covert = new Sprite(ATexture.covert, 500, 575);
-            covert.Initialize();
 
             hud = new HUD();
             Camerascroll = new Camera(GraphicsDevice.Viewport);
-            bonus = new Bonus();
-     
+            //bonus = new Bonus();
 
-            Physics.ListObstacle.Add(PlateFormehaut);
-            Physics.ListObstacle.Add(PlateFormebas);
-            Physics.ListObstacle.Add(Solbas);
-            Physics.ListObstacle.Add(Solbas2);
-            Physics.ListObstacle.Add(Solbas3);
-            Physics.ListObstacle.Add(Plat);
-            Physics.ListObstacle.Add(Plat2);
-            Physics.ListObstacle.Add(Plat3);
-            Physics.ListObstacle.Add(Plat4);
-            Physics.ListObstacle.Add(HolePlat);
-            Physics.ListObstacle.Add(HolePlat2);
-            Physics.ListObstacle.Add(DoublePlat);
-            Physics.ListObstacle.Add(DoublePlat2);
-            Physics.ListObstacle.Add(DoublePlat3);
 
-            Physics.ListEnemies.Add(roller);
-            Physics.ListEnemies.Add(roller1);
-            Physics.ListEnemies.Add(roller2);
+            Game1.stage1.lists.ListObstacle.Add(PlateFormehaut);
+            Game1.stage1.lists.ListObstacle.Add(PlateFormebas);
+            Game1.stage1.lists.ListObstacle.Add(Solbas);
+            Game1.stage1.lists.ListObstacle.Add(Solbas2);
+            Game1.stage1.lists.ListObstacle.Add(Solbas3);
+            Game1.stage1.lists.ListObstacle.Add(Plat);
+            Game1.stage1.lists.ListObstacle.Add(Plat2);
+            Game1.stage1.lists.ListObstacle.Add(Plat3);
+            Game1.stage1.lists.ListObstacle.Add(Plat4);
+            Game1.stage1.lists.ListObstacle.Add(HolePlat);
+            Game1.stage1.lists.ListObstacle.Add(HolePlat2);
+            Game1.stage1.lists.ListObstacle.Add(DoublePlat);
+            Game1.stage1.lists.ListObstacle.Add(DoublePlat2);
+            Game1.stage1.lists.ListObstacle.Add(DoublePlat3);
+
+            Game1.stage1.lists.ListEnemies.Add(roller);
+            Game1.stage1.lists.ListEnemies.Add(roller1);
+            Game1.stage1.lists.ListEnemies.Add(roller2);
+
 
             base.Initialize();
 
@@ -200,7 +184,7 @@ namespace Steel_Era
             ATexture.Load(Content);
 
             //Fonts.Font1 = Content.Load<SpriteFont>("Menu/Fonts/SpriteFont1");
-            Main = new GameMain();
+            Main = new GameMain(stage1);
 
         }
 
@@ -228,6 +212,8 @@ namespace Steel_Era
                 this.Exit();
 
             // TODO: Add your update logic here
+            stage1.Update();
+
             keyState = Keyboard.GetState();
             mouseState = Mouse.GetState();
             menu.Update(gameTime, this, keyState, mouseState);
@@ -237,7 +223,6 @@ namespace Steel_Era
 
             keyOState = keyState;
             Camerascroll.Update(gameTime, Player.Hitbox);
-            covert.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -288,7 +273,8 @@ namespace Steel_Era
             Plat3.Draw(spriteBatch, gameTime);
             Plat4.Draw(spriteBatch, gameTime);
             spriteBatch.Draw(ATexture.End, new Vector2(6850, screenHeight - 150), Color.White);
-            bonus.Draw(spriteBatch);
+            //bonus.Draw(spriteBatch);
+            stage1.Draw(spriteBatch, gameTime);
 
             /*BG_Mont.Draw(spriteBatch, gameTime);
             PlateFormehaut.Draw(spriteBatch, gameTime);

@@ -16,33 +16,7 @@ namespace Steel_Era
     {
         public static int gravity = 5;
 
-        static public List<Sprite> ListSprite
-        {
-            get { return listSprite; }
-            set { listSprite = value; }
-        }
-         static private List<Sprite> listSprite;
-
-        static public List<Sprite> ListObstacle
-        {
-            get { return listObstacle; }
-            set { listObstacle = value; }
-        }
-        static private List<Sprite> listObstacle;
-
-        static public List<Player> ListPlayers
-        {
-            get { return listPlayers; }
-            set { listPlayers = value; }
-        }
-        static private List<Player> listPlayers;
-
-        static public List<Enemy> ListEnemies
-        {
-            get { return listEnemies; }
-            set { listEnemies = value; }
-        }
-        static private List<Enemy> listEnemies;
+        
 
         /// <summary>
         /// Force de support.

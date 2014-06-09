@@ -40,13 +40,15 @@ namespace Steel_Era
         int airSpeed;//, jumpTimer;
         int crouchHeight;
         int height;
+        Stages.Stage stage;
 
 
 
         //CONSTRUCTORS
 
-        public Player()
+        public Player(Stages.Stage _stage)
         {
+            stage = _stage;
             Hitbox = new Rectangle(0, 0, 87, 170);
             Spritebox = new Rectangle(0, 0, 175, 175);
             this.FrameLine = 1;
@@ -65,6 +67,7 @@ namespace Steel_Era
 
             bulletList = new List<Bullet>();
             bulletDelay = 30;
+            
         }
 
         //METHODS
@@ -383,6 +386,7 @@ namespace Steel_Era
 
 
             Collisions();
+            CollisionBonus();
             DamageToHero();
             if (Hitbox.Height == crouchHeight)
             {
@@ -486,11 +490,11 @@ namespace Steel_Era
         {
             Rectangle h;
             Vector2 pos = new Vector2(Hitbox.Location.X, Hitbox.Location.Y);
-            for (int i = 0; i < Physics.ListObstacle.Count; i++)
+            for (int i = 0; i < stage.lists.ListObstacle.Count; i++)
             {
-                if (Hitbox.Intersects(Physics.ListObstacle.ElementAt(i).Hitbox))
+                if (Hitbox.Intersects(stage.lists.ListObstacle.ElementAt(i).Hitbox))
                 {
-                    h = Physics.ListObstacle.ElementAt(i).Hitbox;
+                    h = stage.lists.ListObstacle.ElementAt(i).Hitbox;
                     if (Hitbox.Bottom > h.Bottom && Hitbox.Top < h.Top)
                     {
                         if (Hitbox.Right > h.Left && Hitbox.Left < h.Left)
@@ -548,14 +552,25 @@ namespace Steel_Era
 
         public void DamageToHero()
         {
-            for (int i = 0; i < Physics.ListEnemies.Count; i++)
+            for (int i = 0; i < stage.lists.ListEnemies.Count; i++)
             {
-                if (Hitbox.Intersects(Physics.ListEnemies.ElementAt(i).damagebox))
+                if (Hitbox.Intersects(stage.lists.ListEnemies.ElementAt(i).damagebox))
                 {
-                    if (HUD.HP > Physics.ListEnemies.ElementAt(i).damages)
-                        HUD.HP -= Physics.ListEnemies.ElementAt(i).damages;
+                    if (HUD.HP > stage.lists.ListEnemies.ElementAt(i).damages)
+                        HUD.HP -= stage.lists.ListEnemies.ElementAt(i).damages;
                     else
                         HUD.HP = 0;
+                }
+            }
+        }
+
+        public void CollisionBonus()
+        {
+            for (int i = 0; i < stage.lists.ListItem.Count; i++)
+            {
+                if (Hitbox.Intersects(stage.lists.ListItem.ElementAt(i).Hitbox))
+                {
+                    stage.lists.ListItem.ElementAt(i).GetBonus();
                 }
             }
         }

@@ -114,6 +114,7 @@
     <Compile Include="Camera.cs" />
     <Compile Include="Enemies\Roller.cs" />
     <Compile Include="HUD.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Menu\Button.cs" />
     <Compile Include="Menu\Cursor.cs" />
     <Compile Include="Enemies\Enemy.cs" />
@@ -127,6 +128,10 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Global Content\ATexture.cs" />
     <Compile Include="Sprite.cs" />
+    <Compile Include="Stages\Lists.cs" />
+    <Compile Include="Stages\Stage.cs" />
+    <Compile Include="Stages\Stage1.cs" />
+    <Compile Include="Stages\Stage2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

@@ -14,9 +14,9 @@ namespace Steel_Era
         Player LocalPlayer;
 
         //Constructors
-        public GameMain()
+        public GameMain(Stages.Stage stage)
         {
-            this.LocalPlayer = new Player();
+            this.LocalPlayer = new Player(stage);
         }
 
         // Methods

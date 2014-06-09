@@ -15,9 +15,10 @@ namespace Steel_Era.Enemies
 {
     class Roller : Enemy
     {
-        public Roller(float x, float y)
+        public Roller(float x, float y, Stages.Stage _stage)
             : base(ATexture.RollerSprite, x, y, 1, 1, 1)
         {
+            stage = _stage;
             this.FrameCol = 4;
             this.Timer = 0; // Intervalle entre 2 boucles d'animations
             this.AnimationSpeed = 5; // Vitesse d'animation
@@ -38,6 +39,7 @@ namespace Steel_Era.Enemies
         int AnimationSpeed;
         bool direction;
         SpriteEffects Effect;
+        Stages.Stage stage;
 
         public void MoveLeft()
         {
@@ -133,11 +135,11 @@ namespace Steel_Era.Enemies
         {
             Rectangle h;
             Vector2 pos = new Vector2(Hitbox.Location.X, Hitbox.Location.Y);
-            for (int i = 0; i < Physics.ListObstacle.Count; i++)
+            for (int i = 0; i < stage.lists.ListObstacle.Count; i++)
             {
-                if (Hitbox.Intersects(Physics.ListObstacle.ElementAt(i).Hitbox))
+                if (Hitbox.Intersects(stage.lists.ListObstacle.ElementAt(i).Hitbox))
                 {
-                    h = Physics.ListObstacle.ElementAt(i).Hitbox;
+                    h = stage.lists.ListObstacle.ElementAt(i).Hitbox;
                     if (Hitbox.Bottom > h.Bottom && Hitbox.Top < h.Top)
                     {
                         if (Hitbox.Right > h.Left && Hitbox.Left < h.Left)
