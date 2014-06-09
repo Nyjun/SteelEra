@@ -272,8 +272,8 @@ namespace Steel_Era
 
                 if (button1.Status == true)
                 {
-                    state = 0;
-                    HUD.showhud = true;
+                    state = 5;
+                    //balise HUD.showhud = true;
                     button1.Status = false;
                 }
                 if (button2.Status == true)
@@ -808,6 +808,47 @@ namespace Steel_Era
                     button3.Status = false;
                 }
             }
+            if (state == 5)
+            {
+                button1.Text = "Stage 1";
+                button1.IsVisible = true;
+                button2.Text = "Stage 2";
+                button2.IsVisible = true;
+                button3.IsVisible = false;
+                button4.IsVisible = false;
+                button5.IsVisible = false;
+                button6.IsVisible = false;
+                button7.IsVisible = false;
+                buttonVolume1.IsVisible = false;
+                buttonVolume2.IsVisible = false;
+                buttonVolume3.IsVisible = false;
+                buttonVolume4.IsVisible = false;
+
+
+                //B1
+                if (button1.IsHighLighted)
+                    button1.Position = new Vector2(Game1.screenWidth - button1.Width, (Game1.screenHeight / 2));
+                else
+                    button1.Position = new Vector2(Game1.screenWidth - button1.Width + 20, (Game1.screenHeight / 2));
+                //B2
+                if (button2.IsHighLighted)
+                    button2.Position = new Vector2(Game1.screenWidth - button1.Width + 5, (Game1.screenHeight / 2) + button1.Height + 5);
+                else
+                    button2.Position = new Vector2(Game1.screenWidth - button1.Width + 25, (Game1.screenHeight / 2) + button1.Height + 5);
+
+
+                if (button1.Status == true)
+                {
+                    state = 0;
+                    HUD.showhud = true;                
+                }
+
+                if (button2.Status == true)
+                {
+                    state = 0;
+                    button3.Status = false;
+                }
+            }
             // ######################
             if (state != 0)
             {
@@ -844,6 +885,22 @@ namespace Steel_Era
 
         public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle screenRectangle)
         {
+            if (state == 5)
+            {
+                spriteBatch.Draw(background.Texture, screenRectangle, Color.White);
+                button1.Draw(spriteBatch, gameTime);
+                button2.Draw(spriteBatch, gameTime);
+                button3.Draw(spriteBatch, gameTime);
+                button4.Draw(spriteBatch, gameTime);
+                button5.Draw(spriteBatch, gameTime);
+                button6.Draw(spriteBatch, gameTime);
+                button7.Draw(spriteBatch, gameTime);
+                buttonVolume1.Draw(spriteBatch, gameTime);
+                buttonVolume2.Draw(spriteBatch, gameTime);
+                buttonVolume3.Draw(spriteBatch, gameTime);
+                buttonVolume4.Draw(spriteBatch, gameTime);
+                cursor.Draw(spriteBatch, gameTime);
+            }
             if (state ==4)
             {
                 spriteBatch.Draw(backgroundGO.Texture, screenRectangle, Color.White);
