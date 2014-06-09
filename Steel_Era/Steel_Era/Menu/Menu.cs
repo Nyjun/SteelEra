@@ -809,7 +809,7 @@ namespace Steel_Era
                 }
             }
             if (state == 5)
-            {
+            {                
                 button1.Text = "Stage 1";
                 button1.IsVisible = true;
                 button2.Text = "Stage 2";
@@ -840,13 +840,14 @@ namespace Steel_Era
                 if (button1.Status == true)
                 {
                     state = 0;
-                    HUD.showhud = true;                
+                    HUD.showhud = true;
+                    button1.Status = false;
                 }
 
                 if (button2.Status == true)
                 {
                     state = 0;
-                    button3.Status = false;
+                    button2.Status = false;
                 }
             }
             // ######################
