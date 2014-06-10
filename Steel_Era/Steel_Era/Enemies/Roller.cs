@@ -80,23 +80,25 @@ namespace Steel_Era.Enemies
 
         void IA()
         {
-            if (Timing < LoopTime / 2)
+            if (Menu.Freezed == false)
             {
-                MoveRight();
+                if (Timing < LoopTime / 2)
+                {
+                    MoveRight();
+                }
+                if (Timing >= LoopTime / 2)
+                {
+                    MoveLeft();
+                }
+                if (Timing == LoopTime)
+                {
+                    Timing = 0;
+                }
+                else
+                {
+                    Timing++;
+                }
             }
-            if (Timing >= LoopTime / 2)
-            {
-                MoveLeft();
-            }
-            if (Timing == LoopTime)
-            {
-                Timing = 0;
-            }
-            else
-            {
-                Timing++;
-            }
-
 
             if (IsGrounded == false)//IsOnGround().Equals(false))
             {

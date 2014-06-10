@@ -23,6 +23,7 @@ namespace Steel_Era
         private Cursor cursor;
         string menuSoundState;
         string menuDisplayState;
+        public static bool Freezed;
 
         //Son
         SoundEffect musicMenu;
@@ -102,7 +103,7 @@ namespace Steel_Era
         public virtual void Initialize(Game1 game)
         {
             lastState = 1;
-
+            Freezed = false;
             menuSoundState = "on";
             menuDisplayState = "Windowed";
             menuVolumeChangeBGM = 70;
@@ -190,12 +191,13 @@ namespace Steel_Era
                 {
                     state = 3;
                     HUD.showhud = false;
+                    Freezed = true;
                 }
                 else
                 {
                     state = 0;
                     HUD.showhud = true;
-
+                    Freezed = false;
                 }
 
             }
@@ -240,11 +242,12 @@ namespace Steel_Era
             {
                 button1.Text = "Play";
                 button1.IsVisible = true;
-                button2.Text = "Options";
+                button2.Text = "Multiplayer";
                 button2.IsVisible = true;
-                button3.Text = "Quit";
+                button3.Text = "Option";
                 button3.IsVisible = true;
-                button4.IsVisible = false;
+                button4.Text = "Quit";
+                button4.IsVisible = true;
                 button5.IsVisible = false;
                 button6.IsVisible = false;
                 button7.IsVisible = false;
@@ -269,25 +272,33 @@ namespace Steel_Era
                     button3.Position = new Vector2(Game1.screenWidth - button1.Width + 10, (Game1.screenHeight / 2) + 2 * button1.Height + 10);
                 else
                     button3.Position = new Vector2(Game1.screenWidth - button1.Width + 30, (Game1.screenHeight / 2) + 2 * button1.Height + 10);
+                //B4
+                if (button4.IsHighLighted)
+                    button4.Position = new Vector2(Game1.screenWidth - button1.Width + 15, (Game1.screenHeight / 2) + 3 * button1.Height + 15);
+                else
+                    button4.Position = new Vector2(Game1.screenWidth - button1.Width + 35, (Game1.screenHeight / 2) + 3 * button1.Height + 15);
 
                 if (button1.Status == true)
                 {
                     state = 5;
-                    //balise HUD.showhud = true;
+
                     button1.Status = false;
                 }
-                if (button2.Status == true)
+                /*if (button2.Status == true)
                 {
-                    state = 2;
-                    button2.Status = false;
-                }
+                    //TBD
+                }*/
                 if (button3.Status == true)
                 {
-                    game.Exit();
+                    state = 2;
                     button3.Status = false;
                 }
+                if (button4.Status == true)
+                {
+                    game.Exit();
+                    button4.Status = false;
+                }
             }
-
             if (state == 2)  // Menu Options
             {
                 button1.Text = "Sound  :  " + menuSoundState;
@@ -528,7 +539,7 @@ namespace Steel_Era
                 button6.Text = "Restore Defaults ";
                 button6.IsVisible = true;
                 button7.IsVisible = true;
-                button7.Text = "Quit";
+                button7.Text = "Menu";
                 buttonVolume1.IsVisible = true;
                 buttonVolume2.IsVisible = true;
                 buttonVolume3.IsVisible = true;
@@ -745,7 +756,7 @@ namespace Steel_Era
 
                 if (button7.Status == true)
                 {
-                    game.Exit();
+                    state = 1;
                     button7.Status = false;
                 }
 
@@ -916,6 +927,7 @@ namespace Steel_Era
                 buttonVolume2.Draw(spriteBatch, gameTime);
                 buttonVolume3.Draw(spriteBatch, gameTime);
                 buttonVolume4.Draw(spriteBatch, gameTime);
+                spriteBatch.DrawString(Fonts.Font1, "Score : " + HUD.playerscore, new Vector2(Game1.screenWidth / 2, Game1.screenHeight / 2), Color.White);
                 cursor.Draw(spriteBatch, gameTime);
             }
 

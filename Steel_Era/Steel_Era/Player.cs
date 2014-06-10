@@ -230,125 +230,127 @@ namespace Steel_Era
                 Spritebox = new Rectangle(0, 0, 175, 175);
                 HUD.HP = HUD.HP - 1;
             }
-            
-            
-            //Attaques
-
-            if (keyboard.IsKeyDown(Keys.A))
+            if (Menu.Freezed == false)
             {
-                this.direction = Direction.A;
-                this.AnimateAttackA();
-                if (HUD.Mana > 0)
+
+                //Attaques
+
+                //Attaque A
+                if (keyboard.IsKeyDown(Keys.A) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up) && keyboard.IsKeyUp(Keys.Left) && keyboard.IsKeyUp(Keys.Right))
                 {
-                    Shoot();
-                }
-            }
-            else
-            {
-                this.direction = Direction.Non;
-            }
-            UpdateBullets();
-            //Attaque Z
-            if (keyboard.IsKeyDown(Keys.Z))
-            {
-
-                this.direction = Direction.Z;
-                this.AnimateAttackZ();
-            }
-
-
-            //Attaque E
-            if (keyboard.IsKeyDown(Keys.E))
-            {
-
-                this.direction = Direction.lA;
-                this.AnimateAttacklA();
-            }
-
-            // MOUVEMENT SPEED/DIRECTION
-            if (keyboard.IsKeyDown(Keys.Up))
-            {
-                //if (Hitbox.Y > JumpCeiling)
-                    Hitbox.Y -= airSpeed;
-                if (IsGrounded == true)
-                {
-                    airSpeed = 20;
+                    this.direction = Direction.A;
+                    this.AnimateAttackA();
+                    if (HUD.Mana > 0)
+                    {
+                        Shoot();
+                    }
                 }
                 else
                 {
-                    //if (airSpeed > 0)
-                    airSpeed -= 1;
+                    this.direction = Direction.Non;
                 }
-                this.direction = Direction.Up;
-                this.AnimateJump();
-                if (keyboard.IsKeyDown(Keys.Left))
+                UpdateBullets();
+                //Attaque Z
+                if (keyboard.IsKeyDown(Keys.Z))
                 {
-                    Hitbox.X = Hitbox.X - 10;
+
+                    this.direction = Direction.Z;
+                    this.AnimateAttackZ();
+                }
+
+
+                //Attaque E
+                if (keyboard.IsKeyDown(Keys.E))
+                {
+
+                    this.direction = Direction.lA;
+                    this.AnimateAttacklA();
+                }
+
+                // MOUVEMENT SPEED/DIRECTION
+                if (keyboard.IsKeyDown(Keys.Up))
+                {
+                    //if (Hitbox.Y > JumpCeiling)
+                    Hitbox.Y -= airSpeed;
+                    if (IsGrounded == true)
+                    {
+                        airSpeed = 20;
+                    }
+                    else
+                    {
+                        //if (airSpeed > 0)
+                        airSpeed -= 1;
+                    }
+                    this.direction = Direction.Up;
+                    this.AnimateJump();
+                    if (keyboard.IsKeyDown(Keys.Left))
+                    {
+                        Hitbox.X = Hitbox.X - 10;
+                        this.IsHorsLimiteLeft();
+
+                    }
+                    if (keyboard.IsKeyDown(Keys.Right))
+                    {
+                        this.Effect = SpriteEffects.FlipHorizontally;
+                        Hitbox.X = Hitbox.X + 10;
+                    }
+                }
+                else
+                {
+                    if (IsGrounded == false)//IsOnGround().Equals(false))
+                    {
+                        Hitbox.Y += gravity;
+                    }
+                }
+                if (keyboard.IsKeyDown(Keys.Down))
+                {
+                    //this.Hitbox.Y += 5;
+                    Hitbox = new Rectangle(Hitbox.Location.X, Hitbox.Location.Y, Hitbox.Width, crouchHeight);
+                    this.direction = Direction.Down;
+                    this.AnimateCrouch();
+                }
+                if (keyboard.IsKeyUp(Keys.Down) && keyOState.IsKeyDown(Keys.Down))
+                {
+                    Hitbox = new Rectangle(Hitbox.Location.X, Hitbox.Location.Y - (height - crouchHeight), Hitbox.Width, height);
+                }
+                if (keyboard.IsKeyDown(Keys.Left) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))
+                {
+                    Hitbox.X -= 10;
+                    this.direction = Direction.Left;
+                    this.AnimateRunLeft();
+                    this.regard = 0;
                     this.IsHorsLimiteLeft();
-
+                    if (keyboard.IsKeyDown(Keys.Right) && keyboard.IsKeyDown(Keys.Left))
+                    {
+                        this.FrameLine = 1;
+                        this.FrameCol = 1;
+                        this.Timer = 0;
+                    }
                 }
-                if (keyboard.IsKeyDown(Keys.Right))
+                if (keyboard.IsKeyDown(Keys.Right) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))
                 {
-                    this.Effect = SpriteEffects.FlipHorizontally;
                     Hitbox.X = Hitbox.X + 10;
+                    this.direction = Direction.Right;
+                    this.AnimateRunRight();
+                    this.regard = 1;
+                    if (keyboard.IsKeyDown(Keys.Left) && keyboard.IsKeyDown(Keys.Right))
+                    {
+                        this.FrameLine = 1;
+                        this.FrameCol = 1;
+                        this.Timer = 0;
+                    }
                 }
-            }
-            else
-            {
-                if (IsGrounded == false)//IsOnGround().Equals(false))
+                if (keyboard.IsKeyUp(Keys.Up) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Right) && keyboard.IsKeyUp(Keys.Left) && keyboard.IsKeyUp(Keys.A) && keyboard.IsKeyUp(Keys.Z) && (keyboard.IsKeyUp(Keys.E)))
                 {
-                    Hitbox.Y += gravity;
-                }
-            }
-            if (keyboard.IsKeyDown(Keys.Down))
-            {
-                //this.Hitbox.Y += 5;
-                Hitbox = new Rectangle(Hitbox.Location.X, Hitbox.Location.Y, Hitbox.Width, crouchHeight);
-                this.direction = Direction.Down;
-                this.AnimateCrouch();
-            }
-            if (keyboard.IsKeyUp(Keys.Down) && keyOState.IsKeyDown(Keys.Down))
-            {
-                Hitbox = new Rectangle(Hitbox.Location.X, Hitbox.Location.Y - (height - crouchHeight), Hitbox.Width, height);
-            }
-            if (keyboard.IsKeyDown(Keys.Left) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))
-            {
-                Hitbox.X -= 10;
-                this.direction = Direction.Left;
-                this.AnimateRunLeft();
-                this.regard = 0;
-                this.IsHorsLimiteLeft();
-                if (keyboard.IsKeyDown(Keys.Right) && keyboard.IsKeyDown(Keys.Left))
-                {
+                    //if (IsGrounded == true)//IsOnGround().Equals(true))
+                    //{
                     this.FrameLine = 1;
                     this.FrameCol = 1;
                     this.Timer = 0;
+                    //}
                 }
-            }
-            if (keyboard.IsKeyDown(Keys.Right) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))
-            {
-                Hitbox.X = Hitbox.X + 10;
-                this.direction = Direction.Right;
-                this.AnimateRunRight();
-                this.regard = 1;
-                if (keyboard.IsKeyDown(Keys.Left) && keyboard.IsKeyDown(Keys.Right))
-                {
-                    this.FrameLine = 1;
-                    this.FrameCol = 1;
-                    this.Timer = 0;
-                }
-            }
-            if (keyboard.IsKeyUp(Keys.Up) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Right) && keyboard.IsKeyUp(Keys.Left) && keyboard.IsKeyUp(Keys.A) && keyboard.IsKeyUp(Keys.Z) && (keyboard.IsKeyUp(Keys.E)))
-            {
-                //if (IsGrounded == true)//IsOnGround().Equals(true))
-                //{
-                this.FrameLine = 1;
-                this.FrameCol = 1;
-                this.Timer = 0;
-                //}
-            }
 
-
+            }
             // MOUVEMENT ANIMATIONS + SON
 
 
