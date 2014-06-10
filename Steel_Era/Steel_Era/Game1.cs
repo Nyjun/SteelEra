@@ -105,12 +105,12 @@ namespace Steel_Era
             // TODO: use this.Content to load your game content here
             ATexture.Load(Content);
             Fonts.Font1 = Content.Load<SpriteFont>("Menu/Fonts/SpriteFont1");//
-            menu = new Menu();
-            menu.Initialize(this);
-
+            
             stage1 = new Stages.Stage1();
             stage2 = new Stages.Stage2();
 
+            menu = new Menu(stage1, stage2);
+            menu.Initialize(this);
 
             screenWidth = Window.ClientBounds.Width;
             screenHeight = Window.ClientBounds.Height;

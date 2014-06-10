@@ -20,10 +20,25 @@ namespace Steel_Era.Stages
 
         public Lists lists;
 
+        public virtual void Init()
+        {
+
+        }
+        public virtual void End()
+        {
+
+        }
+        public void Restart()
+        {
+            End();
+            Init();
+        }
         public virtual void Update()
         {
 
         }
+
+
 
     }
 }

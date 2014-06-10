@@ -32,9 +32,6 @@ Content\Game\Elements\Plat2.xnb
 Content\Game\Background\Ciel jour.xnb
 Content\Game\Background\Mont.xnb
 Content\Menu\GAMEOVER.xnb
-Content\Game\Elements\HPB.xnb
-Content\Game\Elements\ManaB.xnb
-Content\Game\Elements\Point.xnb
 Content\Menu\Fonts\SpriteFont1.xnb
 Content\Menu\Music\KodoDrum1.xnb
 Content\Menu\Music\jump_up.xnb
@@ -45,4 +42,7 @@ Content\Menu\Music\gameMusic.xnb
 Content\Menu\Music\mouse_click.xnb
 Content\Menu\Music\mouse_enter.xnb
 Content\Menu\Music\voice_dead.xnb
+Content\Game\Elements\HPB.xnb
+Content\Game\Elements\ManaB.xnb
+Content\Game\Elements\Point.xnb
 Content\Menu\Music\get_item.xnb

@@ -20,7 +20,6 @@ namespace Steel_Era.Stages
             listSprite = new List<Sprite>();
             listEnemies = new List<Enemy>();
             listPlayers = new List<Player>();
-            listBonus = new List<Bonus>();
             listItem = new List<Item>();
         }
 
@@ -52,12 +51,6 @@ namespace Steel_Era.Stages
         }
         private List<Enemy> listEnemies;
 
-        public List<Bonus> ListBonus
-        {
-            get { return listBonus; }
-            set { listBonus = value; }
-        }
-        private List<Bonus> listBonus;
 
         public List<Item> ListItem
         {

@@ -14,8 +14,14 @@ namespace Steel_Era
 {
     class Menu
     {
+        public Menu(Stages.Stage1 _stage1, Stages.Stage2 _stage2)
+        {
+            stage1 = _stage1;
+            stage2 = _stage2;
+        }
 
-
+        Stages.Stage1 stage1;
+        Stages.Stage2 stage2;
 
         KeyboardState keyOState;
         int lastState;
@@ -24,6 +30,7 @@ namespace Steel_Era
         string menuSoundState;
         string menuDisplayState;
         public static bool Freezed;
+
 
         //Son
         SoundEffect musicMenu;
@@ -100,7 +107,7 @@ namespace Steel_Era
         /// <summary>
         /// Initialise les variables du Sprite
         /// </summary>
-        public virtual void Initialize(Game1 game)
+        public virtual void Initialize(Game1 _game)
         {
             lastState = 1;
             Freezed = false;
@@ -141,7 +148,7 @@ namespace Steel_Era
             VolumeSFX = 0.3F;
 
 
-            cursor = new Cursor(ATexture.cursor8x8, game);
+            cursor = new Cursor(ATexture.cursor8x8, _game);
             background = new Sprite(ATexture.BG_Main_Menu, 0, 0);
             backgroundPause = new Sprite(ATexture.BG_Pause, 0, 0);
             backgroundGO = new Sprite(ATexture.BG_GO, 0, 0);
@@ -800,17 +807,8 @@ namespace Steel_Era
                     Player.Hitbox = new Rectangle(0, 0, 87, 170);
                     Player.Spritebox = new Rectangle(0, 0, 175, 175);
                     HUD.playerscore = 0;
-                    Bonus.Checkhp = 0;
-                    Bonus.Checkhp2 = 0;
-                    Bonus.Checkmana = 0;
-                    Bonus.Checkmana2 = 0;
-                    Bonus.Checkmana3 = 0;
-                    Bonus.Checkmana4 = 0;
-                    Bonus.Checkpts = 0;
-                    Bonus.Checkpts2 = 0;
-                    Bonus.Checkpts3 = 0;
-                    Bonus.Checkpts4 = 0;
-                    Bonus.Checkpts5 = 0;
+                    stage1.Restart();
+                    
                 }
                
                 if (button2.Status == true)

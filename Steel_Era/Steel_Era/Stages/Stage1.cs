@@ -16,13 +16,22 @@ namespace Steel_Era.Stages
     {
         public Stage1()
         {
-            SpawnItems();
+            Init();
         }
 
 
         Item hp1, hp2;
         Item mana1, mana2, mana3, mana4;
         Item pts1, pts2, pts3, pts4, pts5;
+
+        public override void Init()
+        {
+            SpawnItems();
+        }
+        public override void End()
+        {
+            DeleteItems();
+        }
 
         void SpawnItems()
         {
@@ -48,7 +57,13 @@ namespace Steel_Era.Stages
             lists.ListItem.Add(pts3);
             lists.ListItem.Add(pts4);
             lists.ListItem.Add(pts5);
-            
+        }
+        void DeleteItems()
+        {
+            for (int i = 0; i < lists.ListItem.Count; i++)
+            {
+                lists.ListItem.ElementAt(i).Delete();
+            }
         }
 
         public override void Update()

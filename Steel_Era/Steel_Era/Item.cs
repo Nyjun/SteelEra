@@ -51,6 +51,11 @@ namespace Steel_Era
             return !exists;
         }
 
+        public void Delete()
+        {
+            exists = false;
+        }
+
         
     }
 }

@@ -14,9 +14,10 @@ namespace Steel_Era
 {
     abstract class Physics
     {
-        public static int gravity = 5;
 
         
+
+        public static int gravity = 5;
 
         /// <summary>
         /// Force de support.
