@@ -18,6 +18,9 @@ namespace Steel_Era.Stages
         {
             listObstacle = new List<Sprite>();
             listSprite = new List<Sprite>();
+            listBackground = new List<Sprite>();
+            listMiddleground = new List<Sprite>();
+            listForeground = new List<Sprite>();
             listEnemies = new List<Enemy>();
             listPlayers = new List<Player>();
             listItem = new List<Item>();
@@ -29,6 +32,27 @@ namespace Steel_Era.Stages
             set { listSprite = value; }
         }
         private List<Sprite> listSprite;
+
+        public List<Sprite> ListBackground
+        {
+            get { return listBackground; }
+            set { listBackground = value; }
+        }
+        private List<Sprite> listBackground;
+
+        public List<Sprite> ListMiddleground
+        {
+            get { return listMiddleground; }
+            set { listMiddleground = value; }
+        }
+        private List<Sprite> listMiddleground;
+
+        public List<Sprite> ListForeground
+        {
+            get { return listForeground; }
+            set { listForeground = value; }
+        }
+        private List<Sprite> listForeground;
 
         public List<Sprite> ListObstacle
         {

@@ -41,7 +41,17 @@ namespace Steel_Era
         int crouchHeight;
         int height;
         Stages.Stage stage;
+        bool exists;
 
+        public bool Killed()
+        {
+            return !exists;
+        }
+
+        public void Delete()
+        {
+            exists = false;
+        }
 
 
         //CONSTRUCTORS
@@ -49,8 +59,8 @@ namespace Steel_Era
         public Player(Stages.Stage _stage)
         {
             stage = _stage;
-            Hitbox = new Rectangle(0, 0, 87, 170);
-            Spritebox = new Rectangle(0, 0, 175, 175);
+            Hitbox = new Rectangle(0, Game1.screenHeight - 60 - 172, 87, 170);
+            Spritebox = new Rectangle(0, Game1.screenHeight - 60 - 172, 175, 175);
             this.FrameLine = 1;
             this.FrameCol = 1;
             this.IsGrounded = false;
@@ -67,7 +77,7 @@ namespace Steel_Era
 
             bulletList = new List<Bullet>();
             bulletDelay = 30;
-            
+            exists = true;
         }
 
         //METHODS

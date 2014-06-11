@@ -848,6 +848,7 @@ namespace Steel_Era
 
                 if (button1.Status == true)
                 {
+                    stage1.Init();
                     state = 0;
                     HUD.showhud = true;
                     button1.Status = false;

@@ -36,5 +36,11 @@ namespace Steel_Era
         public Rectangle damagebox;
         public bool IsGrounded;
 
+
+        public bool Killed()
+        {
+            return !exists;
+        }
+
     }
 }

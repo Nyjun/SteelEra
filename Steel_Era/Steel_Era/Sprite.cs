@@ -30,6 +30,17 @@ namespace Steel_Era
         protected Vector2 oldPos;
         protected float x;
         protected float y;
+        protected bool exists;
+
+        public bool Used()
+        {
+            return !exists;
+        }
+
+        public void Delete()
+        {
+            exists = false;
+        }
         ///////////////////////////////
         //Caracteristiques de l'image//
         ///////////////////////////////

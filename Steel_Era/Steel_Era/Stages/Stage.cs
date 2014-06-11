@@ -33,7 +33,7 @@ namespace Steel_Era.Stages
             End();
             Init();
         }
-        public virtual void Update()
+        public virtual void Update(MouseState mouse, KeyboardState keyboard, GameTime gt)
         {
 
         }

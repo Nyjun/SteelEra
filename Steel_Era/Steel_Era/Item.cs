@@ -22,7 +22,6 @@ namespace Steel_Era
         }
 
         int amount;
-        bool exists;
 
         public void GetBonus()
         {
@@ -46,15 +45,6 @@ namespace Steel_Era
             }
         }
 
-        public bool Used()
-        {
-            return !exists;
-        }
-
-        public void Delete()
-        {
-            exists = false;
-        }
 
         
     }

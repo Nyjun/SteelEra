@@ -30,7 +30,7 @@ namespace Steel_Era.Enemies
             Timing = 0;
             LoopTime = 256;
             Speed = 4;
-
+            exists = true;
         }
         int FrameCol;
         int Timer;
@@ -40,6 +40,8 @@ namespace Steel_Era.Enemies
         bool direction;
         SpriteEffects Effect;
         Stages.Stage stage;
+        
+
 
         public void MoveLeft()
         {

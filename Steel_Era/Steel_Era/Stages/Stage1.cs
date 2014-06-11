@@ -16,23 +16,52 @@ namespace Steel_Era.Stages
     {
         public Stage1()
         {
-            Init();
         }
 
 
+        Player player;
+        Enemies.Roller roller, roller1, roller2;
         Item hp1, hp2;
         Item mana1, mana2, mana3, mana4;
         Item pts1, pts2, pts3, pts4, pts5;
+        Sprite Solbas, PlateFormebas, PlateFormehaut, Plat, HolePlat, HolePlat2, DoublePlat, DoublePlat2, DoublePlat3, Solbas2, Solbas3, Plat2, Plat3, Plat4;
 
+        ///                           ///
+        ///   FONCTIONS PRINCIPALES   ///
+        ///                           ///
         public override void Init()
         {
+            SpawnObstacles();
             SpawnItems();
+            SpawnEnemies();
+            player = new Player(this);
+            lists.ListPlayers.Add(player);
+        }
+        public override void Update(MouseState ms, KeyboardState ks, GameTime gt)
+        {
+            UpdateEnemies(gt);
+            UpdateItems();
+            UpdatePlayers(ms, ks);
+        }
+        public void Draw(SpriteBatch sb, GameTime gt)
+        {
+            DrawItems(sb, gt);
+            DrawEnemies(sb, gt);
+            DrawPlayers(sb);
+            DrawObstacles(sb, gt);
         }
         public override void End()
         {
             DeleteItems();
+            DeleteEnemies();
+            DeletePlayers();
+            DeleteObstacle();
         }
 
+
+        ///                   ///
+        ///   ITEMS           ///
+        ///                   ///
         void SpawnItems()
         {
             hp1 = new Item(ATexture.HPB, 420, 130, 1);
@@ -58,25 +87,6 @@ namespace Steel_Era.Stages
             lists.ListItem.Add(pts4);
             lists.ListItem.Add(pts5);
         }
-        void DeleteItems()
-        {
-            for (int i = 0; i < lists.ListItem.Count; i++)
-            {
-                lists.ListItem.ElementAt(i).Delete();
-            }
-        }
-
-        public override void Update()
-        {
-            UpdateItems();
-        }
-
-        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
-        {
-            DrawItems(spriteBatch, gameTime);
-        }
-
-
         void UpdateItems()
         {
             for (int i = 0; i < lists.ListItem.Count; i++)
@@ -87,7 +97,6 @@ namespace Steel_Era.Stages
                 }
             }
         }
-
         void DrawItems(SpriteBatch spriteBatch, GameTime gameTime)
         {
             for (int i = 0; i < lists.ListItem.Count; i++)
@@ -95,7 +104,164 @@ namespace Steel_Era.Stages
                 lists.ListItem.ElementAt(i).Draw(spriteBatch, gameTime);
             }
         }
+        void DeleteItems()
+        {
+            for (int i = 0; i < lists.ListItem.Count; i++)
+            {
+                lists.ListItem.ElementAt(i).Delete();
+            }
+        }
 
-        
+
+        ///                   ///
+        ///   ENEMIES         ///
+        ///                   ///
+        void SpawnEnemies()
+        {
+            roller = new Enemies.Roller(2200, 100, this);
+            roller1 = new Enemies.Roller(1300, 100, this);
+            roller2 = new Enemies.Roller(5000, 100, this);
+            lists.ListEnemies.Add(roller);
+            lists.ListEnemies.Add(roller1);
+            lists.ListEnemies.Add(roller2);
+        }
+        void UpdateEnemies(GameTime gt)
+        {
+            for (int i = 0; i < lists.ListEnemies.Count; i++)
+            {
+                if (lists.ListEnemies.ElementAt(i).Killed())
+                {
+                    lists.ListEnemies.Remove(lists.ListEnemies.ElementAt(i));
+                }
+                else
+                {
+                    lists.ListEnemies.ElementAt(i).Update(gt);
+                }
+            }
+        }
+        void DrawEnemies(SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            for (int i = 0; i < lists.ListEnemies.Count; i++)
+            {
+                lists.ListEnemies.ElementAt(i).Draw(spriteBatch, gameTime);
+            }
+        }
+        void DeleteEnemies()
+        {
+            for (int i = 0; i < lists.ListEnemies.Count; i++)
+            {
+                lists.ListEnemies.ElementAt(i).Delete();
+            }
+        }
+
+
+        ///                   ///
+        ///   PLAYERS         ///
+        ///                   ///
+        void UpdatePlayers(MouseState ms, KeyboardState ks)
+        {
+            for (int i = 0; i < lists.ListPlayers.Count; i++)
+            {
+                if (lists.ListPlayers.ElementAt(i).Killed())
+                {
+                    lists.ListPlayers.Remove(lists.ListPlayers.ElementAt(i));
+                }
+                else
+                {
+                    lists.ListPlayers.ElementAt(i).Update(ms, ks);
+                }
+            }
+        }
+        void DrawPlayers(SpriteBatch spriteBatch)
+        {
+            for (int i = 0; i < lists.ListPlayers.Count; i++)
+            {
+                lists.ListPlayers.ElementAt(i).Draw(spriteBatch);
+            }
+        }
+        void DeletePlayers()
+        {
+            for (int i = 0; i < lists.ListPlayers.Count; i++)
+            {
+                lists.ListPlayers.ElementAt(i).Delete();
+            }
+        }
+
+        ///                   ///
+        ///   OBSTACLES       ///
+        ///                   ///
+        void SpawnObstacles()
+        {
+            Solbas = new Sprite(ATexture.Solbas, 0, Game1.screenHeight - 60);
+            Solbas2 = new Sprite(ATexture.Solbas2, 4000, Game1.screenHeight - 60);
+            Solbas3 = new Sprite(ATexture.Solbas3, 7000, Game1.screenHeight - 60);
+            PlateFormebas = new Sprite(ATexture.PlateFormebas, 800, Game1.screenHeight - 180);
+            PlateFormehaut = new Sprite(ATexture.PlateFormehaut, 800, Game1.screenHeight - 400);
+            Plat = new Sprite(ATexture.Platform, 300, 180);
+            Plat2 = new Sprite(ATexture.Plat2, 1300, Game1.screenHeight - 342);
+            Plat3 = new Sprite(ATexture.Plat3, 1800, Game1.screenHeight - 342);
+            Plat4 = new Sprite(ATexture.Plat4, 4700, Game1.screenHeight - 440);
+            HolePlat = new Sprite(ATexture.HolePlat, 3100, Game1.screenHeight - 197);
+            HolePlat2 = new Sprite(ATexture.HolePlat2, 3600, Game1.screenHeight - 297);
+            DoublePlat = new Sprite(ATexture.DoublePlat, 4500, Game1.screenHeight - 215);
+            DoublePlat2 = new Sprite(ATexture.DoublePlat2, 5199, Game1.screenHeight - 180);
+            DoublePlat3 = new Sprite(ATexture.DoublePlat3, 2100, Game1.screenHeight - 180);
+            lists.ListObstacle.Add(PlateFormehaut);
+            lists.ListObstacle.Add(PlateFormebas);
+            lists.ListObstacle.Add(Solbas);
+            lists.ListObstacle.Add(Solbas2);
+            lists.ListObstacle.Add(Solbas3);
+            lists.ListObstacle.Add(Plat);
+            lists.ListObstacle.Add(Plat2);
+            lists.ListObstacle.Add(Plat3);
+            lists.ListObstacle.Add(Plat4);
+            lists.ListObstacle.Add(HolePlat);
+            lists.ListObstacle.Add(HolePlat2);
+            lists.ListObstacle.Add(DoublePlat);
+            lists.ListObstacle.Add(DoublePlat2);
+            lists.ListObstacle.Add(DoublePlat3);
+        }
+        void UpdateObstacles()
+        {
+        }
+        void DrawObstacles(SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            for (int i = 0; i < lists.ListObstacle.Count; i++)
+            {
+                lists.ListObstacle.ElementAt(i).Draw(spriteBatch, gameTime);
+            }
+        }
+        void DeleteObstacle()
+        {
+            for (int i = 0; i < lists.ListObstacle.Count; i++)
+            {
+                lists.ListObstacle.ElementAt(i).Delete();
+            }
+        }
+
+        ///                   ///
+        ///   SPRITES         ///
+        ///                   ///
+        void SpawnSprites()
+        {
+            
+        }
+        void UpdateSprites()
+        {
+        }
+        void DrawSprites(SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            for (int i = 0; i < lists.ListSprite.Count; i++)
+            {
+                lists.ListSprite.ElementAt(i).Draw(spriteBatch, gameTime);
+            }
+        }
+        void DeleteSprites()
+        {
+            for (int i = 0; i < lists.ListSprite.Count; i++)
+            {
+                lists.ListSprite.ElementAt(i).Delete();
+            }
+        }
     }
 }
