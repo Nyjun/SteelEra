@@ -29,8 +29,9 @@ namespace Steel_Era
         int AnimationSpeed;
         public static Rectangle Hitbox;
         public static Rectangle Spritebox;
+        Rectangle DamageBox;
         Direction direction;
-        bool IsGrounded;
+        bool IsGrounded, striking;
         SpriteEffects Effect;
         int FrameLine;
         int FrameCol;
@@ -200,6 +201,13 @@ namespace Steel_Era
             {
                 this.Timer = 0;
                 this.FrameCol++;
+                if (FrameCol == 2 || FrameCol == 3)
+                {
+                    if (regard == 1)
+                        DamageBox = new Rectangle(Spritebox.X + 170, Spritebox.Y, 40, 170);
+                    if (regard == 0)
+                        DamageBox = new Rectangle(Spritebox.X - 40, Spritebox.Y, 40, 170);
+                }
                 if (this.FrameCol == 4)
                 {
                     Menu.attack1Inst.Play();
@@ -220,6 +228,13 @@ namespace Steel_Era
             {
                 this.Timer = 0;
                 this.FrameCol++;
+                if (FrameCol == 1 || FrameCol == 2)
+                {
+                    if (regard == 1)
+                        DamageBox = new Rectangle(Spritebox.X + 160, Spritebox.Y, 10, 170);
+                    if (regard == 0)
+                        DamageBox = new Rectangle(Spritebox.X , Spritebox.Y, 10, 170);
+                }
                 if (this.FrameCol > 3)
                 {
                     this.FrameCol = 1;
@@ -407,6 +422,17 @@ namespace Steel_Era
             CollisionBonus();
             color = Color.White;
             DamageToHero();
+            if (DamageBox != null)
+            {
+                for (int i = 0; i < stage.lists.ListEnemies.Count; i++)
+                {
+                    if (DamageBox.Intersects(stage.lists.ListEnemies.ElementAt(i).Hitbox))
+                    {
+                        stage.lists.ListEnemies.ElementAt(i).hitPoints -= 1;
+                    }
+                }
+            }
+
             if (Hitbox.Height == crouchHeight)
             {
                 Spritebox.Location = new Point(Hitbox.Center.X - (Spritebox.Width / 2), Hitbox.Center.Y - (Spritebox.Height / 2) - (int)(crouchHeight / 2));
@@ -415,6 +441,7 @@ namespace Steel_Era
             {
                 Spritebox.Location = new Point(Hitbox.Center.X - (Spritebox.Width / 2), Hitbox.Center.Y - (Spritebox.Height / 2));
             }
+            DamageBox = Rectangle.Empty;
             keyOState = keyboard;
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -472,6 +499,7 @@ namespace Steel_Era
         //Update bullets
         public void UpdateBullets()
         {
+
             foreach (Bullet b in bulletList)
             {
                 if (Temp == 0)
@@ -490,6 +518,14 @@ namespace Steel_Era
                     if (b.position.X >= Spritebox.X + 900)
                     {
                         b.IsVisible = false;
+                    }
+                }
+                b.hitbox = new Rectangle((int)b.position.X, (int)b.position.Y, b.texture.Bounds.Width, b.texture.Bounds.Height);
+                for (int i = 0; i < stage.lists.ListEnemies.Count; i++)
+                {
+                    if (b.hitbox.Intersects(stage.lists.ListEnemies.ElementAt(i).Hitbox))
+                    {
+                        stage.lists.ListEnemies.ElementAt(i).hitPoints -= 1;
                     }
                 }
             }
@@ -603,5 +639,7 @@ namespace Steel_Era
                 }
             }
         }
+
+
     }
 }

@@ -126,7 +126,8 @@ namespace Steel_Era.Enemies
         {
 
             IA();
-
+            if (hitPoints == 0)
+                Delete();
         }
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {

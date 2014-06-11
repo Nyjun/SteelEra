@@ -30,7 +30,7 @@ namespace Steel_Era
             IsGrounded = false;
         }
 
-        protected int hitPoints;
+        public int hitPoints;
         public int damages;
         protected Rectangle Spritebox;
         public Rectangle damagebox;

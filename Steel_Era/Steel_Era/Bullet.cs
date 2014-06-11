@@ -18,6 +18,7 @@ namespace Steel_Era
         public Vector2 position;
         public bool IsVisible;
         public float speed;
+        public Rectangle hitbox;
 
         //Constructor
         public Bullet(Texture2D newTexture)
