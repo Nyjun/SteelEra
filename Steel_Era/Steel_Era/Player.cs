@@ -24,7 +24,7 @@ namespace Steel_Era
         //FIELDS
 
 
-        int Timer;
+        int Timer, damageTimer;
         int Temp;
         int AnimationSpeed;
         public static Rectangle Hitbox;
@@ -42,6 +42,7 @@ namespace Steel_Era
         int height;
         Stages.Stage stage;
         bool exists;
+        Color color;
 
         public bool Killed()
         {
@@ -78,6 +79,7 @@ namespace Steel_Era
             bulletList = new List<Bullet>();
             bulletDelay = 30;
             exists = true;
+            color = Color.White;
         }
 
         //METHODS
@@ -403,6 +405,7 @@ namespace Steel_Era
 
             Collisions();
             CollisionBonus();
+            color = Color.White;
             DamageToHero();
             if (Hitbox.Height == crouchHeight)
             {
@@ -419,7 +422,7 @@ namespace Steel_Era
 
             //spriteBatch.Draw(ATexture.Portrait, Hitbox, Color.White);
             spriteBatch.Draw(ATexture.Crow, Spritebox, new Rectangle((this.FrameCol - 1) * 175, (this.FrameLine - 1) * 175, 175, 175),
-                Color.White, 0f, new Vector2(0, 0), this.Effect, 0f);
+                color, 0f, new Vector2(0, 0), this.Effect, 0f);
             foreach (Bullet b in bulletList)
             {
                 b.Draw(spriteBatch);
@@ -572,10 +575,20 @@ namespace Steel_Era
             {
                 if (Hitbox.Intersects(stage.lists.ListEnemies.ElementAt(i).damagebox))
                 {
-                    if (HUD.HP > stage.lists.ListEnemies.ElementAt(i).damages)
-                        HUD.HP -= stage.lists.ListEnemies.ElementAt(i).damages;
+                    if (damageTimer > 0)
+                    {
+                        damageTimer--;
+                        color = Color.White;
+                    }
                     else
-                        HUD.HP = 0;
+                    {
+                        if (HUD.HP > stage.lists.ListEnemies.ElementAt(i).damages)
+                            HUD.HP -= stage.lists.ListEnemies.ElementAt(i).damages;
+                        else
+                            HUD.HP = 0;
+                        damageTimer = 20;
+                        color = Color.Red;
+                    }
                 }
             }
         }
