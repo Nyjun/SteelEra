@@ -18,7 +18,7 @@ namespace Steel_Era.Stages
         {
         }
 
-
+        public static bool lvl_completed;
         Player player;
         Enemies.Roller roller, roller1, roller2;
         Item hp1, hp2;
@@ -45,10 +45,10 @@ namespace Steel_Era.Stages
         }
         public void Draw(SpriteBatch sb, GameTime gt)
         {
-            DrawItems(sb, gt);
-            DrawEnemies(sb, gt);
-            DrawPlayers(sb);
-            DrawObstacles(sb, gt);
+                DrawItems(sb, gt);
+                DrawEnemies(sb, gt);
+                DrawPlayers(sb);
+                DrawObstacles(sb, gt);
         }
         public override void End()
         {
@@ -206,11 +206,11 @@ namespace Steel_Era.Stages
             DoublePlat = new Sprite(ATexture.DoublePlat, 4500, Game1.screenHeight - 215);
             DoublePlat2 = new Sprite(ATexture.DoublePlat2, 5199, Game1.screenHeight - 180);
             DoublePlat3 = new Sprite(ATexture.DoublePlat3, 2100, Game1.screenHeight - 180);
-            lists.ListObstacle.Add(PlateFormehaut);
-            lists.ListObstacle.Add(PlateFormebas);
             lists.ListObstacle.Add(Solbas);
             lists.ListObstacle.Add(Solbas2);
             lists.ListObstacle.Add(Solbas3);
+            lists.ListObstacle.Add(PlateFormehaut);
+            lists.ListObstacle.Add(PlateFormebas);
             lists.ListObstacle.Add(Plat);
             lists.ListObstacle.Add(Plat2);
             lists.ListObstacle.Add(Plat3);
@@ -230,15 +230,15 @@ namespace Steel_Era.Stages
             {
                 lists.ListObstacle.ElementAt(i).Draw(spriteBatch, gameTime);
             }
+
         }
         void DeleteObstacle()
         {
-            for (int i = 0; i < lists.ListObstacle.Count; i++)
-            {
-                lists.ListObstacle.ElementAt(i).Delete();
-            }
+            //for (int i = 0; i < lists.ListObstacle.Count; i++)
+            //{
+                lists.ListObstacle.RemoveRange(0, lists.ListObstacle.Count);
+            //}
         }
-
         ///                   ///
         ///   SPRITES         ///
         ///                   ///
@@ -263,5 +263,6 @@ namespace Steel_Era.Stages
                 lists.ListSprite.ElementAt(i).Delete();
             }
         }
+        
     }
 }

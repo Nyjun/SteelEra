@@ -22,6 +22,8 @@ namespace Steel_Era
 
         Stages.Stage1 stage1;
         Stages.Stage2 stage2;
+        public static int lvl_selected;
+        bool Drawmessage;
 
         KeyboardState keyOState;
         int lastState;
@@ -30,7 +32,7 @@ namespace Steel_Era
         string menuSoundState;
         string menuDisplayState;
         public static bool Freezed;
-
+        public static int selected;
 
         //Son
         SoundEffect musicMenu;
@@ -111,10 +113,13 @@ namespace Steel_Era
         {
             lastState = 1;
             Freezed = false;
+            lvl_selected = 0;
+            Drawmessage = false;
             menuSoundState = "on";
             menuDisplayState = "Windowed";
             menuVolumeChangeBGM = 70;
             menuVolumeChangeSFX = 30;
+            selected = 0;
             //Son
             musicMenu = ATexture.musicMenu;
             musicMenuInst = musicMenu.CreateInstance();
@@ -764,9 +769,12 @@ namespace Steel_Era
                 if (button7.Status == true)
                 {
                     state = 1;
+                    stage1.End();
+                    stage2.End();
+
                     button7.Status = false;
                 }
-
+                    
             }
 
             if (state == 4)
@@ -782,9 +790,9 @@ namespace Steel_Era
                 button7.IsVisible = false;
                 buttonVolume1.IsVisible = false;
                 buttonVolume2.IsVisible = false;
-                buttonVolume3.IsVisible = false;
+                buttonVolume3.IsVisible = false;        
                 buttonVolume4.IsVisible = false;
-
+                
 
                 //B1
                 if (button1.IsHighLighted)
@@ -803,11 +811,19 @@ namespace Steel_Era
                     state = 0;
                     HUD.showhud = true;
                     HUD.HP = 4;
+                    HUD.Mana = 3;
                     button1.Status = false;
                     Player.Hitbox = new Rectangle(0, 0, 87, 170);
                     Player.Spritebox = new Rectangle(0, 0, 175, 175);
                     HUD.playerscore = 0;
-                    stage1.Restart();
+                    if (Menu.lvl_selected == 1)
+                    {
+                        stage1.Restart();
+                    }
+                    if (Menu.lvl_selected == 2)
+                    {
+                        stage2.Restart();
+                    }
                     
                 }
                
@@ -841,23 +857,58 @@ namespace Steel_Era
                     button1.Position = new Vector2(Game1.screenWidth - button1.Width + 20, (Game1.screenHeight / 2));
                 //B2
                 if (button2.IsHighLighted)
-                    button2.Position = new Vector2(Game1.screenWidth - button1.Width + 5, (Game1.screenHeight / 2) + button1.Height + 5);
-                else
-                    button2.Position = new Vector2(Game1.screenWidth - button1.Width + 25, (Game1.screenHeight / 2) + button1.Height + 5);
+                    if (Stages.Stage1.lvl_completed == true)
+                    {
+                        button2.Position = new Vector2(Game1.screenWidth - button1.Width + 5, (Game1.screenHeight / 2) + button1.Height + 5);
+                    }
+                    else
+                        button2.Position = new Vector2(Game1.screenWidth - button1.Width + 25, (Game1.screenHeight / 2) + button1.Height + 5);
 
 
                 if (button1.Status == true)
                 {
-                    stage1.Init();
+                    stage2.End();
+                    lvl_selected = 1;
+                    stage1.Restart();
+                    
                     state = 0;
+
+                    Drawmessage = false;
+                    Freezed = false;
                     HUD.showhud = true;
+                    HUD.HP = 4;
+                    HUD.Mana = 3;
                     button1.Status = false;
+                    Player.Hitbox = new Rectangle(0, 0, 87, 170);
+                    Player.Spritebox = new Rectangle(0, 0, 175, 175);
+                    HUD.playerscore = 0;
+                    
+                    
                 }
 
                 if (button2.Status == true)
                 {
-                    state = 0;
-                    button2.Status = false;
+                    if (Stages.Stage1.lvl_completed == true)
+                    {
+                        //stage1.End();
+                        lvl_selected = 2;
+                        stage2.Init();
+
+                        state = 0;
+
+                        Freezed = false;
+                        HUD.showhud = true;
+                        HUD.HP = 4;
+                        HUD.Mana = 3;
+                        button2.Status = false;
+                        Player.Hitbox = new Rectangle(0, 0, 87, 170);
+                        Player.Spritebox = new Rectangle(0, 0, 175, 175);
+                        HUD.playerscore = 0;
+                    }
+                    else
+                    {
+                        Drawmessage = true;
+                    }
                 }
             }
             // ######################
@@ -911,6 +962,10 @@ namespace Steel_Era
                 buttonVolume3.Draw(spriteBatch, gameTime);
                 buttonVolume4.Draw(spriteBatch, gameTime);
                 cursor.Draw(spriteBatch, gameTime);
+                if (Drawmessage == true)
+                {
+                    spriteBatch.DrawString(Fonts.Font1, "You must clear the stage 1 !", new Vector2(Game1.screenWidth / 2, Game1.screenHeight / 2), Color.Red);
+                }
             }
             if (state ==4)
             {
@@ -961,7 +1016,7 @@ namespace Steel_Era
                 buttonVolume2.Draw(spriteBatch, gameTime);
                 buttonVolume3.Draw(spriteBatch, gameTime);
                 buttonVolume4.Draw(spriteBatch, gameTime);
-
+                
                 cursor.Draw(spriteBatch, gameTime);
             }
 

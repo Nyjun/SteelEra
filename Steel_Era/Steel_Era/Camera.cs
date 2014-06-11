@@ -11,7 +11,8 @@ namespace Steel_Era
     {
         public Matrix transform;
         Viewport view;
-        Vector2 centre;
+        public static Vector2 centre;
+        public static int centreX, centreY;
 
         public Camera(Viewport newView)
         {
@@ -20,18 +21,22 @@ namespace Steel_Era
 
         public void Update(GameTime gameTime, Rectangle LocPlayer)
         {
-            if (LocPlayer.X * 2 >= Game1.screenWidth) /*&& (LocPlayer.X <= 7000))*/
+            //if (LocPlayer.X * 2 >= Game1.screenWidth) 
             {
                 centre = new Vector2(LocPlayer.X, LocPlayer.Y);
                 transform = Matrix.CreateScale(new Vector3(1, 1, 0)) *
                     Matrix.CreateTranslation(new Vector3(-centre.X + 630, 0, 0));
+                centreX = (int)centre.X;
+                centreY = (int)centre.Y;
             }
-            else
+            /*else
             {
                 centre = new Vector2(Game1.screenWidth, Game1.screenHeight);
                 transform = Matrix.CreateScale(new Vector3(1, 1, 0)) *
                     Matrix.CreateTranslation(new Vector3(0, 0, 0));
-            }
+                centreX = (int)centre.X;
+                centreY = (int)centre.Y;
+            }*/
 
         }
 

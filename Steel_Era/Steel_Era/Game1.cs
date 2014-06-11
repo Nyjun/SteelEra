@@ -151,6 +151,7 @@ namespace Steel_Era
 
             // TODO: Add your update logic here
             stage1.Update(mouseState, keyState, gameTime);
+            stage2.Update(mouseState, keyState, gameTime);
 
             keyState = Keyboard.GetState();
             mouseState = Mouse.GetState();
@@ -172,22 +173,38 @@ namespace Steel_Era
 
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearWrap, null, null, null, Camerascroll.transform);
-            spriteBatch.Draw(ATexture.BG_Ciel, new Vector2(0, screenHeight - 800), Color.White);
-            spriteBatch.Draw(ATexture.Ciel2, new Vector2(2751, screenHeight - 800), Color.White);
-            spriteBatch.Draw(ATexture.Ciel3, new Vector2(2751 * 2, screenHeight - 800), Color.White);
-            spriteBatch.Draw(ATexture.BG_Mont, new Vector2(0, screenHeight - 500), Color.White);
-            spriteBatch.Draw(ATexture.Mont2, new Vector2(3493, screenHeight - 500), Color.White);
-            spriteBatch.Draw(ATexture.Mont3, new Vector2(3493 * 2, screenHeight - 500), Color.White);
-            spriteBatch.Draw(ATexture.PlateFormeMid, new Vector2(810, screenHeight - 377), Color.White);
-            spriteBatch.Draw(ATexture.Solhaut, new Vector2(0, screenHeight - 97), Color.White);
-            spriteBatch.Draw(ATexture.Solhaut2, new Vector2(4000, screenHeight - 97), Color.White);
-            spriteBatch.Draw(ATexture.Solhaut3, new Vector2(7000, screenHeight - 97), Color.White);
-            spriteBatch.Draw(ATexture.Edge, new Vector2(3000, screenHeight - 97), Color.White);
-            spriteBatch.Draw(ATexture.PlatMid, new Vector2(1300, screenHeight - 320), Color.White);
-            spriteBatch.Draw(ATexture.PlatMid2, new Vector2(1800, screenHeight - 320), Color.White);
 
-            spriteBatch.Draw(ATexture.End, new Vector2(6850, screenHeight - 150), Color.White);
+            if (Menu.lvl_selected == 1)
+            {
+                spriteBatch.Draw(ATexture.BG_Ciel, /*new Vector2(0, screenHeight - 800)*/ new Rectangle((int)(Camera.centreX * 0.9) - 750, screenHeight - 800, ATexture.BG_Ciel.Width, ATexture.BG_Ciel.Height), Color.White);
+                //spriteBatch.Draw(ATexture.Ciel2, new Vector2(-2751, screenHeight - 800), Color.White);
+                //spriteBatch.Draw(ATexture.Ciel3, new Vector2(2751 * 2, screenHeight - 800), Color.White);
+                spriteBatch.Draw(ATexture.BG_Mont, /*new Vector2(0, screenHeight - 500)*/new Rectangle((int)(Camera.centreX * 0.7) - 750, screenHeight - 500, ATexture.BG_Mont.Width, ATexture.BG_Mont.Height), Color.White);
+                spriteBatch.Draw(ATexture.Mont2, new Rectangle((int)(Camera.centreX * 0.7) - 50, screenHeight - 500, ATexture.BG_Mont.Width, ATexture.BG_Mont.Height), Color.White);
+                //spriteBatch.Draw(ATexture.Mont3, new Vector2(3493 * 2, screenHeight - 500), Color.White);
+                spriteBatch.Draw(ATexture.PlateFormeMid, new Vector2(810, screenHeight - 377), Color.White);
+                spriteBatch.Draw(ATexture.Solhaut, new Vector2(0, screenHeight - 97), Color.White);
+                spriteBatch.Draw(ATexture.Solhaut2, new Vector2(4000, screenHeight - 97), Color.White);
+                spriteBatch.Draw(ATexture.Solhaut3, new Vector2(7000, screenHeight - 97), Color.White);
+                spriteBatch.Draw(ATexture.Edge, new Vector2(3000, screenHeight - 97), Color.White);
+                spriteBatch.Draw(ATexture.PlatMid, new Vector2(1300, screenHeight - 320), Color.White);
+                spriteBatch.Draw(ATexture.PlatMid2, new Vector2(1800, screenHeight - 320), Color.White);
+
+                spriteBatch.Draw(ATexture.End, new Vector2(6850, screenHeight - 150), Color.White);
+            }
+            if (Menu.lvl_selected == 2)
+            {
+                spriteBatch.Draw(ATexture.Rock, new Rectangle((int)(Camera.centreX * 0.7) - 750, screenHeight - 400, ATexture.Rock.Width, ATexture.Rock.Height), Color.White);
+
+                
+                spriteBatch.Draw(ATexture.Grasshaut, new Vector2(0, screenHeight - 97), Color.White);
+                spriteBatch.Draw(ATexture.Grasshaut2, new Vector2(4000, screenHeight - 97), Color.White);
+                spriteBatch.Draw(ATexture.Grasshaut3, new Vector2(7000, screenHeight - 97), Color.White);
+
+
+            }
             stage1.Draw(spriteBatch, gameTime);
+            stage2.Draw(spriteBatch, gameTime);
 
             base.Draw(gameTime);
             spriteBatch.End();

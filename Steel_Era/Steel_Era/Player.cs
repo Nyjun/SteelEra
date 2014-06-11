@@ -240,6 +240,10 @@ namespace Steel_Era
                 Spritebox = new Rectangle(0, 0, 175, 175);
                 HUD.HP = HUD.HP - 1;
             }
+            if (Player.Hitbox.X == 500)
+            {
+                Stages.Stage1.lvl_completed = true;
+            }
             if (Menu.Freezed == false)
             {
 

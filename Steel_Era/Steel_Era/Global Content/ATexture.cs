@@ -14,6 +14,8 @@ namespace Steel_Era
 {
     static class ATexture
     {
+
+
         public static Texture2D RollerSprite;
         public static Texture2D BoutonSound1;
         public static Texture2D BoutonSound2;
@@ -36,8 +38,15 @@ namespace Steel_Era
         public static Texture2D PlateFormehaut;
         public static Texture2D BG_Pause;
         public static Texture2D BG_GO;
+        public static Texture2D Boss;
+
+        //Stage1
         public static Texture2D Solbas2, Solbas3, Solhaut2, Solhaut3, PlatMid, PlatMid2, Plat2, Ciel2, Ciel3, Mont2, Mont3, DoublePlat, DoublePlat2, DoublePlat3, Plat4,
             HolePlat, HolePlat2, Edge, Plat3, End, HPB, HPB2, ManaB, ManaB2, ManaB3, ManaB4, Pts, Pts2, Pts3, Pts4, Pts5;
+
+        //Stage2
+        public static Texture2D Grass, Grass2, Grass3, Grass4, Grass5, Grasshaut, Grasshaut2, Grasshaut3, Grasshaut4, Grasshaut5, BG, BG2, BG3, BG4, BG5, BG6, Forest, Forest2, Forest3, Forest4,
+            Forest5, Forest6, Rock, Rock2;
 
         public static SoundEffect musicMenu;
         public static SoundEffect jump;
@@ -71,6 +80,7 @@ namespace Steel_Era
             Crow = cm.Load<Texture2D>("Game/Animations/Animation");
             RollerSprite = cm.Load<Texture2D>("Game/Animations/RollerSheet");
 
+            //Stage1
             BG_Mont = cm.Load<Texture2D>("Game/Background/Mont");
             Mont2 = cm.Load<Texture2D>("Game/Background/Mont");
             Mont3 = cm.Load<Texture2D>("Game/Background/Mont");
@@ -110,6 +120,20 @@ namespace Steel_Era
             Pts3 = cm.Load<Texture2D>("Game/Elements/Point");
             Pts4 = cm.Load<Texture2D>("Game/Elements/Point");
             Pts5 = cm.Load<Texture2D>("Game/Elements/Point");
+
+            //Stage2
+            //BG = cm.Load<Texture2D>("Game/Background/Mont");
+            //Forest = cm.Load<Texture2D>("Game/Background/Mont");
+            Rock = cm.Load<Texture2D>("Game/Background/Mont");
+            Grass = cm.Load<Texture2D>("Game/Elements/Grassbas");
+            Grass2 = cm.Load<Texture2D>("Game/Elements/Grassbas");
+            Grass3 = cm.Load<Texture2D>("Game/Elements/Grassbas");
+            Grass4 = cm.Load<Texture2D>("Game/Elements/Grassbas");
+            Grasshaut = cm.Load<Texture2D>("Game/Elements/Grasshaut");
+            Grasshaut2 = cm.Load<Texture2D>("Game/Elements/Grasshaut");
+            Grasshaut3 = cm.Load<Texture2D>("Game/Elements/Grasshaut");
+            Grasshaut4 = cm.Load<Texture2D>("Game/Elements/Grasshaut");
+
 
             //HUD
 
