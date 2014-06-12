@@ -201,7 +201,7 @@ namespace Steel_Era
             {
                 this.Timer = 0;
                 this.FrameCol++;
-                if (FrameCol == 2 || FrameCol == 3)
+                if (FrameCol == 3 || FrameCol == 4)
                 {
                     if (regard == 1)
                         DamageBox = new Rectangle(Spritebox.X + 170, Spritebox.Y, 40, 170);
