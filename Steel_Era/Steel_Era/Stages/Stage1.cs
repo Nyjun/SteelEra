@@ -19,7 +19,8 @@ namespace Steel_Era.Stages
         }
 
         public static bool lvl_completed;
-        Player player;
+        public static Player player;
+        public static Player player2;
         Enemies.Roller roller, roller1, roller2;
         Item hp1, hp2;
         Item mana1, mana2, mana3, mana4;
@@ -36,6 +37,14 @@ namespace Steel_Era.Stages
             SpawnEnemies();
             player = new Player(this);
             lists.ListPlayers.Add(player);
+            if (Menu.MultiOn == true)
+            {
+                player2 = new Player(this);
+                player2.Character = ATexture.Crow2;
+                player2.RepopPosX = 0;
+                lists.ListPlayers.Add(player2);
+            }
+
         }
         public override void Update(MouseState ms, KeyboardState ks, GameTime gt)
         {
@@ -45,10 +54,10 @@ namespace Steel_Era.Stages
         }
         public void Draw(SpriteBatch sb, GameTime gt)
         {
-                DrawItems(sb, gt);
-                DrawEnemies(sb, gt);
-                DrawPlayers(sb);
-                DrawObstacles(sb, gt);
+            DrawItems(sb, gt);
+            DrawEnemies(sb, gt);
+            DrawPlayers(sb);
+            DrawObstacles(sb, gt);
         }
         public override void End()
         {
@@ -174,17 +183,25 @@ namespace Steel_Era.Stages
         }
         void DrawPlayers(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < lists.ListPlayers.Count; i++)
+            /*for (int i = 0; i < lists.ListPlayers.Count; i++)
             {
-                lists.ListPlayers.ElementAt(i).Draw(spriteBatch);
+                lists.ListPlayers.ElementAt(i).Draw(spriteBatch);  
+           }*/
+            foreach (Player p in lists.ListPlayers)
+            {
+                if (p != null)
+                {
+                    p.Draw(spriteBatch);
+                }
             }
         }
         void DeletePlayers()
         {
-            for (int i = 0; i < lists.ListPlayers.Count; i++)
-            {
-                lists.ListPlayers.ElementAt(i).Delete();
-            }
+            //for (int i = 0; i < lists.ListPlayers.Count; i++)
+            //{
+            //lists.ListPlayers.ElementAt(i).Delete();
+            lists.ListPlayers.RemoveRange(0, lists.ListPlayers.Count);
+            //}
         }
 
         ///                   ///
@@ -236,7 +253,7 @@ namespace Steel_Era.Stages
         {
             //for (int i = 0; i < lists.ListObstacle.Count; i++)
             //{
-                lists.ListObstacle.RemoveRange(0, lists.ListObstacle.Count);
+            lists.ListObstacle.RemoveRange(0, lists.ListObstacle.Count);
             //}
         }
         ///                   ///
@@ -244,7 +261,7 @@ namespace Steel_Era.Stages
         ///                   ///
         void SpawnSprites()
         {
-            
+
         }
         void UpdateSprites()
         {
@@ -263,6 +280,6 @@ namespace Steel_Era.Stages
                 lists.ListSprite.ElementAt(i).Delete();
             }
         }
-        
+
     }
 }

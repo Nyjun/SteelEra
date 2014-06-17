@@ -28,6 +28,7 @@ namespace Steel_Era
         public static Texture2D forestTemple;
         public static Texture2D Platform;
         public static Texture2D Crow;
+        public static Texture2D Crow2;
         public static Texture2D Solbas;
         public static Texture2D Solhaut;
         public static Texture2D BG_Main_Menu;
@@ -78,6 +79,7 @@ namespace Steel_Era
 
             //Game
             Crow = cm.Load<Texture2D>("Game/Animations/Animation");
+            Crow2 = cm.Load<Texture2D>("Game/Animations/Animation2");
             RollerSprite = cm.Load<Texture2D>("Game/Animations/RollerSheet");
 
             //Stage1

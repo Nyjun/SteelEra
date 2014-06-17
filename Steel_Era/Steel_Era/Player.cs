@@ -17,6 +17,7 @@ namespace Steel_Era
         public float bulletDelay;
         public List<Bullet> bulletList;
 
+
         public enum Direction
         {
             Up, Down, Left, Right, Non, A, Z, lA,
@@ -27,8 +28,11 @@ namespace Steel_Era
         int Timer, damageTimer;
         int Temp;
         int AnimationSpeed;
+        public Texture2D Character;
+        public int RepopPosX;
         public static Rectangle Hitbox;
         public static Rectangle Spritebox;
+
         Rectangle DamageBox;
         Direction direction;
         bool IsGrounded, striking;
@@ -45,6 +49,7 @@ namespace Steel_Era
         bool exists;
         Color color;
 
+
         public bool Killed()
         {
             return !exists;
@@ -60,9 +65,11 @@ namespace Steel_Era
 
         public Player(Stages.Stage _stage)
         {
+            Character = ATexture.Crow;
             stage = _stage;
-            Hitbox = new Rectangle(0, Game1.screenHeight - 60 - 172, 87, 170);
-            Spritebox = new Rectangle(0, Game1.screenHeight - 60 - 172, 175, 175);
+            RepopPosX = 200;
+            Hitbox = new Rectangle(RepopPosX, Game1.screenHeight - 60 - 172, 87, 170);
+            Spritebox = new Rectangle(RepopPosX, Game1.screenHeight - 60 - 172, 175, 175);
             this.FrameLine = 1;
             this.FrameCol = 1;
             this.IsGrounded = false;
@@ -74,17 +81,20 @@ namespace Steel_Era
             //this.JumpCeiling = Hitbox.Y;
             airSpeed = 20;
             height = Spritebox.Height;
-            crouchHeight =Spritebox.Height / 2;
+            crouchHeight = Spritebox.Height / 2;
             //jumpTimer = 0;
 
             bulletList = new List<Bullet>();
             bulletDelay = 30;
             exists = true;
             color = Color.White;
+
+
+
         }
 
         //METHODS
-        
+
         public void IsHorsLimiteLeft()
         {
             if (Hitbox.Left <= 0)
@@ -201,7 +211,7 @@ namespace Steel_Era
             {
                 this.Timer = 0;
                 this.FrameCol++;
-                if (FrameCol == 3 || FrameCol == 4)
+                if (FrameCol == 2 || FrameCol == 3)
                 {
                     if (regard == 1)
                         DamageBox = new Rectangle(Spritebox.X + 170, Spritebox.Y, 40, 170);
@@ -233,7 +243,7 @@ namespace Steel_Era
                     if (regard == 1)
                         DamageBox = new Rectangle(Spritebox.X + 160, Spritebox.Y, 10, 170);
                     if (regard == 0)
-                        DamageBox = new Rectangle(Spritebox.X , Spritebox.Y, 10, 170);
+                        DamageBox = new Rectangle(Spritebox.X, Spritebox.Y, 10, 170);
                 }
                 if (this.FrameCol > 3)
                 {
@@ -250,7 +260,7 @@ namespace Steel_Era
 
         public void Update(MouseState mouse, KeyboardState keyboard)
         {
-            if (Hitbox.Y > Game1.screenHeight)
+            if (Hitbox.Y > Game1.screenHeight) //Fall into a hole
             {
                 Menu.voice_deadInst.Play();
                 Hitbox = new Rectangle(0, 0, 87, 170);
@@ -448,7 +458,7 @@ namespace Steel_Era
         {
 
             //spriteBatch.Draw(ATexture.Portrait, Hitbox, Color.White);
-            spriteBatch.Draw(ATexture.Crow, Spritebox, new Rectangle((this.FrameCol - 1) * 175, (this.FrameLine - 1) * 175, 175, 175),
+            spriteBatch.Draw(Character, Spritebox, new Rectangle((this.FrameCol - 1) * 175, (this.FrameLine - 1) * 175, 175, 175),
                 color, 0f, new Vector2(0, 0), this.Effect, 0f);
             foreach (Bullet b in bulletList)
             {

@@ -8,6 +8,10 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.Net.Sockets;
+using System.Net;
+using System.Windows.Forms;
+using System.IO;
 
 namespace Steel_Era
 {
@@ -18,6 +22,17 @@ namespace Steel_Era
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+
+        public static TcpClient client;
+        public static string IP = "127.0.0.1";
+        public static int PORT = 1490;
+        public static int BUFFER_SIZE = 2048;
+        public static byte[] readBuffer;
+
+        public static MemoryStream readStream, writeStream;
+
+        public static BinaryReader reader;
+        public static BinaryWriter writer;
 
         static Stages.Stage1 stage1;
         static Stages.Stage2 stage2;
@@ -69,7 +84,7 @@ namespace Steel_Era
             //Changes the settings that you just applied
             graphics.ApplyChanges();
 
-            
+
 
         }
 
@@ -87,12 +102,12 @@ namespace Steel_Era
             //// Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            
+
 
             // TODO: use this.Content to load your game content here
             ATexture.Load(Content);
             Fonts.Font1 = Content.Load<SpriteFont>("Menu/Fonts/SpriteFont1");//
-            
+
             stage1 = new Stages.Stage1();
             stage2 = new Stages.Stage2();
 
@@ -110,7 +125,21 @@ namespace Steel_Era
 
 
         }
+        public static void Multi()
+        {
+            client = new TcpClient();
+            client.NoDelay = true;
+            client.Connect(IP, PORT);
+            readBuffer = new byte[BUFFER_SIZE];
 
+            client.GetStream().BeginRead(readBuffer, 0, BUFFER_SIZE, StreamReceived, null);
+
+            readStream = new MemoryStream();
+            writeStream = new MemoryStream();
+
+            reader = new BinaryReader(readStream);
+            writer = new BinaryWriter(writeStream);
+        }
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
@@ -146,7 +175,7 @@ namespace Steel_Era
         {
             // Allows the game to exit
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
                 this.Exit();
 
             // TODO: Add your update logic here
@@ -161,6 +190,121 @@ namespace Steel_Era
             Camerascroll.Update(gameTime, Player.Hitbox);
 
             base.Update(gameTime);
+        }
+
+        public static void StreamReceived(IAsyncResult ar)
+        {
+            int byteRead = 0;
+
+            try
+            {
+                lock (client.GetStream())
+                {
+                    byteRead = client.GetStream().EndRead(ar);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            if (byteRead == 0)
+            {
+                client.Close();
+                return;
+            }
+
+            byte[] data = new byte[byteRead];
+
+            for (int i = 0; i < byteRead; i++)
+            {
+                data[i] = readBuffer[i];
+            }
+
+            ProcessData(data);
+
+            client.GetStream().BeginRead(readBuffer, 0, BUFFER_SIZE, StreamReceived, null);
+
+        }
+
+        public static void ProcessData(byte[] data)
+        {
+            readStream.SetLength(0);
+            readStream.Position = 0;
+
+            readStream.Write(data, 0, data.Length);
+            readStream.Position = 0;
+
+            Protocol p;
+
+            try
+            {
+                p = (Protocol)reader.ReadByte();
+
+                if (p == Protocol.Connected)
+                {
+                    byte id = reader.ReadByte();
+                    string ip = reader.ReadString();
+                    Menu.MultiOn = true;
+                    MessageBox.Show(String.Format("Player has connected: {0} The IP adress is :{1}", id, ip));
+
+                    writeStream.Position = 0;
+                    writer.Write("Hello World!");
+                    SendData(GetDataFromMemoryStream(writeStream));
+                }
+                else if (p == Protocol.Disconnected)
+                {
+                    byte id = reader.ReadByte();
+                    string ip = reader.ReadString();
+                    Menu.MultiOn = false;
+                    MessageBox.Show(String.Format("Player has disconnected: {0} The IP adress is :{1}", id, ip));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Converts a MemoryStream to a byte array
+        /// </summary>
+        /// <param name="ms">MemoryStream to convert</param>
+        /// <returns>Byte array representation of the data</returns>
+        public static byte[] GetDataFromMemoryStream(MemoryStream ms)
+        {
+            byte[] result;
+
+            //Async method called this, so lets lock the object to make sure other threads/async calls need to wait to use it.
+            lock (ms)
+            {
+                int bytesWritten = (int)ms.Position;
+                result = new byte[bytesWritten];
+
+                ms.Position = 0;
+                ms.Read(result, 0, bytesWritten);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Code to actually send the data to the client
+        /// </summary>
+        /// <param name="b">Data to send</param>
+        public static void SendData(byte[] b)
+        {
+            //Try to send the data.  If an exception is thrown, disconnect the client
+            try
+            {
+                lock (client.GetStream())
+                {
+                    client.GetStream().BeginWrite(b, 0, b.Length, null, null);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         /// <summary>
@@ -196,7 +340,7 @@ namespace Steel_Era
             {
                 spriteBatch.Draw(ATexture.Rock, new Rectangle((int)(Camera.centreX * 0.7) - 750, screenHeight - 400, ATexture.Rock.Width, ATexture.Rock.Height), Color.White);
 
-                
+
                 spriteBatch.Draw(ATexture.Grasshaut, new Vector2(0, screenHeight - 97), Color.White);
                 spriteBatch.Draw(ATexture.Grasshaut2, new Vector2(4000, screenHeight - 97), Color.White);
                 spriteBatch.Draw(ATexture.Grasshaut3, new Vector2(7000, screenHeight - 97), Color.White);
