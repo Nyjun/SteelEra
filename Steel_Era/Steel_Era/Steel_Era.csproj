@@ -113,6 +113,7 @@
     <Compile Include="Bullet.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Delegates.cs" />
+    <Compile Include="Enemies\Boss.cs" />
     <Compile Include="Enemies\Roller.cs" />
     <Compile Include="HUD.cs" />
     <Compile Include="Item.cs" />

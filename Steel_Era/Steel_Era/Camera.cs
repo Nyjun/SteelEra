@@ -21,7 +21,16 @@ namespace Steel_Era
 
         public void Update(GameTime gameTime, Rectangle LocPlayer)
         {
-            //if (LocPlayer.X * 2 >= Game1.screenWidth) 
+            if ( Enemies.Boss.lockCamera == true )
+            {
+                centre = new Vector2(LocPlayer.X, LocPlayer.Y);
+                transform = Matrix.CreateScale(new Vector3(1, 1, 0)) *
+                    Matrix.CreateTranslation(new Vector3(-6900, 0, 0));
+                //centreX = (int)centre.X;
+                //centreY = (int)centre.Y;
+            }
+            else
+            //else (LocPlayer.X * 2 >= Game1.screenWidth) 
             {
                 centre = new Vector2(LocPlayer.X, LocPlayer.Y);
                 transform = Matrix.CreateScale(new Vector3(1, 1, 0)) *
@@ -29,14 +38,7 @@ namespace Steel_Era
                 centreX = (int)centre.X;
                 centreY = (int)centre.Y;
             }
-            /*else
-            {
-                centre = new Vector2(Game1.screenWidth, Game1.screenHeight);
-                transform = Matrix.CreateScale(new Vector3(1, 1, 0)) *
-                    Matrix.CreateTranslation(new Vector3(0, 0, 0));
-                centreX = (int)centre.X;
-                centreY = (int)centre.Y;
-            }*/
+            
 
         }
 

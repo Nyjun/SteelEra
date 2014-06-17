@@ -22,6 +22,7 @@ namespace Steel_Era.Stages
         public static Player player;
         public static Player player2;
         Enemies.Roller roller, roller1, roller2;
+        Enemies.Boss boss;
         Item hp1, hp2;
         Item mana1, mana2, mana3, mana4;
         Item pts1, pts2, pts3, pts4, pts5;
@@ -127,9 +128,12 @@ namespace Steel_Era.Stages
         ///                   ///
         void SpawnEnemies()
         {
+            boss = new Enemies.Boss(8030, 100, this);
             roller = new Enemies.Roller(2200, 100, this);
             roller1 = new Enemies.Roller(1300, 100, this);
             roller2 = new Enemies.Roller(5000, 100, this);
+
+            lists.ListEnemies.Add(boss);
             lists.ListEnemies.Add(roller);
             lists.ListEnemies.Add(roller1);
             lists.ListEnemies.Add(roller2);

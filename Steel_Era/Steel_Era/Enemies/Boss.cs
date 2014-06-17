@@ -13,26 +13,11 @@ using System.IO;
 
 namespace Steel_Era.Enemies
 {
-    class Roller : Enemy
+    class Boss : Enemy
     {
-        public static int HpDifficult;
-        public Roller(float x, float y, Stages.Stage _stage)
-            : base(ATexture.RollerSprite, x, y, HpDifficult, 1, 1)
-        {
-            stage = _stage;
-            this.FrameCol = 4;
-            this.Timer = 0; // Intervalle entre 2 boucles d'animations
-            this.AnimationSpeed = 5; // Vitesse d'animation
 
-            Hitbox = new Rectangle((int)x, (int)y, 150, 150);
-            Spritebox = new Rectangle((int)x, (int)y, 150, 150);
-            damagebox = new Rectangle((int)x + 17, (int)y, 80, 15);
-
-            Timing = 0;
-            LoopTime = 256;
-            Speed = 4;
-            exists = true;
-        }
+        public static bool lockCamera;
+        public static int HpBoss;
         int FrameCol;
         int Timer;
         int Timing;
@@ -41,68 +26,27 @@ namespace Steel_Era.Enemies
         bool direction;
         SpriteEffects Effect;
         Stages.Stage stage;
-        
 
 
-        public void MoveLeft()
+        public Boss(float x, float y, Stages.Stage _stage)
+            : base(ATexture.RollerSprite, x, y, HpBoss, 1, 1)
         {
-            this.Timer++;
-            if (this.Timer == this.AnimationSpeed)
-            {
-                this.Timer = 0;
-                this.FrameCol++;
-                if (this.FrameCol > 8)
-                {
-                    this.FrameCol = 4;
-                    this.Timer = 0;
-                }
-            }
-            direction = false;
-            Hitbox.X = Hitbox.X - (int)Speed;
-            if (Hitbox.Left <= 0)
-            {
-                Hitbox.Location = new Point(0, Hitbox.Location.Y);
-            }
+            stage = _stage;
+            this.FrameCol = 0;
+            this.Timer = 0; // Intervalle entre 2 boucles d'animations
+            this.AnimationSpeed = 5; // Vitesse d'animation
+
+            Hitbox = new Rectangle((int)x, (int)y, 272, 350);
+            Spritebox = new Rectangle((int)x, (int)y, 272, 330);
+            damagebox = new Rectangle((int)x + 17, (int)y, 80, 15);
+
+            Timing = 0;
+            LoopTime = 256;
+            Speed = 4;
+            exists = true;
         }
-        public void MoveRight()
+        void IABoss()
         {
-            this.Timer++;
-            if (this.Timer == this.AnimationSpeed)
-            {
-                this.Timer = 0;
-                this.FrameCol++;
-                if (this.FrameCol > 8)
-                {
-                    this.FrameCol = 4;
-                    this.Timer = 0;
-                }
-            }
-            direction = true;
-            Hitbox.X = Hitbox.X + (int)Speed;
-        }
-
-        void IA()
-        {
-            if (Menu.Freezed == false)
-            {
-                if (Timing < LoopTime / 2)
-                {
-                    MoveRight();
-                }
-                if (Timing >= LoopTime / 2)
-                {
-                    MoveLeft();
-                }
-                if (Timing == LoopTime)
-                {
-                    Timing = 0;
-                }
-                else
-                {
-                    Timing++;
-                }
-            }
-
             if (IsGrounded == false)//IsOnGround().Equals(false))
             {
                 Hitbox.Y += Physics.gravity;
@@ -119,19 +63,23 @@ namespace Steel_Era.Enemies
             damagebox.X = Hitbox.X + 17;
             damagebox.Y = Hitbox.Y;
         }
-  
 
         public override void Update(GameTime gameTime)
         {
-
-            IA();
+            IABoss();
             if (hitPoints == 0)
                 Delete();
+            Timer = Timer + 1;
         }
+       /* public static void BossPhase()
+        {
+            lockCamera = true;
+        }*/
+
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             //spriteBatch.Draw(ATexture.Portrait, damagebox, Color.White);
-            spriteBatch.Draw(ATexture.RollerSprite, Hitbox, new Rectangle((this.FrameCol - 1) * 110, 0, 110, 110),
+            spriteBatch.Draw(ATexture.Boss, Hitbox, new Rectangle(FrameCol * 272, 330, 272, 330),
                 Color.White, 0f, new Vector2(0, 0), this.Effect, 0f);
         }
 
@@ -199,4 +147,5 @@ namespace Steel_Era.Enemies
             Hitbox.Location = new Point((int)pos.X, (int)pos.Y);
         }
     }
+    
 }

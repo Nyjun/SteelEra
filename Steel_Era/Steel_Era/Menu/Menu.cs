@@ -297,7 +297,7 @@ namespace Steel_Era
 
                 if (button1.Status == true)
                 {
-                    state = 5;
+                    state = 6;
 
                     button1.Status = false;
                 }
@@ -814,6 +814,8 @@ namespace Steel_Era
 
                 if (button1.Status == true)
                 {
+                    Freezed = false;
+                    Enemies.Boss.lockCamera = false;
                     state = 0;
                     HUD.showhud = true;
                     HUD.HP = 4;
@@ -874,6 +876,7 @@ namespace Steel_Era
 
                 if (button1.Status == true)
                 {
+                    Enemies.Boss.lockCamera = false;
                     if (lvl_selected == 2)
                     {
                         stage2.End();
@@ -902,6 +905,7 @@ namespace Steel_Era
                 {
                     if (Stages.Stage1.lvl_completed == true)
                     {
+                        Enemies.Boss.lockCamera = false;
                         if (lvl_selected == 1)
                         {
                             stage1.End();
@@ -926,6 +930,65 @@ namespace Steel_Era
                     {
                         Drawmessage = true;
                     }
+                }
+            }
+            if (state == 6)
+            {
+                button1.Text = "Easy";
+                button1.IsVisible = true;
+                button2.Text = "Medium";
+                button2.IsVisible = true;
+                button3.Text = "Hard";
+                button3.IsVisible = true;
+                button4.IsVisible = false;
+                button5.IsVisible = false;
+                button6.IsVisible = false;
+                button7.IsVisible = false;
+                buttonVolume1.IsVisible = false;
+                buttonVolume2.IsVisible = false;
+                buttonVolume3.IsVisible = false;
+                buttonVolume4.IsVisible = false;
+
+
+                //B1
+                if (button1.IsHighLighted)
+                    button1.Position = new Vector2(Game1.screenWidth - button1.Width, (Game1.screenHeight / 2));
+                else
+                    button1.Position = new Vector2(Game1.screenWidth - button1.Width + 20, (Game1.screenHeight / 2));
+                //B2
+                if (button2.IsHighLighted)
+                    button2.Position = new Vector2(Game1.screenWidth - button1.Width + 5, (Game1.screenHeight / 2) + button1.Height + 5);
+                else
+                    button2.Position = new Vector2(Game1.screenWidth - button1.Width + 25, (Game1.screenHeight / 2) + button1.Height + 5);
+                //B3
+                if (button3.IsHighLighted)
+                    button3.Position = new Vector2(Game1.screenWidth - button1.Width + 10, (Game1.screenHeight / 2) + 2 * button1.Height + 10);
+                else
+                    button3.Position = new Vector2(Game1.screenWidth - button1.Width + 30, (Game1.screenHeight / 2) + 2 * button1.Height + 10);
+
+                if (button1.Status == true)
+                {
+                    Enemies.Boss.HpBoss = 14;
+                    Enemies.Roller.HpDifficult = 2;
+                    state = 5;
+                    button1.Status = false;
+                }
+
+                if (button2.Status == true)
+                {
+                    Enemies.Boss.HpBoss = 20;
+                    Enemies.Roller.HpDifficult = 4;
+                    state = 5;
+                    button2.Status = false;
+
+                }
+                if (button3.Status == true)
+                {
+                    Enemies.Boss.HpBoss = 30;
+                    Enemies.Roller.HpDifficult = 6;
+                    state = 5;
+                    button3.Status = false;
+
                 }
             }
             // ######################
@@ -964,6 +1027,22 @@ namespace Steel_Era
 
         public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle screenRectangle)
         {
+            if (state == 6)
+            {
+                spriteBatch.Draw(background.Texture, screenRectangle, Color.White);
+                button1.Draw(spriteBatch, gameTime);
+                button2.Draw(spriteBatch, gameTime);
+                button3.Draw(spriteBatch, gameTime);
+                button4.Draw(spriteBatch, gameTime);
+                button5.Draw(spriteBatch, gameTime);
+                button6.Draw(spriteBatch, gameTime);
+                button7.Draw(spriteBatch, gameTime);
+                buttonVolume1.Draw(spriteBatch, gameTime);
+                buttonVolume2.Draw(spriteBatch, gameTime);
+                buttonVolume3.Draw(spriteBatch, gameTime);
+                buttonVolume4.Draw(spriteBatch, gameTime);
+                cursor.Draw(spriteBatch, gameTime);
+            }
             if (state == 5)
             {
                 spriteBatch.Draw(background.Texture, screenRectangle, Color.White);

@@ -17,7 +17,6 @@ namespace Steel_Era
         public float bulletDelay;
         public List<Bullet> bulletList;
 
-
         public enum Direction
         {
             Up, Down, Left, Right, Non, A, Z, lA,
@@ -267,9 +266,10 @@ namespace Steel_Era
                 Spritebox = new Rectangle(0, 0, 175, 175);
                 HUD.HP = HUD.HP - 1;
             }
-            if (Player.Hitbox.X == 500)
+            if (Player.Hitbox.X > 6800 )
             {
                 Stages.Stage1.lvl_completed = true;
+                Enemies.Boss.lockCamera = true;
             }
             if (Menu.Freezed == false)
             {
@@ -309,7 +309,7 @@ namespace Steel_Era
                 }
 
                 // MOUVEMENT SPEED/DIRECTION
-                if (keyboard.IsKeyDown(Keys.Up))
+                if (keyboard.IsKeyDown(Keys.Up))  //JUMP
                 {
                     //if (Hitbox.Y > JumpCeiling)
                     Hitbox.Y -= airSpeed;
@@ -326,8 +326,15 @@ namespace Steel_Era
                     this.AnimateJump();
                     if (keyboard.IsKeyDown(Keys.Left))
                     {
-                        Hitbox.X = Hitbox.X - 10;
-                        this.IsHorsLimiteLeft();
+                        if ((Enemies.Boss.lockCamera == true) && (Hitbox.X <= 7030))
+                        {
+                            Hitbox.X = 7030;
+                        }
+                        else
+                        {
+                            Hitbox.X = Hitbox.X - 10;
+                            this.IsHorsLimiteLeft();
+                        }
 
                     }
                     if (keyboard.IsKeyDown(Keys.Right))
@@ -343,7 +350,7 @@ namespace Steel_Era
                         Hitbox.Y += gravity;
                     }
                 }
-                if (keyboard.IsKeyDown(Keys.Down))
+                if (keyboard.IsKeyDown(Keys.Down))  //CROUCH
                 {
                     //this.Hitbox.Y += 5;
                     Hitbox = new Rectangle(Hitbox.Location.X, Hitbox.Location.Y, Hitbox.Width, crouchHeight);
@@ -354,9 +361,17 @@ namespace Steel_Era
                 {
                     Hitbox = new Rectangle(Hitbox.Location.X, Hitbox.Location.Y - (height - crouchHeight), Hitbox.Width, height);
                 }
-                if (keyboard.IsKeyDown(Keys.Left) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))
+                if (keyboard.IsKeyDown(Keys.Left) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))  //LEFT
                 {
-                    Hitbox.X -= 10;
+                    if ((Enemies.Boss.lockCamera == true) && (Hitbox.X <= 7030))
+                    {
+                        Hitbox.X = 7030;
+                    }
+                    else
+                    {
+                        Hitbox.X -= 10;
+                    }
+                    
                     this.direction = Direction.Left;
                     this.AnimateRunLeft();
                     this.regard = 0;
@@ -368,7 +383,7 @@ namespace Steel_Era
                         this.Timer = 0;
                     }
                 }
-                if (keyboard.IsKeyDown(Keys.Right) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))
+                if (keyboard.IsKeyDown(Keys.Right) && keyboard.IsKeyUp(Keys.Down) && keyboard.IsKeyUp(Keys.Up))  //RIGHT
                 {
                     Hitbox.X = Hitbox.X + 10;
                     this.direction = Direction.Right;

@@ -60,7 +60,7 @@ namespace Steel_Era
         public static SoundEffect get_item;
         //HUD
         public static Texture2D Hp1, Hp2, Hp3, Hp4, Mana1, Mana2, Mana3, Portrait, Nav;
-        public static Texture2D bullet, bulletR;
+        public static Texture2D bullet, bulletR, BossBullet;
 
         public static void Load(ContentManager cm)
         {
@@ -81,6 +81,8 @@ namespace Steel_Era
             Crow = cm.Load<Texture2D>("Game/Animations/Animation");
             Crow2 = cm.Load<Texture2D>("Game/Animations/Animation2");
             RollerSprite = cm.Load<Texture2D>("Game/Animations/RollerSheet");
+            Boss = cm.Load<Texture2D>("Game/Animations/BossAnim");
+            BossBullet = cm.Load<Texture2D>("Game/Animations/BossBullet");
 
             //Stage1
             BG_Mont = cm.Load<Texture2D>("Game/Background/Mont");

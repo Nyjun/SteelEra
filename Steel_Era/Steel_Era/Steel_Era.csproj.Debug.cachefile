@@ -37,6 +37,8 @@ Content\Game\Elements\ManaB.xnb
 Content\Game\Elements\Point.xnb
 Content\Game\Elements\Grassbas.xnb
 Content\Game\Elements\Grasshaut.xnb
+Content\RollerShooter1.xnb
+Content\Game\Animations\Animation2.xnb
 Content\Menu\Fonts\SpriteFont1.xnb
 Content\Menu\Music\KodoDrum1.xnb
 Content\Menu\Music\jump_up.xnb
@@ -48,5 +50,5 @@ Content\Menu\Music\mouse_click.xnb
 Content\Menu\Music\mouse_enter.xnb
 Content\Menu\Music\voice_dead.xnb
 Content\Menu\Music\get_item.xnb
-Content\RollerShooter1.xnb
-Content\Game\Animations\Animation2.xnb
+Content\Game\Animations\BossAnim.xnb
+Content\Game\Animations\BossBullet.xnb

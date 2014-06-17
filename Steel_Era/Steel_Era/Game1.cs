@@ -320,11 +320,11 @@ namespace Steel_Era
 
             if (Menu.lvl_selected == 1)
             {
-                spriteBatch.Draw(ATexture.BG_Ciel, /*new Vector2(0, screenHeight - 800)*/ new Rectangle((int)(Camera.centreX * 0.9) - 750, screenHeight - 800, ATexture.BG_Ciel.Width, ATexture.BG_Ciel.Height), Color.White);
+                spriteBatch.Draw(ATexture.BG_Ciel, /*new Vector2(0, screenHeight - 800)*/ new Rectangle((int)(Camera.centreX * 0.95) - 750, screenHeight - 800, ATexture.BG_Ciel.Width, ATexture.BG_Ciel.Height), Color.White);
                 //spriteBatch.Draw(ATexture.Ciel2, new Vector2(-2751, screenHeight - 800), Color.White);
                 //spriteBatch.Draw(ATexture.Ciel3, new Vector2(2751 * 2, screenHeight - 800), Color.White);
-                spriteBatch.Draw(ATexture.BG_Mont, /*new Vector2(0, screenHeight - 500)*/new Rectangle((int)(Camera.centreX * 0.7) - 750, screenHeight - 500, ATexture.BG_Mont.Width, ATexture.BG_Mont.Height), Color.White);
-                spriteBatch.Draw(ATexture.Mont2, new Rectangle((int)(Camera.centreX * 0.7) - 50, screenHeight - 500, ATexture.BG_Mont.Width, ATexture.BG_Mont.Height), Color.White);
+                spriteBatch.Draw(ATexture.BG_Mont, /*new Vector2(0, screenHeight - 500)*/new Rectangle((int)(Camera.centreX * 0.8) - 750, screenHeight - 500, ATexture.BG_Mont.Width, ATexture.BG_Mont.Height), Color.White);
+                spriteBatch.Draw(ATexture.Mont2, new Rectangle((int)(Camera.centreX * 0.8) - 50, screenHeight - 500, ATexture.BG_Mont.Width, ATexture.BG_Mont.Height), Color.White);
                 //spriteBatch.Draw(ATexture.Mont3, new Vector2(3493 * 2, screenHeight - 500), Color.White);
                 spriteBatch.Draw(ATexture.PlateFormeMid, new Vector2(810, screenHeight - 377), Color.White);
                 spriteBatch.Draw(ATexture.Solhaut, new Vector2(0, screenHeight - 97), Color.White);
