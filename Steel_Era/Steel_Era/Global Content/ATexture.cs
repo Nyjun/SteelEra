@@ -57,6 +57,7 @@ namespace Steel_Era
         public static SoundEffect mouse_enter;
         public static SoundEffect voice_dead;
         public static SoundEffect get_item;
+        public static SoundEffect music_project;
         //HUD
         public static Texture2D Hp1, Mana1, Portrait, Nav;
         public static Texture2D bullet, bulletR, BossBullet;
@@ -135,6 +136,7 @@ namespace Steel_Era
             mouse_enter = cm.Load<SoundEffect>("Menu/Music/mouse_enter");
             voice_dead = cm.Load<SoundEffect>("Menu/Music/voice_dead");
             get_item = cm.Load<SoundEffect>("Menu/Music/get_item");
+            music_project = cm.Load<SoundEffect>("Menu/Music/music_project");
         }
     }
 }

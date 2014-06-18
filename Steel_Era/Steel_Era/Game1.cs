@@ -412,7 +412,7 @@ namespace Steel_Era
             }
             if (Menu.lvl_selected == 2)
             {
-                spriteBatch.Draw(ATexture.Rock, new Rectangle((int)(Camera.centreX * 0.7) - 750, screenHeight - 400, ATexture.Rock.Width, ATexture.Rock.Height), Color.White);
+               
 
 
                 spriteBatch.Draw(ATexture.Grasshaut, new Vector2(0, screenHeight - 97), Color.White);
@@ -428,7 +428,7 @@ namespace Steel_Era
 
 
                 }
-
+            spriteBatch.Draw(ATexture.Rock, new Rectangle((int)(Camera.centreX * 0.7) - 750, screenHeight - 400, ATexture.Rock.Width, ATexture.Rock.Height), Color.White);
             }
             stage1.Draw(spriteBatch, gameTime);
             stage2.Draw(spriteBatch, gameTime);

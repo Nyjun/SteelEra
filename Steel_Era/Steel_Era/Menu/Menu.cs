@@ -40,6 +40,8 @@ namespace Steel_Era
         SoundEffectInstance musicMenuInst;
         SoundEffect gameMusic;
         SoundEffectInstance gameMusicInst;
+        SoundEffect music_project;
+        SoundEffectInstance music_projectInst;
         int menuVolumeChangeBGM;
         float VolumeBGM; // Valeur en f 
         public static SoundEffect jump;
@@ -129,6 +131,9 @@ namespace Steel_Era
             gameMusic = ATexture.gameMusic;
             gameMusicInst = gameMusic.CreateInstance();
             gameMusicInst.IsLooped = true;
+            music_project = ATexture.music_project;
+            music_projectInst = music_project.CreateInstance();
+            music_projectInst.IsLooped = true;
             gameMusicInst.Volume = VolumeBGM;
             VolumeBGM = 0.7F;
             jump = ATexture.jump;
@@ -394,6 +399,7 @@ namespace Steel_Era
                         menuSoundState = "off";
                         musicMenuInst.Stop();
                         gameMusicInst.Stop();
+                        music_projectInst.Stop();
                         attack1Inst.Stop();
                         jumpInst.Stop();
                         landingInst.Stop();
@@ -526,6 +532,7 @@ namespace Steel_Era
                     menuSoundState = "on";
                     musicMenuInst.Play();
                     gameMusicInst.Play();
+                    music_projectInst.Play();
                     menuVolumeChangeBGM = 50;
                     VolumeBGM = 0.5f;
                     musicMenuInst.Volume = VolumeBGM;
@@ -626,6 +633,7 @@ namespace Steel_Era
                         menuSoundState = "off";
                         musicMenuInst.Stop();
                         gameMusicInst.Stop();
+                        music_projectInst.Stop();
                         attack1Inst.Stop();
                         jumpInst.Stop();
                         landingInst.Stop();
@@ -758,6 +766,7 @@ namespace Steel_Era
                     menuSoundState = "on";
                     musicMenuInst.Play();
                     gameMusicInst.Play();
+                    music_projectInst.Play();
                     menuVolumeChangeBGM = 50;
                     VolumeBGM = 0.5f;
                     musicMenuInst.Volume = VolumeBGM;
@@ -908,11 +917,12 @@ namespace Steel_Era
                         Enemies.Boss.lockCamera = false;
                         if (lvl_selected == 1)
                         {
+                            
                             stage1.End();
                         }
                         lvl_selected = 2;
                         stage2.Init();
-
+                   
                         state = 0;
 
                         Freezed = false;
@@ -994,10 +1004,12 @@ namespace Steel_Era
             // ######################
             if (state != 0)
             {
+
                 lastState = state;
                 if (menuSoundState == "on")
                     musicMenuInst.Play();
                 gameMusicInst.Stop();
+                music_projectInst.Stop();
                 attack1Inst.Stop();
                 jumpInst.Stop();
                 landingInst.Stop();
@@ -1013,8 +1025,17 @@ namespace Steel_Era
 
             if (state == 0 && menuSoundState == "on")
             {
-                gameMusicInst.Play();
-                gameMusicInst.Volume = VolumeBGM;
+                if (lvl_selected == 1)
+                {
+                    music_projectInst.Play();
+                    music_projectInst.Volume = VolumeBGM;
+                }
+                if (lvl_selected == 2)
+                {
+                    gameMusicInst.Play();
+                    gameMusicInst.Volume = VolumeBGM;
+                }
+                
                 jumpInst.Volume = VolumeSFX;
                 landingInst.Volume = VolumeSFX;
                 attack1Inst.Volume = VolumeSFX;
@@ -1022,6 +1043,7 @@ namespace Steel_Era
                 voice_deadInst.Volume = VolumeSFX;
                 get_itemInst.Volume = VolumeSFX;
             }
+            
         }
 
 
