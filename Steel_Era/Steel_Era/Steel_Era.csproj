@@ -126,6 +126,14 @@
     <Compile Include="GameMain.cs" />
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Global Content\Physics.cs" />
+    <Compile Include="ParticlesGenerator\FPS\FpsGameComponent.cs" />
+    <Compile Include="ParticlesGenerator\X2DPE\Emitter.cs" />
+    <Compile Include="ParticlesGenerator\X2DPE\Helpers\EmitterHelper.cs" />
+    <Compile Include="ParticlesGenerator\X2DPE\Helpers\ParticleFader.cs" />
+    <Compile Include="ParticlesGenerator\X2DPE\Helpers\ParticleScaler.cs" />
+    <Compile Include="ParticlesGenerator\X2DPE\Helpers\RandomMinMax.cs" />
+    <Compile Include="ParticlesGenerator\X2DPE\Particle.cs" />
+    <Compile Include="ParticlesGenerator\X2DPE\ParticleGameComponent.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

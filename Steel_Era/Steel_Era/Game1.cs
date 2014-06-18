@@ -8,10 +8,14 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+//using Microsoft.Xna.Framework.Input.Touch;
 using System.Net.Sockets;
 using System.Net;
 using System.Windows.Forms;
 using System.IO;
+using X2DPE;
+using X2DPE.Helpers;
+using WindowsGame4;
 
 namespace Steel_Era
 {
@@ -22,7 +26,15 @@ namespace Steel_Era
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        //Particles
+        //Texture2D customMousePointer;
+        //SpriteFont VideoFont;
+        ParticleComponent particleComponent;
+        Microsoft.Xna.Framework.Input.ButtonState lastButtonState;
 
+        Random random;
+
+        //Network
         public static TcpClient client;
         public static string IP = "127.0.0.1";
         public static int PORT = 1490;
@@ -33,10 +45,11 @@ namespace Steel_Era
 
         public static BinaryReader reader;
         public static BinaryWriter writer;
-
+        //Stages
         static Stages.Stage1 stage1;
         static Stages.Stage2 stage2;
 
+        //Main
         public GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         KeyboardState keyState;
@@ -84,7 +97,11 @@ namespace Steel_Era
             //Changes the settings that you just applied
             graphics.ApplyChanges();
 
+            //FrameRateCounter FrameRateCounter = new FrameRateCounter(this, "Fonts\\Default");
+            particleComponent = new ParticleComponent(this);
 
+            //this.Components.Add(FrameRateCounter);
+            this.Components.Add(particleComponent);
 
         }
 
@@ -121,6 +138,8 @@ namespace Steel_Era
             hud = new HUD();
             Camerascroll = new Camera(GraphicsDevice.Viewport);
 
+            random = new Random();
+
             base.Initialize();
 
 
@@ -151,6 +170,43 @@ namespace Steel_Era
 
             // TODO: use this.Content to load your game content here
             ATexture.Load(Content);
+
+            //Particles
+            particleComponent.particleEmitterList.Add(
+                    new Emitter()
+                    {
+                        Active = false,
+                        TextureList = new List<Texture2D>() {
+			      Content.Load<Texture2D>("Particles/flower_orange"),
+			      Content.Load<Texture2D>("Particles/flower_green"),
+			      Content.Load<Texture2D>("Particles/flower_yellow"),
+			      Content.Load<Texture2D>("Particles/flower_purple")
+			    },
+                        RandomEmissionInterval = new RandomMinMax(8.0d),
+                        ParticleLifeTime = 2000,
+                        ParticleDirection = new RandomMinMax(0, 359),
+                        ParticleSpeed = new RandomMinMax(0.1f, 1.0f),
+                        ParticleRotation = new RandomMinMax(0, 100),
+                        RotationSpeed = new RandomMinMax(0.015f),
+                        ParticleFader = new ParticleFader(false, true, 1350),
+                        ParticleScaler = new ParticleScaler(false, 0.3f)
+                    }
+            );
+
+            Emitter testEmitter2 = new Emitter();
+            testEmitter2.Active = true;
+            testEmitter2.TextureList.Add(Content.Load<Texture2D>("Particles/raindrop"));
+            testEmitter2.RandomEmissionInterval = new RandomMinMax(16.0d);
+            testEmitter2.ParticleLifeTime = 1000;
+            testEmitter2.ParticleDirection = new RandomMinMax(170);
+            testEmitter2.ParticleSpeed = new RandomMinMax(10.0f);
+            testEmitter2.ParticleRotation = new RandomMinMax(0);
+            testEmitter2.RotationSpeed = new RandomMinMax(0f);
+            testEmitter2.ParticleFader = new ParticleFader(false, true, 800);
+            testEmitter2.ParticleScaler = new ParticleScaler(false, 1.0f);
+            testEmitter2.Opacity = 255;
+
+            particleComponent.particleEmitterList.Add(testEmitter2);
 
             //Fonts.Font1 = Content.Load<SpriteFont>("Menu/Fonts/SpriteFont1");
 
@@ -188,6 +244,24 @@ namespace Steel_Era
 
             keyOState = keyState;
             Camerascroll.Update(gameTime, Player.staticHitbox);
+
+            // Particle modification
+            particleComponent.particleEmitterList[0].Position = new Vector2((float)mouseState.X, (float)mouseState.Y);
+
+            if (mouseState.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed && lastButtonState != Microsoft.Xna.Framework.Input.ButtonState.Pressed)
+            {
+                particleComponent.particleEmitterList[0].Active = !particleComponent.particleEmitterList[0].Active;
+            }
+            lastButtonState = mouseState.LeftButton;
+
+
+            Emitter t2 = particleComponent.particleEmitterList[1];
+            t2.Position = new Vector2((float)random.NextDouble() * (graphics.GraphicsDevice.Viewport.Width), 0);
+            if (t2.EmittedNewParticle)
+            {
+                float f = MathHelper.ToRadians(t2.LastEmittedParticle.Direction + 180);
+                t2.LastEmittedParticle.Rotation = f;
+            }
 
             base.Update(gameTime);
         }
@@ -344,7 +418,16 @@ namespace Steel_Era
                 spriteBatch.Draw(ATexture.Grasshaut, new Vector2(0, screenHeight - 97), Color.White);
                 spriteBatch.Draw(ATexture.Grasshaut, new Vector2(4000, screenHeight - 97), Color.White);
                 spriteBatch.Draw(ATexture.Grasshaut, new Vector2(7000, screenHeight - 97), Color.White);
+                if (Menu.lvl_selected == 2)
+                {
+                    int activeParticles = 0;
+                    foreach (Emitter activeEmitters in particleComponent.particleEmitterList)
+                    {
+                        activeParticles += activeEmitters.ParticleList.Count();
+                    }
 
+
+                }
 
             }
             stage1.Draw(spriteBatch, gameTime);
@@ -354,6 +437,7 @@ namespace Steel_Era
             spriteBatch.End();
 
             spriteBatch.Begin();
+
             menu.Draw(spriteBatch, gameTime, screenRectangle);
             hud.Draw(spriteBatch);
             spriteBatch.End();
