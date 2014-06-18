@@ -26,6 +26,7 @@ namespace Steel_Era.Enemies
             Hitbox = new Rectangle((int)x, (int)y, 150, 150);
             Spritebox = new Rectangle((int)x, (int)y, 150, 150);
             damagebox = Rectangle.Empty;
+            color = Color.White;
 
             Timing = 0;
             LoopTime = 256;
@@ -39,7 +40,7 @@ namespace Steel_Era.Enemies
         //int AnimationSpeed;
         bool direction;
         SpriteEffects Effect;
-        
+        Color color;
 
 
         public void MoveLeft()
@@ -79,7 +80,7 @@ namespace Steel_Era.Enemies
                 }
                 DetectionPlayer();
             }
-
+            
             if (IsGrounded == false)
             {
                 Hitbox.Y += Physics.gravity;
@@ -107,7 +108,7 @@ namespace Steel_Era.Enemies
         {
             //spriteBatch.Draw(ATexture.Portrait, damagebox, Color.White);
             spriteBatch.Draw(Texture, Hitbox, new Rectangle((this.FrameCol - 1) * 110, 0, 110, 110),
-                Color.White, 0f, new Vector2(0, 0), this.Effect, 0f);
+                color, 0f, new Vector2(0, 0), this.Effect, 0f);
         }
 
 
@@ -117,19 +118,21 @@ namespace Steel_Era.Enemies
             {
                 if (direction)
                 {
-                    if (Hitbox.X - stage.lists.ListPlayers.ElementAt(i).Hitbox.X < 0 && Hitbox.X - stage.lists.ListPlayers.ElementAt(i).Hitbox.X > -500)
+                    if (stage.lists.ListPlayers.ElementAt(i).Hitbox.X > Hitbox.X + Hitbox.Width && stage.lists.ListPlayers.ElementAt(i).Hitbox.X < Hitbox.X + Hitbox.Width + 500)
                     {
-                        stage.lists.ListProjectiles.Add(new Elements.Projectile(ATexture.BossBullet, Hitbox.X+Hitbox.Width, Hitbox.Y, 1, direction, stage, true));
+                        Elements.Projectile p = new Elements.Projectile(ATexture.BossBullet, Hitbox.X + Hitbox.Width, Hitbox.Y, 1, direction, stage, true);
+                        stage.lists.ListProjectiles.Add(p);
+                        //color = Color.Green;
                     }
-                    else { }
                 }
                 else
                 {
-                    if (Hitbox.X - stage.lists.ListPlayers.ElementAt(i).Hitbox.X > 0 && Hitbox.X - stage.lists.ListPlayers.ElementAt(i).Hitbox.X < 500)
+                    if (stage.lists.ListPlayers.ElementAt(i).Hitbox.X < Hitbox.X && stage.lists.ListPlayers.ElementAt(i).Hitbox.X > Hitbox.X - 500)
                     {
-                        stage.lists.ListProjectiles.Add(new Elements.Projectile(ATexture.BossBullet, Hitbox.X+Hitbox.Width, Hitbox.Y, 1, direction, stage, true));
+                        Elements.Projectile p = new Elements.Projectile(ATexture.BossBullet, Hitbox.X + Hitbox.Width, Hitbox.Y, 1, direction, stage, true);
+                        stage.lists.ListProjectiles.Add(p);
+                        //color = Color.Red;
                     }
-                    else { }
                 }
             }
         }

@@ -22,7 +22,7 @@ namespace Steel_Era.Elements
             damages = dmg;
             timer = 200;
             stage = sta;
-            Speed = 10;
+            Speed = 1;
             enemy = e;
         }
         bool direction, enemy;
@@ -34,15 +34,15 @@ namespace Steel_Era.Elements
         {
             if (direction)
             {
-                Hitbox.X += (int)Speed;
+                //Hitbox.X += (int)Speed;
             }
             else
             {
-                Hitbox.X -= (int)Speed;
+                //Hitbox.X -= (int)Speed;
             }
             timer--;
-            if (timer < 1)
-                Used();
+            //if (timer < 1)
+            //    Used();
             CollisionSprites();
             if (enemy)
                 CollisionPlayer();
@@ -67,7 +67,7 @@ namespace Steel_Era.Elements
                 if (Hitbox.Intersects(stage.lists.ListPlayers.ElementAt(i).Hitbox))
                 {
                     HUD.HP -= damages;
-                    Used();
+                    //Used();
                 }
             }
         }
@@ -78,9 +78,15 @@ namespace Steel_Era.Elements
                 if (Hitbox.Intersects(stage.lists.ListEnemies.ElementAt(i).Hitbox))
                 {
                     stage.lists.ListEnemies.ElementAt(i).hitPoints -= damages;
-                    Used();
+                    //Used();
                 }
             }
+        }
+
+        public override void Draw(SpriteBatch sb, GameTime gt)
+        {
+            sb.Draw(Texture, Hitbox, Color.White);
+            base.Draw(sb, gt);
         }
     }
 }

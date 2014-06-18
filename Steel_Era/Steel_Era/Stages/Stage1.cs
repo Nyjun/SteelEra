@@ -53,6 +53,7 @@ namespace Steel_Era.Stages
             UpdateEnemies(gt);
             UpdateItems();
             UpdatePlayers(ms, ks);
+            UpdateProjectiles();
         }
         public void Draw(SpriteBatch sb, GameTime gt)
         {
@@ -60,6 +61,7 @@ namespace Steel_Era.Stages
             DrawEnemies(sb, gt);
             DrawPlayers(sb);
             DrawObstacles(sb, gt);
+            DrawProjectiles(sb, gt);
         }
         public override void End()
         {
@@ -288,6 +290,29 @@ namespace Steel_Era.Stages
                 lists.ListSprite.ElementAt(i).Delete();
             }
         }
+
+        ///                   ///
+        ///   PROJECTION      ///
+        ///                   ///
+        
+        void UpdateProjectiles()
+        {
+            for (int i = 0; i < lists.ListProjectiles.Count; i++)
+            {
+                if (lists.ListProjectiles.ElementAt(i).Used())
+                {
+                    lists.ListProjectiles.Remove(lists.ListProjectiles.ElementAt(i));
+                }
+            }
+        }
+        void DrawProjectiles(SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            for (int i = 0; i < lists.ListProjectiles.Count; i++)
+            {
+                lists.ListProjectiles.ElementAt(i).Draw(spriteBatch, gameTime);
+            }
+        }
+
 
     }
 }
