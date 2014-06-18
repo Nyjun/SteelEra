@@ -29,12 +29,13 @@ namespace Steel_Era
         int AnimationSpeed;
         public Texture2D Character;
         public int RepopPosX;
-        public static Rectangle Hitbox;
-        public static Rectangle Spritebox;
+        public static Rectangle staticHitbox;
+        public Rectangle Hitbox;
+        public Rectangle Spritebox;
 
         Rectangle DamageBox;
         Direction direction;
-        bool IsGrounded, striking;
+        bool IsGrounded;//, striking;
         SpriteEffects Effect;
         int FrameLine;
         int FrameCol;
@@ -68,6 +69,7 @@ namespace Steel_Era
             stage = _stage;
             RepopPosX = 200;
             Hitbox = new Rectangle(RepopPosX, Game1.screenHeight - 60 - 172, 87, 170);
+            staticHitbox = Hitbox;
             Spritebox = new Rectangle(RepopPosX, Game1.screenHeight - 60 - 172, 175, 175);
             this.FrameLine = 1;
             this.FrameCol = 1;
@@ -266,7 +268,7 @@ namespace Steel_Era
                 Spritebox = new Rectangle(0, 0, 175, 175);
                 HUD.HP = HUD.HP - 1;
             }
-            if (Player.Hitbox.X > 6800 )
+            if (Hitbox.X > 6800 )
             {
                 Stages.Stage1.lvl_completed = true;
                 Enemies.Boss.lockCamera = true;
@@ -468,6 +470,7 @@ namespace Steel_Era
             }
             DamageBox = Rectangle.Empty;
             keyOState = keyboard;
+            staticHitbox = Hitbox;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -551,6 +554,7 @@ namespace Steel_Era
                     if (b.hitbox.Intersects(stage.lists.ListEnemies.ElementAt(i).Hitbox))
                     {
                         stage.lists.ListEnemies.ElementAt(i).hitPoints -= 1;
+                        //bulletList.Remove(b);
                     }
                 }
             }

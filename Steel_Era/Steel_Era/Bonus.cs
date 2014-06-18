@@ -11,7 +11,7 @@ namespace Steel_Era
 {
     class Bonus
     {
-        public Rectangle Bslot1, Bslot2, Bslot3, Bslot4, Bslot5, Bslot6, Bslot7, Bslot8, Bslot9, Bslot10, Bslot11;
+        /*public Rectangle Bslot1, Bslot2, Bslot3, Bslot4, Bslot5, Bslot6, Bslot7, Bslot8, Bslot9, Bslot10, Bslot11;
         public static int Checkhp, Checkhp2, Checkmana, Checkmana2, Checkmana3, Checkmana4, Checkpts, Checkpts2, Checkpts3, Checkpts4, Checkpts5;
 
         public Bonus()
@@ -169,7 +169,7 @@ namespace Steel_Era
             }
             if (Checkhp2 == 0)
             {
-                spriteBatch.Draw(ATexture.HPB2, Bslot2, Color.White);
+                spriteBatch.Draw(ATexture.HPB, Bslot2, Color.White);
             }
             if (Checkmana == 0)
             {
@@ -177,15 +177,15 @@ namespace Steel_Era
             }
             if (Checkmana2 == 0)
             {
-                spriteBatch.Draw(ATexture.ManaB2, Bslot4, Color.White);
+                spriteBatch.Draw(ATexture.ManaB, Bslot4, Color.White);
             }
             if (Checkmana3 == 0)
             {
-                spriteBatch.Draw(ATexture.ManaB3, Bslot5, Color.White);
+                spriteBatch.Draw(ATexture.ManaB, Bslot5, Color.White);
             }
             if (Checkmana4 == 0)
             {
-                spriteBatch.Draw(ATexture.ManaB4, Bslot6, Color.White);
+                spriteBatch.Draw(ATexture.ManaB, Bslot6, Color.White);
             }
             if (Checkpts == 0)
             {
@@ -193,20 +193,20 @@ namespace Steel_Era
             }
             if (Checkpts2 == 0)
             {
-                spriteBatch.Draw(ATexture.Pts2, Bslot8, Color.White);
+                spriteBatch.Draw(ATexture.Pts, Bslot8, Color.White);
             }
             if (Checkpts3 == 0)
             {
-                spriteBatch.Draw(ATexture.Pts3, Bslot9, Color.White);
+                spriteBatch.Draw(ATexture.Pts, Bslot9, Color.White);
             }
             if (Checkpts4 == 0)
             {
-                spriteBatch.Draw(ATexture.Pts4, Bslot10, Color.White);
+                spriteBatch.Draw(ATexture.Pts, Bslot10, Color.White);
             }
             if (Checkpts5 == 0)
             {
-                spriteBatch.Draw(ATexture.Pts5, Bslot11, Color.White);
+                spriteBatch.Draw(ATexture.Pts, Bslot11, Color.White);
             }
-        }
+        }*/
     }
 }

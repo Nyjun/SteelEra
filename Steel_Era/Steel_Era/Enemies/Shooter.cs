@@ -13,20 +13,19 @@ using System.IO;
 
 namespace Steel_Era.Enemies
 {
-    class Roller : Enemy
+    class Shooter : Enemy
     {
-        
-        public Roller(float x, float y, Stages.Stage _stage)
-            : base(ATexture.RollerSprite, x, y, HpDifficult, 1, 1, _stage)
+        public Shooter(float x, float y, Stages.Stage _stage)
+            : base(ATexture.ShooterSprite, x, y, 1, 1, 1, _stage)
         {
             stage = _stage;
             this.FrameCol = 4;
-            this.Timer = 0; // Intervalle entre 2 boucles d'animations
-            this.AnimationSpeed = 5; // Vitesse d'animation
+            //this.Timer = 0; // Intervalle entre 2 boucles d'animations
+            //this.AnimationSpeed = 5; // Vitesse d'animation
 
             Hitbox = new Rectangle((int)x, (int)y, 150, 150);
             Spritebox = new Rectangle((int)x, (int)y, 150, 150);
-            damagebox = new Rectangle((int)x + 17, (int)y, 80, 15);
+            damagebox = Rectangle.Empty;
 
             Timing = 0;
             LoopTime = 256;
@@ -34,10 +33,10 @@ namespace Steel_Era.Enemies
             exists = true;
         }
         int FrameCol;
-        int Timer;
+        //int Timer;
         int Timing;
         int LoopTime;
-        int AnimationSpeed;
+        //int AnimationSpeed;
         bool direction;
         SpriteEffects Effect;
         
@@ -45,17 +44,6 @@ namespace Steel_Era.Enemies
 
         public void MoveLeft()
         {
-            this.Timer++;
-            if (this.Timer == this.AnimationSpeed)
-            {
-                this.Timer = 0;
-                this.FrameCol++;
-                if (this.FrameCol > 8)
-                {
-                    this.FrameCol = 4;
-                    this.Timer = 0;
-                }
-            }
             direction = false;
             Hitbox.X = Hitbox.X - (int)Speed;
             if (Hitbox.Left <= 0)
@@ -65,17 +53,6 @@ namespace Steel_Era.Enemies
         }
         public void MoveRight()
         {
-            this.Timer++;
-            if (this.Timer == this.AnimationSpeed)
-            {
-                this.Timer = 0;
-                this.FrameCol++;
-                if (this.FrameCol > 8)
-                {
-                    this.FrameCol = 4;
-                    this.Timer = 0;
-                }
-            }
             direction = true;
             Hitbox.X = Hitbox.X + (int)Speed;
         }
@@ -100,9 +77,10 @@ namespace Steel_Era.Enemies
                 {
                     Timing++;
                 }
+                DetectionPlayer();
             }
 
-            if (IsGrounded == false)//IsOnGround().Equals(false))
+            if (IsGrounded == false)
             {
                 Hitbox.Y += Physics.gravity;
             }
@@ -115,10 +93,8 @@ namespace Steel_Era.Enemies
             {
                 Effect = SpriteEffects.None;
             }
-            damagebox.X = Hitbox.X + 17;
-            damagebox.Y = Hitbox.Y;
+            
         }
-  
 
         public override void Update(GameTime gameTime)
         {
@@ -134,6 +110,28 @@ namespace Steel_Era.Enemies
                 Color.White, 0f, new Vector2(0, 0), this.Effect, 0f);
         }
 
-        
+
+        public void DetectionPlayer()
+        {
+            for (int i = 0; i < stage.lists.ListPlayers.Count; i++)
+            {
+                if (direction)
+                {
+                    if (Hitbox.X - stage.lists.ListPlayers.ElementAt(i).Hitbox.X < 0 && Hitbox.X - stage.lists.ListPlayers.ElementAt(i).Hitbox.X > -500)
+                    {
+                        stage.lists.ListProjectiles.Add(new Elements.Projectile(ATexture.BossBullet, Hitbox.X+Hitbox.Width, Hitbox.Y, 1, direction, stage, true));
+                    }
+                    else { }
+                }
+                else
+                {
+                    if (Hitbox.X - stage.lists.ListPlayers.ElementAt(i).Hitbox.X > 0 && Hitbox.X - stage.lists.ListPlayers.ElementAt(i).Hitbox.X < 500)
+                    {
+                        stage.lists.ListProjectiles.Add(new Elements.Projectile(ATexture.BossBullet, Hitbox.X+Hitbox.Width, Hitbox.Y, 1, direction, stage, true));
+                    }
+                    else { }
+                }
+            }
+        }
     }
 }

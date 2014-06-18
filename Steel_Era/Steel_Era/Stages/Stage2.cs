@@ -24,7 +24,7 @@ namespace Steel_Era.Stages
         Item hp1, hp2;
         Item mana1, mana2, mana3, mana4;
         Item pts1, pts2, pts3, pts4, pts5;
-        Sprite Grass, Grass2, Grass3 ,PlateFormebas, PlateFormehaut, Plat, HolePlat, HolePlat2, DoublePlat, DoublePlat2, DoublePlat3, Solbas2, Solbas3, Plat2, Plat3, Plat4;
+        Sprite Grass, Grass2, Grass3 ,/*PlateFormebas, PlateFormehaut, Plat,*/ HolePlat, HolePlat2/*, DoublePlat, DoublePlat2, DoublePlat3, Solbas2, Solbas3, Plat2, Plat3, Plat4*/;
 
         ///                           ///
         ///   FONCTIONS PRINCIPALES   ///
@@ -193,8 +193,8 @@ namespace Steel_Era.Stages
         void SpawnObstacles()
         {
             Grass = new Sprite(ATexture.Grass, 0, Game1.screenHeight - 60);
-            Grass2 = new Sprite(ATexture.Grass2, 4000, Game1.screenHeight - 60);
-            Grass3 = new Sprite(ATexture.Grass3, 7000, Game1.screenHeight - 60);
+            Grass2 = new Sprite(ATexture.Grass, 4000, Game1.screenHeight - 60);
+            Grass3 = new Sprite(ATexture.Grass, 7000, Game1.screenHeight - 60);
             /*PlateFormebas = new Sprite(ATexture.PlateFormebas, 800, Game1.screenHeight - 180);
             PlateFormehaut = new Sprite(ATexture.PlateFormehaut, 800, Game1.screenHeight - 400);
             Plat = new Sprite(ATexture.Platform, 300, 180);
@@ -202,7 +202,7 @@ namespace Steel_Era.Stages
             Plat3 = new Sprite(ATexture.Plat3, 1800, Game1.screenHeight - 342);
             Plat4 = new Sprite(ATexture.Plat4, 4700, Game1.screenHeight - 440);*/
             HolePlat = new Sprite(ATexture.HolePlat, 3100, Game1.screenHeight - 197);
-            HolePlat2 = new Sprite(ATexture.HolePlat2, 3600, Game1.screenHeight - 297);
+            HolePlat2 = new Sprite(ATexture.HolePlat, 3600, Game1.screenHeight - 297);
             /*DoublePlat = new Sprite(ATexture.DoublePlat, 4500, Game1.screenHeight - 215);
             DoublePlat2 = new Sprite(ATexture.DoublePlat2, 5199, Game1.screenHeight - 180);
             DoublePlat3 = new Sprite(ATexture.DoublePlat3, 2100, Game1.screenHeight - 180);*/

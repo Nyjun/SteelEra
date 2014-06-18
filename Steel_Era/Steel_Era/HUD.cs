@@ -88,15 +88,15 @@ namespace Steel_Era
                 }
                 if (HP >= 2)
                 {
-                    spriteBatch.Draw(ATexture.Hp2, Hslot2, Color.White);
+                    spriteBatch.Draw(ATexture.Hp1, Hslot2, Color.White);
                 }
                 if (HP >= 3)
                 {
-                    spriteBatch.Draw(ATexture.Hp3, Hslot3, Color.White);
+                    spriteBatch.Draw(ATexture.Hp1, Hslot3, Color.White);
                 }
                 if (HP >= 4)
                 {
-                    spriteBatch.Draw(ATexture.Hp4, Hslot4, Color.White);
+                    spriteBatch.Draw(ATexture.Hp1, Hslot4, Color.White);
                 }
 
                 if (Mana >= 1)
@@ -105,11 +105,11 @@ namespace Steel_Era
                 }
                 if (Mana >= 2)
                 {
-                    spriteBatch.Draw(ATexture.Mana2, Mslot2, Color.White);
+                    spriteBatch.Draw(ATexture.Mana1, Mslot2, Color.White);
                 }
                 if (Mana >= 3)
                 {
-                    spriteBatch.Draw(ATexture.Mana3, Mslot3, Color.White);
+                    spriteBatch.Draw(ATexture.Mana1, Mslot3, Color.White);
                 }
                 spriteBatch.DrawString(spriteFont, "Score:" + playerscore, position, Color.Black);
             }

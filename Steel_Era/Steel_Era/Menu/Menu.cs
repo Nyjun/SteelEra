@@ -821,8 +821,8 @@ namespace Steel_Era
                     HUD.HP = 4;
                     HUD.Mana = 3;
                     button1.Status = false;
-                    Player.Hitbox = new Rectangle(200, 0, 87, 170);
-                    Player.Spritebox = new Rectangle(200, 0, 175, 175);
+                    //Player.staticHitbox = new Rectangle(200, 0, 87, 170);
+                    //Player.staticSpritebox = new Rectangle(200, 0, 175, 175);
                     HUD.playerscore = 0;
 
                     if (Menu.lvl_selected == 1)

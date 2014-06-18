@@ -22,6 +22,7 @@ namespace Steel_Era.Stages
         public static Player player;
         public static Player player2;
         Enemies.Roller roller, roller1, roller2;
+        Enemies.Shooter shooter;
         Enemies.Boss boss;
         Item hp1, hp2;
         Item mana1, mana2, mana3, mana4;
@@ -132,11 +133,14 @@ namespace Steel_Era.Stages
             roller = new Enemies.Roller(2200, 100, this);
             roller1 = new Enemies.Roller(1300, 100, this);
             roller2 = new Enemies.Roller(5000, 100, this);
+            shooter = new Enemies.Shooter(2400, 100, this);
+
 
             lists.ListEnemies.Add(boss);
             lists.ListEnemies.Add(roller);
             lists.ListEnemies.Add(roller1);
             lists.ListEnemies.Add(roller2);
+            lists.ListEnemies.Add(shooter);
         }
         void UpdateEnemies(GameTime gt)
         {
@@ -214,19 +218,19 @@ namespace Steel_Era.Stages
         void SpawnObstacles()
         {
             Solbas = new Sprite(ATexture.Solbas, 0, Game1.screenHeight - 60);
-            Solbas2 = new Sprite(ATexture.Solbas2, 4000, Game1.screenHeight - 60);
-            Solbas3 = new Sprite(ATexture.Solbas3, 7000, Game1.screenHeight - 60);
+            Solbas2 = new Sprite(ATexture.Solbas, 4000, Game1.screenHeight - 60);
+            Solbas3 = new Sprite(ATexture.Solbas, 7000, Game1.screenHeight - 60);
             PlateFormebas = new Sprite(ATexture.PlateFormebas, 800, Game1.screenHeight - 180);
             PlateFormehaut = new Sprite(ATexture.PlateFormehaut, 800, Game1.screenHeight - 400);
             Plat = new Sprite(ATexture.Platform, 300, 180);
             Plat2 = new Sprite(ATexture.Plat2, 1300, Game1.screenHeight - 342);
-            Plat3 = new Sprite(ATexture.Plat3, 1800, Game1.screenHeight - 342);
+            Plat3 = new Sprite(ATexture.Plat2, 1800, Game1.screenHeight - 342);
             Plat4 = new Sprite(ATexture.Plat4, 4700, Game1.screenHeight - 440);
             HolePlat = new Sprite(ATexture.HolePlat, 3100, Game1.screenHeight - 197);
-            HolePlat2 = new Sprite(ATexture.HolePlat2, 3600, Game1.screenHeight - 297);
+            HolePlat2 = new Sprite(ATexture.HolePlat, 3600, Game1.screenHeight - 297);
             DoublePlat = new Sprite(ATexture.DoublePlat, 4500, Game1.screenHeight - 215);
-            DoublePlat2 = new Sprite(ATexture.DoublePlat2, 5199, Game1.screenHeight - 180);
-            DoublePlat3 = new Sprite(ATexture.DoublePlat3, 2100, Game1.screenHeight - 180);
+            DoublePlat2 = new Sprite(ATexture.DoublePlat, 5199, Game1.screenHeight - 180);
+            DoublePlat3 = new Sprite(ATexture.DoublePlat, 2100, Game1.screenHeight - 180);
             lists.ListObstacle.Add(Solbas);
             lists.ListObstacle.Add(Solbas2);
             lists.ListObstacle.Add(Solbas3);
