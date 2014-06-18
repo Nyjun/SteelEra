@@ -398,8 +398,10 @@ namespace Steel_Era
                 //spriteBatch.Draw(ATexture.Ciel2, new Vector2(-2751, screenHeight - 800), Color.White);
                 //spriteBatch.Draw(ATexture.Ciel3, new Vector2(2751 * 2, screenHeight - 800), Color.White);
                 spriteBatch.Draw(ATexture.BG_Mont, /*new Vector2(0, screenHeight - 500)*/new Rectangle((int)(Camera.centreX * 0.8) - 750, screenHeight - 500, ATexture.BG_Mont.Width, ATexture.BG_Mont.Height), Color.White);
-                spriteBatch.Draw(ATexture.BG_Mont, new Rectangle((int)(Camera.centreX * 0.8) - 50, screenHeight - 500, ATexture.BG_Mont.Width, ATexture.BG_Mont.Height), Color.White);
+                spriteBatch.Draw(ATexture.BG_Mont, new Rectangle((int)(Camera.centreX * 0.8) + 940, screenHeight - 500, ATexture.BG_Mont.Width, ATexture.BG_Mont.Height), Color.White);
+                spriteBatch.Draw(ATexture.BG_Mont, new Rectangle((int)(Camera.centreX * 0.8) + 2630, screenHeight - 500, ATexture.BG_Mont.Width, ATexture.BG_Mont.Height), Color.White);
                 //spriteBatch.Draw(ATexture.Mont3, new Vector2(3493 * 2, screenHeight - 500), Color.White);
+                
                 spriteBatch.Draw(ATexture.PlateFormeMid, new Vector2(810, screenHeight - 377), Color.White);
                 spriteBatch.Draw(ATexture.Solhaut, new Vector2(0, screenHeight - 97), Color.White);
                 spriteBatch.Draw(ATexture.Solhaut, new Vector2(4000, screenHeight - 97), Color.White);
@@ -407,6 +409,7 @@ namespace Steel_Era
                 spriteBatch.Draw(ATexture.Edge, new Vector2(3000, screenHeight - 97), Color.White);
                 spriteBatch.Draw(ATexture.PlatMid, new Vector2(1300, screenHeight - 320), Color.White);
                 spriteBatch.Draw(ATexture.PlatMid, new Vector2(1800, screenHeight - 320), Color.White);
+                spriteBatch.Draw(ATexture.Buisson1, new Vector2(0, screenHeight - 90), Color.White);
 
                 spriteBatch.Draw(ATexture.End, new Vector2(6850, screenHeight - 150), Color.White);
             }

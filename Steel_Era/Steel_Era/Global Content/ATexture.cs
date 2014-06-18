@@ -40,9 +40,11 @@ namespace Steel_Era
         public static Texture2D BG_Pause;
         public static Texture2D BG_GO;
         public static Texture2D Boss;
+        public static Texture2D Buisson1, Buisson2, Buisson3;
+
 
         //Stage1
-        public static Texture2D  PlatMid, Plat2, Ciel2, Ciel3, DoublePlat, Plat4,
+        public static Texture2D PlatMid, Plat2, Ciel2, Ciel3, DoublePlat, Plat4,
             HolePlat, Edge, End, HPB, ManaB, Pts;
 
         //Stage2
@@ -91,6 +93,7 @@ namespace Steel_Era
             Ciel2 = cm.Load<Texture2D>("Game/Background/Ciel jour");
             Ciel3 = cm.Load<Texture2D>("Game/Background/Ciel jour");
             Platform = cm.Load<Texture2D>("Game/Elements/sol_test");
+            Buisson1 = cm.Load<Texture2D>("Game/Elements/Buissonlvl1");
             Solbas = cm.Load<Texture2D>("Game/Elements/Solbas");
             Solhaut = cm.Load<Texture2D>("Game/Elements/Solhaut");
             PlateFormebas = cm.Load<Texture2D>("Game/Elements/PlateFormebas");
@@ -106,6 +109,7 @@ namespace Steel_Era
             HPB = cm.Load<Texture2D>("Game/Elements/HPB");
             ManaB = cm.Load<Texture2D>("Game/Elements/ManaB");
             Pts = cm.Load<Texture2D>("Game/Elements/Point");
+            
 
             //Stage2
             Rock = cm.Load<Texture2D>("Game/Background/Mont");
@@ -123,8 +127,8 @@ namespace Steel_Era
 
             //Divers
             covert = cm.Load<Texture2D>("Covert");
-            bullet = cm.Load<Texture2D>("Game/Animations/BulletV2");
-            bulletR = cm.Load<Texture2D>("Game/Animations/BulletReverseV2");
+            bullet = cm.Load<Texture2D>("Game/Animations/Bullet");
+            bulletR = cm.Load<Texture2D>("Game/Animations/BulletReverse");
 
             //Musique
             musicMenu = cm.Load<SoundEffect>("Menu/Music/KodoDrum1");

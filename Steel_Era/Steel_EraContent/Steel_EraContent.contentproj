@@ -290,13 +290,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game\Background\Mont.png">
-      <Name>Mont</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Menu\Music\gameMusic.wav">
       <Name>gameMusic</Name>
       <Importer>WavImporter</Importer>
@@ -452,6 +445,20 @@
     </Compile>
     <Compile Include="Game\Animations\BulletV2.png">
       <Name>BulletV2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Game\Background\Mont.png">
+      <Name>Mont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Game\Elements\Buissonlvl1.png">
+      <Name>Buissonlvl1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

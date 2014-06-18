@@ -178,7 +178,7 @@ namespace Steel_Era
         public virtual void HandleInput(KeyboardState keyState, MouseState mouseState, Game1 game)
         {
             cursor.HandleInput(keyState, mouseState, game);
-            if (keyState.IsKeyDown(Keys.Escape) && keyOState.IsKeyUp(Keys.Escape))
+          /*  if (keyState.IsKeyDown(Keys.Escape) && keyOState.IsKeyUp(Keys.Escape))
             {
                 if (state == 0)
                 {
@@ -201,7 +201,7 @@ namespace Steel_Era
                     stage2.End();
                 }
 
-            }
+            }*/
             if (HUD.HP == 0) // PERSO MORT GAME OVER
             {
                 State = 4;
@@ -791,7 +791,7 @@ namespace Steel_Era
 
             }
 
-            if (state == 4)
+            if (state == 4)  // MENU GAME OVER 
             {
                 Freezed = true;
                 button1.Text = "Restart";
