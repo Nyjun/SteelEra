@@ -123,8 +123,8 @@ namespace Steel_Era
 
             //Divers
             covert = cm.Load<Texture2D>("Covert");
-            bullet = cm.Load<Texture2D>("Game/Animations/Bullet");
-            bulletR = cm.Load<Texture2D>("Game/Animations/BulletReverse");
+            bullet = cm.Load<Texture2D>("Game/Animations/BulletV2");
+            bulletR = cm.Load<Texture2D>("Game/Animations/BulletReverseV2");
 
             //Musique
             musicMenu = cm.Load<SoundEffect>("Menu/Music/KodoDrum1");
