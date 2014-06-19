@@ -17,7 +17,6 @@ namespace Steel_Era.Stages
         public Stage1()
         {
         }
-
         public static bool lvl_completed;
         public static Player player;
         public static Player player2;
@@ -257,7 +256,6 @@ namespace Steel_Era.Stages
             {
                 lists.ListObstacle.ElementAt(i).Draw(spriteBatch, gameTime);
             }
-
         }
         void DeleteObstacle()
         {

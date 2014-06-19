@@ -31,7 +31,7 @@ namespace Steel_Era
         //SpriteFont VideoFont;
         ParticleComponent particleComponent;
         Microsoft.Xna.Framework.Input.ButtonState lastButtonState;
-
+       
         Random random;
 
         //Network
@@ -96,6 +96,7 @@ namespace Steel_Era
             graphics.PreferredBackBufferWidth = 1366;
             //Changes the settings that you just applied
             graphics.ApplyChanges();
+
 
             //FrameRateCounter FrameRateCounter = new FrameRateCounter(this, "Fonts\\Default");
             particleComponent = new ParticleComponent(this);
@@ -401,17 +402,20 @@ namespace Steel_Era
                 spriteBatch.Draw(ATexture.BG_Mont, new Rectangle((int)(Camera.centreX * 0.8) + 940, screenHeight - 500, ATexture.BG_Mont.Width, ATexture.BG_Mont.Height), Color.White);
                 spriteBatch.Draw(ATexture.BG_Mont, new Rectangle((int)(Camera.centreX * 0.8) + 2630, screenHeight - 500, ATexture.BG_Mont.Width, ATexture.BG_Mont.Height), Color.White);
                 //spriteBatch.Draw(ATexture.Mont3, new Vector2(3493 * 2, screenHeight - 500), Color.White);
-                spriteBatch.Draw(ATexture.Tree, new Vector2(0, screenHeight - 97), Color.White);
+                //spriteBatch.Draw(ATexture.Tree, new Rectangle((int)(Camera.centreX * 1) - 750, screenHeight - 500, ATexture.Tree.Width, ATexture.Tree.Height)/*new Vector2(0, screenHeight - 97)*/, Color.White);
                 spriteBatch.Draw(ATexture.PlateFormeMid, new Vector2(810, screenHeight - 377), Color.White);
                 spriteBatch.Draw(ATexture.Solhaut, new Vector2(0, screenHeight - 97), Color.White);
+                spriteBatch.Draw(ATexture.Solhaut, new Vector2(-3000, screenHeight - 97), Color.White);
+                spriteBatch.Draw(ATexture.Solbas, new Vector2(-3000, screenHeight - 60), Color.White);
+                
                 spriteBatch.Draw(ATexture.Solhaut, new Vector2(4000, screenHeight - 97), Color.White);
                 spriteBatch.Draw(ATexture.Solhaut, new Vector2(7000, screenHeight - 97), Color.White);
                 spriteBatch.Draw(ATexture.Edge, new Vector2(3000, screenHeight - 97), Color.White);
                 spriteBatch.Draw(ATexture.PlatMid, new Vector2(1300, screenHeight - 320), Color.White);
                 spriteBatch.Draw(ATexture.PlatMid, new Vector2(1800, screenHeight - 320), Color.White);
                 spriteBatch.Draw(ATexture.Buisson1, new Vector2(0, screenHeight - 97), Color.White);
-                
                 spriteBatch.Draw(ATexture.End, new Vector2(6850, screenHeight - 150), Color.White);
+                
             }
             if (Menu.lvl_selected == 2)
             {
@@ -421,35 +425,36 @@ namespace Steel_Era
                 spriteBatch.Draw(ATexture.Rock, new Rectangle((int)(Camera.centreX * 0.8) + 2200, screenHeight - 400, ATexture.Rock.Width, ATexture.Rock.Height), Color.White);
                 
                 spriteBatch.Draw(ATexture.DemiGrasshaut, new Vector2(0, screenHeight - 97), Color.White);
-                
-                spriteBatch.Draw(ATexture.GrassPlat, new Vector2(3200, screenHeight - 97), Color.White);
+                spriteBatch.Draw(ATexture.Tree, new Vector2(0, 0), Color.White);
+                spriteBatch.Draw(ATexture.GrassPlat, new Vector2(3350, screenHeight - 97), Color.White);
                 spriteBatch.Draw(ATexture.Grasshaut, new Vector2(4000, screenHeight - 97), Color.White);
                 spriteBatch.Draw(ATexture.Grasshaut, new Vector2(7000, screenHeight - 97), Color.White);
-                spriteBatch.Draw(ATexture.Tree, new Vector2(0, screenHeight - 97), Color.White);
-                if (Menu.lvl_selected == 2)
+                /*if (Menu.lvl_selected == 2)
                 {
                     int activeParticles = 0;
                     foreach (Emitter activeEmitters in particleComponent.particleEmitterList)
                     {
                         activeParticles += activeEmitters.ParticleList.Count();
                     }
+                
+                
 
+                }*/
 
-                }
-            
+                GraphicsDevice.Clear(Color.Black);
             }
             stage1.Draw(spriteBatch, gameTime);
             stage2.Draw(spriteBatch, gameTime);
 
             base.Draw(gameTime);
             spriteBatch.End();
-
+            
             spriteBatch.Begin();
 
             menu.Draw(spriteBatch, gameTime, screenRectangle);
             hud.Draw(spriteBatch);
             spriteBatch.End();
-
+            
         }
 
     }

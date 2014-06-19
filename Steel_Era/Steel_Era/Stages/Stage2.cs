@@ -194,8 +194,8 @@ namespace Steel_Era.Stages
         void SpawnObstacles()
         {
             Grass = new Sprite(ATexture.DemiGrass, 0, Game1.screenHeight - 60);
-            Grass2 = new Sprite(ATexture.Grass, 4000, Game1.screenHeight - 60);
-            Grass3 = new Sprite(ATexture.Grass, 7000, Game1.screenHeight - 60);
+            Grass2 = new Sprite(ATexture.Grass, 5000, Game1.screenHeight - 60);
+            Grass3 = new Sprite(ATexture.Grass, 8200, Game1.screenHeight - 60);
             /*PlateFormebas = new Sprite(ATexture.PlateFormebas, 800, Game1.screenHeight - 180);
             PlateFormehaut = new Sprite(ATexture.PlateFormehaut, 800, Game1.screenHeight - 400);
             Plat = new Sprite(ATexture.Platform, 300, 180);
@@ -205,8 +205,10 @@ namespace Steel_Era.Stages
             HolePlat = new Sprite(ATexture.HolePlat, 1700, Game1.screenHeight - 297);
             HolePlat2 = new Sprite(ATexture.HolePlat, 2250, Game1.screenHeight - 397);
             HolePlat3 = new Sprite(ATexture.HolePlat, 2800, Game1.screenHeight - 200);
+            HolePlat4 = new Sprite(ATexture.HolePlat, 4200, Game1.screenHeight - 297);
+            HolePlat5 = new Sprite(ATexture.HolePlat, 4600, Game1.screenHeight - 397);
             DoublePlat = new Sprite(ATexture.DoublePlat, 750, Game1.screenHeight - 215);
-            DoublePlat2 = new Sprite(ATexture.DoublePlat, 3200, Game1.screenHeight - 215);
+            DoublePlat2 = new Sprite(ATexture.DoublePlat, 3350, Game1.screenHeight - 215);
             //DoublePlat2 = new Sprite(ATexture.DoublePlat2, 5199, Game1.screenHeight - 180);
             //DoublePlat3 = new Sprite(ATexture.DoublePlat3, 2100, Game1.screenHeight - 180);*/
             /*lists.ListObstacle.Add(PlateFormehaut);
@@ -221,6 +223,8 @@ namespace Steel_Era.Stages
             lists.ListObstacle.Add(HolePlat);
             lists.ListObstacle.Add(HolePlat2);
             lists.ListObstacle.Add(HolePlat3);
+            lists.ListObstacle.Add(HolePlat4);
+            lists.ListObstacle.Add(HolePlat5);
             lists.ListObstacle.Add(DoublePlat);
             lists.ListObstacle.Add(DoublePlat2);
             //lists.ListObstacle.Add(DoublePlat2);

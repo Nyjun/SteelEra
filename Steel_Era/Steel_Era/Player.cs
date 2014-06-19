@@ -268,10 +268,13 @@ namespace Steel_Era
                 Spritebox = new Rectangle(0, 0, 175, 175);
                 HUD.HP = HUD.HP - 1;
             }
-            if (Hitbox.X > 6800 )
+            if (Menu.lvl_selected == 1)
             {
-                Stages.Stage1.lvl_completed = true;
-                Enemies.Boss.lockCamera = true;
+                if (Hitbox.X > 6800)
+                {
+                    Stages.Stage1.lvl_completed = true;
+                    Enemies.Boss.lockCamera = true;
+                }
             }
             if (Menu.Freezed == false)
             {
