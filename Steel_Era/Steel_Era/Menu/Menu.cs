@@ -61,6 +61,11 @@ namespace Steel_Era
         int menuVolumeChangeSFX;
         float VolumeSFX;
 
+
+        //VIDEO 
+
+        Video Intro;
+        VideoPlayer videoPlayer = new VideoPlayer();
         /// <summary>
         /// 1 : main menu.
         /// 2 : solo.
@@ -115,57 +120,65 @@ namespace Steel_Era
         public virtual void Initialize(Game1 _game)
         {
             lastState = 1;
-            Freezed = false;
+            //VIDEO 
+          
+            Intro = ATexture.Intro;
+            if (state != 7)
+            {
+                Freezed = false;
 
-            lvl_selected = 0;
-            Drawmessage = false;
-            menuSoundState = "on";
-            menuDisplayState = "Windowed";
-            menuVolumeChangeBGM = 70;
-            menuVolumeChangeSFX = 30;
-            selected = 0;
-            //Son
-            musicMenu = ATexture.musicMenu;
-            musicMenuInst = musicMenu.CreateInstance();
-            musicMenuInst.IsLooped = true;
-            gameMusic = ATexture.gameMusic;
-            gameMusicInst = gameMusic.CreateInstance();
-            gameMusicInst.IsLooped = true;
-            music_project = ATexture.music_project;
-            music_projectInst = music_project.CreateInstance();
-            music_projectInst.IsLooped = true;
-            gameMusicInst.Volume = VolumeBGM;
-            VolumeBGM = 0.7F;
-            jump = ATexture.jump;
-            jumpInst = jump.CreateInstance();
-            jumpInst.Volume = VolumeSFX;
-            landing = ATexture.landing;
-            landingInst = landing.CreateInstance();
-            landingInst.Volume = VolumeSFX;
-            attack1 = ATexture.attack1;
-            attack1Inst = attack1.CreateInstance();
-            attack1Inst.Volume = VolumeSFX;
-            run_ground = ATexture.run_ground;
-            run_groundInst = run_ground.CreateInstance();
-            run_groundInst.Volume = VolumeSFX;
-            voice_dead = ATexture.voice_dead;
-            voice_deadInst = voice_dead.CreateInstance();
-            voice_deadInst.Volume = VolumeSFX;
-            get_item = ATexture.get_item;
-            get_itemInst = get_item.CreateInstance();
-            get_itemInst.Volume = VolumeSFX;
-            mouse_enter = ATexture.mouse_enter;
-            mouse_enterInst = mouse_enter.CreateInstance();
-            mouse_enterInst.Volume = 1F;
-            VolumeSFX = 0.3F;
+                lvl_selected = 0;
+                Drawmessage = false;
+                menuSoundState = "on";
+                menuDisplayState = "Windowed";
+                menuVolumeChangeBGM = 70;
+                menuVolumeChangeSFX = 30;
+                selected = 0;
+                //Son
+                musicMenu = ATexture.musicMenu;
+                musicMenuInst = musicMenu.CreateInstance();
+                musicMenuInst.IsLooped = true;
+                gameMusic = ATexture.gameMusic;
+                gameMusicInst = gameMusic.CreateInstance();
+                gameMusicInst.IsLooped = true;
+                music_project = ATexture.music_project;
+                music_projectInst = music_project.CreateInstance();
+                music_projectInst.IsLooped = true;
+                gameMusicInst.Volume = VolumeBGM;
+                VolumeBGM = 0.7F;
+                jump = ATexture.jump;
+                jumpInst = jump.CreateInstance();
+                jumpInst.Volume = VolumeSFX;
+                landing = ATexture.landing;
+                landingInst = landing.CreateInstance();
+                landingInst.Volume = VolumeSFX;
+                attack1 = ATexture.attack1;
+                attack1Inst = attack1.CreateInstance();
+                attack1Inst.Volume = VolumeSFX;
+                run_ground = ATexture.run_ground;
+                run_groundInst = run_ground.CreateInstance();
+                run_groundInst.Volume = VolumeSFX;
+                voice_dead = ATexture.voice_dead;
+                voice_deadInst = voice_dead.CreateInstance();
+                voice_deadInst.Volume = VolumeSFX;
+                get_item = ATexture.get_item;
+                get_itemInst = get_item.CreateInstance();
+                get_itemInst.Volume = VolumeSFX;
+                mouse_enter = ATexture.mouse_enter;
+                mouse_enterInst = mouse_enter.CreateInstance();
+                mouse_enterInst.Volume = 1F;
+                VolumeSFX = 0.3F;
 
 
-            cursor = new Cursor(ATexture.cursor8x8, _game);
-            background = new Sprite(ATexture.BG_Main_Menu, 0, 0);
-            backgroundPause = new Sprite(ATexture.BG_Pause, 0, 0);
-            backgroundGO = new Sprite(ATexture.BG_GO, 0, 0);
+                cursor = new Cursor(ATexture.cursor8x8, _game);
+                background = new Sprite(ATexture.BG_Main_Menu, 0, 0);
+                backgroundPause = new Sprite(ATexture.BG_Pause, 0, 0);
+                backgroundGO = new Sprite(ATexture.BG_GO, 0, 0);
 
-            state = 1;
+               
+            }
+
+             state = 7;
         }
 
 
@@ -793,6 +806,7 @@ namespace Steel_Era
 
             if (state == 4)  // MENU GAME OVER 
             {
+                HUD.showhud = false;
                 Freezed = true;
                 button1.Text = "Restart";
                 button1.IsVisible = true;
@@ -1001,6 +1015,19 @@ namespace Steel_Era
 
                 }
             }
+
+            /*if (state == 7)
+            {
+                videoPlayer.Play(Intro);
+                
+                if (videoPlayer.State == MediaState.Stopped)
+                {
+                    
+                    videoPlayer.IsLooped = false;
+                    state = 1;
+                }
+
+            }*/
             // ######################
             if (state != 0)
             {
@@ -1049,6 +1076,21 @@ namespace Steel_Era
 
         public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle screenRectangle)
         {
+           /* if (state == 7)
+            {
+                if (videoPlayer.State != MediaState.Stopped)
+                {
+                    Texture2D texture = videoPlayer.GetTexture();
+                    if (texture != null)
+                    {
+                        spriteBatch.Draw(texture, new Rectangle(0, 0, YOURWIDTH, YOURHEIGHT),
+                            Color.White);
+                    }
+                }
+            
+                   
+                
+            }*/
             if (state == 6)
             {
                 spriteBatch.Draw(background.Texture, screenRectangle, Color.White);

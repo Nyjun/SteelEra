@@ -52,6 +52,12 @@ Content\Game\Animations\BulletReverseV2.xnb
 Content\Game\Animations\BulletV2.xnb
 Content\Game\Background\Mont.xnb
 Content\Game\Elements\Buissonlvl1.xnb
+Content\Game\Background\BGForet.xnb
+Content\Game\Elements\Grassbasdemi.xnb
+Content\Game\Elements\Grasshautdemi.xnb
+Content\Game\Elements\GrassPlat.xnb
+Content\Game\Elements\Tree.xnb
+Content\Game\Background\Montv1.xnb
 Content\Menu\Fonts\SpriteFont1.xnb
 Content\Menu\Music\KodoDrum1.xnb
 Content\Menu\Music\jump_up.xnb
@@ -64,9 +70,5 @@ Content\Menu\Music\mouse_enter.xnb
 Content\Menu\Music\voice_dead.xnb
 Content\Menu\Music\get_item.xnb
 Content\Menu\Music\music_project.xnb
-Content\Game\Background\BGForet.xnb
-Content\Game\Background\Montv1.xnb
-Content\Game\Elements\Grassbasdemi.xnb
-Content\Game\Elements\Grasshautdemi.xnb
-Content\Game\Elements\GrassPlat.xnb
-Content\Game\Elements\Tree.xnb
+Content\IntroTest.xnb
+Content\IntroTest.wmv

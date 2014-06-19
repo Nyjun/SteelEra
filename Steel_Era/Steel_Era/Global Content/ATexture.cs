@@ -64,8 +64,13 @@ namespace Steel_Era
         public static Texture2D Hp1, Mana1, Portrait, Nav;
         public static Texture2D bullet, bulletR, BossBullet;
 
+        // VIDEO 
+        public static Video Intro;
+
         public static void Load(ContentManager cm)
         {
+            //VIDEO 
+            Intro = cm.Load<Video>("IntroTest");
             //Menu
             BoutonSound1 = cm.Load<Texture2D>("Menu/Buttons/BoutonSound1");
             BoutonSound2 = cm.Load<Texture2D>("Menu/Buttons/BoutonSound2");
