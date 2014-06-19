@@ -425,10 +425,10 @@ namespace Steel_Era
                 spriteBatch.Draw(ATexture.Rock, new Rectangle((int)(Camera.centreX * 0.8) + 2200, screenHeight - 400, ATexture.Rock.Width, ATexture.Rock.Height), Color.White);
                 
                 spriteBatch.Draw(ATexture.DemiGrasshaut, new Vector2(0, screenHeight - 97), Color.White);
-                spriteBatch.Draw(ATexture.Tree, new Vector2(0, 0), Color.White);
+                spriteBatch.Draw(ATexture.Tree, new Vector2(0, 10), Color.White);
                 spriteBatch.Draw(ATexture.GrassPlat, new Vector2(3350, screenHeight - 97), Color.White);
-                spriteBatch.Draw(ATexture.Grasshaut, new Vector2(4000, screenHeight - 97), Color.White);
-                spriteBatch.Draw(ATexture.Grasshaut, new Vector2(7000, screenHeight - 97), Color.White);
+                spriteBatch.Draw(ATexture.Grasshaut, new Vector2(5000, screenHeight - 97), Color.White);
+                spriteBatch.Draw(ATexture.Grasshaut, new Vector2(8200, screenHeight - 97), Color.White);
                 /*if (Menu.lvl_selected == 2)
                 {
                     int activeParticles = 0;
