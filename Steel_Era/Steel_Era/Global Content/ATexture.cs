@@ -48,7 +48,7 @@ namespace Steel_Era
             HolePlat, Edge, End, HPB, ManaB, Pts;
 
         //Stage2
-        public static Texture2D Grass, Grasshaut, /*Forest,*/ Rock;
+        public static Texture2D Grass, Grasshaut, DemiGrass, DemiGrasshaut, Forest, Rock, GrassPlat, Tree;
 
         public static SoundEffect musicMenu;
         public static SoundEffect jump;
@@ -112,10 +112,14 @@ namespace Steel_Era
             
 
             //Stage2
-            Rock = cm.Load<Texture2D>("Game/Background/Mont");
+            Tree = cm.Load<Texture2D>("Game/Elements/Tree");
+            Forest = cm.Load<Texture2D>("Game/Background/BGForet");
+            Rock = cm.Load<Texture2D>("Game/Background/Montv1");
             Grass = cm.Load<Texture2D>("Game/Elements/Grassbas");
             Grasshaut = cm.Load<Texture2D>("Game/Elements/Grasshaut");
-
+            DemiGrass = cm.Load<Texture2D>("Game/Elements/Grassbasdemi");
+            DemiGrasshaut = cm.Load<Texture2D>("Game/Elements/Grasshautdemi");
+            GrassPlat = cm.Load<Texture2D>("Game/Elements/GrassPlat");
 
             //HUD
 

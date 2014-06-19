@@ -135,7 +135,7 @@ namespace Steel_Era.Stages
             roller = new Enemies.Roller(2200, 100, this);
             roller1 = new Enemies.Roller(1300, 100, this);
             roller2 = new Enemies.Roller(5000, 100, this);
-            shooter = new Enemies.Shooter(2400, 100, this);
+            shooter = new Enemies.Shooter(5300, 100, this);
 
 
             lists.ListEnemies.Add(boss);
