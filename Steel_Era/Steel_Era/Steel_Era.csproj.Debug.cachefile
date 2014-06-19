@@ -41,10 +41,6 @@ Content\Game\Animations\Animation2.xnb
 Content\Game\Animations\BossAnim.xnb
 Content\Game\Animations\BossBullet.xnb
 Content\Particles\fire.xnb
-Content\Particles\flower_green.xnb
-Content\Particles\flower_orange.xnb
-Content\Particles\flower_purple.xnb
-Content\Particles\flower_yellow.xnb
 Content\Particles\pointer.xnb
 Content\Particles\raindrop.xnb
 Content\Particles\smoke.xnb
@@ -57,6 +53,10 @@ Content\Game\Elements\Grassbasdemi.xnb
 Content\Game\Elements\Grasshautdemi.xnb
 Content\Game\Elements\GrassPlat.xnb
 Content\Game\Elements\Tree.xnb
+Content\Particles\flower_green.xnb
+Content\Particles\flower_orange.xnb
+Content\Particles\flower_purple.xnb
+Content\Particles\flower_yellow.xnb
 Content\Game\Background\Montv1.xnb
 Content\Menu\Fonts\SpriteFont1.xnb
 Content\Menu\Music\KodoDrum1.xnb

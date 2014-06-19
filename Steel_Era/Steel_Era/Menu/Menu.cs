@@ -28,6 +28,8 @@ namespace Steel_Era
 
         KeyboardState keyOState;
         int lastState;
+        int Timer;
+        bool playIntro;
 
         private Cursor cursor;
         string menuSoundState;
@@ -125,8 +127,9 @@ namespace Steel_Era
             Intro = ATexture.Intro;
             if (state != 7)
             {
+                Timer = 0;
                 Freezed = false;
-
+                playIntro = true;
                 lvl_selected = 0;
                 Drawmessage = false;
                 menuSoundState = "on";
@@ -134,6 +137,7 @@ namespace Steel_Era
                 menuVolumeChangeBGM = 70;
                 menuVolumeChangeSFX = 30;
                 selected = 0;
+                state = 1;
                 //Son
                 musicMenu = ATexture.musicMenu;
                 musicMenuInst = musicMenu.CreateInstance();
@@ -1016,18 +1020,23 @@ namespace Steel_Era
                 }
             }
 
-            /*if (state == 7)
+            if (state == 7 && playIntro == true)
             {
                 videoPlayer.Play(Intro);
+                playIntro = false;
                 
-                if (videoPlayer.State == MediaState.Stopped)
+
+                //videoPlayer.Stop();
+
+            }
+            if (state == 7 && playIntro == false)
+            {
+                Timer = Timer + 1;
+                if (Timer == 800)
                 {
-                    
-                    videoPlayer.IsLooped = false;
                     state = 1;
                 }
-
-            }*/
+            }
             // ######################
             if (state != 0)
             {
@@ -1076,21 +1085,21 @@ namespace Steel_Era
 
         public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle screenRectangle)
         {
-           /* if (state == 7)
+            if (state == 7)
             {
                 if (videoPlayer.State != MediaState.Stopped)
                 {
                     Texture2D texture = videoPlayer.GetTexture();
                     if (texture != null)
                     {
-                        spriteBatch.Draw(texture, new Rectangle(0, 0, YOURWIDTH, YOURHEIGHT),
+                        spriteBatch.Draw(texture, new Rectangle(0, 0, Game1.screenWidth, Game1.screenHeight),
                             Color.White);
                     }
                 }
             
                    
                 
-            }*/
+            }
             if (state == 6)
             {
                 spriteBatch.Draw(background.Texture, screenRectangle, Color.White);
