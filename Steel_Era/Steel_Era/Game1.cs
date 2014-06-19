@@ -413,7 +413,7 @@ namespace Steel_Era
                 spriteBatch.Draw(ATexture.Edge, new Vector2(3000, screenHeight - 97), Color.White);
                 spriteBatch.Draw(ATexture.PlatMid, new Vector2(1300, screenHeight - 320), Color.White);
                 spriteBatch.Draw(ATexture.PlatMid, new Vector2(1800, screenHeight - 320), Color.White);
-                spriteBatch.Draw(ATexture.Buisson1, new Vector2(0, screenHeight - 97), Color.White);
+                //spriteBatch.Draw(ATexture.Buisson1, new Vector2(0, screenHeight - 200), Color.White);
                 spriteBatch.Draw(ATexture.End, new Vector2(6850, screenHeight - 150), Color.White);
                 
             }

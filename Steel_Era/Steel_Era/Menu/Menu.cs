@@ -241,7 +241,8 @@ namespace Steel_Era
 
             }
 
-            if (state != 0)
+
+            if (state != 0 )
             {
                 button1.HandleInput(keyState, mouseState, cursor);
                 button2.HandleInput(keyState, mouseState, cursor);
@@ -1032,13 +1033,18 @@ namespace Steel_Era
             if (state == 7 && playIntro == false)
             {
                 Timer = Timer + 1;
-                if (Timer == 800)
+                if (Timer == 796 || (keyState.IsKeyDown(Keys.Space)))
                 {
                     state = 1;
                 }
+
+                  
             }
+            
+               
+            
             // ######################
-            if (state != 0)
+            if (state != 0 && state != 7)
             {
 
                 lastState = state;
