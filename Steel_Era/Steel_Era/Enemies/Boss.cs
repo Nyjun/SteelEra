@@ -41,16 +41,6 @@ namespace Steel_Era.Enemies
         {
             listCanon = new List<Rectangle>();
             direction = new Vector2(-18, -18);
-            
-            stage = _stage;
-            this.FrameCol = 0;
-            this.Timer = 0; // Intervalle entre 2 boucles d'animations
-            //AnimationSpeed = 5; // Vitesse d'animation
-            lockCamera = false;
-            Effect = new SpriteEffects();
-            Hitbox = new Rectangle((int)x, (int)y, 350, 350);
-            Spritebox = new Rectangle((int)x, (int)y, 350, 350);
-            damagebox = new Rectangle((int)x + 17, (int)y, 300, 300);
             if (Menu.lvl_selected == 1)
             {
                 Pos = new Vector2(8000, 350);
@@ -63,6 +53,16 @@ namespace Steel_Era.Enemies
                 HitboxPilon2 = new Rectangle(7450, 0, 100, 100);
                 HitboxPilon3 = new Rectangle(7725, 0, 100, 100);
             }
+            stage = _stage;
+            this.FrameCol = 0;
+            this.Timer = 0; // Intervalle entre 2 boucles d'animations
+            //AnimationSpeed = 5; // Vitesse d'animation
+            lockCamera = false;
+            Effect = new SpriteEffects();
+            Hitbox = new Rectangle((int)x, (int)y, 350, 350);
+            Spritebox = new Rectangle((int)x, (int)y, 350, 350);
+            damagebox = new Rectangle((int)x + 17, (int)y, 300, 300);
+            
             if (Menu.lvl_selected == 2)
             {
                 Pos = new Vector2(8000+2500, 350);
@@ -197,24 +197,46 @@ namespace Steel_Era.Enemies
                 Shooting3 = false;
                 Shooting1 = false;
                 Shooting2 = true;
-            
-            if (Timer <= 1500)
-            {
-                if ((HitboxCanon.Y <= 0 && direction.Y < 0)
-                    || (HitboxCanon.Y > Game1.screenHeight - 97 - HitboxCanon.Height && direction.Y > 0))
+                if (Menu.lvl_selected == 1)
                 {
-                    direction = new Vector2(direction.X, -direction.Y);
-                    //HitboxCanon.X -= 5;
-                    //HitboxCanon.Y += 5;
+                    if (Timer <= 1500)
+                    {
+                        if ((HitboxCanon.Y <= 0 && direction.Y < 0)
+                            || (HitboxCanon.Y > Game1.screenHeight - 97 - HitboxCanon.Height && direction.Y > 0))
+                        {
+                            direction = new Vector2(direction.X, -direction.Y);
+                            //HitboxCanon.X -= 5;
+                            //HitboxCanon.Y += 5;
+                        }
+                        if ((HitboxCanon.X <= 7000 && direction.X < 0)
+                            || (HitboxCanon.X > 8100 - HitboxCanon.Width && direction.X > 0))
+                        {
+                            direction = new Vector2(-direction.X, direction.Y);
+                            //HitboxCanon.X += 5;
+                            //HitboxCanon.Y -= 5;
+                        }
+                    }
                 }
-                if ((HitboxCanon.X <= 7000+2500 && direction.X < 0)
-                    || (HitboxCanon.X > 8100+2500 - HitboxCanon.Width && direction.X > 0))
+                if (Menu.lvl_selected == 2)
                 {
-                    direction = new Vector2(-direction.X, direction.Y);
-                    //HitboxCanon.X += 5;
-                    //HitboxCanon.Y -= 5;
+                    if (Timer <= 1500)
+                    {
+                        if ((HitboxCanon.Y <= 0 && direction.Y < 0)
+                            || (HitboxCanon.Y > Game1.screenHeight - 97 - HitboxCanon.Height && direction.Y > 0))
+                        {
+                            direction = new Vector2(direction.X, -direction.Y);
+                            //HitboxCanon.X -= 5;
+                            //HitboxCanon.Y += 5;
+                        }
+                        if ((HitboxCanon.X <= 7000 +2500 && direction.X < 0)
+                            || (HitboxCanon.X > 8100+2500 - HitboxCanon.Width && direction.X > 0))
+                        {
+                            direction = new Vector2(-direction.X, direction.Y);
+                            //HitboxCanon.X += 5;
+                            //HitboxCanon.Y -= 5;
+                        }
+                    }
                 }
-            }
             Pos += direction;
             HitboxCanon.X = (int)Pos.X;
             HitboxCanon.Y = (int)Pos.Y;
