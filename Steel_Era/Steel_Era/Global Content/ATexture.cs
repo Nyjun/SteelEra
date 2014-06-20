@@ -15,7 +15,7 @@ namespace Steel_Era
     static class ATexture
     {
 
-        public static Texture2D ShooterSprite;
+        public static Texture2D ShooterSheet;
         public static Texture2D RollerSprite;
         public static Texture2D BoutonSound1;
         public static Texture2D BoutonSound2;
@@ -92,7 +92,7 @@ namespace Steel_Era
             RollerSprite = cm.Load<Texture2D>("Game/Animations/RollerSheet");
             Boss = cm.Load<Texture2D>("Game/Animations/Boss1");
             BossBullet = cm.Load<Texture2D>("Game/Animations/BossBullet");
-            ShooterSprite = cm.Load<Texture2D>("RollerShooter1");
+            ShooterSheet = cm.Load<Texture2D>("Game/Animations/ShooterSheet");
 
             //Stage1
             BG_Mont = cm.Load<Texture2D>("Game/Background/Mont");

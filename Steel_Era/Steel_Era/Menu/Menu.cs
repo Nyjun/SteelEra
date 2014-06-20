@@ -225,7 +225,7 @@ namespace Steel_Era
                 State = 4;
             }
 
-            if (keyState.IsKeyDown(Keys.Tab) && keyOState.IsKeyUp(Keys.Tab))
+            if (keyState.IsKeyDown(Keys.Escape) && keyOState.IsKeyUp(Keys.Escape))
             {
                 if (state == 0)
                 {

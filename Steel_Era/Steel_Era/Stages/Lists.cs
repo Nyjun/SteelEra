@@ -24,7 +24,6 @@ namespace Steel_Era.Stages
             listEnemies = new List<Enemy>();
             listPlayers = new List<Player>();
             listItem = new List<Item>();
-            listProjectiles = new List<Elements.Projectile>();
         }
 
         public List<Sprite> ListSprite
@@ -84,11 +83,5 @@ namespace Steel_Era.Stages
         }
         private List<Item> listItem;
 
-        public List<Elements.Projectile> ListProjectiles
-        {
-            get { return listProjectiles; }
-            set { listProjectiles = value; }
-        }
-        private List<Elements.Projectile> listProjectiles;
     }
 }
