@@ -92,7 +92,7 @@ namespace Steel_Era.Enemies
 
             //Attacks Initial Positions
             
-            listCanon.Add(HitboxSalve1);
+            //listCanon.Add(HitboxSalve1);
             listCanon.Add(HitboxSalve2);
             listCanon.Add(HitboxSalve3);
             listCanon.Add(HitboxCanon);
