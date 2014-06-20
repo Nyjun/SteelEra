@@ -20,12 +20,14 @@ namespace Steel_Era.Stages
 
 
         Player player;
+        Enemies.Boss boss;
         Enemies.Roller roller, roller1, roller2;
+        Enemies.Shooter shooter1, shooter2;
         Item hp1, hp2;
         Item mana1, mana2, mana3, mana4;
         Item pts1, pts2, pts3, pts4, pts5;
-        Sprite Grass, Grass2, Grass3 ,/*PlateFormebas, PlateFormehaut, Plat,*/ HolePlat, HolePlat2, HolePlat3, HolePlat4, HolePlat5,
-            DoublePlat, DoublePlat2, DoublePlat3, Plat2, Plat3, Plat4;
+        Sprite Grass, Grass2, Grass3,PlateFormebas, PlateFormehaut, Plat, HolePlat, HolePlat2, HolePlat3, HolePlat4, HolePlat5,
+            DoublePlat, DoublePlat2, DoublePlat3,DoublePlat1, Plat2, Plat3, Plat4;
 
         ///                           ///
         ///   FONCTIONS PRINCIPALES   ///
@@ -119,12 +121,20 @@ namespace Steel_Era.Stages
         ///                   ///
         void SpawnEnemies()
         {
-            roller = new Enemies.Roller(2200, 100, this);
-            roller1 = new Enemies.Roller(1300, 100, this);
+            roller = new Enemies.Roller(5500, 100, this);
+            roller1 = new Enemies.Roller(800, 100, this);
             roller2 = new Enemies.Roller(5000, 100, this);
+            shooter1 = new Enemies.Shooter(6750, 100, this);
+            shooter2 = new Enemies.Shooter(6600, 100, this);
+
+            boss = new Enemies.Boss(10450, 100, this);
+
             lists.ListEnemies.Add(roller);
             lists.ListEnemies.Add(roller1);
             lists.ListEnemies.Add(roller2);
+            lists.ListEnemies.Add(shooter1);
+            lists.ListEnemies.Add(shooter2);
+            lists.ListEnemies.Add(boss);
         }
         void UpdateEnemies(GameTime gt)
         {
@@ -133,6 +143,7 @@ namespace Steel_Era.Stages
                 if (lists.ListEnemies.ElementAt(i).Killed())
                 {
                     lists.ListEnemies.Remove(lists.ListEnemies.ElementAt(i));
+                    HUD.playerscore += 1000;
                 }
                 else
                 {
@@ -196,39 +207,39 @@ namespace Steel_Era.Stages
             Grass = new Sprite(ATexture.DemiGrass, 0, Game1.screenHeight - 60);
             Grass2 = new Sprite(ATexture.Grass, 5000, Game1.screenHeight - 60);
             Grass3 = new Sprite(ATexture.Grass, 8200, Game1.screenHeight - 60);
-            /*PlateFormebas = new Sprite(ATexture.PlateFormebas, 800, Game1.screenHeight - 180);
-            PlateFormehaut = new Sprite(ATexture.PlateFormehaut, 800, Game1.screenHeight - 400);
-            Plat = new Sprite(ATexture.Platform, 300, 180);
-            Plat2 = new Sprite(ATexture.Plat2, 1300, Game1.screenHeight - 342);
-            Plat3 = new Sprite(ATexture.Plat3, 1800, Game1.screenHeight - 342);
-            Plat4 = new Sprite(ATexture.Plat4, 4700, Game1.screenHeight - 440);*/
+            PlateFormebas = new Sprite(ATexture.PlateFormebas, 5070, Game1.screenHeight - 180);
+            PlateFormehaut = new Sprite(ATexture.PlateFormehaut, 5070, Game1.screenHeight - 396);
+            Plat = new Sprite(ATexture.HolePlat, 9700, Game1.screenHeight - 297);
+            Plat2 = new Sprite(ATexture.HolePlat, 10100, Game1.screenHeight - 297);
+            //Plat3 = new Sprite(ATexture.Plat3, 1800, Game1.screenHeight - 342);
+            //Plat4 = new Sprite(ATexture.Plat4, 4700, Game1.screenHeight - 440);
             HolePlat = new Sprite(ATexture.HolePlat, 1700, Game1.screenHeight - 297);
             HolePlat2 = new Sprite(ATexture.HolePlat, 2250, Game1.screenHeight - 397);
             HolePlat3 = new Sprite(ATexture.HolePlat, 2800, Game1.screenHeight - 200);
             HolePlat4 = new Sprite(ATexture.HolePlat, 4200, Game1.screenHeight - 297);
             HolePlat5 = new Sprite(ATexture.HolePlat, 4600, Game1.screenHeight - 397);
             DoublePlat = new Sprite(ATexture.DoublePlat, 750, Game1.screenHeight - 215);
-            DoublePlat2 = new Sprite(ATexture.DoublePlat, 3350, Game1.screenHeight - 215);
-            //DoublePlat2 = new Sprite(ATexture.DoublePlat2, 5199, Game1.screenHeight - 180);
-            //DoublePlat3 = new Sprite(ATexture.DoublePlat3, 2100, Game1.screenHeight - 180);*/
-            /*lists.ListObstacle.Add(PlateFormehaut);
-            lists.ListObstacle.Add(PlateFormebas);*/
+            DoublePlat1 = new Sprite(ATexture.DoublePlat, 3350, Game1.screenHeight - 215);
+            DoublePlat2 = new Sprite(ATexture.DoublePlat, 6300, Game1.screenHeight - 180);
+            DoublePlat3 = new Sprite(ATexture.DoublePlat, 7000, Game1.screenHeight - 180);
+            lists.ListObstacle.Add(PlateFormehaut);
+            lists.ListObstacle.Add(PlateFormebas);
             lists.ListObstacle.Add(Grass);
             lists.ListObstacle.Add(Grass2);
             lists.ListObstacle.Add(Grass3);
-            /*lists.ListObstacle.Add(Plat);
+            lists.ListObstacle.Add(Plat);
             lists.ListObstacle.Add(Plat2);
-            lists.ListObstacle.Add(Plat3);
-            lists.ListObstacle.Add(Plat4);*/
+            //lists.ListObstacle.Add(Plat3);
+            //lists.ListObstacle.Add(Plat4);
             lists.ListObstacle.Add(HolePlat);
             lists.ListObstacle.Add(HolePlat2);
             lists.ListObstacle.Add(HolePlat3);
             lists.ListObstacle.Add(HolePlat4);
             lists.ListObstacle.Add(HolePlat5);
             lists.ListObstacle.Add(DoublePlat);
+            lists.ListObstacle.Add(DoublePlat1);
             lists.ListObstacle.Add(DoublePlat2);
-            //lists.ListObstacle.Add(DoublePlat2);
-            //lists.ListObstacle.Add(DoublePlat3);
+            lists.ListObstacle.Add(DoublePlat3);
         }
         void UpdateObstacles()
         {

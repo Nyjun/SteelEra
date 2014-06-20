@@ -60,6 +60,8 @@ namespace Steel_Era
         public static SoundEffect voice_dead;
         public static SoundEffect get_item;
         public static SoundEffect music_project;
+        public static SoundEffect Attack1, Attack2, Attack3;
+
         //HUD
         public static Texture2D Hp1, Mana1, Portrait, Nav;
         public static Texture2D bullet, bulletR, BossBullet;
@@ -88,7 +90,7 @@ namespace Steel_Era
             Crow = cm.Load<Texture2D>("Game/Animations/Animation");
             Crow2 = cm.Load<Texture2D>("Game/Animations/Animation2");
             RollerSprite = cm.Load<Texture2D>("Game/Animations/RollerSheet");
-            Boss = cm.Load<Texture2D>("Game/Animations/BossAnim");
+            Boss = cm.Load<Texture2D>("Game/Animations/Boss1");
             BossBullet = cm.Load<Texture2D>("Game/Animations/BossBullet");
             ShooterSprite = cm.Load<Texture2D>("RollerShooter1");
 
@@ -114,7 +116,7 @@ namespace Steel_Era
             HPB = cm.Load<Texture2D>("Game/Elements/HPB");
             ManaB = cm.Load<Texture2D>("Game/Elements/ManaB");
             Pts = cm.Load<Texture2D>("Game/Elements/Point");
-            
+
 
             //Stage2
             Tree = cm.Load<Texture2D>("Game/Elements/Tree");
@@ -150,6 +152,10 @@ namespace Steel_Era
             voice_dead = cm.Load<SoundEffect>("Menu/Music/voice_dead");
             get_item = cm.Load<SoundEffect>("Menu/Music/get_item");
             music_project = cm.Load<SoundEffect>("Menu/Music/music_project");
+            Attack1 = cm.Load<SoundEffect>("Menu/Music/grenade");
+            Attack2 = cm.Load<SoundEffect>("Menu/Music/rail");
+            Attack3 = cm.Load<SoundEffect>("Menu/Music/smg");
+            
         }
     }
 }

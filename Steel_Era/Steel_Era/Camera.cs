@@ -23,11 +23,22 @@ namespace Steel_Era
         {
             if ( Enemies.Boss.lockCamera == true )
             {
-                centre = new Vector2(LocPlayer.X, LocPlayer.Y);
-                transform = Matrix.CreateScale(new Vector3(1, 1, 0)) *
-                    Matrix.CreateTranslation(new Vector3(-6900, 0, 0));
-                //centreX = (int)centre.X;
-                //centreY = (int)centre.Y;
+                if (Menu.lvl_selected == 1)
+                {
+                    centre = new Vector2(LocPlayer.X, LocPlayer.Y);
+                    transform = Matrix.CreateScale(new Vector3(1, 1, 0)) *
+                        Matrix.CreateTranslation(new Vector3(-6900, 0, 0));
+                    //centreX = (int)centre.X;
+                    //centreY = (int)centre.Y;
+                }
+                if (Menu.lvl_selected == 2)
+                {
+                    centre = new Vector2(LocPlayer.X, LocPlayer.Y);
+                    transform = Matrix.CreateScale(new Vector3(1, 1, 0)) *
+                        Matrix.CreateTranslation(new Vector3(-9400, 0, 0));
+                    //centreX = (int)centre.X;
+                    //centreY = (int)centre.Y;
+                }
             }
             else
             //else (LocPlayer.X * 2 >= Game1.screenWidth) 

@@ -111,7 +111,7 @@ namespace Steel_Era
                 {
                     spriteBatch.Draw(ATexture.Mana1, Mslot3, Color.White);
                 }
-                spriteBatch.DrawString(spriteFont, "Score:" + playerscore, position, Color.Black);
+                spriteBatch.DrawString(spriteFont, "Score:" + playerscore, position, Color.White);
             }
         }
     }

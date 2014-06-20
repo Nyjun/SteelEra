@@ -61,7 +61,7 @@ namespace Steel_Era
         public static SoundEffect get_item;
         public static SoundEffectInstance get_itemInst;
         int menuVolumeChangeSFX;
-        float VolumeSFX;
+        public static float VolumeSFX;
 
 
         //VIDEO 
@@ -137,6 +137,7 @@ namespace Steel_Era
                 menuVolumeChangeBGM = 70;
                 menuVolumeChangeSFX = 30;
                 selected = 0;
+                
                 state = 1;
                 //Son
                 musicMenu = ATexture.musicMenu;

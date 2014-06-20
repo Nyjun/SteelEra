@@ -17,6 +17,7 @@ namespace Steel_Era.Stages
         public Stage1()
         {
         }
+        public int damageTimer;
         public static bool lvl_completed;
         public static Player player;
         public static Player player2;
@@ -26,13 +27,14 @@ namespace Steel_Era.Stages
         Item hp1, hp2;
         Item mana1, mana2, mana3, mana4;
         Item pts1, pts2, pts3, pts4, pts5;
-        Sprite Solbas, PlateFormebas, PlateFormehaut, Plat, HolePlat, HolePlat2, DoublePlat, DoublePlat2, DoublePlat3, Solbas2, Solbas3, Plat2, Plat3, Plat4;
+        Sprite PlatBoss, Solbas, PlateFormebas, PlateFormehaut, Plat, HolePlat, HolePlat2, DoublePlat, DoublePlat2, DoublePlat3, Solbas2, Solbas3, Plat2, Plat3, Plat4;
 
         ///                           ///
         ///   FONCTIONS PRINCIPALES   ///
         ///                           ///
         public override void Init()
         {
+            
             SpawnObstacles();
             SpawnItems();
             SpawnEnemies();
@@ -130,7 +132,7 @@ namespace Steel_Era.Stages
         ///                   ///
         void SpawnEnemies()
         {
-            boss = new Enemies.Boss(8030, 100, this);
+            boss = new Enemies.Boss(7940, 100, this);
             roller = new Enemies.Roller(2200, 100, this);
             roller1 = new Enemies.Roller(1300, 100, this);
             roller2 = new Enemies.Roller(5000, 100, this);
@@ -223,6 +225,7 @@ namespace Steel_Era.Stages
             Solbas3 = new Sprite(ATexture.Solbas, 7000, Game1.screenHeight - 60);
             PlateFormebas = new Sprite(ATexture.PlateFormebas, 800, Game1.screenHeight - 180);
             PlateFormehaut = new Sprite(ATexture.PlateFormehaut, 800, Game1.screenHeight - 400);
+            PlatBoss = new Sprite(ATexture.PlateFormehaut, 7400, Game1.screenHeight - 297);
             Plat = new Sprite(ATexture.Platform, 300, 180);
             Plat2 = new Sprite(ATexture.Plat2, 1300, Game1.screenHeight - 342);
             Plat3 = new Sprite(ATexture.Plat2, 1800, Game1.screenHeight - 342);
@@ -237,6 +240,7 @@ namespace Steel_Era.Stages
             lists.ListObstacle.Add(Solbas3);
             lists.ListObstacle.Add(PlateFormehaut);
             lists.ListObstacle.Add(PlateFormebas);
+            lists.ListObstacle.Add(PlatBoss);
             lists.ListObstacle.Add(Plat);
             lists.ListObstacle.Add(Plat2);
             lists.ListObstacle.Add(Plat3);
@@ -292,7 +296,7 @@ namespace Steel_Era.Stages
         ///                   ///
         ///   PROJECTION      ///
         ///                   ///
-        
+
         void UpdateProjectiles()
         {
             for (int i = 0; i < lists.ListProjectiles.Count; i++)

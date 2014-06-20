@@ -276,6 +276,14 @@ namespace Steel_Era
                     Enemies.Boss.lockCamera = true;
                 }
             }
+            if (Menu.lvl_selected == 2)
+            {
+                if (Hitbox.X > 9400)
+                {
+                    
+                    Enemies.Boss.lockCamera = true;
+                }
+            }
             if (Menu.Freezed == false)
             {
 
@@ -331,14 +339,29 @@ namespace Steel_Era
                     this.AnimateJump();
                     if (keyboard.IsKeyDown(Keys.Left))
                     {
-                        if ((Enemies.Boss.lockCamera == true) && (Hitbox.X <= 7030))
+                        if (Menu.lvl_selected == 1)
                         {
-                            Hitbox.X = 7030;
+                            if ((Enemies.Boss.lockCamera == true) && (Hitbox.X <= 7030))
+                            {
+                                Hitbox.X = 7030;
+                            }
+                            else
+                            {
+                                Hitbox.X = Hitbox.X - 10;
+                                this.IsHorsLimiteLeft();
+                            }
                         }
-                        else
+                        if (Menu.lvl_selected == 2)
                         {
-                            Hitbox.X = Hitbox.X - 10;
-                            this.IsHorsLimiteLeft();
+                            if ((Enemies.Boss.lockCamera == true) && (Hitbox.X <= 7030+2600))
+                            {
+                                Hitbox.X = 7030+2600;
+                            }
+                            else
+                            {
+                                Hitbox.X = Hitbox.X - 10;
+                                this.IsHorsLimiteLeft();
+                            }
                         }
 
                     }
